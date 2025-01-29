@@ -2309,6 +2309,10 @@ input.sidenote-toggle {
   background-color: #6666cc;
   color: #fff;
   font-weight: bold;
+  display: block;
+  width: 100%;
+  padding-left: 2.5em; /* Indents the whole text */
+  text-indent: -1.5em; /* Moves the first line back */
 }
 
 #mySocial {
