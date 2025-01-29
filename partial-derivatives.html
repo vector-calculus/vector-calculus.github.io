@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>  Partial Derivatives
+</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="An introduction to Vector Calculus" />
+  <meta name="keywords" content="vector, calculus, analysis, mathematics" />
+
+  <!--
+    https://www.everywheremarketer.com/blog/ultimate-guide-to-social-meta-tags-open-graph-and-twitter-cards
+  -->
+  <!--Facebook-->
+  <meta property="og:title" content="Vector Calulus" />
+  <meta property="og:url" content="https://vector-calculus.github.io/" />
+  <meta property="og:description" content="An interactive introduction to Vector Calculus" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vector Calulus">
+
+  <!--Twitter/X-->
+  <meta name="twitter:title" content="Vector Calulus" />
+  <meta name="twitter:site" content="https://vector-calculus.github.io/" />
+  <meta name="twitter:description" content="An interactive introduction to Vector Calulus" />
+  <meta name="twitter:type" content="website" />
+  <meta name="twitter:creator" content="@jcponcemath" />
+
+  <link rel="icon" type="image/png" href="imgs/infinity32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="imgs/infinity16.png" sizes="16x16">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <!-- Google tag (gtag.js) -->
+ 
+
+  <!-- MathCell applets + MathJax -->
+  <script src="js/math.js"></script>
+  <script src="js/mathcell.js"></script>
+  <script src="js/mathjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+</head>
+
+<body data-type="book" id="top">
+
+  <!-- Loader fullscreen -->
+  <div class="myLoader" id="loader">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loadingMessage">Loading...</div>
+  </div> 
+
+  <div class="w3-main w3-large" style="margin-left:250px;">
+
+
+
+    <!-- Main DIV Starts here -->
+    <div class="container">
+      <section data-type="chapter" id="partial-derivatives-E1RBsG1">
+
+  <!-- Sidebar -->
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-card" id="mySidebar">
+    <a class="w3-bar-item w3-button w3-border-bottom w3-large w3-center" href="/"><img id="myLogo" src="imgs/my-logo-black.png"></a>
+
+    <a class="w3-bar-item w3-button w3-hide-large w3-large w3-center" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa-solid fa-xmark w3-large"></i></a>
+
+      <a class="w3-bar-item w3-button" id="chapterBar" href="vectors-and-the-geometry-of-space.html">Vectors and the Geometry of Space</a>
+    <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">Partial Derivatives</a>
+    <a class="w3-bar-item w3-button" id="chapterBar" href="vector-valued-functions.html">Vector-Valued Functions</a>
+    <a class="w3-bar-item w3-button" id="chapterBar" href="double-and-triple-integrals.html">Double and Triple Integrals</a>
+    <a class="w3-bar-item w3-button" id="chapterBar" href="integrals-over-paths-and-surfaces.html">Integrals Over Paths
+      and Surfaces</a>
+      <a class="w3-bar-item w3-button" id="chapterBar" href="integration-theorems.html">Integration Theorems</a>
+
+
+    <br>
+
+
+    <div class="w3-container w3-center w3-theme" id="mySocial">
+      <div class="">
+        <a title="Patreon" href="https://www.patreon.com/jcponce" target="_blank"><i class="fa-brands fa-patreon w3-button w3-round-large w3-theme"></i></a>
+        <span title="Support" onclick="document.getElementById('myModal').style.display='block'" class="w3-button w3-round-large w3-theme">
+          <i class="fa-regular fa-heart"></i></span>
+        <a title="GitHub" href="https://github.com/jcponce" target="_blank"><i class="fa-brands fa-github w3-button w3-round-large w3-theme"></i></a>
+        <br>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Overlay to close navbar -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay">
+  </div>
+
+  <!-- Main text starts here -->
+
+  <!-- Bar on top shows/hides after scrolling -->
+  <div id="myTop" class="w3-container w3-top w3-theme-bar w3-large">
+    <div id="myTextBar">
+      <p>
+        <i class="fa-solid fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+
+        <span id="myTitle" class="w3-hide">Partial Derivatives</span>
+
+        <span title="Dark/Night Mode" id="dark-mode-toggle" class="topDark w3-theme w3-hide-small">
+          <i class="fa-regular fa-sun"></i>
+        </span>
+
+        <span onclick="document.getElementById('myModal').style.display='block'" class="topDonate w3-button w3-theme w3-round-small w3-hide-small">
+          <i class="fa-regular fa-heart"></i> Support
+        </span>
+
+      </p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="w3-container w3-theme header-section">
+
+    <h1>Partial Derivatives</h1>
+
+  </header>
+
+  <!-- Sections -->
+  <div class="w3-container section-content">
+
+    <div id="section-1">
+
+      <div id="path-integral">
+        <h2>Under Construction!</h2> 
+        <picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.gif" alt="🚧" width="64" height="64">
+        </picture>
+        <picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f422/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f422/512.gif" alt="🐢" width="64" height="64">
+        </picture>
+        <picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.gif" alt="🚧" width="64" height="64">
+        </picture>
+      </div>
+      
+      <p>
+        Hi there! Sorry this chapter is still under construction 
+        <picture>
+          <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.webp" type="image/webp">
+          <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.gif" alt="🚧" width="32" height="32">
+        </picture>! 
+        In the mean time enjoy this beautiful animation:
+      </p>
+
+      <iframe frameborder="0" height="500px" scrolling="no" src="https://www.dynamicmath.xyz/math1052/sketches/chapter-02/surfaces/" style="border: 1px solid black; overflow: hidden;" width="100%">
+      </iframe>
+
+
+
+    </div>
+
+    
+
+
+
+  </div>
+  <!-- Ends main content -->
+
+
+  <!-- Extra scripts for applets -->
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+
+  <!--
+  <iframe scrolling="no" title="Parametrization"
+        data-src="https://www.geogebra.org/material/iframe/id/shrbv6cs/width/643/height/496/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
+        width="643px" height="496px" style="border:0px;">
+      </iframe>-->
+  <script>
+
+    let paramsPathIntegral = {
+      "width": 770,
+      "height": 530,
+      "material_id": "yqtvz3zm",
+      "borderColor": "888888",
+      "playButton": true,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
+    let paramsAreaFence = {
+      "width": 760,
+      "height": 460,
+      "material_id": "r4csvyeq",
+      "borderColor": "888888",
+      "playButton": true,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
+    let paramsSeq = {
+      "width": 643,
+      "height": 493,
+      "material_id": "shrbv6cs",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": false,
+      "showResetIcon": true
+    };
+    let paramsIntPath = {
+      "width": 617,
+      "height": 452,
+      "material_id": "ptz7hgj7",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+    let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
+    let appletAreaFence = new GGBApplet(paramsAreaFence, true);
+    let appletSeq = new GGBApplet(paramsSeq, true);
+    let appletIntPath = new GGBApplet(paramsIntPath, true);
+    window.addEventListener("load", () => {
+      appletPathIntegral.inject('ggb-element-path-integral');
+      appletAreaFence.inject('ggb-element-area-fence');
+      appletIntPath.inject('ggb-element-int-path');
+      appletSeq.inject('ggb-element');
+    });
+  </script>
+
+</section>
+    </div>
+
+    <!-- Navigation -->
+<!-- Buttons to navigate -->
+<div class="w3-container w3-center w3-padding-large section-content"  id="navigation">
+    <a href="vectors-and-the-geometry-of-space.html"><button
+            class="w3-left w3-button w3-dark-grey w3-round-xlarge w3-hover-shadow ">&#10094; Previous</button></a>
+
+    <a href="vector-valued-functions.html"><button
+            class="w3-right w3-button w3-dark-grey w3-round-xlarge w3-hover-shadow ">Next &#10095;</button></a>
+</div>
+    <br />
+
+    <!-- Footer -->
+<footer class="w3-main w3-container w3-center w3-theme" id="myFooter">
+
+  <div class="w3-row ">
+
+    <div class="w3-col m6">
+      <span class="w3-hide-small">
+        Real Analysis <i class="fa-regular fa-copyright"></i>
+        <span>
+          <script>document.write(new Date().getFullYear());</script>
+        </span><br />
+        by J. C. Ponce Campuzano
+      </span>
+      <span class="w3-hide-large w3-hide-medium">
+        Real Analysis <i class="fa-regular fa-copyright"></i>
+        <span>
+          <script>document.write(new Date().getFullYear());</script>
+        </span>
+        <br />by J. C. Ponce Campuzano
+      </span>
+    </div>
+
+    <div class="w3-col m6 license">
+
+      <a style="text-decoration: none;" rel="license"
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank">
+        <i class="fa-brands fa-creative-commons"></i>
+        <i class="fa-brands fa-creative-commons-by"></i>
+        <i class="fa-brands fa-creative-commons-nc"></i>
+        <i class="fa-brands fa-creative-commons-sa"></i>
+      </a>
+    </div>
+
+  </div>
+
+</footer>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span><br />
+          <h1 class="w3-xlarge">Hello! 👋</h1>
+        </div>
+        <div class="modal-body">
+
+          <div w3-include-html="message-modal.html"></div>
+
+          <br />
+        </div>
+        <div class="modal-footer">
+          <p class="w3-large">Thank you! 🙏 I highly appreciate your support! 🤗</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Button to Top -->
+  <button onclick="topFunction()" id="toTop" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+  <!-- General scripts -->
+  <script src="js/w3codecolor.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+
+</html>

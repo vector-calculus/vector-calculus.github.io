@@ -48,7 +48,7 @@
 
 <body data-type="book" id="top">
 
-
+  
 
   <div class="w3-main w3-large" style="margin-left:250px;">
 
@@ -59,34 +59,38 @@
       <section data-type="chapter" id="index">
 
     <!-- Sidebar -->
-  <nav class="w3-sidebar w3-bar-block w3-collapse w3-card" id="mySidebar">
-    <a class="w3-bar-item w3-button w3-border-bottom w3-large w3-center" href="/"><img id="myLogo" src="imgs/my-logo-black.png"></a>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-card" id="mySidebar">
+        <a class="w3-bar-item w3-button w3-border-bottom w3-large w3-center" href="/"><img id="myLogo" src="imgs/my-logo-black.png"></a>
 
-    <a class="w3-bar-item w3-button w3-hide-large w3-large w3-center" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa-solid fa-xmark w3-large"></i></a>
+        <a class="w3-bar-item w3-button w3-hide-large w3-large w3-center" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa-solid fa-xmark w3-large"></i></a>
 
-    <a class="w3-bar-item w3-button" id="chapterBar" href="integrals-over-paths-and-surfaces.html">Integrals Over Paths and Surfaces</a>
+            <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">Partial Derivatives</a>
+            <a class="w3-bar-item w3-button" id="chapterBar" href="vector-valued-functions.html">Vector-Valued Functions</a>
+            <a class="w3-bar-item w3-button" id="chapterBar" href="double-and-triple-integrals.html">Double and Triple Integrals</a>
+            <a class="w3-bar-item w3-button" id="chapterBar" href="integrals-over-paths-and-surfaces.html">Integrals Over Paths
+              and Surfaces</a>
 
-    <br>
-
-
-    <div class="w3-container w3-center w3-theme" id="mySocial">
-      <div class="">
-        <a title="Patreon" href="https://www.patreon.com/jcponce" target="_blank"><i class="fa-brands fa-patreon w3-button w3-round-large w3-theme"></i></a>
-        <span title="Support" onclick="document.getElementById('myModal').style.display='block'" class="w3-button w3-round-large w3-theme">
-          <i class="fa-regular fa-heart"></i></span>
-        <a title="GitHub" href="https://github.com/jcponce" target="_blank"><i class="fa-brands fa-github w3-button w3-round-large w3-theme"></i></a>
         <br>
-      </div>
+
+
+        <div class="w3-container w3-center w3-theme" id="mySocial">
+            <div class="">
+                <a title="Patreon" href="https://www.patreon.com/jcponce" target="_blank"><i class="fa-brands fa-patreon w3-button w3-round-large w3-theme"></i></a>
+                <span title="Support" onclick="document.getElementById('myModal').style.display='block'" class="w3-button w3-round-large w3-theme">
+                    <i class="fa-regular fa-heart"></i></span>
+                <a title="GitHub" href="https://github.com/jcponce" target="_blank"><i class="fa-brands fa-github w3-button w3-round-large w3-theme"></i></a>
+                <br>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- Overlay to close navbar -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay">
     </div>
 
-  </nav>
-
-  <!-- Overlay to close navbar -->
-  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay">
-  </div>
 
 
-  
 
     <!-- Starts main content -->
 
@@ -143,7 +147,7 @@
             <p>
                 Vector Calculus is a powerful branch of mathematics that extends
                 calculus into multiple dimensions, enabling us to study and model
-                phenomena involving direction and magnitude. It forms the 
+                phenomena involving direction and magnitude. It forms the
                 mathematical backbone for fields such as physics, engineering,
                 and computer graphics, where understanding how quantities
                 change in space is essential.
@@ -162,15 +166,15 @@
             <p>
                 Through these explorations, you'll develop a deep
                 understanding of the subject while seeing its beauty
-                and practicality 
+                and practicality
                 in action.
             </p>
-            
+
 
 
             <blockquote>
                 Quaternions came from Hamilton ... and have been an unmixed
-                evil to those who have touched them in any way. Vector 
+                evil to those who have touched them in any way. Vector
                 is a useless survival ... and has never been of the slightest use
                 to any creature.
                 <cite>— Lord Kelvin</cite>
@@ -238,10 +242,10 @@
                 It exists thanks to the support of my patreons: <br>
                 <strong>
                     Edward Huff, Abei, pmben, Sophia Wood (Fractal Kitty),
-                    Adam Parrott, Doug Kuhlmann, Dennis Watson, bleh, 
+                    Adam Parrott, Doug Kuhlmann, Dennis Watson, bleh,
                     Miguel Díaz, Ruan Ramon, Maciej Lasota,
                     Christopher-Alexander Hermanns, Aarón Reyes,
-                    Gabriela Sofia Marin Sanchez, Jerome Siegler, 
+                    Gabriela Sofia Marin Sanchez, Jerome Siegler,
                     Yashar Shoraka, Jeff Butterworth.
                 </strong>.
 
@@ -277,7 +281,7 @@
 </section>
     </div>
 
-    
+   
     <br />
 
     <!-- Footer -->
