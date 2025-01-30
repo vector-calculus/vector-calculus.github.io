@@ -231,7 +231,7 @@
       </p>
 
       <figure>
-        <div id="ggb-element-path-integral"></div>
+        <div style="display:block;" class="ggbElement" id="ggb-element-path-integral"></div>
         <figcaption>
           Slowly, drag the slider <tt>N</tt>. Use mouse to move 3D graphics view.
         </figcaption>
@@ -295,7 +295,7 @@
       </p>
 
       <figure>
-        <div id="ggb-element-area-fence"></div>
+        <div style="display:block;" class="ggbElement" id="ggb-element-area-fence"></div>
         <figcaption>
           Slowly, drag the slider <tt>t</tt>. Use mouse to move 3D graphics view.
         </figcaption>
@@ -317,6 +317,13 @@
         </div>
         Finally, we must multiply by 2 to obtain total area: $4\pi + \frac{4}{3}.$
       </div>
+
+      <figure>
+        <div style="display:block;" class="ggbElement" id="ggb-element-calculator"></div>
+        <figcaption>
+          Calculator. <a href="https://www.geogebra.org/m/EnTucWv5" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+        </figcaption>
+      </figure>
 
 
 
@@ -1221,6 +1228,17 @@
       "showResetIcon": true
     };
 
+    let paramsCalculator = {
+      "width": 774,
+      "height": 499,
+      "material_id": "EnTucWv5",
+      "borderColor": "888888",
+      "playButton": true,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
     let paramsTorus = {
       "width": 617,
       "height": 452,
@@ -1235,10 +1253,12 @@
     
     let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
+    let appletCalculator = new GGBApplet(paramsCalculator, true);
     let appletTorus = new GGBApplet(paramsTorus, true);
     window.addEventListener("load", () => {
       appletPathIntegral.inject('ggb-element-path-integral');
       appletAreaFence.inject('ggb-element-area-fence');
+      appletCalculator.inject('ggb-element-calculator');
       appletTorus.inject('ggb-element-torus');
       
     });
