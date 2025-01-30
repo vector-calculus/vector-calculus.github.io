@@ -891,7 +891,7 @@
       </p>
 
       <figure>
-        <div id="ggb-element"></div>
+        <div id="ggb-element-torus"></div>
         <figcaption>
           Drag the slider!
         </figcaption>
@@ -1204,7 +1204,7 @@
       "height": 530,
       "material_id": "yqtvz3zm",
       "borderColor": "888888",
-      "playButton": false,
+      "playButton": true,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -1221,7 +1221,7 @@
       "showResetIcon": true
     };
 
-    let paramsIntPath = {
+    let paramsTorus = {
       "width": 617,
       "height": 452,
       "material_id": "ptz7hgj7",
@@ -1231,14 +1231,16 @@
       "enableShiftDragZoom": true,
       "showResetIcon": true
     };
+
+    
     let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
-    let appletIntPath = new GGBApplet(paramsIntPath, true);
+    let appletTorus = new GGBApplet(paramsTorus, true);
     window.addEventListener("load", () => {
       appletPathIntegral.inject('ggb-element-path-integral');
       appletAreaFence.inject('ggb-element-area-fence');
-      appletIntPath.inject('ggb-element-int-path');
-      appletSeq.inject('ggb-element');
+      appletTorus.inject('ggb-element-torus');
+      
     });
   </script>
 
