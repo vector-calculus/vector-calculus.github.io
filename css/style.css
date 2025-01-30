@@ -1974,7 +1974,7 @@ dl dd {
   background-color: var(--body-bg-color);
   left: 0;
   position: fixed;
-  z-index: 20;
+  z-index: 10000;
   width: 250px;
 }
 
@@ -2408,7 +2408,7 @@ figcaption:before {
   position: fixed;
   bottom: 20px;
   right: 30px;
-  z-index: 99;
+  z-index: 11000;
   font-size: 1.2em;
   font-weight: bold;
   border: none;
@@ -2437,7 +2437,7 @@ figcaption:before {
 /* ends format for Arrow */
 /* Provides format to text on top bar */
 #myTop {
-  z-index: 10000;
+  z-index: 100;
 }
 
 #myTextBar {
@@ -2543,7 +2543,7 @@ var(--body-color);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .dots {
