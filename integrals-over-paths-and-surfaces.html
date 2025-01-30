@@ -396,7 +396,7 @@
       <p>
         Intuitively, we see that these approximations
         have to become better as
-        $n\to \infty$ (that is, $\Delta s_i\to 0$).
+        $n\to \infty$, that is, $\Delta s_i\to 0.$
 
       </p>
       <p>
@@ -1078,7 +1078,7 @@
           GeoGebra code:
         </p>
         <div class="w3-code jsHigh notranslate">
-          Surface(r*cos(π/2), r*sin(π/2), z, z, 2, 4, r, 0, 1)
+          Surface(r * cos(π/2), r * sin(π/2), z, z, 2, 4, r, 0, 1)
         </div>
         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(pi/2),r*sin(pi/2),z,z,2,4,r,0,1)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
@@ -1143,7 +1143,7 @@
           GeoGebra code:
         </p>
         <div class="w3-code jsHigh notranslate">
-          Surface(r*cos(θ)sin(π/3), r*sin(θ)sin(π/3), r*cos(π/3), r, 0, 2, θ, 0, 2π)
+          Surface(r * cos(θ)sin(π/3), r * sin(θ)sin(π/3), r * cos(π/3), r, 0, 2, θ, 0, 2π)
         </div>
         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(θ)*sin(pi/3),r*sin(θ)*sin(pi/3),r*cos(pi/3),r,0,2,θ,0,2pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
@@ -1165,7 +1165,7 @@
           GeoGebra code:
         </p>
         <div class="w3-code jsHigh notranslate">
-          Surface(r*cos(0)sin(ϕ), r*sin(0)sin(ϕ), r*cos(ϕ), r, 0, 2, ϕ, 0, π)
+          Surface(r * cos(0)sin(ϕ), r * sin(0)sin(ϕ), r * cos(ϕ), r, 0, 2, ϕ, 0, π)
         </div>
         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(0)*sin(ϕ),r*sin(0)*sin(ϕ),r*cos(ϕ),r,0,2,ϕ,0,pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
@@ -1204,7 +1204,7 @@
       "height": 530,
       "material_id": "yqtvz3zm",
       "borderColor": "888888",
-      "playButton": true,
+      "playButton": false,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -1215,22 +1215,12 @@
       "height": 460,
       "material_id": "r4csvyeq",
       "borderColor": "888888",
-      "playButton": true,
+      "playButton": false,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
     };
 
-    let paramsSeq = {
-      "width": 643,
-      "height": 493,
-      "material_id": "shrbv6cs",
-      "borderColor": "888888",
-      "playButton": false,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": false,
-      "showResetIcon": true
-    };
     let paramsIntPath = {
       "width": 617,
       "height": 452,
@@ -1243,7 +1233,6 @@
     };
     let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
-    let appletSeq = new GGBApplet(paramsSeq, true);
     let appletIntPath = new GGBApplet(paramsIntPath, true);
     window.addEventListener("load", () => {
       appletPathIntegral.inject('ggb-element-path-integral');
