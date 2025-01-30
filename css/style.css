@@ -2633,7 +2633,7 @@ var(--body-color);
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 9998;
+  z-index: 10100;
   /* Sit on top */
   padding-top: 70px;
   /* Location of the box */
