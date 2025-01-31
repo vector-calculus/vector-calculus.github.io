@@ -2108,6 +2108,35 @@ input[type=text] {
   }
 }
 */
+.figure-container {
+  display: flex; /* Use flexbox */
+  margin-top: 10px;
+}
+
+.figure-container figure {
+  flex: 1; /* Distribute available space evenly among figures */
+  margin: 0 10px; /* Adjust the margin to create space between figures */
+  text-align: center; /* Center the content within each figure */
+}
+
+/* Optional: Adjust styling for images and captions */
+.figure-container figure img {
+  max-width: 100%; /* Ensure images don't exceed the container width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.figure-container figure figcaption {
+  margin-top: 8px; /* Add some space above captions */
+}
+
+/* GeoGebra Canvas */
+.ggbElement {
+  display: block;
+  /*margin-left: auto;
+  margin-right: auto;*/
+  margin-top: 5px;
+}
+
 .intro {
   padding-left: 80px;
   padding-right: 80px;
