@@ -345,10 +345,6 @@
       <h3>Work done by force fields</h3>
 
       <p>
-        <!--
-        Recall that the work done by a variable force
-        $f(x)$  in moving a particle from $a$ to $b$ along the $x$-axis is
-        $W = \int_a^b f(x)~dx.$ -->
         Recall that work done by a constant force $\F$ in moving an object
         from a point $A$ to another point $B$ in
         space is $W = \F \pd \mathbf D$, where $\mathbf D = \overrightarrow{AB}$
@@ -356,16 +352,19 @@
       </p>
 
       <p>
-        Now consider a force field $\F(x,y)$ and a piecewiese continuous smooth curve $C.$
+        Now consider a force field $\F(x,y)$ and a piecewiese 
+        continuous smooth curve $C,$ parametrized by 
+        the path $\c:[a,b]\to \R^3.$
         We wish to compute the work done by
-        this force in moving a particle along a
+        this force in moving a particle along this
         smooth curve $C.$
       </p>
 
       <figure>
         <img style="width: 70%; display: block;" src="https://www.dynamicmath.xyz/math2001/images/chapter-35/chapter-35-work-1.gif">
         <figcaption>
-          Particle moving along $C.$
+          The particle moving along $C$ is affected by the 
+          vector field.
         </figcaption>
       </figure>
 
@@ -1277,9 +1276,11 @@
     // preview to show while loading
     let previewPathIntegral = 'imgs/integrals-over-paths-and-surfaces/preview-path-integral.jpg';
     let previewTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
+    let previewAreaFence = 'imgs/integrals-over-paths-and-surfaces/preview-area-fence.jpg';
 
     appletPathIntegral.setPreviewImage(previewPathIntegral, ggbLogo, playButton);
     appletTorus.setPreviewImage(previewTorus, ggbLogo, playButton);
+    appletAreaFence.setPreviewImage(previewAreaFence, ggbLogo, playButton);
   </script>
 
 </section>
