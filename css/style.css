@@ -2148,7 +2148,7 @@ input[type=text] {
 }
 
 .section-content {
-  max-width: 110ch !important;
+  max-width: 100ch !important;
   margin: 0 auto;
   padding: 2rem 1.25rem;
   /*max-width: 100ch !important;
