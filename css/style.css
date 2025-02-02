@@ -2148,7 +2148,7 @@ input[type=text] {
 }
 
 .section-content {
-  max-width: 90ch !important;
+  max-width: 110ch !important;
   margin: 0 auto;
   padding: 2rem 1.25rem;
   /*max-width: 100ch !important;
@@ -2345,10 +2345,10 @@ input.sidenote-toggle {
 }
 
 #mySocial {
-  width: 250px;
+  width: 235px;
   height: 90px;
   padding: 16px;
-  position: fixed;
+  position: relative;
   bottom: 0px;
   font-size: 1.3em;
 }
@@ -2371,8 +2371,8 @@ summary:hover {
   Useful for long equations
 */
 .eqwrapper {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
   overflow-y: hidden;
   overflow-x: auto;
 }
