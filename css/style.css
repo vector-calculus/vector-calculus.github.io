@@ -2400,7 +2400,7 @@ figure {
 /* Styling for the figure caption */
 figcaption {
   text-align: center;
-  font-style: italic;
+  font-style: normal;
 }
 
 /* Numbering for the figure */
