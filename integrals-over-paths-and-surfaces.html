@@ -92,6 +92,7 @@
             <a class="w3-bar-item w3-button" href="#section-3">Line Integrals of Gradient Fields</a>
             <a class="w3-bar-item w3-button" href="#section-4">Parametrization of
     surfaces</a>
+            <a class="w3-bar-item w3-button" href="#section-5">Surface Area</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="integration-theorems.html">8. Integration Theorems</a>
@@ -193,13 +194,15 @@
 
         <p>
           To compute $\int_{\c}f(x,y,z)\,ds,$ first we need $\norm{\c'(t)}:$
+        </p>
+        <div class="eqwrapper">
           \begin{eqnarray*}
           \norm{\c'(t)} &amp;=&amp; \sqrt{ \left[\frac{d(\cos t)}{dt}\right]^2 + \left[\frac{d(\sin t)}{dt}\right]^2+
           \left[\frac{dt}{dt}\right]^2}\\
           &amp;=&amp; \sqrt{\sin^2 t + \cos^2 t + 1} \\
           &amp;=&amp; \sqrt{2}.
           \end{eqnarray*}
-        </p>
+        </div>
         <p>
           Next we substitute for $x,y,z$ in terms of $t$ to obtain
           \begin{eqnarray*}
@@ -252,13 +255,16 @@
         By the mean-value theorem we know that $\Delta s_i=\norm{\c'(t_i^{*})}\Delta t_i,$
         where $t_i^*\in \left[t_i,t_{i+1}\right]$ and $\Delta t_i = t_{i+1}-t_i.$
         Thus, we have
+      </p>
+      <div class="eqwrapper">
         \begin{eqnarray*}
         \lim_{N\to \infty} S_N &amp; = &amp; \lim_{N\to \infty} \sum_{i=0}^{N-1}f\left(x_i, y_i, z_i\right)
         \norm{\c'(t_i^{*})}\Delta t_i \\
         &amp; = &amp;\int_{I}f\big(x(t),y(t),z(t)\big)\norm{c'(t)}\,dt \\
         &amp; = &amp; \int_{\c} f\left(x,y,z\right)~ds.
         \end{eqnarray*}
-      </p>
+
+      </div>
 
       <p>
         Suppose that the image of $\c$ represents a wire. If $f(x,y,z)$ represents
@@ -390,11 +396,13 @@
       <p>
         Thus the work done by the force $\F$ in moving the
         particle from $P_{i-1}$ to $P_i$ is approximately
+      </p>
+      <div class="eqwrapper">
         \[
         \F\left(x_i^*,y_i^*\right) \pd \left[\T\left(t_i^*\right) \Delta s_i\right] = \left[\F\left(x_i^*,y_i^*\right)
         \pd \T\left(t_i^*\right)\right] \Delta s_i
         \]
-      </p>
+      </div>
       <p>
         and the total work done in moving
         the particle along $C$ is approximately
@@ -708,14 +716,14 @@
         <figure>
           <img style="width:100%" src="imgs/integrals-over-paths-and-surfaces/simple-curve-orientation-ab.gif">
           <figcaption>
-            Oriented curve from  $\c(a)$ to $\c(b).$
+            Oriented curve from $\c(a)$ to $\c(b).$
           </figcaption>
         </figure>
 
         <figure>
           <img style="width:100%" src="imgs/integrals-over-paths-and-surfaces/simple-curve-orientation-ba.gif">
           <figcaption>
-            Oriented curve from  $\c(b)$ to $\c(a).$
+            Oriented curve from $\c(b)$ to $\c(a).$
           </figcaption>
         </figure>
       </div>
@@ -768,18 +776,18 @@
         \[
         \int_C \F\pd d\s = - \int_{-C} \F \pd d\s.
         \]
-        Now, if $C$ is an oriented $C$ curve that is made up of several 
-        oriented component curves $C_i$ for $i=1,2,\ldots,k,$ then we write 
-        $C=C_1+ C_2+\cdots + C_k.$ Thus 
+        Now, if $C$ is an oriented $C$ curve that is made up of several
+        oriented component curves $C_i$ for $i=1,2,\ldots,k,$ then we write
+        $C=C_1+ C_2+\cdots + C_k.$ Thus
       </p>
       <div class="eqwrapper">
         \[
-        \int_C \F \pd d\s = \int_{C_1}\F \pd d\s+ \int_{C_2}\F \pd d\s+\cdots +  \int_{C_k}\F \pd d\s.
+        \int_C \F \pd d\s = \int_{C_1}\F \pd d\s+ \int_{C_2}\F \pd d\s+\cdots + \int_{C_k}\F \pd d\s.
         \]
       </div>
       <p>
-        The previous formula provides a convenient way to evaluate $\int_C \F \pd d\s,$ since 
-        sometimes it is easier to parametrize the componentes $C_i$ individually thant 
+        The previous formula provides a convenient way to evaluate $\int_C \F \pd d\s,$ since
+        sometimes it is easier to parametrize the componentes $C_i$ individually thant
         to parametrize $C$ as a whole.
       </p>
 
@@ -811,14 +819,14 @@
       </p>
 
       <div class="exercise">
-        Evaluate the line integral 
+        Evaluate the line integral
         \[
         \int_C x^2 ~dx + xy ~dy,
         \]
-        where $C$ is the perimeter of the unit square in $\R^2,$ oriented in the 
+        where $C$ is the perimeter of the unit square in $\R^2,$ oriented in the
         counterclockwise sense.
 
-        
+
         <img style="width: 40%;display: block;margin-left: auto;margin-right: auto; margin-top: 10px;" src="imgs/integrals-over-paths-and-surfaces/unit-circle.svg">
 
         <br>
@@ -831,19 +839,19 @@
           <p>
             Use the parametrization $\c:[0,4]\to \R^2$ defined as
             \[
-            \c(t) = 
+            \c(t) =
             \left\{
-              \begin{array}{ll}
-              (t, 0), &amp; t\in [0,1],\\
-              (1, t-1), &amp; t\in [1,2],\\
-              (3-t, 1), &amp; t\in [2,3],\\
-              (0, 4-t), &amp; t\in [3,4],\\
-              \end{array}
+            \begin{array}{ll}
+            (t, 0), &amp; t\in [0,1],\\
+            (1, t-1), &amp; t\in [1,2],\\
+            (3-t, 1), &amp; t\in [2,3],\\
+            (0, 4-t), &amp; t\in [3,4],\\
+            \end{array}
             \right.
             \]
-            You should get $\frac{1}{2}.$ 
-            Try to evaluate the integral considering $C$ as 
-            $C_1+C_2+C_3+C_4,$ where $C_i$ are oriented curves. 
+            You should get $\frac{1}{2}.$
+            Try to evaluate the integral considering $C$ as
+            $C_1+C_2+C_3+C_4,$ where $C_i$ are oriented curves.
             It should be easier to define each $C_i.$
           </p>
 
@@ -1208,7 +1216,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(r * cos(θ), r * sin(θ), 2, r, 0, 3, θ, 0, 2 π)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(θ),r*sin(θ),2,r,0,3,θ,0,2pi)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(r*cos(θ),r*sin(θ),2,r,0,3,θ,0,2pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1233,7 +1241,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(5 cos(θ), 5 sin(θ), z, θ, 0, 2 π, z, 1, 3)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(5*cos(θ),5*sin(θ),z,0,2pi,z,1,3,θ)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(5*cos(θ),5*sin(θ),z,0,2pi,z,1,3,θ)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1261,7 +1269,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(r * cos(π/2), r * sin(π/2), z, z, 2, 4, r, 0, 1)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(pi/2),r*sin(pi/2),z,z,2,4,r,0,1)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(r*cos(pi/2),r*sin(pi/2),z,z,2,4,r,0,1)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1301,7 +1309,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(2 cos(θ)sin(ϕ), 2 sin(θ)sin(ϕ), 2 cos(ϕ), θ, 0, 2π, ϕ, 0, π)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(2*cos(θ)*sin(ϕ),2*sin(θ)*sin(ϕ),2*cos(ϕ),θ,0,2pi,ϕ,0,pi)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(2*cos(θ)*sin(ϕ),2*sin(θ)*sin(ϕ),2*cos(ϕ),θ,0,2pi,ϕ,0,pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1326,7 +1334,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(r * cos(θ)sin(π/3), r * sin(θ)sin(π/3), r * cos(π/3), r, 0, 2, θ, 0, 2π)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(θ)*sin(pi/3),r*sin(θ)*sin(pi/3),r*cos(pi/3),r,0,2,θ,0,2pi)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(r*cos(θ)*sin(pi/3),r*sin(θ)*sin(pi/3),r*cos(pi/3),r,0,2,θ,0,2pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1348,7 +1356,7 @@
         <div class="w3-code jsHigh notranslate">
           Surface(r * cos(0)sin(ϕ), r * sin(0)sin(ϕ), r * cos(ϕ), r, 0, 2, ϕ, 0, π)
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-white" href="https://geogebra.org/3d?command=Surface(r*cos(0)*sin(ϕ),r*sin(0)*sin(ϕ),r*cos(ϕ),r,0,2,ϕ,0,pi)" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=Surface(r*cos(0)*sin(ϕ),r*sin(0)*sin(ϕ),r*cos(ϕ),r,0,2,ϕ,0,pi)" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
@@ -1359,7 +1367,601 @@
         between the planes $z=2$ and $z=-2.$
       </div>
 
+      <p>
+        Let $S$ be a surface parametrised by
+        $$
+        \r(u,v) = x(u,v)~\i+y(u,v)~\j+z(u,v)~\k.
+        $$
+        Here we find the tangent plane to $S$ at a
+        point $P$ specified by $\r(a,b)$.
+        There are two important families of curves on $S$.
+        One where $u$ is a constant, the other where $v$ is a constant.
+      </p>
 
+      <p>
+        The diagram below shows the relationship
+        between horizontal and vertical lines in $D$ (in the $uv$-plane) and curves
+        on $S$.
+
+      </p>
+
+      <figure>
+        <img style="width:100%; display: block;" src="https://www.dynamicmath.xyz/math2001/images/chapter-40/tangent-plane.png">
+        <figcaption></figcaption>
+      </figure>
+
+      <p>
+        Setting $u=a$ defines a curve on $S$ parametrised by $\r(a,v)$, for all values
+        of $v$ such that $(a,v)$ lies in $D$.
+        A tangent vector to this curve at $P$ is
+        \[
+        \r_v = \frac{\partial x}{\partial v}(a,b)~\i+\frac{\partial y}{\partial v}(a,b)~\j+\frac{\partial z}{\partial
+        v}(a,b)~\k.
+        \]
+      </p>
+
+
+      <p>
+        Similarly setting $v=b$ defines another curve on $S$ parametrised by $\r(u,b)$.
+
+        A tangent vector to this curve at $P$ is
+        \[
+        \r_u = \frac{\partial x}{\partial u}(a,b)~\i+\frac{\partial y}{\partial u}(a,b)~\j+\frac{\partial z}{\partial
+        u}(a,b)~\k.
+        \]
+      </p>
+
+
+
+      <p>
+        We say that the surface $S$ is <strong>regular</strong> or <strong>smooth</strong>
+        at $\r(a,b),$ if $\r_u$ and $\r_v$ are continuous and $\r_u\times \r_v \neq \mathbf 0$ at $(a,b).$
+        The surface is called regular if it is regular at all points $\r(a,b)\in S.$
+        The nonzero vector $\r_u\times \r_u$ is <strong>normal</strong> to $S$
+        (recall that the vector product $\r_u\times \r_u$ is perpendicular to the
+        plane spanned by $\r_u$ and $\r_u$); the fact that it is nonzero
+        ensures that there will be a tangent plane. Intuitively,
+        a smooth surface has no "corners".
+      </p>
+
+      <p>
+        For a smooth surface, $\r_u\times\r_v$ is a normal vector at
+        any point inside $D.$ This vector evaluated at $(u,v)=(a,b)$
+        is also normal to the tangent plane
+        at the point $P=(x(a,b),y(a,b),z(a,b)).$
+        The equation of the tangent plane at $P$ is given by
+        \[
+        \big(\r_u(a,b)\times\r_v(a,b)\big)\cdot \big((x~\i+y~\j+z~\k) - \r(a,b)\big)=0.
+        \]
+      </p>
+
+      <div class="example">
+        Let's find the tangent plane to the surface parametrized by
+        $\,\r(u,v) =
+        u^2~\i+v^2~\j+(u+2v)~\k\,$ at the point $P=(1,1,3).$
+
+        <p>
+          Here we have that
+          \[
+          \r_u=2u~\i + 0~\j + 1~\k,
+          \]
+          and
+          \[
+          \r_v =0~\i + 2v~\j + 2~\k
+          \]
+        </p>
+        <div class="eqwrapper">
+          Then
+          \begin{eqnarray*}
+          \r_u\times\r_v &amp;=&amp;
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k\\
+          2u &amp; 0 &amp; 1 \\
+          0 &amp; 2v &amp; 2
+          \end{array}
+          \right| \\
+          &amp;=&amp; -2v~\i - 4u~\j + 4uv~\k
+          \end{eqnarray*}
+        </div>
+        <p>
+          Now the point $P=(1,1,3) $ corresponds to $u=1,v=1,$
+          since $u^2=1, ~v^2=1,~u+2v=3;$
+          and
+          \[
+          \r_u\times \r_v\big|_{(1,1)} =-2~\i-4~\j+4~\k .
+          \]
+          Using the equation of the tangent plane
+        </p>
+        <div>
+          \[
+          \bigg(\r_u\times \r_v\big|_{(1,1)} \bigg)\cdot \big((x~\i+y~\j+z~\k) -( \i+\j+3~\k)\big)=0,
+          \]
+        </div>
+        <p>
+          we obtain
+          \[
+          -2(x-1)-4(y-1)+4(z-3)=0.
+          \]
+        </p>
+
+
+        <img style="width:45%;display: block;margin-left: auto;margin-right: auto;" src="imgs/integrals-over-paths-and-surfaces/tangent-plane-surf.jpg">
+
+        <p>
+          GeoGebra code:
+        </p>
+        <div class="w3-code jsHigh notranslate">
+          Surface(u^2, v^2, u + 2v, u, -2, 2, v, -2, 2)<br>
+          P = (1, 1, 3)<br>
+          tangentPlane: -2(x - 1) - 4(y - 1) + 4(z - 3) = 0
+        </div>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=s=Surface(u^2,v^2,u--2v,u,-2,2,v,-2,2);P=(1,1,3);tangentPlane:-2(x-1)-4(y-1)--4(z-3)=0;" target="_blank">
+          Open 3D graph <i class="fas fa-external-link-alt"></i>
+        </a>
+
+      </div>
+
+
+
+      <div class="exercise">
+        Use a 3D plotter to explore the surfaces given by the following parametrizations:
+
+        <ul>
+          <li>$\r(u,v) = \big(u-v,u+v, 2uv\big)$</li>
+          <li>$\r(u,v) = \big(2\sqrt{1+u^2}\cos v, 2\sqrt{1+u^2}\sin v, u\big)$</li>
+          <li>$\r(u,v) = \big(u^2-v^2,u^2+v^2, v\big)$</li>
+          <li>$\r(u,v) = \big(3\cos u \sin v, 2\sin u \sin v, \cos v\big)$</li>
+          <li>$\r(u,v) = \big(u,v,u^2\big)$</li>
+          <li>$\r(u,v) = \big(u \cos v, u \sin v, u\big)$</li>
+        </ul>
+
+        <p>
+          Are they all smooth surfaces?
+        </p>
+
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=s=Surface(u,v,2uv,u,-2,2,v,-2,2)" target="_blank">
+          GeoGebra <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.desmos.com/3d/bofe7ezgnz" target="_blank">
+          Desmos <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.math3d.org/I5ZiWIM1N8" target="_blank">
+          Math3d <i class="fas fa-external-link-alt"></i>
+        </a>
+
+      </div>
+
+      <br>
+      <hr>
+
+
+    </div>
+
+
+    <div id="section-5">
+      <h2>Surface Area</h2>
+
+      <p>
+        To calculate the area of $S$, first
+        we consider a partition of $S$ into patches will correspond
+        to a partition of $D$ (in the $uv$ plane)
+        into small rectangles.
+        The dimensions of the rectangles in $D$ will be $\Delta u\Delta v$.
+      </p>
+
+
+
+      <p>
+        Let one of the edges of a single patch be defined
+        from parameter values $(u, v)$ to
+        $(u+ \Delta u, v)$.
+      </p>
+
+      <img style="width: 45%; 
+							display: block;
+							margin-left: auto;
+							margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-003.png">
+
+      <p>
+        Using Pythagoras' law in three dimensions,
+        we can approximate the length of this edge as=
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \text{length}&amp; \approx &amp; \sqrt{\left(\Delta x\right)^2 + \left(\Delta y\right)^2 + \left(\Delta z\right)^2} \\
+        &amp;=&amp; \left(\sqrt{\left(\frac{\Delta x}{\Delta
+        u}\right)^2 + \left(\frac{\Delta y}{\Delta u}\right)^2 +
+        \left(\frac{\Delta z}{\Delta u}\right)^2} \right) \Delta u\\
+        &amp;\approx &amp; \norm{\r_u}\Delta u,
+        \end{eqnarray*}
+      </div>
+      <p>
+        where in this case we have used
+        $$\Delta x = x(u + \Delta u, v) -x(u, v)$$
+        etc (i.e., the change is only in $u$).
+        Similarly, for an edge of patch running from
+        parameter values $(u, v)$ to $(u, v + \Delta v)$
+        the length of that edge will be approximately
+        $||\r_v||\Delta v.$
+      </p>
+
+      <p>
+        At the corner of the patch corresponding to parameter values $(u, v),$
+        we
+        can define the two vectors $\r_u\Delta u$ and $\r_v\Delta v$ which form
+        two sides of a
+        parallelogram,
+        the side lengths of which coincide with our
+        approximations to the lengths of the edges of the patch.
+      </p>
+
+      <img style="width: 45%; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-004.png">
+
+      <p>
+        The vector $\left(\r_u~\Delta u\right) \times \left(\r_v~\Delta
+        v\right)$ is normal to the surface (and hence the
+        tangent plane) at that point.
+        Its magnitude gives the area of the
+        parallelogram we use to approximate the area of the patch $\Delta
+        S$.
+        We
+        then
+        have
+        \[
+        \Delta S \approx \norm{\r_u \times \r_v} ~\Delta u ~\Delta v.
+        \]
+      </p>
+
+      <img style="width: 45%; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-005.png">
+
+      <p>
+        Adding these approximations for each patch in $S$ gives us an
+        approximation to
+        the area of $S$:
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \text{area of } S &amp; \approx &amp; \sum _i \Delta S_i \\
+        &amp;=&amp; \sum_i \norm{\r_{u_i} \times \r_{v_i}} ~\Delta u_i ~\Delta v_i.
+        \end{eqnarray*}
+      </div>
+
+      <p>
+        Finally taking the limit as $\Delta u, \Delta v \to 0$ we obtain
+
+      </p>
+      <div class="eqwrapper">
+        \[
+        \text{surface area} = \iint_S dS = \iint_D \norm{\r_u \times \r_v} ~du ~dv.
+        \]
+      </div>
+
+      <div class="example">
+        Let's find the surface area of the paraboloid $z=1-x^2-y^2$
+        for $z\geq 0 .$
+
+        <img style="width: 45%; 
+								display: block;
+								margin-left: auto;
+								margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-1-1.png">
+
+        <p>
+          Let's begin with the parametrization of $S.$
+          Consider $x$ and $y$ as parameters, so
+          \[
+          \r(x,y) = x~\i + y~\j + \left(1-x^2-y^2\right)~\k
+          \]
+        </p>
+        <p>
+          $x$ and $y$ are bounded by intersection curve of
+          \[
+          z=1-x^2-y^2\quad \text{and} \quad z=0.
+          \]
+          That is, $x^2+y^2=1.$
+        </p>
+        <p>
+          So the domain for $x$ and $y$ is given by $x^2+y^2\leq 1.$
+        </p>
+
+        <img style="width: 45%; 
+								display: block;
+								margin-left: auto;
+								margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-1-1a.png">
+
+        <p>
+          Thus
+          $\r_x = \i-2x~\k, \quad \r_y = \j-2y~\k,$
+          and
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \r_x\times\r_y &amp; = &amp; \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k\\
+          1 &amp; 0 &amp; -2x \\
+          0 &amp; 1 &amp; -2 y
+          \end{array}
+          \right| \\
+          &amp;=&amp; 2x~\i + 2y ~\j + \k.
+          \end{eqnarray*}
+        </div>
+        <p>
+          Since $||\r_x\times\r_y||=\sqrt{4x^2+4y^2+1},$
+          then
+          \[
+          dS = ||\r_x\times\r_y|| ~dx~dy = \sqrt{4x^2+4y^2+1}~dx~dy.
+          \]
+        </p>
+        <p>
+          Hence
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \text{Area} = \iint_S dS &amp;=&amp; \iint\limits_{x^2+y^2\leq 1} ||\r_x\times\r_y|| ~dx~dy \\
+          &amp;=&amp; \iint\limits_{x^2+y^2\leq 1} \sqrt{4x^2+4y^2+1}~dx~dy \\
+          &amp;=&amp; \int_0^{2\pi} \int_0^1 \sqrt{4r^2+1}~r~dr~d\theta \\
+          &amp;=&amp; \int_0^{2\pi}
+          \left[
+          \bigg.
+          \frac{1}{8}~\frac{2}{3} \left(4r^2+1\right)^{3/2}
+          \bigg|_0^1
+          \right]
+          d\theta \\
+          &amp;=&amp; \int_0^{2\pi}
+          \left[
+          \frac{5 \sqrt{5} -1}{12}
+          \right]
+          d\theta \\
+          &amp;=&amp; \frac{\pi}{6} \left(5 \sqrt{5} - 1\right).
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+      <h3>Some applications of surface integrals</h3>
+
+      <p>
+        Let $f(x,y,z)$ be a scalar function in $\R^3.$
+        We can define the surface integral of $f$ over a
+        smooth parametric surface $S$ in $\R^3$ as
+      </p>
+      <div class="eqwrapper">
+        \[
+        \iint_S f(x,y,z)~dS = \iint_D f\left(\r(u,v)\right)\norm{\r_u\times \r_v}~du~dv.
+        \]
+      </div>
+      <p>
+        Surface integrals and double integrals have
+        similar applications. Indeed, a double integral
+        is merely a special case of a surface integral
+        where the surface lies entirely in the $xy$-plane.
+      </p>
+
+      For example, if a thin sheet has the shape of a surface $S$ and the mass density at the
+      point $(x, y, z)$ is $\rho(x, y, z),$
+      then the mass of the sheet is given by a surface
+      integral:
+      \[
+      \text{mass of sheet} = \iint_D \rho (x,y,z)~dS.
+      \]
+      <p></p>
+
+      <p>
+        Another application is in calculating the average
+        value of a function over a surface.
+        Let $S$ be a
+        smooth surface in $\R^3.$
+        Then the average value of
+        the function $f(x,y,z)$ over that surface is given by
+        \[
+        \text{average value over surface} = \frac{1}{\text{area of } S}\iint_S f (x,y,z)~dS.
+        \]
+      </p>
+
+      <p>
+        If the surface $S$ is a closed surface, it is convention to write
+        ${\Large\unicode{x222F}}_S f(x,y,z) \, dS $
+        to represent the surface integral.
+      </p>
+
+      <p>
+        If $S$ is a finite union of smooth surfaces
+        $S_1, S_2,\ldots, S_n$ that intersect only at their
+        boundaries,
+        then
+      </p>
+      <div class="eqwrapper">
+        \[
+        \iint_S f (x,y,z)~dS = \iint_{S_1} f (x,y,z)~dS + \iint_{S_2} f (x,y,z)~dS + \cdots + \iint_{S_n} f (x,y,z)~dS.
+        \]
+      </div>
+      <p>
+        Closed surfaces are often unions of
+        smooth surfaces as demonstrated in the following example.
+      </p>
+
+      <div class="example">
+        The function $T (x, y, z) = x^2 + y^2 + z^2 + 4 $
+        gives the temperature
+        at
+        any point $(x, y, z)$ on the surface
+        of a solid hemisphere of radius
+        1 centred at the origin, defined for $z\geq 0$. Find the
+        average temperature over the surface.
+
+        <img style="width: 45%; 
+												display: block;
+												margin-left: auto;
+												margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-2-1-example.png">
+
+        <p>
+          Here we have that
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \text{Average temp.} &amp;= &amp;\frac{\displaystyle\iint_S T~dS}{\text{area of }S}\\
+          &amp;= &amp; \frac{\displaystyle\iint_{S_1} T~dS + \iint_{S_2} T~dS}{\displaystyle\iint_{S_1} ~dS + \iint_{S_2} ~dS },
+          \end{eqnarray*}
+        </div>
+        <p>
+          where $S_1$ is the base and $S_2$ is the top.
+        </p>
+
+        <img style="width: 45%; 
+												display: block;
+												margin-left: auto;
+												margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-1-1a.png">
+        <p>
+          Consider surface $S_1$: Here we have a disc in the $xy$-plane
+          of radius $1$.
+          Then the parametrisation is
+          \[
+          \r(x,y) = x~\i+y~\j+0~\k\quad (x^2+y^2\leq 1).
+          \]
+        </p>
+        <p>
+          Then $\r_x = \i$, $\r_y = \j$ and
+          \[
+          dS = \norm{\r_x\times \r_y }~dx~dy= dx~dy.
+          \]
+        </p>
+        <p>
+          So
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_1} T~dS &amp;=&amp; \iint_{S_1} \left(x^2+y^2+z^2+4\right)dx~dy \\
+          &amp;=&amp; \iint_{S_1} \left( x^2+y^2+(0)^2+4\right)dx~dy\\
+          &amp;=&amp; \iint_\limits{x^2+y^2\leq 1}
+          \left( x^2+y^2+4\right)dx~dy
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          For $S_1$ we use polar coordinates
+          \[
+          x = r\cos\theta , \quad y = r \sin \theta
+          \]
+          with $0\leq r \leq 1$ and $0\leq \theta \leq 2 \pi.$
+          Then we have
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_1} T~dS &amp;=&amp; \iint_\limits{x^2+y^2\leq 1} \left( x^2+y^2+4\right)dx~dy \\
+          &amp;=&amp; \int_0^1 \int_0^{2\pi} \left(r^2 \cos ^2 \theta + r^2
+          \sin^2 \theta + 4\right)r ~dr~d\theta \\
+          &amp;=&amp; \int_0^1 \int_0^{2\pi} \left(r^2 + 4\right)r
+          ~dr~d\theta\\
+          &amp;=&amp; \frac{9 \pi}{2}.
+          \end{eqnarray*}
+        </div>
+        <p>
+          Finally
+          \[
+          \iint_{S_1}~dS = \text{Area of the disc of radius 1} = \pi.
+          \]
+        </p>
+
+        <p>
+          Now consider surface $S_2$: Here we have a half sphere of radius 1.
+          Then the parametrization is
+          \[
+          \r(\theta,\phi ) = \cos\theta \sin \phi~\i+ \sin\theta \sin \phi
+          ~\j+\cos \phi~\k
+          \]
+          where $0\leq \theta \leq 2 \pi$ and $0 \leq \phi \leq \pi/2.$
+        </p>
+
+        <img style="width: 45%; 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-2-1-example.png">
+
+        <p>
+          Then
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \r_{\theta} &amp;= &amp; -\sin\theta \sin \phi~\i+ \cos\theta \cos \phi ~\j+0~\k \\
+          &amp;=&amp; \r_{\phi} \cos\theta \cos \phi~\i+ \sin\theta \cos \phi ~\j- \sin
+          \phi~\k
+          \end{eqnarray*}
+        </div>
+        <p>
+          and so
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \r_{\theta}\times\r_{\phi} &amp;=&amp;
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k\\
+          -\sin\theta \sin \phi &amp; \cos\theta\sin \phi &amp; 0 \\
+          \cos \theta \cos \phi &amp; \sin \theta \cos \phi &amp; -\sin \phi
+          \end{array}
+          \right| \\
+          &amp;=&amp;  -\cos \theta \sin ^2 \phi ~\i - \sin \theta \sin ^2
+          \phi ~\j - \left(\sin ^2 \theta
+          +\cos^2 \theta\right)\sin \phi \cos \phi ~\k
+          \end{eqnarray*}
+        </div>
+        <p>This implies</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \norm{\r_{\theta}\times\r_{\phi} } &amp;=&amp; \sqrt{ \cos^2 \theta \sin ^4
+            \phi + \sin^2 \theta \sin ^4 \phi + \sin^2 \phi \cos^2 \phi } \\
+            &amp;=&amp; \sqrt{ \left( \cos^2 \theta + \sin^2 \theta \right) \sin ^4 \phi +
+              \sin^2 \phi \left(1- \sin ^2\phi\right) } \\
+              &amp;=&amp; \sqrt{ \sin^4 \phi + \sin^2 \phi - \sin^4\phi } \\
+              &amp;=&amp; \sqrt{ \sin^2 \phi } =  \sin \phi.
+          \end{eqnarray*}
+        </div>
+        <p>
+          So
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_2} T~dS &amp;=&amp; \iint_{S_2}\left(x^2+y^2+z^2+4\right)dS \\
+          &amp;=&amp;  \iint_{S_2}\left(1+4\right)dS = 5 \iint_{S_2}dS \\
+          &amp;=&amp; 5 \left(\text{Surface area of the half sphere}\right) \\
+          &amp;=&amp;  5\left(\frac{1}{2}\right) \left(4 \pi \right)\left(1
+          \right)^2 \\
+          &amp;=&amp; 10 \pi.
+          \end{eqnarray*}
+        </div>
+        <p>
+          And 
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \displaystyle \iint_{S_2} ~dS &amp;=&amp;  \text{Surface area of the half sphere} \\
+          &amp;=&amp;  2 \pi.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          Therefore
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \text{Average temp.} &amp;=&amp; \frac{\displaystyle\iint_{S_1} T~dS +
+          \iint_{S_2} T~dS}{\displaystyle\iint_{S_1} ~dS + \iint_{S_2} ~dS } \\
+          &amp;=&amp; \frac{\displaystyle \frac{9\pi}{2}+ 10
+          \pi}{\displaystyle \pi + 2\pi} \\
+          &amp;=&amp; \frac{29}{6}.
+          \end{eqnarray*}
+        </div>
+
+
+
+      </div>
 
 
     </div>
