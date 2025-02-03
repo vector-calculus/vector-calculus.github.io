@@ -93,6 +93,8 @@
             <a class="w3-bar-item w3-button" href="#section-4">Parametrization of
     surfaces</a>
             <a class="w3-bar-item w3-button" href="#section-5">Surface Area</a>
+            <a class="w3-bar-item w3-button" href="#section-6">Integrals of Scalar Functions Over Surfaces</a>
+            <a class="w3-bar-item w3-button" href="#section-7">Surface Integrals of Vector Fields</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="integration-theorems.html">8. Integration Theorems</a>
@@ -1540,6 +1542,8 @@
 
 
     <div id="section-5">
+
+
       <h2>Surface Area</h2>
 
       <p>
@@ -1725,7 +1729,14 @@
 
       </div>
 
-      <h3>Some applications of surface integrals</h3>
+      <hr>
+
+    </div>
+
+
+    <div id="section-6">
+
+      <h2>Integrals of Scalar Functions Over Surfaces</h2>
 
       <p>
         Let $f(x,y,z)$ be a scalar function in $\R^3.$
@@ -1796,10 +1807,7 @@
         1 centred at the origin, defined for $z\geq 0$. Find the
         average temperature over the surface.
 
-        <img style="width: 45%; 
-												display: block;
-												margin-left: auto;
-												margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-2-1-example.png">
+
 
         <p>
           Here we have that
@@ -1811,23 +1819,30 @@
           \end{eqnarray*}
         </div>
         <p>
-          where $S_1$ is the base and $S_2$ is the top.
+          where $S_1$ is the base:
         </p>
-
+        <img style="width: 45%; 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-2-1-example.png">
+        <p>
+          and $S_2$ is the top:
+        </p>
         <img style="width: 45%; 
 												display: block;
 												margin-left: auto;
 												margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-1-1a.png">
         <p>
-          Consider surface $S_1$: Here we have a disc in the $xy$-plane
+          First, consider the surface $S_1$.
+          Here we have a disc in the $xy$-plane
           of radius $1$.
-          Then the parametrisation is
+          Then the parametrization is
           \[
           \r(x,y) = x~\i+y~\j+0~\k\quad (x^2+y^2\leq 1).
           \]
         </p>
         <p>
-          Then $\r_x = \i$, $\r_y = \j$ and
+          Then $\r_x = \i,$ $\r_y = \j$ and
           \[
           dS = \norm{\r_x\times \r_y }~dx~dy= dx~dy.
           \]
@@ -1845,12 +1860,12 @@
         </div>
 
         <p>
-          For $S_1$ we use polar coordinates
+          Using polar coordinates
           \[
           x = r\cos\theta , \quad y = r \sin \theta
           \]
-          with $0\leq r \leq 1$ and $0\leq \theta \leq 2 \pi.$
-          Then we have
+          with $0\leq r \leq 1$ and $0\leq \theta \leq 2 \pi,$
+          we have
         </p>
         <div class="eqwrapper">
           \begin{eqnarray*}
@@ -1870,7 +1885,7 @@
         </p>
 
         <p>
-          Now consider surface $S_2$: Here we have a half sphere of radius 1.
+          Now consider surface $S_2$. Here we have a half sphere of radius 1.
           Then the parametrization is
           \[
           \r(\theta,\phi ) = \cos\theta \sin \phi~\i+ \sin\theta \sin \phi
@@ -1879,10 +1894,6 @@
           where $0\leq \theta \leq 2 \pi$ and $0 \leq \phi \leq \pi/2.$
         </p>
 
-        <img style="width: 45%; 
-        display: block;
-        margin-left: auto;
-        margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-41/chapter-41-2-1-example.png">
 
         <p>
           Then
@@ -1890,12 +1901,12 @@
         <div class="eqwrapper">
           \begin{eqnarray*}
           \r_{\theta} &amp;= &amp; -\sin\theta \sin \phi~\i+ \cos\theta \cos \phi ~\j+0~\k \\
-          &amp;=&amp; \r_{\phi} \cos\theta \cos \phi~\i+ \sin\theta \cos \phi ~\j- \sin
-          \phi~\k
+          \r_{\phi} &amp;=&amp; \cos\theta \cos \phi~\i+ \sin\theta \cos \phi ~\j- \sin
+          \phi~\k.
           \end{eqnarray*}
         </div>
         <p>
-          and so
+          Now we compute the cross product:
         </p>
         <div class="eqwrapper">
           \begin{eqnarray*}
@@ -1907,42 +1918,42 @@
           \cos \theta \cos \phi &amp; \sin \theta \cos \phi &amp; -\sin \phi
           \end{array}
           \right| \\
-          &amp;=&amp;  -\cos \theta \sin ^2 \phi ~\i - \sin \theta \sin ^2
+          &amp;=&amp; -\cos \theta \sin ^2 \phi ~\i - \sin \theta \sin ^2
           \phi ~\j - \left(\sin ^2 \theta
-          +\cos^2 \theta\right)\sin \phi \cos \phi ~\k
+          +\cos^2 \theta\right)\sin \phi \cos \phi ~\k,
           \end{eqnarray*}
         </div>
-        <p>This implies</p>
+        <p>which implies</p>
         <div class="eqwrapper">
           \begin{eqnarray*}
           \norm{\r_{\theta}\times\r_{\phi} } &amp;=&amp; \sqrt{ \cos^2 \theta \sin ^4
-            \phi + \sin^2 \theta \sin ^4 \phi + \sin^2 \phi \cos^2 \phi } \\
-            &amp;=&amp; \sqrt{ \left( \cos^2 \theta + \sin^2 \theta \right) \sin ^4 \phi +
-              \sin^2 \phi \left(1- \sin ^2\phi\right) } \\
-              &amp;=&amp; \sqrt{ \sin^4 \phi + \sin^2 \phi - \sin^4\phi } \\
-              &amp;=&amp; \sqrt{ \sin^2 \phi } =  \sin \phi.
+          \phi + \sin^2 \theta \sin ^4 \phi + \sin^2 \phi \cos^2 \phi } \\
+          &amp;=&amp; \sqrt{ \left( \cos^2 \theta + \sin^2 \theta \right) \sin ^4 \phi +
+          \sin^2 \phi \left(1- \sin ^2\phi\right) } \\
+          &amp;=&amp; \sqrt{ \sin^4 \phi + \sin^2 \phi - \sin^4\phi } \\
+          &amp;=&amp; \sqrt{ \sin^2 \phi } = \sin \phi.
           \end{eqnarray*}
         </div>
         <p>
-          So
+          Thus
         </p>
         <div class="eqwrapper">
           \begin{eqnarray*}
           \iint_{S_2} T~dS &amp;=&amp; \iint_{S_2}\left(x^2+y^2+z^2+4\right)dS \\
-          &amp;=&amp;  \iint_{S_2}\left(1+4\right)dS = 5 \iint_{S_2}dS \\
+          &amp;=&amp; \iint_{S_2}\left(1+4\right)dS = 5 \iint_{S_2}dS \\
           &amp;=&amp; 5 \left(\text{Surface area of the half sphere}\right) \\
-          &amp;=&amp;  5\left(\frac{1}{2}\right) \left(4 \pi \right)\left(1
+          &amp;=&amp; 5\left(\frac{1}{2}\right) \left(4 \pi \right)\left(1
           \right)^2 \\
-          &amp;=&amp; 10 \pi.
+          &amp;=&amp; 10 \pi,
           \end{eqnarray*}
         </div>
         <p>
-          And 
+          and
         </p>
         <div class="eqwrapper">
           \begin{eqnarray*}
-          \displaystyle \iint_{S_2} ~dS &amp;=&amp;  \text{Surface area of the half sphere} \\
-          &amp;=&amp;  2 \pi.
+          \displaystyle \iint_{S_2} ~dS &amp;=&amp; \text{Surface area of the half sphere} \\
+          &amp;=&amp; 2 \pi.
           \end{eqnarray*}
         </div>
 
@@ -1963,6 +1974,421 @@
 
       </div>
 
+
+
+    </div>
+
+
+    <div id="section-7">
+
+      <h2>
+        Surface Integrals of Vector Fields
+      </h2>
+
+      <p>
+        This section aims to introduce the concept of integrating a
+        vector field over a surface. Previously, the definition of
+        the line integral of a vector field was guided by the
+        fundamental physical concept of work. In a similar way, the
+        definition of the surface integral of a vector field is
+        motivated by the fundamental idea of flux.
+      </p>
+
+      <p>
+        For instance, if a vector field represents the velocity of
+        a fluid, such as the flow of a river, and we place an
+        imagined mathematical surface within it, we can ask:
+        "At what rate does the fluid pass through the surface
+        (measured in cubic meters per second)?" This rate is determined
+        by the surface integral of the fluid's velocity field over the surface.
+      </p>
+
+      <p>
+        Before introducing the formal definition,
+        we first need to discuss orientable surfaces.
+      </p>
+
+      <h3>
+        Orientable surfaces
+      </h3>
+
+      <p>
+        Let $S$ be a smooth surface. If we can choose a unit vector
+        $\n$ that is normal to $S$ at every point so that $\n$ varies
+        continuously over $S,$ we call $S$ an orientable surface.
+
+        The choice of $\n$ provides $S$ with an orientation. There
+        are only ever two possible orientations.
+      </p>
+
+      <p>
+        An example of an orientable surface is the surface of a
+        sphere. The two possible orientations are <strong>out</strong> of the sphere or
+        <strong>into</strong> the sphere.
+      </p>
+
+
+
+      <figure>
+        <div style="display:block;" id="ggb-element-ort-sphere"></div>
+        <figcaption>
+          Drag the point defined on the rectangle (left-side).
+        </figcaption>
+      </figure>
+
+      <p>
+        An example of a non-orientable surface is a
+        <em>Möbius strip</em>.
+      </p>
+
+      <figure>
+        <img style="width: 60%;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjpX953q6GZ-V5JZG1_-mfGCv7jtNw0PCvjf8AeNd4CCApK8bKzFHJII4VvM8MGjwC5Sre3xxrqqlQu942PPN3yfvr7_EfIz5UXZOmEhxriV2wsqdewtOM_TY4_6htIKF2-O19SAuDiyxap8HGldJuN5WacDtEORdpDqelDlg38Sf-2npI/s1600/mobius.gif">
+
+        <figcaption>
+          Möbius strip. Observe the position of the normal vectors defined on the
+          surface. <a href="https://www.geogebra.org/m/qmdpw9gg" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+        </figcaption>
+      </figure>
+
+      <p>
+        Another example of a non-orientable surface is a <em>Klein bottle</em>.
+      </p>
+
+      <figure>
+        <img style="width: 60%;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNFQEFXJKBDTM74DOD_az_we0o_qq-YtTnXZj7FbwCzp8mIzVWwUlnJ4inqoqvGP_A2SV60nT13wYNrtAg4LKagaW4ddJEYSoVzLilmd27CwijPUBPqZvIp_L7yLqsonwmtefOaBy8-p06DvytMNLiSgHNYd8MlLtmwxBVktEdzruSdOs/s1600/klein-mobius.gif">
+        <figcaption>
+          Klein bottle. Notice the Möbius strip. <a href="https://www.geogebra.org/m/hpn4kxj2" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+        </figcaption>
+      </figure>
+
+      <p>
+        The orientation of a surface is important when considering
+        flux through that surface. The orientation we choose is always
+        the direction of positive flux.
+      </p>
+
+      <p>
+        For a vector field $\v(x, y, z),$ we are interested in the
+        flux of $\v$ across a smooth orientable parametric surface $S$
+        in $\R^3,$ parametrised by $\r(u,v),$ with $u$ and $v$ defined
+        over some domain $D.$
+      </p>
+      <p>
+        Let $\,\n(u,v)\,$ be a unit vector normal to the surface $S$ which
+        defines the orientation of the surface (and hence the
+        direction of positive flux).
+      </p>
+
+      <p>
+        It would be most convenient to consider the context of fluid
+        flow with $\v(x,y,z)$ being the velocity of a fluid at the
+        point $(x, y, z).$
+      </p>
+      <p>
+        To calculate the flux through $S,$ we work through the
+        following steps:
+      </p>
+      <ol>
+        <li>
+          Partition $S$ into small patches.
+        </li>
+        <li>
+          Approximate each patch by a parallelogram lying in the
+          tangent plane to the corner of the patch closest to the
+          $uv$ origin.
+        </li>
+        <li>
+          Approximate the flux through each parallelogram of
+          approximate area $\Delta S$ and add them to give an
+          approximation to the total flux through $S.$
+        </li>
+        <li>
+          Take the limit as the dimensions of $\Delta S\to 0$ to
+          obtain an exact expression for the flux.
+        </li>
+      </ol>
+
+      <p>Let's have a closer look at these steps.</p>
+
+      <ul>
+        <li>
+          <strong>Steps 1 and 2:</strong> These are exactly the same as steps 1 and 2 of our
+          calculation of surface area.
+          <img class="fragment" style="
+                      width: 45%;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;
+                    " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a0.png">
+        </li>
+        <li>
+          <strong>Step 3:</strong> We approximate the flux through one patch by treating $\v$
+          as constant over the patch (i.e., the patch is small enough
+          for this to be a decent approximation).
+
+          <img class="fragment" style="
+                      width: 45%;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;
+                    " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a1.png">
+
+          Since we have
+          already approximated the shape of the patch as a
+          parallelogram, we need to work out the flux of a constant
+          vector through a parallelogram.
+          <img class="fragment" style="
+                      width: 45%;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;
+                    " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a2.png">
+          To this end, consider the parallelogram
+          defined by the two (non-parallel) vectors
+          $\mathbf a$ and $\mathbf b.$
+
+          <img class="fragment" style="
+                      width: 45%;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;
+                    " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a3.png">
+
+          If we take the area of the patch
+          to be $S,$ it can be seen from the diagram below
+          that the flux (volume per unit time if $\v$ is
+          velocity) passing through the parallelogram is
+          \[
+          \text{flux across parallelogram } \approx \v \pd \n~ \Delta S
+          \]
+
+          <img class="fragment" style="
+                      width: 45%;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;
+                    " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a5.png">
+
+          We can take
+          $\n = \frac{\mathbf a \times \mathbf b}{||\mathbf a \times \mathbf b||},$
+          and the area of the parallelogram is $||\mathbf a \times \mathbf b||\approx \Delta S.$
+          Then we have
+          \[
+          \text{flux across parallelogram } \approx \v \pd\frac{\mathbf a \times \mathbf b}{||\mathbf a \times \mathbf
+          b||} ||\mathbf a \times \mathbf b|| = \v \pd (\mathbf a \times \mathbf b)
+          \]
+          <img class="fragment" style="
+            width: 45%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          " src="https://www.dynamicmath.xyz/math2001/images/chapter-43/chapter-043-2a7.png">
+
+          ined by the two vectors
+          $\r_u\Delta u$ and $\r_v\Delta v.$
+          Hence we have
+          \[
+          \text{flux across one patch} \approx \v \pd \n ~\Delta S = \v \pd (\r_u\times \r_v) \Delta u \Delta v
+          \]
+
+          Note that we need to check that the vector
+          $\r_u\times \r_v$ points in the direction of
+          positive flux. If not, we use $\r_v\times \r_u.$
+          Adding these approximations over the entire surface $S$, we obtain
+          \[
+          \text{flux across } S \approx \sum_{i} \v_i\pd \n_i~\Delta S_i = \sum_i \v\left(u_i,v_i\right)\pd
+          \left(\r_u\times \r_v\right)\Delta u_i~\Delta v_i.
+          \]
+        </li>
+
+        <li>
+          <strong>Step 4:</strong> To obtain an exact expression for the
+          flux across $S$ we take the limit as $\Delta u,\Delta v \to 0\,$:
+          \[
+          \text{flux across } S = \iint_S \v\pd \n~dS = \iint_D \v\pd \left(\r_u\times \r_v\right)du~dv.
+          \]
+
+        </li>
+      </ul>
+
+      <p>This expression is called a flux integral and is used
+        to calculate the flux of any vector field across a smooth
+        orientable surface, not just fluids with a given velocity field.</p>
+
+      <div class="example">
+        Let's compute the net outward flux of $\F(x,y,z)= z~\i+y~\j+x~\k$
+        across the surface of the cylindrical solid given by
+        \[
+        \left\{(x,y,z)~|~ x^2+y^2\leq1, 0\leq z\leq 2\right\}
+        \]
+
+        <p>
+          The following applet simulates the motion of particles
+          determined by the velocity field $\F(x,y,z)= z~\i+y~\j+x~\k.$
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" width="60%" height="500px" scrolling="no" style="border: 1px solid black; overflow: hidden; margin-top: 10px;" src="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43"></iframe>
+        <br>
+         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43" target="_blank">
+          Fullscreen <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+
+        <!---->
+
+        <p>
+          To find the net outward flux we need to evaluate the following integral:
+        </p>
+        <div class="eqwrapper">
+          \[
+          \iint_S \F \pd \n ~dS =\displaystyle \iint_{S_1} \F \pd \n_1 ~dS+\iint_{S_2} \F \pd \n_2 ~dS +\iint_{S_3} \F
+          \pd \n_3 ~dS
+          \]
+        </div>
+        <p>
+          where
+          \[
+          S_1=\text{Cylinder},\quad S_2=\text{Top disk},\quad \text{and }\quad S_3=\text{Bottom disc}.
+          \]
+        </p>
+        <p>
+          On $S_1$: We can use the parametrisation of the cylinder.
+          \[
+          \r(\theta, z) = \cos \theta ~\i+ \sin \theta ~\j + z~\k.
+          \]
+
+          Then $\r_{\theta} = - \sin \theta~\i + \cos \theta ~\j,\,$ $\,\r_z=\k,$
+          and
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \r_z\times\r_{\theta} &amp;=&amp;
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k \\
+          0 &amp; 0 &amp; 1 \\
+          -\sin \theta &amp; \cos \theta &amp; 0
+          \end{array}
+          \right| \\
+          &amp;=&amp; -\cos \theta ~\i - \sin \theta ~\j
+          \end{eqnarray*}
+        </div>
+        <p>
+          But $\r_z\times\r_{\theta} $ is directed inward! 😥
+        </p>
+
+        <p>No problem! 😃 Just take $\r_{\theta}\times\r_z = \cos \theta ~\i + \sin \theta ~\j,$
+          which directs outward, with the same direction as $\n_1.$
+        </p>
+
+        <p>
+          On $S_1$: So, considering $\r_{\theta}\times\r_z= \cos \theta ~\i + \sin \theta ~\j$
+          we have that
+          \[
+          \F(\r(\theta, z))\pd \left(\r_{\theta}\times\r_z\right) = z\cos \theta + \sin ^2 \theta.
+          \]
+          Then
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_1} \F\pd \n_1~ dS$ &amp;=&amp; \iint_{D} \F(\r(\theta, z))\pd \left(\r_{\theta}\times\r_z\right) dz~d\theta
+          \\
+          &amp;= &amp; \int_0^{2\pi}\int_0^2 \left( z\cos\theta + \sin^2\theta \right) dz~d\theta \\
+          &amp;=&amp; \int_0^{2\pi} \left[\bigg. \left( \frac{1}{2}z^2 \cos \theta + z \sin^2\theta \right)\bigg|_0^{2} \right]
+          d\theta \\
+          &amp;=&amp; 2 \int_0^{2\pi} \left( \sin^2\theta + \cos \theta \right) d\theta \\
+          &amp;=&amp; 2\pi.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          Now, on $S_2$: In this case we have a disk on the plane $z=2.$
+          Then, a parametrisation is
+          given by
+          \[
+          \r(x,y) = x ~\i+ y ~\j + 2~\k, \quad x^2+y^2\leq 1.
+          \]
+          So $\r_{x} =~\i,$ $\r_y=\j,$ and
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \displaystyle \r_{x}\times\r_y =
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k \\
+          1 &amp; 0 &amp; 0 \\
+          0 &amp; 1 &amp; 0
+          \end{array}
+          \right| = \k
+          \end{eqnarray*}
+        </div>
+        <p>
+          Here we have the same direction as $\n_2= \k$ 😃!
+          So, considering $\r_{x}\times\r_y= \k$
+          we have that
+          \[
+          \F(\r(x,y ))\pd \left(\r_{x}\times\r_y\right) = x.
+          \]
+          Then
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_2} \F\pd \n_2~ dS &amp;=&amp; \iint_{x^2+y^2\leq 1} \F(\r(x,y))\pd \left(\r_{x}\times\r_y\right) dx~dy\\
+          &amp;=&amp; = 0.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          Finally, on $S_3$: Finally, we have another disk on the plane $z=0$ ($xy$-plane).
+          Then, a parametrisation is
+          given by
+          \[
+          \r(x,z) = x ~\i+ y ~\j + 0~\k, \quad x^2+y^2\leq 1.
+          \]
+          So $\r_{x} =~\i,$ $\r_y=\j,$ and
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \r_{x}\times\r_y =
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k \\
+          1 &amp; 0 &amp; 0 \\
+          0 &amp; 1 &amp; 0
+          \end{array}
+          \right| = \k.
+          \end{eqnarray*}
+        </div>
+        <p>
+          Note that we must consider $\r_{y}\times\r_x =-\k,$
+          which has the same direction as $\n_3.$
+          So, considering $\r_{y}\times\r_x= -\k$
+          we have that
+          \[
+          \F(\r(x,y ))\pd \left(\r_{y}\times\r_x\right) = -x.
+          \]
+          Then
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_{S_3} \F\pd \n_3~ dS &amp;=&amp; \iint_{x^2+y^2\leq 1} \F(\r(x,y))\pd \left(\r_{y}\times\r_x\right) dx~dy \\
+          &amp;=&amp; \iint_{x^2+y^2\leq 1} (-x)~ dx~dy = 0.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          Therefore, the net outward flux across $S$ is:
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_S \F \pd \n ~dS &amp;=&amp; \iint_{S_1} \F \pd \n_1 ~dS +\iint_{S_2} \F \pd \n_2 ~dS+ \iint_{S_3} \F \pd \n_3
+          ~dS\\
+          &amp;=&amp; 2\pi + 0 + 0 = 2\pi.
+          \end{eqnarray*}
+        </div>
+
+      </div>
 
     </div>
 
@@ -2026,16 +2452,45 @@
       "showResetIcon": true
     };
 
+    let paramsOrientationSphere = {
+      "width": 780,
+      "height": 401,
+      "material_id": "b44hcjrs",
+      "borderColor": "888888",
+      "playButton": true,
+      "showFullscreenButton": false,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
+    /*
+    let paramsMobius = {
+      "width": 763,
+      "height": 445,
+      "material_id": "qmdpw9gg",
+      "borderColor": "888888",
+      "playButton": true,
+      "showFullscreenButton": false,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+    */
+
+
 
     let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
     let appletCalculator = new GGBApplet(paramsCalculator, true);
     let appletTorus = new GGBApplet(paramsTorus, true);
+    let appletOrientationSphere = new GGBApplet(paramsOrientationSphere, true);
+    //let appletMobius = new GGBApplet(paramsMobius, true);
     window.addEventListener("load", () => {
       appletPathIntegral.inject('ggb-element-path-integral');
       appletAreaFence.inject('ggb-element-area-fence');
       appletCalculator.inject('ggb-element-calculator');
       appletTorus.inject('ggb-element-torus');
+      appletOrientationSphere.inject('ggb-element-ort-sphere');
+      //appletMobius.inject('ggb-element-mobius');
 
     });
 
@@ -2047,10 +2502,12 @@
     let previewPathIntegral = 'imgs/integrals-over-paths-and-surfaces/preview-path-integral.jpg';
     let previewTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
     let previewAreaFence = 'imgs/integrals-over-paths-and-surfaces/preview-area-fence.jpg';
+    let previewOrtSphere = 'imgs/integrals-over-paths-and-surfaces/preview-orient-sphere.jpg';
 
     appletPathIntegral.setPreviewImage(previewPathIntegral, ggbLogo, playButton);
     appletTorus.setPreviewImage(previewTorus, ggbLogo, playButton);
     appletAreaFence.setPreviewImage(previewAreaFence, ggbLogo, playButton);
+    appletOrientationSphere.setPreviewImage(previewOrtSphere, ggbLogo, playButton);
   </script>
 
 </section>
