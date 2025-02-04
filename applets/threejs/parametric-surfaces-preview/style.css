@@ -24,7 +24,7 @@ body {
   text-align: center;
   overflow-x: hidden;
 
-  background: #d3dfea;
+  background: hsl(210, 20%, 98%);
   color: dimgray;
 }
 h1 {
