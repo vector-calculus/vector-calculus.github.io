@@ -230,14 +230,15 @@
         \[
         a=t_0 \lt t_1 \lt \ldots \lt t_N=b.
         \]
-        Now $\c$ divided into smaller paths $\c_i$ defined on
+        Now $\c$ is divided into smaller paths $\c_i$ defined on
         $\left[t_i,t_{i+1}\right]$ for $0\le i \le N-1.$
       </p>
 
       <figure>
-        <div style="display:block;" class="ggbElement" id="ggb-element-path-integral"></div>
+        <img style="width:80%" src="imgs/integrals-over-paths-and-surfaces/breaking-c.svg">
+        <!--<div style="display:block;" class="ggbElement" id="ggb-element-path-integral"></div>-->
         <figcaption>
-          Slowly, drag the slider <tt>N</tt>. Use mouse to move 3D graphics view.
+          Breaking $\c$ into smaller $\c_i.$
         </figcaption>
       </figure>
 
@@ -304,7 +305,7 @@
       <figure>
         <div style="display:block;" class="ggbElement" id="ggb-element-area-fence"></div>
         <figcaption>
-          Slowly, drag the slider <tt>t</tt>. Use mouse to move 3D graphics view.
+          Slowly, drag the slider. Use mouse to move 3D graphics view.
         </figcaption>
       </figure>
 
@@ -1544,17 +1545,14 @@
         You can explore a wide range of parametric surfaces or even create your own.
       </p>
 
-      
-
       <div style="text-align: center;">
         <iframe loading="lazy" width="100%" height="270px" scrolling="no" style="border: 0px solid black; overflow: hidden; margin-top: 10px;" src="applets/threejs/parametric-surfaces-preview"></iframe>
         <br>
         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="http://www.3d-meier.de/tut3/Seite0.html" target="_blank">
-          Explore more <i class="fas fa-external-link-alt"></i>
+          Parametric Surfaces and Solids <i class="fas fa-external-link-alt"></i>
         </a>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://codepen.io/wakana-k/full/poBBRmN"
-          target="_blank">
-          Code by Wakana Y.K. <i class="fas fa-external-link-alt"></i>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://codepen.io/wakana-k/full/poBBRmN" target="_blank">
+          Source code: Wakana Y.K. <i class="fas fa-external-link-alt"></i>
         </a>
       </div>
 
@@ -2269,15 +2267,18 @@
           determined by the velocity field $\F(x,y,z)= z~\i+y~\j+x~\k.$
         </p>
 
-        <div style="text-align: center;">
-          <iframe loading="lazy" width="70%" height="500px" scrolling="no" style="border: 1px solid black; overflow: hidden; margin-top: 10px;" src="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43"></iframe>
-        <br>
-         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43" target="_blank">
+        
+
+        <!--<div style="text-align: center;">
+          <iframe loading="lazy" width="70%" height="500px" scrolling="no"
+        style="border: 1px solid black; overflow: hidden; margin-top: 10px;" 
+        src="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43"></iframe>
+        <br/>
+         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey"
+          href="https://www.dynamicmath.xyz/math2001/sketches/flux-surface-example-43" target="_blank">
           Fullscreen <i class="fas fa-external-link-alt"></i>
           </a>
-        </div>
-
-        <!---->
+        </div>-->
 
         <p>
           To find the net outward flux we need to evaluate the following integral:
@@ -2451,16 +2452,7 @@
       </iframe>-->
   <script>
 
-    let paramsPathIntegral = {
-      "width": 770,
-      "height": 530,
-      "material_id": "yqtvz3zm",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": false,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
+    
 
     let paramsAreaFence = {
       "width": 760,
@@ -2468,7 +2460,7 @@
       "material_id": "r4csvyeq",
       "borderColor": "888888",
       "playButton": true,
-      "showFullscreenButton": false,
+      "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
     };
@@ -2506,34 +2498,19 @@
       "showResetIcon": true
     };
 
-    /*
-    let paramsMobius = {
-      "width": 763,
-      "height": 445,
-      "material_id": "qmdpw9gg",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": false,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-    */
 
 
-
-    let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
+    //let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
     let appletCalculator = new GGBApplet(paramsCalculator, true);
     let appletTorus = new GGBApplet(paramsTorus, true);
     let appletOrientationSphere = new GGBApplet(paramsOrientationSphere, true);
-    //let appletMobius = new GGBApplet(paramsMobius, true);
     window.addEventListener("load", () => {
-      appletPathIntegral.inject('ggb-element-path-integral');
+      //appletPathIntegral.inject('ggb-element-path-integral');
       appletAreaFence.inject('ggb-element-area-fence');
       appletCalculator.inject('ggb-element-calculator');
       appletTorus.inject('ggb-element-torus');
       appletOrientationSphere.inject('ggb-element-ort-sphere');
-      //appletMobius.inject('ggb-element-mobius');
 
     });
 
@@ -2542,12 +2519,11 @@
     // needed if you use the "clickToLoad" parameter
     let playButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAhFBMVEUAAABmZmb///9qampsbGz+/v6qqqpvb29ubm6enp6rq6t3d3d1dXVxcXH6+vqCgoJ+fn719fXv7+/n5+eTk5N0dHSXl5eNjY2KioqIiIji4uLe3t6UlJSQkJDr6+vW1tbCwsK5ubmioqK7u7uzs7OmpqaFhYXk5OR7e3vNzc3Jycmvr6833NujAAAAAXRSTlMAQObYZgAAAlhJREFUWMPVmNuW2jAMRS2Ogk0JCZBwvzPATNv//7/SdrqyBoxl2U/dH7DXUeSLYvP/czrPAPAdgG+DTNsCRKAvMJKlQwLIA4BWb2st02tAQ13OFcloSncUR2wnmGKZG5k3gKIBRN8H6YAQ0pGacchHKawEnxo4wadn5vdZSmbr37rpYOcRgjKA4NMzevQtBaF68TBlgogOQ5Wavxww/ta1I4e0iOQBx6poTmwpFtf5BuShnPTuNH2GvmbrPeF7f6jWu1jlLNhi/lb0PpVNbaH6iqW3gH7R+8fk+9BSBG3XEn/Cjv0RHB+RpIR3iubMiBS2QWGn3LSOo64DhEvuqN5XFhERSUrYMT3MHAVgSehRnsCCUCj5ieYMDpa8lRM+dmduERigakHoYbKvnV+4vAuXJJTsVR4An7C+C8dSQj9rfnE+LJ0o9PMT/jYPZonCDfuF1zJR+PZC2E8UNsNX1/MtRVhtxnh1Oiz0y6ZYDxgv1+FCnbC5gkMDslI4PQp7WSecrJ+ulxxhNV1YiOchYoXFumUmEoUc1+Vi3xdvvrqbNcWE0x/MJGGihZPDeASKFQ6lkqtp7UAypfkEwYTV+9ZBN34hlHB/YdYO7lePEdvi776wluLAxQQjYvO7Fx8WKUP2HPSMPV1KBkWzFP8bmUmBe3gYoEyQ9Gcmr8GOEWXB5pFzXkbzTEkZ1J1HXbTc4fzGIOPVRv6A+VXDBOBEXyAjSMfYSOTEy30QgjNRrEBRsOaBOIKb0TAWwmFrtOwgFJvAyuLBCiKUA5PDrp4xs3PsmO1wrpXl8wsCuyePXN5O7AAAAABJRU5ErkJggg==';
     // preview to show while loading
-    let previewPathIntegral = 'imgs/integrals-over-paths-and-surfaces/preview-path-integral.jpg';
+    
     let previewTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
     let previewAreaFence = 'imgs/integrals-over-paths-and-surfaces/preview-area-fence.jpg';
     let previewOrtSphere = 'imgs/integrals-over-paths-and-surfaces/preview-orient-sphere.jpg';
 
-    appletPathIntegral.setPreviewImage(previewPathIntegral, ggbLogo, playButton);
     appletTorus.setPreviewImage(previewTorus, ggbLogo, playButton);
     appletAreaFence.setPreviewImage(previewAreaFence, ggbLogo, playButton);
     appletOrientationSphere.setPreviewImage(previewOrtSphere, ggbLogo, playButton);
