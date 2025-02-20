@@ -88,6 +88,12 @@
     <a class="w3-bar-item w3-button" id="chapterBar" href="vector-valued-functions.html">4. Vector-Valued Functions</a>
     <a class="w3-bar-item w3-button" id="chapterBar" href="double-and-triple-integrals.html">5. Double and Triple
       Integrals</a>
+
+      <div class="toc-chapter" id="toc-chapter">
+                <a class="w3-bar-item w3-button" href="#section-1">Double Integrals Over Rectangles</a>
+                <a class="w3-bar-item w3-button" href="#section-2"> Iterated Integrals</a>
+      </div>
+
     <a class="w3-bar-item w3-button" id="chapterBar" href="applications-of-integration.html">6. Applications of
       Integration</a>
     <a class="w3-bar-item w3-button" id="chapterBar" href="integrals-over-paths-and-surfaces.html">7. Integrals Over
@@ -145,9 +151,8 @@
   <!-- Sections -->
   <div class="w3-container section-content">
 
-    <div id="section-1">
-
-      <div id="path-integral">
+    <div>
+      <div>
         <h2>Under Construction!</h2>
         <picture>
           <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a7/512.webp" type="image/webp">
@@ -164,18 +169,241 @@
       </div>
 
       <p>
-        Hi there! Sorry this chapter is still under construction 🚧!
+        Hi there! Sorry, this chapter is still under 🚧 construction 🚧
         In the mean time enjoy this beautiful animation:
       </p>
 
       <iframe frameborder="0" height="500px" scrolling="no" src="https://www.dynamicmath.xyz/math2001/sketches/solid-approx/" style="border: 1px solid black; overflow: hidden;" width="100%">
       </iframe>
 
+      <div style="text-align: center;">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.patreon.com/jcponce" target="_blank">
+          Support this project in Patreon <i class="fa-brands fa-patreon"></i>
+        </a>
+      </div>
+      <hr>
+    </div>
 
+    <div id="section-1">
+
+      <h2>Double Integrals Over Rectangles</h2>
+
+      <p>
+        Consider a function $f(x)$ defined for $x \in [a,b].$
+        We divide the interval $[a,b]$ into $n$-subintervals
+        $\left[x_i,x_{i+1}\right]$ of equal width
+        $\Delta x = (b-a)/n$ and we choose sample points $x_i^*$
+        in these subintervals to form the Riemann sum
+        \[
+        \sum_{i=0}^{n-1}f\left(x_i^*\right)\Delta x.
+        \]
+        Then we take the limit of such sums as $n\to \infty$ to obtain
+        the definite integral of $f$ from $a$ to $b:$
+        \[
+        \displaystyle \int_a^b f(x)dx = \lim_{n \to \infty} \sum_{i=0}^{n-1}
+        f\left(x_i^*\right)\Delta x
+        \]
+        For the special case where $f(x)\geq 0,$ the Riemann sum can be interpreted
+        as the sum of the areas of the approximation rectangles, and $\int_a^b f(x)dx$
+        represents the area under the curve $y=f(x).$
+      </p>
+
+      <figure>
+        <img style="width:480px" src="imgs/double-triple-integrals/riemann-sum-480.gif">
+        <figcaption>
+          Approximating the area under the curve $y=f(x)$ with Riemann sums.
+        </figcaption>
+      </figure>
+
+      <p>
+        In a similar way we consider a function of two variables
+        defined on a closed rectangle
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = [a,b]\times [c,d]=\left\{(x,y)\in \R^2 ~|~ a\leq x\leq b,~c\leq y\leq d\right\}
+        \]
+      </div>
+
+      <figure>
+        <img style="width:50%" src="https://www.dynamicmath.xyz/math2001/images/chapter-23/chapter-23-1-b-rec-area-rect.svg">
+        <figcaption>
+          Rectangular region $R.$
+        </figcaption>
+      </figure>
+
+      <p>
+        We first suppose that $f(x,y)\geq 0.$ The graph of $f$
+        is a surface with equation $y = f(x,y).$
+        Let $V$ be region that lies above $R$ and under
+        the graph of $f,$ that is,
+      </p>
+      <div class="eqwrapper">
+        \[
+        V=\left\{(x,y)\in \R^3 ~|~ 0\leq z\leq f(x,y),~(x,y)\in R\right\}
+        \]
+      </div>
+      <p>
+        Our goal here is to find the volume of $V.$
+      </p>
+
+
+
+      <p>
+        Divide $R$ into subrectangles by dividing $[a,b]$ into $m$
+        subintervals $[x_{i-1},x_i]$, each of width
+        $$\Delta x =\frac{b-a}{m}$$
+        and $[c,d]$ into $n$ subintervals $[y_{i-1},y_i]$ of
+        equal width
+        $$\Delta y = \frac{d-c}{n}.$$
+      </p>
+      <p>
+        Combining these gives a rectangular grid $R_{ij}$ with
+        subrectangles each of area $\Delta A= \Delta x\Delta y.$
+        In each subrectangle take any point $P_{ij}$ with
+        co-ordinates $\left(x_{ij}^*, y_{ij}^*\right).$
+      </p>
+
+      <figure>
+        <img style="width:50%" src="https://www.dynamicmath.xyz/math2001/images/chapter-23/chapter-23-1-b-rec-area.svg">
+        <figcaption>
+          Partition.
+        </figcaption>
+      </figure>
+
+
+      <p>
+        The volume of the box with base the rectangle $\Delta A$
+        and height the value of the function $f(x,y)$ at the point
+        $P_{ij}$ (so the box touches the surface at a point
+        directly above $P_{ij}$) is \[ V_{ij} = f\left(x_{ij}^*,
+        y_{ij}^*\right)\Delta A \]
+      </p>
+      <p>
+        Then for all the subrectangles we have an approximation to
+        the required volume $V$: \[ V\approx
+        \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right)
+        \Delta A, \] the double Riemann sum.
+      </p>
+
+      <p>
+        Let $\Delta x \to 0 $ and $\Delta y \to 0,$
+        i.e., $m\to \infty$ and $n\to \infty,$
+        then we <em>define</em> the volume to be 
+        \[ 
+        V= \lim_{m,n\to \infty} \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right) \Delta A,
+        \] 
+        if the limits
+        exist,
+        and we write this as
+        $$\ds \iint_Rf(x,y)~dA. $$
+      </p>
+
+      <figure>
+        <video loop="" style="width:50%;" autoplay="" src="https://www.dynamicmath.xyz/math2001/images/intro/vol.mp4"></video>
+
+        <figcaption>
+          Approximating the volume.
+        </figcaption>
+      </figure>
+
+      <div class="definition">
+        The <strong>double integral</strong> of $f$ over the rectangle $R$ is 
+        <div class="eqwrapper">
+          \[
+          \iint_Rf(x,y)~dA =  \lim_{m,n\to \infty} \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right) \Delta A
+          \]
+        </div>if the limit exists.
+      </div>
+
+      <p>
+        We call $f$ integrable if the limit exists. Note that every
+        continuous function is integrable.
+      </p>
 
     </div>
 
+    <hr>
 
+    <div id="section-2">
+      <h2>
+        Iterated Integrals
+      </h2>
+
+      <p>
+        It is often challenging to evaluate single integrals directly 
+        using the definition of an integral. However, the Fundamental 
+        Theorem of Calculus offers a more straightforward approach. 
+        Evaluating double integrals from first principles is even more 
+        complex, but we can simplify the process by expressing a 
+        double integral as an iterated integral, allowing us to compute 
+        it by evaluating two single integrals sequentially.
+      </p>
+
+      <p>
+        We define $\displaystyle \int_c^df(x,y)~dy$ to mean that $x$ is
+        fixed and $f(x,y)$ is integrated with respect to $y$ from $y=c$
+        to $y=d$.
+          So \[ A(x) = \int_c^df(x,y)~dy \] is a function of $x$ only.
+          If we now integrate $A(x)$ with respect to $x$ from $x=a$ to
+          $x=b$ we have
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \displaystyle \int_a^bA(x)~dx &amp;=&amp; \int_a^b\left[ \int_c^d  f(x,y)~dy\right]dx \\
+        &amp; =&amp; \int_a^b \int_c^d f(x,y)~dy ~dx
+        \end{eqnarray*}
+      </div>
+      <p>
+        This is called the iterated integral.
+      </p>
+
+
+      <div class="example">
+        Evaluate $\displaystyle {\small \int_0^2 \int_1^3 x^2y~dy~dx}.$
+
+        <p>
+          Integrating first with respect of $y$, and then with respect of $x,$ we obtain
+          \begin{eqnarray*}
+          \int_0^2 \int_1^3 x^2y~dy~dx &amp;= &amp; \int_0^2 \left[ \int_1^3 x^2y~dy \right]dx \\
+          &amp;=&amp;  \int_0^2 \left[ x^2 \frac{y^2}{2}\bigg|_{y=1}^{y=3} \right]dx\\
+          &amp;=&amp;  \int_0^2 \left( x^2 ~\frac{3^2}{2} - x^2 ~\frac{1^2}{2} \right)dx \\
+          &amp;=&amp; \int_0^2 4x^2~dx \\
+          &amp;=&amp;  \frac{4}{3}x^3\Bigg|_{x=0}^{x=2} \\
+          &amp;=&amp;  \frac{4}{3} \left( 2^3 - 0^3 \right) \\
+          &amp;=&amp;  \frac{32}{3}.
+          \end{eqnarray*}
+        </p>
+
+        <p>
+          On the one other hand, we get
+          \begin{eqnarray*}
+          \int_1^3 \int_0^2 x^2y~dx~dy &amp;= &amp; \int_1^3 \left[ \int_0^2 x^2y~dx \right]dy \\
+          &amp;=&amp;  \int_1^3 \left[ y \frac{x^3}{3}\bigg|_{x=0}^{x=2} \right]dy \\
+          &amp;=&amp;  \int_0^2 \left( y~ \frac{2^3}{3} - y ~\frac{0^3}{3} \right)dy \\
+          &amp;=&amp; \int_1^3 \frac{8}{3}y~dy \\
+          &amp;=&amp;  \frac{8}{3} ~\frac{1}{2}~ y^2\Bigg|_{x=1}^{x=3} \\
+          &amp;=&amp;  \frac{4}{3} \left(3^2 - 1^2 \right) \\
+          &amp;=&amp;  \frac{32}{3}.
+          \end{eqnarray*}
+        </p>
+
+        <p>
+          We have just calculated the volume of the solid outlined in the applet below:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-23-3-2: Example" src="https://www.geogebra.org/material/iframe/id/ehb6vpck/width/526/height/432/border/888888/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="526px" height="432px" style="border: 0px" allowfullscreen="">
+            </iframe>
+        </div>
+
+      
+
+      </div>
+
+      
+
+    </div>
 
 
 
@@ -186,45 +414,10 @@
   <!-- Extra scripts for applets -->
   <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
-  <!--
-  <iframe scrolling="no" title="Parametrization"
-        data-src="https://www.geogebra.org/material/iframe/id/shrbv6cs/width/643/height/496/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
-        width="643px" height="496px" style="border:0px;">
-      </iframe>-->
+  
   <script>
 
-    let paramsPathIntegral = {
-      "width": 770,
-      "height": 530,
-      "material_id": "yqtvz3zm",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-
-    let paramsAreaFence = {
-      "width": 760,
-      "height": 460,
-      "material_id": "r4csvyeq",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-
-    let paramsSeq = {
-      "width": 643,
-      "height": 493,
-      "material_id": "shrbv6cs",
-      "borderColor": "888888",
-      "playButton": false,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": false,
-      "showResetIcon": true
-    };
+    
     let paramsIntPath = {
       "width": 617,
       "height": 452,
@@ -235,15 +428,11 @@
       "enableShiftDragZoom": true,
       "showResetIcon": true
     };
-    let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
-    let appletAreaFence = new GGBApplet(paramsAreaFence, true);
-    let appletSeq = new GGBApplet(paramsSeq, true);
+    
     let appletIntPath = new GGBApplet(paramsIntPath, true);
     window.addEventListener("load", () => {
-      appletPathIntegral.inject('ggb-element-path-integral');
-      appletAreaFence.inject('ggb-element-area-fence');
+      
       appletIntPath.inject('ggb-element-int-path');
-      appletSeq.inject('ggb-element');
     });
   </script>
 
@@ -268,14 +457,14 @@
 
     <div class="w3-col m6">
       <span class="w3-hide-small">
-        Real Analysis <i class="fa-regular fa-copyright"></i>
+        Vector Calculus <i class="fa-regular fa-copyright"></i>
         <span>
           <script>document.write(new Date().getFullYear());</script>
         </span><br />
         by J. C. Ponce Campuzano
       </span>
       <span class="w3-hide-large w3-hide-medium">
-        Real Analysis <i class="fa-regular fa-copyright"></i>
+        Vector Calculus <i class="fa-regular fa-copyright"></i>
         <span>
           <script>document.write(new Date().getFullYear());</script>
         </span>
