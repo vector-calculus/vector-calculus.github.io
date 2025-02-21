@@ -89,10 +89,13 @@
     <a class="w3-bar-item w3-button" id="chapterBar" href="double-and-triple-integrals.html">5. Double and Triple
       Integrals</a>
 
-      <div class="toc-chapter" id="toc-chapter">
-                <a class="w3-bar-item w3-button" href="#section-1">Double Integrals Over Rectangles</a>
-                <a class="w3-bar-item w3-button" href="#section-2"> Iterated Integrals</a>
-      </div>
+    <div class="toc-chapter" id="toc-chapter">
+            <a class="w3-bar-item w3-button" href="#section-1">Double Integrals Over Rectangles</a>
+            <a class="w3-bar-item w3-button" href="#section-2"> Iterated Integrals</a>
+            <a class="w3-bar-item w3-button" href="#section-3"> Fubini's Theorem</a>
+            <a class="w3-bar-item w3-button" href="#section-4"> Double Integrals Over
+    General Regions</a>
+    </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="applications-of-integration.html">6. Applications of
       Integration</a>
@@ -289,10 +292,10 @@
       <p>
         Let $\Delta x \to 0 $ and $\Delta y \to 0,$
         i.e., $m\to \infty$ and $n\to \infty,$
-        then we <em>define</em> the volume to be 
-        \[ 
+        then we <em>define</em> the volume to be
+        \[
         V= \lim_{m,n\to \infty} \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right) \Delta A,
-        \] 
+        \]
         if the limits
         exist,
         and we write this as
@@ -300,7 +303,7 @@
       </p>
 
       <figure>
-        <video loop="" style="width:50%;" autoplay="" src="https://www.dynamicmath.xyz/math2001/images/intro/vol.mp4"></video>
+        <img style="width:480px;" src="imgs/double-triple-integrals/vol.gif">
 
         <figcaption>
           Approximating the volume.
@@ -308,10 +311,10 @@
       </figure>
 
       <div class="definition">
-        The <strong>double integral</strong> of $f$ over the rectangle $R$ is 
+        The <strong>double integral</strong> of $f$ over the rectangle $R$ is
         <div class="eqwrapper">
           \[
-          \iint_Rf(x,y)~dA =  \lim_{m,n\to \infty} \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right) \Delta A
+          \iint_Rf(x,y)~dA = \lim_{m,n\to \infty} \sum_{i=1}^m\sum_{j=1}^n f\left(x_{ij}^*, y_{ij}^*\right) \Delta A
           \]
         </div>if the limit exists.
       </div>
@@ -323,6 +326,7 @@
 
     </div>
 
+    <br>
     <hr>
 
     <div id="section-2">
@@ -331,12 +335,12 @@
       </h2>
 
       <p>
-        It is often challenging to evaluate single integrals directly 
-        using the definition of an integral. However, the Fundamental 
-        Theorem of Calculus offers a more straightforward approach. 
-        Evaluating double integrals from first principles is even more 
-        complex, but we can simplify the process by expressing a 
-        double integral as an iterated integral, allowing us to compute 
+        It is often challenging to evaluate single integrals directly
+        using the definition of an integral. However, the Fundamental
+        Theorem of Calculus offers a more straightforward approach.
+        Evaluating double integrals from first principles is even more
+        complex, but we can simplify the process by expressing a
+        double integral as an iterated integral, allowing us to compute
         it by evaluating two single integrals sequentially.
       </p>
 
@@ -344,18 +348,32 @@
         We define $\displaystyle \int_c^df(x,y)~dy$ to mean that $x$ is
         fixed and $f(x,y)$ is integrated with respect to $y$ from $y=c$
         to $y=d$.
-          So \[ A(x) = \int_c^df(x,y)~dy \] is a function of $x$ only.
-          If we now integrate $A(x)$ with respect to $x$ from $x=a$ to
-          $x=b$ we have
+        So \[ A(x) = \int_c^df(x,y)~dy \] is a function of $x$ only.
+        If we now integrate $A(x)$ with respect to $x$ from $x=a$ to
+        $x=b$ we have
       </p>
       <div class="eqwrapper">
-        \begin{eqnarray*}
-        \displaystyle \int_a^bA(x)~dx &amp;=&amp; \int_a^b\left[ \int_c^d  f(x,y)~dy\right]dx \\
-        &amp; =&amp; \int_a^b \int_c^d f(x,y)~dy ~dx
-        \end{eqnarray*}
+        \begin{eqnarray}\label{iter-int-01}
+        \int_a^b \int_c^d f(x,y)~dy ~dx &amp;=&amp; \int_a^b\left[ \int_c^d f(x,y)~dy\right]dx
+        \end{eqnarray}
       </div>
       <p>
-        This is called the iterated integral.
+        This is called the <strong>iterated integral</strong>.
+      </p>
+      <p>
+        Similarly, we have the iterated integral
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{iter-int-02}
+        \int_c^d \int_a^b f(x,y)~dx ~dy&amp;=&amp; \int_c^d\left[ \int_a^b f(x,y)~dx\right]dy
+        \end{eqnarray}
+      </div>
+      <p>
+        In this case we first integrate with respect to $x$ (holding $y$ fixed)
+        from $x=a$ to $x=b$ and then we integrate the resulting function
+        of $y$ with respect to $y$ from $y=c$ to $y=d.$
+        Notice that in both equations (\ref{iter-int-01}) and (\ref{iter-int-02})
+        we work from the inside out.
       </p>
 
 
@@ -364,44 +382,590 @@
 
         <p>
           Integrating first with respect of $y$, and then with respect of $x,$ we obtain
+
+        </p>
+        <div class="eqwrapper">
           \begin{eqnarray*}
           \int_0^2 \int_1^3 x^2y~dy~dx &amp;= &amp; \int_0^2 \left[ \int_1^3 x^2y~dy \right]dx \\
-          &amp;=&amp;  \int_0^2 \left[ x^2 \frac{y^2}{2}\bigg|_{y=1}^{y=3} \right]dx\\
-          &amp;=&amp;  \int_0^2 \left( x^2 ~\frac{3^2}{2} - x^2 ~\frac{1^2}{2} \right)dx \\
+          &amp;=&amp; \int_0^2 \left[ x^2 \frac{y^2}{2}\bigg|_{y=1}^{y=3} \right]dx\\
+          &amp;=&amp; \int_0^2 \left( x^2 ~\frac{3^2}{2} - x^2 ~\frac{1^2}{2} \right)dx \\
           &amp;=&amp; \int_0^2 4x^2~dx \\
-          &amp;=&amp;  \frac{4}{3}x^3\Bigg|_{x=0}^{x=2} \\
-          &amp;=&amp;  \frac{4}{3} \left( 2^3 - 0^3 \right) \\
-          &amp;=&amp;  \frac{32}{3}.
+          &amp;=&amp; \frac{4}{3}x^3\Bigg|_{x=0}^{x=2} \\
+          &amp;=&amp; \frac{4}{3} \left( 2^3 - 0^3 \right) \\
+          &amp;=&amp; \frac{32}{3}.
           \end{eqnarray*}
-        </p>
+        </div>
 
         <p>
           On the one other hand, we get
+        </p>
+        <div class="eqwrapper">
           \begin{eqnarray*}
           \int_1^3 \int_0^2 x^2y~dx~dy &amp;= &amp; \int_1^3 \left[ \int_0^2 x^2y~dx \right]dy \\
-          &amp;=&amp;  \int_1^3 \left[ y \frac{x^3}{3}\bigg|_{x=0}^{x=2} \right]dy \\
-          &amp;=&amp;  \int_0^2 \left( y~ \frac{2^3}{3} - y ~\frac{0^3}{3} \right)dy \\
+          &amp;=&amp; \int_1^3 \left[ y \frac{x^3}{3}\bigg|_{x=0}^{x=2} \right]dy \\
+          &amp;=&amp; \int_0^2 \left( y~ \frac{2^3}{3} - y ~\frac{0^3}{3} \right)dy \\
           &amp;=&amp; \int_1^3 \frac{8}{3}y~dy \\
-          &amp;=&amp;  \frac{8}{3} ~\frac{1}{2}~ y^2\Bigg|_{x=1}^{x=3} \\
-          &amp;=&amp;  \frac{4}{3} \left(3^2 - 1^2 \right) \\
-          &amp;=&amp;  \frac{32}{3}.
+          &amp;=&amp; \frac{8}{3} ~\frac{1}{2}~ y^2\Bigg|_{x=1}^{x=3} \\
+          &amp;=&amp; \frac{4}{3} \left(3^2 - 1^2 \right) \\
+          &amp;=&amp; \frac{32}{3}.
           \end{eqnarray*}
-        </p>
+        </div>
 
         <p>
           We have just calculated the volume of the solid outlined in the applet below:
         </p>
 
         <div style="text-align: center;">
-          <iframe loading="lazy" scrolling="no" title="Chapter-23-3-2: Example" src="https://www.geogebra.org/material/iframe/id/ehb6vpck/width/526/height/432/border/888888/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="526px" height="432px" style="border: 0px" allowfullscreen="">
-            </iframe>
+          <iframe loading="lazy" scrolling="no" title="Chapter-23-3-2: Example" src="https://www.geogebra.org/material/iframe/id/ehb6vpck/width/526/height/432/border/888888/sfsb/false/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="526px" height="432px" style="border: 0px" allowfullscreen="">
+          </iframe>
         </div>
-
-      
 
       </div>
 
-      
+
+    </div>
+
+    <hr>
+
+
+    <div id="section-3">
+      <h2>Fubini's Theorem</h2>
+
+      <p>
+        Observe that in Example 1, we arrived at the same result regardless of whether
+        we integrated first with respect to $y$ or $x.$ More generally,
+        the two iterated integrals in equations (\ref{iter-int-01}) and (\ref{iter-int-02})
+        are always equal, meaning
+        the order of integration does not affect the outcome.
+        The following theorem provides a practical approach for evaluating
+        a double integral by expressing it as an iterated integral in either order.
+      </p>
+
+      <figure>
+        <img style="width:480px" src="imgs/double-triple-integrals/fubini-theorem.gif">
+        <figcaption>
+          The order of integration does not affect the outcome.
+        </figcaption>
+      </figure>
+
+      <p>
+        The following theorem gives a practical method for evaluating a double integral by
+        expressing it as an iterated integral (in either order).
+      </p>
+
+      <div class="theorem">
+        If $f(x,y)$ is continuous on the rectangle $ R = [a,b]\times [c,d],$
+        then
+        <div class="eqwrapper">
+          \[
+          \iint_R f(x,y)~ dA = \int_a^b \int_c^d f(x,y) ~dy~dx= \int_c^d \int_a^b f(x,y)~dx~dy.
+          \]
+        </div>
+      </div>
+
+      <div class="proof">
+        First, let's prove
+        \[
+        \iint_R f(x,y)~ dA = \int_a^b \int_c^d f(x,y) ~dy~dx.
+        \]
+        <p>
+          Let $c= y_0 \lt y_1 \lt \cdots \lt y_m =d$ be a partition of
+          $[c,d]$ into $m$ equal parts. Define
+          \[
+          F(x) = \int_c^d f(x,y) ~dy.
+          \]
+          Then
+          \[
+          F(x) = \sum_{k=0}^{m-1}\int_{y_k}^{y_{k+1}}f(x,y)~dy.
+          \]
+          Using the integral version of the
+          <span class="infotip">
+            <strong id="toggleButton">mean-value theorem 📃</strong>,
+            <span id="myinfo">
+              This states that if $g(x)$ is continuous on $[a,b],$
+              then $\int_a^b g(x)~dx = g(c)(b-a)$ for some point $c\in[a,b].$
+            </span>
+          </span>
+          for each fixed $x$ and for each $k$ we have
+        </p>
+        <div class="eqwrapper">
+          \[
+          \int_{y_k}^{y_{k+1}}f(x,y)~dy = f\left(x, Y_k(x)\right)\left(y_{k+1}-y_k\right)
+          \]
+        </div>
+        <p>
+          where the point $Y_k(x)$ belongs to $[y_k,y_{k+1}]$ and may depend
+          on $x,$ $k,$ and $m.$
+        </p>
+
+        <p>
+          Thus we have that
+        </p>
+        <div class="eqwrapper">
+          \[
+          F(x) = \sum_{k=0}^{m-1} f\left(x, Y_k(x)\right)\left(y_{k+1}-y_k\right).
+          \]
+        </div>
+        <p>
+          By the definition of the integral in one variable as a limit
+          of Riemann sums,
+        </p>
+        <div class="eqwrapper">
+          \[
+          \int_a^b F(x)~dx = \int_a^b\left[ \int_c^d f(x,y)~dy\right]dx = \lim_{n \to \infty} \sum_{j=0}^{n-1}
+          F\left(p_j\right)\left(x_{j+1}-x_j\right),
+          \]
+        </div>
+        <p>
+          where $a= x_0 \lt x_1 \lt \cdots \lt x_n =b$ is a partition of the interval
+          $[a,b]$ into equal parts and $p_j$ is any point in $[x_j,x_{j+1}].$
+          By setting $c_{jk}=(p_j, Y_k(p_j))\in R_{jk},$ we have
+        </p>
+        <div class="eqwrapper">
+          \[
+          F(p_j) =\sum_{k=0}^{n-1} f\left(c_{jk}\right)\left(y_{k+1}-y_k\right).
+          \]
+        </div>
+        <p>
+          Therefore
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \int_a^b \int_c^d f(x,y)~dy~dx &amp;=&amp; \int_a^b F(x)~dx = \lim_{n \to \infty} \sum_{j=0}^{n-1}
+          F\left(p_j\right)\left(x_{j+1}-x_j\right) \\
+          &amp;=&amp; \lim_{m,n \to \infty} \sum_{j=0}^{n-1} \sum_{k=0}^{m-1}
+          f\left(c_{jk}\right)\left(y_{k+1}-y_k\right)\left(x_{j+1}-x_j\right) \\
+          &amp;=&amp; \iint_R f(x,y)~dA.
+          \end{eqnarray*}
+        </div>
+        <p>
+          Using a similar argument we can also prove that
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \int_d^c \int_a^b f(x,y)~dx~dy = \iint_R f(x,y)~dA.
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <p>
+        Of course, Fubini's theorem can be generalized to the case where $f$
+        is not necessarily continuous.
+      </p>
+
+      <div class="example">
+        Let's evalue the integral $\iint_R \left(x^2+y^2\right)dA,$
+        where $R = \left\{ (x,y)~|~0\leq x\leq 2, 0\leq y\leq 1 \right\}.$
+
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_R \left(x^2+y^2\right)dA &amp;=&amp; \int_{x=0}^{x=2} \left[ \int_{y=0}^{y=1}
+          \left(x^2+y^2\right)dy \right]dx \\
+          &amp;=&amp; \displaystyle \int_0^2 \left[ \left( x^2 y +
+          \frac{y^3}{3} \right) \bigg|_{y=0}^{y=1} \right] dx \\
+          &amp;=&amp; \int_0^2 \left[ x^2 (1) + \frac{(1)^3}{3} -
+          \left(x^2 (0) + x^2 \frac{(0)^3}{3}\right) \right]dx\\
+          &amp;=&amp; \int_0^2 \left( x^2+\frac{1}{3} \right) dx \\
+          &amp;=&amp; \left( \frac{x^3}{3}+\frac{1}{3}x
+          \right)\Bigg|_{x=0}^{x=2} \\
+          &amp;=&amp; \frac{10}{3}.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          On the other hand
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_R \left(x^2+y^2\right)dA &amp;=&amp; \int_{y=0}^{y=1} \left[ \int_{x=0}^{x=2}
+          \left(x^2+y^2\right)dx \right]dy \\
+          &amp;=&amp; \int_0^1 \left[ \left( \frac{x^3}{3} +
+          y^2x \right) \bigg|_{x=0}^{x=2} \right] dy \\
+          &amp;=&amp; \int_0^1 \left[ \frac{(2)^3}{3} + y^2(2) -
+          \left(\frac{(0)^3}{3} + y^2(0)\right) \right]dy \\
+          &amp;=&amp; \int_0^1 \left( \frac{8}{3} + 2y^2 \right) dy \\
+          &amp;=&amp; \left( \frac{8}{3}y + 2\frac{y^3}{3}
+          \right)\Bigg|_{y=0}^{y=1} \\
+          &amp;=&amp; \frac{10}{3}.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          In this case we compute the volume of the solid shown in the applet below:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-24-2: Example" src="https://www.geogebra.org/material/iframe/id/zt44e29t/width/524/height/430/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="524px" height="430px" style="border: 0px">
+          </iframe>
+        </div>
+      </div>
+
+      <p>
+        In the special case where $f(x,y),$ can be factored as
+        the product of a function of $x$ only
+        and a function of $y$ only, the double integral of $f$
+        can be written in a particularly simple
+        form. That is, suppose that $f(x,y) = g(x)h(y)$ and
+        $R= [a,b]\times[c,d].$ Then
+        Fubini's Theorem gives
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \iint_R f(x,y)~ dA &amp;=&amp; \int_c^d \int_a^b g(x)h(y)~dx~dy \\
+        &amp;=&amp; \int_c^d\left[\int_a^bg(x)h(y)~dx\right]dy.
+        \end{eqnarray*}
+      </div>
+      <p>
+        In the inner integral, $y$ is a constant, so $h(y)$ is a constant and we can write
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \int_c^d\left[\int_a^bg(x)h(y)~dx\right]dy &amp;= &amp; \int_c^d\left[h(y) \left( \int_{a}^{b}g(x)~dx \right)
+        \right]dy\\
+        &amp;=&amp; \int_a^b g(x)~dx \int_{c}^{d} h(y)~dy.
+        \end{eqnarray*}
+      </div>
+      <p>
+        since $\int_a^b g(x)~dx$ is a constant. Hence, if $f$ can be
+        written as the product of two integrals:
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \iint_R f(x,y)~ dA &amp;=&amp; \int_a^b g(x)~dx \int_{c}^{d} h(y)~dy.
+        \end{eqnarray*}
+      </div>
+
+      <div class="example">
+        Evaluate $\iint_R \sin x \cos y~dA$
+        where $ R = \left[ 0, \dfrac{\pi}{2} \right]\times \left[ 0,
+        \dfrac{\pi}{2} \right].$
+
+        <p>
+        </p><div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_R \sin x \cos y~dA &amp;=&amp; \left(\int_{x=0}^{x=\pi/2} \sin x
+          ~dx\right) \left( \int_{y=0}^{y=\pi/2} \cos y~dy \right) \\
+          &amp;=&amp; \bigg( -\cos x\bigg|_{x=0}^{x=\pi/2} \bigg) \bigg( \sin y \bigg|_{y=0}^{y=\pi/2} \bigg) \\
+          &amp;=&amp; 1.
+          \end{eqnarray*}
+        </div>
+        <p></p>
+      </div>
+
+
+    </div>
+
+    <br>
+    <hr>
+
+
+    <div id="section-4">
+      <h2>Double Integrals Over General Regions</h2>
+
+      <p>
+        In this section, we have two main goals: first,
+        to define the double integral of a function $f(x, y)$ over
+        regions $D$ that are more general than rectangles;
+        second, to develop a method for evaluating this
+        type of
+        integral. To achieve this, we will introduce two
+        specific types of subsets in the $xy$-plane and then extend the
+        concept of the double integral to these regions.
+      </p>
+
+      <p>
+        To define a double integral over a non-rectangular region $D$,
+        we consider a rectangular $R$ which encloses $D$ and define
+      </p>
+      <div class="eqwrapper">
+        \[
+        F(x,y) = \left\{ \begin{array}{rl} f(x,y) &amp; \text{if }(x,y)\in
+        D\\ 0, &amp;\text{if }(x,y)\in R \text{ but } \notin D \end{array}
+        \right.
+        \]
+      </div>
+      <p>
+        Then we can define the double integral of $f(x,y)$ over $D$ by
+        \[ \iint_D f(x,y) dA= \iint_R F(x,y)dA \]
+      </p>
+      <ol>
+        <li>
+          Chop $R$ into subrectangles,
+        </li>
+        <li>
+          Compute $F(x^*,y^*)\Delta A$ for each rectangle contained in
+          $R,$
+        </li>
+        <li>
+          Add up the contributions from all subrectangles,
+          and
+        </li>
+        <li>
+          Take a limit as we chop $R$ into smaller and smaller pieces.
+        </li>
+      </ol>
+
+      <p>
+        Then
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \iint_D f(x,y) ~dA &amp; = &amp; \iint_R F(x,y)~dA\\
+        &amp;=&amp; \lim_{\Delta A\to 0} \sum_{\text{subrectangles in }R}F\left(x^*,y^*\right)\Delta A \\
+        &amp;=&amp; \lim_{\Delta A\to 0} \sum_{\text{subrectangles in }D}f\left(x^*,y^*\right)\Delta A
+        \end{eqnarray*}
+      </div>
+      <p>
+        However, this does not really tell us how to compute the double
+        integral over $D.$ 😥
+      </p>
+
+      <p>
+        So we need to consider an alternative way of
+        calculating the volume below a surface above a rectangle $R,$
+        which can be easily generalized to compute double integral over
+        a general region.
+        Here we need to introduce two types of plane regions.
+      </p>
+
+      <p>
+        A plane region $D$ is of <strong>type I</strong> if it lies between
+        the graph of two continuous functions of $x.$
+        That is
+        $$D=\left\{ (x,y) ~|~ a \leq x\leq b, g_1(x) \leq y \leq g_2(x) \right\}.$$
+      </p>
+      <p>
+        In practice, to evaluate $\iint_D f(x,y)dA$ where $D$ is a region
+        of <strong>type I</strong> we have
+        \[
+        \iint_D f(x,y)~dA = \int_a^b \int_{g_1(x)}^{g_2(x)} f(x,y) ~dy~dx
+        \]
+      </p>
+
+      <figure>
+        <img style="width: 50%; 
+						  display: block;
+						  margin-left: auto;
+						  margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-1-type-Ia.svg">
+        <figcaption>
+          Type I regions are bounded by two
+          constant values
+          of $x$ and two functions of $x.$
+        </figcaption>
+      </figure>
+
+      <div class="figure-container">
+        <figure>
+          <img style="width:100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-1-type-Ib.svg">
+          <figcaption>
+            Another type I region.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img style="width:100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-1-type-Ic.svg">
+          <figcaption>
+            Also a type I region.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="example">
+        Find $ \iint_D \left(4x+10y\right)dA$ where $D$ is
+        the region between the parabola $y=x^2$ and the line $y=x+2.$
+
+        <p>
+          You can visualize the region and the solid in the following applet:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter 25-1-1: Example" src="https://www.geogebra.org/material/iframe/id/acsndanr/width/487/height/429/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="487px" height="429px" style="border:0px;" allowfullscreen=""> </iframe>
+        </div>
+
+        <p>
+          This is a type I region with $x^2 \leq y \leq x+2.$
+          We need to find $a$ and $b$ by solving
+          \[
+          \left\{\begin{array}{ll}
+          y=x^2\\
+          y=x+2
+          \end{array}\right.
+          \]
+          for $x$.
+        </p>
+        <p>
+          Here we have $x^2=x+2$ $\Ra x = -1, x = 2$
+          $\Ra a = -1, b = 2.$
+        </p>
+        <p>
+          Then $D= \left\{ (x,y) ~|~ -1\leq x\leq 2, ~x^2\leq y\leq x+2\right\}.$
+        </p>
+
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_D \left(4x+10y\right)dA &amp;=&amp; \int_{x=-1}^{x=2} \left[ \int_{y=x^2}^{y=x+2} \left(4x+10y\right)dy
+          \right]dx \\
+          &amp;=&amp; \int_{x=-1}^{x=2} \left[ \left( 4xy + 10 \frac{y^2}{2}\right)\bigg|_{y=x^2}^{y=x+2} \right] dx \\
+          &amp;=&amp; \int_{x=-1}^{x=2} \left[
+          4x(x+2) + 5 (x+2)^2 -\left( 4x\left(x^2\right) + 5 \left(x^2\right)^2 \right)
+          \right]dx \\
+          &amp;=&amp; \int_{x=-1}^{x=2} \left(
+          -5 x^4 - 4 x^3 + 9 x^2 + 28 x + 20
+          \right) dx \\
+          &amp;=&amp; \left( -x^5 - x^4 + 3 x^3 + 14 x^2 + 20
+          x\right)\Bigg|_{x=-1}^{x=2} \\
+          &amp;=&amp; 81.
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+      <p>
+        A plane region is of type II if it can be expressed by
+        $$D=\left\{ (x,y) ~|~ c \leq y\leq d, h_1(y) \leq x \leq h_2(y) \right\}.$$
+      </p>
+
+      <p>
+        In practice, to evaluate $\iint_D f(x,y)dA$ where $D$ is a region
+        of type II we have
+        \[
+        \iint_D f(x,y)dA = \int_c^d \int_{h_1(y)}^{h_2(y)} f(x,y) ~dx~dy
+        \]
+      </p>
+
+      <figure>
+        <img style="width: 50%; 
+						  display: block;
+						  margin-left: auto;
+						  margin-right: auto;" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-2-type-IIa.svg">
+        <figcaption>
+          Type II regions are bounded by two
+          constant values
+          of $y$ and two functions of $y.$
+        </figcaption>
+      </figure>
+
+      <div class="figure-container">
+        <figure>
+          <img style="width:100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-2-type-IIb.svg">
+          <figcaption>
+            Another type II region.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img style="width:100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-25/chapter-25-2-type-IIc.svg">
+          <figcaption>
+            Also a type II region.
+          </figcaption>
+        </figure>
+      </div>
+
+
+      <div class="example">
+        Find $ \iint_D xy ~dA$ where $D$
+        is the region between the line $y=x-1$ and the parabola
+        $y^2=2x+6.$
+
+        <p>
+          You can visualize the region and the solid in the following applet:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-25-2-1: Example" src="https://www.geogebra.org/material/iframe/id/bcyc4saj/width/473/height/421/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="473px" height="421px" style="border:0px;" allowfullscreen=""> </iframe>
+        </div>
+
+        <p>
+          This is a type II region. We know that $y=x-1$ and $y^2=2x+6.$
+          So $x=y+1$ and $x=\frac{1}{2}y^2-3.$
+          Then $\frac{1}{2}y^2-3\leq x\leq y+1.$
+        </p>
+
+        <p>
+          We need to find $c$ and $d$ by solving
+          \[
+          \left\{\begin{array}{ll}
+          x=\frac{1}{2}y^2-3\\
+          x=y+1
+          \end{array}\right.
+          \]
+          for $y$.
+          Here we have $\frac{1}{2}y^2-3=y+1$
+          $\Ra y = -2, y = 4$
+          $\Ra c = -2, d = 4.$
+        </p>
+        <p>
+          Then
+          $D= \left\{ (x,y) ~|~ -2\leq y\leq 4, ~\frac{1}{2}y^2-3\leq x\leq y+1\right\}.$
+        </p>
+
+        <p>
+          Thus
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_D xy~dA &amp;=&amp; \int_{y=-2}^{y=4} \left[ \int_{x=\frac{1}{2}y^2-3}^{x=y+1} xy~ dx \right]dy \\
+          &amp;=&amp; \int_{y=-2}^{y=4} \left[ y~ \frac{x^2}{2} \bigg|_{x=\frac{1}{2}y^2-3}^{x=y+1} \right] dy \\
+          &amp;=&amp; \int_{y=-2}^{y=4} \left[ y~ \frac{(y+1)^2}{2} - y~ \frac{\left(\frac{1}{2}y^2-3\right)^2}{2} \right]dy \\
+          &amp;=&amp; \int_{y=-2}^{y=4} \left(
+          -\frac{y^5}{8} + 2 y^3 + y^2 - 4 y
+          \right) dy \\
+          &amp;=&amp; \left( -\frac{y^6}{48} + \frac{y^4}{2} + \frac{y^3}{3} - 2 y^2
+          \right)\Bigg|_{y=-2}^{y=4} \\
+          &amp;=&amp; 36.
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+      <p>
+        In the following example, we see how it is sometimes
+        necessary to change the order of integration in
+        order to evaluate the integral.
+      </p>
+
+      <div class="example">
+        Find $ \int_0^1 \int_x^1 \sin \left(y^2\right)dy~dx$
+
+        <p>
+          You can visualize the region and the solid in the following applet:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-26-2: Example" src="https://www.geogebra.org/material/iframe/id/cwcedwtw/width/489/height/431/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="489px" height="431px" style="border:0px;" allowfullscreen=""> </iframe>
+        </div>
+
+        <p>
+          For $ \int \sin \left(y^2\right)dy,$ there is no
+          anti-derivative in terms of elementary functions. 😥
+        </p>
+        <p>
+          Then we <strong>must</strong> change order of integration.
+          That is,
+          as a type II integral.
+          In that case, we can easily compute the integral! 😃
+        </p>
+
+        <div>
+          \begin{eqnarray*}
+          \int_\limits{x=0}^{x=1} \left[ \int_{y=x}^{y=1} \sin \left(y^2\right) dy \right]dx &amp;=&amp; \int_\limits{y=0}^{y=1}
+          \left[
+          \int_{x=0}^{x=y} \sin \left(y^2\right) dx \right]dy \\
+          &amp;=&amp; \int_\limits{y=0}^{y=1} \bigg[
+          \sin \left(y^2\right) x \bigg|_{x=0}^{x=y}
+          \bigg]dy \\
+          &amp;=&amp; \int_\limits{y=0}^{y=1}
+          y\sin \left(y^2\right) dy \\
+          &amp;=&amp; \left(
+          -\frac{1}{2} \cos \left(y^2\right)
+          \right)\Bigg|_{y=0}^{y=1} \\
+          &amp;=&amp; \frac{1}{2} \big( 1 - \cos (1) \big).
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+
 
     </div>
 
@@ -411,13 +975,13 @@
   <!-- Ends main content -->
 
 
-  <!-- Extra scripts for applets -->
+  <!-- Extra scripts for applets 
   <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
-  
+
   <script>
 
-    
+
     let paramsIntPath = {
       "width": 617,
       "height": 452,
@@ -428,13 +992,13 @@
       "enableShiftDragZoom": true,
       "showResetIcon": true
     };
-    
+
     let appletIntPath = new GGBApplet(paramsIntPath, true);
     window.addEventListener("load", () => {
-      
+
       appletIntPath.inject('ggb-element-int-path');
     });
-  </script>
+  </script>-->
 
 </section>
     </div>
