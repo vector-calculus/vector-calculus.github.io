@@ -919,6 +919,121 @@
       </div>
 
       <p>
+        It is often possible to represent a type I region as a union of
+        type II regions, or a type II region as a union of type I
+        regions. Why would we want to do that? In some cases,
+        it may only be possible to integrate a function one
+        way but not the other.
+      </p>
+
+      <div class="example">
+        Find the volume under the paraboloid $z=x^2+y^2$
+        above the region $D,$ where $D$ is bounded
+        by $y=x^2$ and $y=2x.$
+
+        <p>
+          You can visualize the region and the solid in the following applet:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-26-1: Find volume" src="https://www.geogebra.org/material/iframe/id/nadyrzgf/width/489/height/431/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="489px" height="431px" style="border:0px;" allowfullscreen=""> </iframe>
+        </div>
+
+        <p>
+          We are going to do the problem twice, first by taking
+          $D$ to be a type I region, then by taking
+          $D$ to be a type II.
+        </p>
+
+        <p>
+          As a type I region we consider $x^2 \leq y \leq 2x.$
+          We need to find $a$ and $b$ by solving
+          \[
+          \left\{\begin{array}{ll}
+          y=x^2\\
+          y=2x
+          \end{array}\right.
+          \]
+          for $x$.
+          Here we have $x^2=2x$
+          $\Ra x = 0, x = 2$ 
+          $\Ra a = 0, b = 2.$
+          Then
+        </p>
+        <div class="eqwrapper">
+          \[
+          D= \left\{ (x,y) ~|~ 0\leq x\leq 2, ~x^2\leq y\leq 2x\right\}.
+          \]
+        </div>
+        <p>Thus</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_D \left(x^2+y^2\right)dA &amp;=&amp; \int_{x=0}^{x=2} \left[\int_{y=x^2}^{y=2x} \left(x^2+y^2\right)dy \right]dx
+          \\
+          &amp;=&amp; \int_{x=0}^{x=2} \left[ \left( x^2 y + \frac{y^3}{3} \right)\bigg|_{y=x^2}^{y=2x} \right] dx \\
+          &amp;=&amp; \int_{x=0}^{x=2} \left[ x^2 (2x) + \frac{(2x)^3}{3} -\left( x^2
+          \left(x^2\right)+\frac{\left(x^2\right)^3}{3}\right)\right]dx \\
+          &amp;=&amp; \int_{x=0}^{x=2} \left( -\frac{x^6}{3} - x^4 + \frac{14 x^3}{3} \right) dx \\
+          &amp;=&amp; \left( \frac{7 x^4}{6} - \frac{x^5}{5} - \frac{x^7}{21} \right)\Bigg|_{x=0}^{x=2}\\
+          &amp;=&amp; \frac{216}{35}.
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          Now we consider the problem as a type II region.
+          We know that $y=2x$ and $y=x^2$.
+          So $x= \frac{y}{2}$ and $x=\sqrt{y}$.
+          Then $\frac{y}{2} \leq x\leq \sqrt{y}$.
+        </p>
+        <p>
+          We need to find $c$ and $d$ by solving
+          \[
+          \left\{\begin{array}{ll}
+          x=\sqrt{y}\\
+          x=\dfrac{y}{2}
+          \end{array}\right.
+          \]
+          for $y$.
+          Here we have $\sqrt{y}=\frac{y}{2}$
+          $\Ra y = 0, y = 4$
+          $\Ra c = 0, d = 4.$
+          Then 
+        </p>
+        <div class="eqwrapper">
+          \[
+          D= \left\{ (x,y) ~|~ 0\leq y\leq 4, ~ \frac{y}{2} \leq x\leq \sqrt{y} \right\}.
+          \]
+        </div>
+        <p>
+          In this case, we should get the same result as before:
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iint_D \left(x^2+y^2\right)dA &amp;=&amp; \int_\limits{y=0}^{y=4} \left[\int_{x=\frac{y}{2}}^{x=\sqrt{y}}
+          \left(x^2+y^2\right) dx \right]dy\\
+          &amp;=&amp; \int_\limits{y=0}^{y=4} \left[ \left( \frac{x^3}{3}+y^2x \right) \bigg|_{x=\frac{y}{2}}^{x=\sqrt{y}}
+          \right] dy \\
+          &amp;=&amp; \int_\limits{y=0}^{y=4} \left[\frac{\left(\sqrt{y}\right)^3}{3}+y^2\left(\sqrt{y}\right) -
+          \left(\frac{\left(\frac{y}{2}\right)^3}{3}+y^2\left(\frac{y}{2}\right) \right) \right]dy \\
+          &amp;=&amp; \int_\limits{y=0}^{y=4} \left( y^{5/2} + \frac{y^{3/2}}{3} - 13 \frac{y^3}{24}\right) dy \\
+          &amp;=&amp; \left(\frac{2 y^{5/2}}{15} + \frac{2 y^{7/2}}{7} - \frac{13 y^4}{96} \right)\Bigg|_{y=0}^{y=4}\\
+          &amp;=&amp; \frac{216}{35}.
+          \end{eqnarray*}
+        </div>
+        
+      </div>
+
+      <p>
+        One thing to observe fromthe previous example is that when treating the
+        double integral as a type II region, the calculations
+        become slightly more complex.
+        If you encounter this while computing a double integral,
+        a useful strategy is to switch the region from type
+        I to type II or vice versa,
+        depending on your initial setup.
+      </p>
+
+      <p>
         In the following example, we see how it is sometimes
         necessary to change the order of integration in
         order to evaluate the integral.
