@@ -96,6 +96,7 @@
             <a class="w3-bar-item w3-button" href="#section-4"> Double Integrals Over
     General Regions</a>
             <a class="w3-bar-item w3-button" href="#section-5"> Doble Integrals in Polar Coordinates</a>
+            <a class="w3-bar-item w3-button" href="#section-6"> Triple Integrals</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="applications-of-integration.html">6. Applications of
@@ -1062,7 +1063,7 @@
           In that case, we can easily compute the integral! 😃
         </p>
 
-        <div>
+        <div class="eqwrapper">
           \begin{eqnarray*}
           \int_\limits{x=0}^{x=1} \left[ \int_{y=x}^{y=1} \sin \left(y^2\right) dy \right]dx &amp;=&amp; \int_\limits{y=0}^{y=1}
           \left[
@@ -1081,6 +1082,37 @@
 
       </div>
 
+      <h3>Properties of double integrals</h3>
+
+      <p>
+        For rectangular regions $R$ the first
+        three properties can be easily proved. For
+        general regions the properties follow from
+        <strong>Definition 1</strong>.
+      </p>
+
+      <ol>
+        <li>
+          $\displaystyle \iint_R \left(\,f\pm g\right)dA = \iint_Rf~dA \pm
+          \iint_R g~dA$
+        </li>
+        <li>
+          $\displaystyle \iint_R c~f~dA = c\iint_Rf~dA$
+        </li>
+        <li>
+          If $f(x,y)\geq g(x,y)$ for all $(x,y)\in R$ then
+          <div class="eqwrapper">
+            $$\displaystyle \iint_R f~dA \geq \iint_Rg~dA$$
+          </div>
+        </li>
+        <li>
+          If $R= R_1 \cup R_2,$ where $R_1$ and $R_2$ are regioins that don't
+          overlap except perhaps on their boundaries, then
+          <div class="eqwrapper">
+            $$\displaystyle \iint_R f~dA = \iint_{R_1}f~dA + \iint_{R_2}f~dA$$
+          </div>
+        </li>
+      </ol>
 
 
     </div>
@@ -1264,8 +1296,8 @@
 
 
       <div class="example">
-        Find the volume of the solid that lies under 
-        the paraboloid $z=x^2+y^2$ and inside the cylinder 
+        Find the volume of the solid that lies under
+        the paraboloid $z=x^2+y^2$ and inside the cylinder
         $x^2+y^2=2x,$ for $z\geq 0.$
 
         <p>
@@ -1278,80 +1310,302 @@
         </div>
 
         <p>First, we need to find the boundary.
-							If we complete the square in $x^2+y^2=2x,$ we obtain
-							\[
-							(x-1)^2+y^2=1.
-							\]
-						</p>
-						<p>
-							This is the cylinder centred at $(1,0)$ with radius $1.$
-								In this example the domain is defined by the expression
-								\[
-								x^2+y^2=2x.
-								\]
-						</p>
-						<p>In this case, it is simpler to use polar coordinates.</p>
+          If we complete the square in $x^2+y^2=2x,$ we obtain
+          \[
+          (x-1)^2+y^2=1.
+          \]
+        </p>
+        <p>
+          This is the cylinder centred at $(1,0)$ with radius $1.$
+          In this example the domain is defined by the expression
+          \[
+          x^2+y^2=2x.
+          \]
+        </p>
+        <p>In this case, it is simpler to use polar coordinates.</p>
 
-            <p>
-              Substituing the values $x= r\cos\theta$ and $y=r\sin \theta$ in
-							$$x^2+y^2=2x,$$
-								we get $r^2\cos ^2\theta +r^2\sin ^2\theta = 2r \cos \theta.$
-								That is
-								
-						</p>
-            <div class="eqwrapper">
-              $$ r^2 = 2r \cos \theta
-								\Rightarrow r = 2 \cos \theta \qquad (r\neq 0).$$
-            </div>
+        <p>
+          Substituing the values $x= r\cos\theta$ and $y=r\sin \theta$ in
+          $$x^2+y^2=2x,$$
+          we get $r^2\cos ^2\theta +r^2\sin ^2\theta = 2r \cos \theta.$
+          That is
 
-						<p>
-							Then
-						</p>
-            <div class="eqwrapper">
-              $$
-              D = \left\{ \left( r, \theta \right) ~|~ 0\leq r \leq 2\cos \theta, -\frac{\pi}{2} \leq \theta
-							\leq \frac{\pi}{2} \right\}.
-              $$
-            </div>
+        </p>
+        <div class="eqwrapper">
+          $$ r^2 = 2r \cos \theta
+          \Rightarrow r = 2 \cos \theta \qquad (r\neq 0).$$
+        </div>
 
-            <p>Thus we we have</p>
-            <div class="eqwrapper">
-             \begin{eqnarray*}
-             V &amp;=&amp; \iint_{D} \left(x^2+y^2 \right)dA \\
-             &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta  = \frac{\pi}{2}} \int_{r=0}^{r=2\cos \theta} r^3 ~dr~d\theta \\
-             &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} \left[ \frac{r^4}{4} \bigg|_{r=0}^{r=2\cos \theta} \right] d\theta \\
-             &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} 4\cos^4 \theta~ d\theta 
-             \end{eqnarray*}
-            </div>
-            <p>
-              Here we are going to need the following trigonometric identity:
-              
-            </p>
-            <div class="eqwrapper">
-              \[
-              \cos^2 B = \frac{1}{2}\big(1+\cos \left(2B\right)\big),
-              \]
-            </div>
-            <p>which implies</p>
-            <div class="eqwrapper">
-              \begin{eqnarray*}
-              4\cos^4 B &amp;=&amp; \big(1+\cos \left(2B\right)\big)^2 \\
-              &amp;=&amp; \frac{3}{2}+2\cos \left(2B\right) + \frac{1}{2}\cos \left(4B\right).
-             \end{eqnarray*}
-            </div>
-            <p>Therefore</p>
-            <div class="eqwrapper">
-             \begin{eqnarray*}
-             V &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} 4\cos^4 \theta~ d\theta \\
-             &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} \left( \frac{3}{2} + 2 \cos \left(2 \theta\right) + \frac{1}{2}  \cos \left(4 \theta\right) \right) d\theta \\
-             &amp;=&amp; \left[\frac{3}{2}\theta +\sin\left(2 \theta\right)+\frac{1}{8}\sin\left(4 \theta\right)\right]  \Bigg|_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}} \\
-             &amp;=&amp; \frac{3\pi}{2} .
-             \end{eqnarray*}
-            </div>
+        <p>
+          Then
+        </p>
+        <div class="eqwrapper">
+          $$
+          D = \left\{ \left( r, \theta \right) ~|~ 0\leq r \leq 2\cos \theta, -\frac{\pi}{2} \leq \theta
+          \leq \frac{\pi}{2} \right\}.
+          $$
+        </div>
+
+        <p>Thus we we have</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          V &amp;=&amp; \iint_{D} \left(x^2+y^2 \right)dA \\
+          &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} \int_{r=0}^{r=2\cos \theta} r^3 ~dr~d\theta \\
+          &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} \left[ \frac{r^4}{4} \bigg|_{r=0}^{r=2\cos \theta}
+          \right] d\theta \\
+          &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} 4\cos^4 \theta~ d\theta
+          \end{eqnarray*}
+        </div>
+        <p>
+          Here we are going to need the following trigonometric identity:
+
+        </p>
+        <div class="eqwrapper">
+          \[
+          \cos^2 B = \frac{1}{2}\big(1+\cos \left(2B\right)\big),
+          \]
+        </div>
+        <p>which implies</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          4\cos^4 B &amp;=&amp; \big(1+\cos \left(2B\right)\big)^2 \\
+          &amp;=&amp; \frac{3}{2}+2\cos \left(2B\right) + \frac{1}{2}\cos \left(4B\right).
+          \end{eqnarray*}
+        </div>
+        <p>Therefore</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          V &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} 4\cos^4 \theta~ d\theta \\
+          &amp;=&amp; \int_{\theta=-\frac{\pi}{2}}^{\theta = \frac{\pi}{2}} \left( \frac{3}{2} + 2 \cos \left(2 \theta\right) +
+          \frac{1}{2} \cos \left(4 \theta\right) \right) d\theta \\
+          &amp;=&amp; \left[\frac{3}{2}\theta +\sin\left(2 \theta\right)+\frac{1}{8}\sin\left(4 \theta\right)\right]
+          \Bigg|_{\theta=-\frac{\pi}{2}}^{\theta=\frac{\pi}{2}} \\
+          &amp;=&amp; \frac{3\pi}{2} .
+          \end{eqnarray*}
+        </div>
 
 
 
       </div>
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+
+    <div id="section-6">
+      <h2>Triple Integrals</h2>
+
+      <p>
+        Similarly to how we defined single integrals for functions of
+        one variable and double integrals
+        for functions of two variables, we can define triple integrals
+        for functions of three variables.
+        Let's first consider the simplest case where the function
+        $f(x,y,z)$ is defined on a rectangular box.
+      </p>
+      <div class="eqwrapper">
+        \[
+        B = \left\{(x,y,z)~|~ a \leq x \leq b, ~ c\leq y \leq d,~ r\leq z \leq s\right\}.
+        \]
+      </div>
+
+      <p>
+        First we divide $B$ into sub-boxes.
+        We do this by dividing the interval $[a,b],$ into
+        $l$ subintervals $\left[x_i, x_{i+1}\right]$ of equal width $\Delta x,$ dividing
+        $[c,d]$ into $m$ subintervals of width $\Delta y,$
+        and dividing $[r,x]$ into $n$ subintervals of width $\Delta z.$
+        The planes through the endpoints of
+        these subintervals parallel to the coordinate planes
+        divide the box $B$ into lmn sub-boxes
+      </p>
+      <div class="eqwrapper">
+        \[
+        B_{ijk} = \left[x_i, x_{i+1}\right]\times \left[y_i, y_{i+1}\right] \times \left[z_i, z_{i+1}\right]
+        \]
+      </div>
+      <p>Each sub-box has volume $\Delta V = \Delta x \Delta y \Delta z.$</p>
+
+      <p>
+        Then we form the triple Riemann sum
+      </p>
+      <div class="eqwrapper">
+        \[
+        \sum_{i=0}^{l-1}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}f\left(x_{ijk}^*, y_{ijk}^*, z_{ijk}^*\right)\Delta V
+        \]
+      </div>
+      <p>
+        where $\left(x_{ijk}^*, y_{ijk}^*, z_{ijk}^*\right)\in B_{ijk}.$
+        Similarly to the definition of a double integral, we defined the
+        triple integral as the limit of the triple Riemann sums:
+      </p>
+
+      <div class="definition">
+        The <strong>triple integral</strong> of $f(x,y,z)$ over the box $B$ is
+        <div class="eqwrapper">
+          \[
+          \iiint_B f(x,y,z)~dV = \lim_{i,m,n\to \infty}
+          \sum_{i=0}^{l-1}\sum_{j=0}^{m-1}\sum_{k=0}^{n-1}f\left(x_{ijk}^*,
+          y_{ijk}^*, z_{ijk}^*\right)\Delta V
+          \]
+        </div>
+        <p>
+          if the limit exists.
+        </p>
+
+      </div>
+
+      <p>
+        Just as for double integrals, the practical method
+        for evaluating triple integrals is to
+        express them as iterated integrals as follows.
+      </p>
+
+      <div class="theorem">
+        <span style="font-style:normal; font-weight: bold;">
+          (Fubini's Theorem for Triple integrals)
+        </span>
+        If $f(x,y,z)$ is continuous on the rectangular
+        box $B= [a,b]\times [c,d]\times[r,s],$
+        then any iterated integral that exists is equal to the
+        triple integral; that is,
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \iiint_B f(x,y,z)~dV &amp;=&amp; \int_r^s \int_c^d \int_a^b f(x,y,z) ~dx~dy~dz \\
+          &amp;=&amp; \int_r^s \int_a^b \int_c^d f(x,y,z) ~dy~dx~dz \\
+          &amp;=&amp; \int_a^b \int_r^s \int_c^d f(x,y,z) ~dy~dz~dx \\
+          \end{eqnarray*}
+        </div>
+        <p>
+          and so on.
+        </p>
+      </div>
+
+      <p>
+        The first iterated integral on the right side of
+        Fubini's Theorem means that we integrate
+        first with respect to $x$ (keeping $y$ and $z$ fixed), then we
+        integrate with respect to $y$ (keeping
+        $z$ fixed), and finally we integrate with respect to $z.$
+        There are six possible orders altogether,
+        all of which give the same value.
+      </p>
+
+      <p>
+        Now we define the triple integral over a general
+        bounded region $R$ in the three-dimensional space
+        (a solid) similar to the procedure
+        that we used for double integrals.
+      </p>
+
+      <p>
+        A solid region $R$ is said to be of <strong>type 1</strong> if it lies
+        between the graphs of two continuous functions of $x$ and $y,$ that is,
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = \left\{(x,y,z)~|~ (x,y)\in D,~ r(x,y)leq z \leq s(x,y) \right\}
+        \]
+      </div>
+      <p>
+        where $D$ is the projection of $R$ onto the $xy$-plane.
+        In this case we the
+        upper boundary of the solid $R$ is the surface with
+        equation $z=s(x,y)$ while the lower
+        boundary is the surface $z=r(x,y).$
+      </p>
+
+      <p>
+        Thus we have that if $R$ is a type 1 region, then
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{type-1}
+        \iiint_R f(x,y,z)~dV = \iint_D\left[\int_{r(x,y)}^{s(x,y)}f(x,y,z)\right]dA
+        \end{eqnarray}
+      </div>
+      <p>
+        The inner integral on the right
+        side of the previous equation means that if $x$ and $y$ are held
+        fixed, and therefore $r(x,y)$ and $s(x,y)$ are regarded
+        as constants, while $f(x,y,z)$ is
+        integrated with respect to $z.$
+      </p>
+
+      <p>
+        In particular, if the projection $D$ of $R$ onto
+        the $xy$-plane is a type I plane region, then
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = \left\{(x,y,z)~|~ a\leq x\leq b,~ p(x)\leq y \leq q(x),~ r(x,y)\leq z \leq s(x,y) \right\}
+        \]
+      </div>
+      <p>and so</p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{type-1-type-I}
+        \iiint_R f(x,y,z)~dV = \int_a^b \int_{p(x)}^{q(x)} \int_{r(x,y)}^{s(x,y)} f(x,y,z)~dz ~dy ~dx.
+        \end{eqnarray}
+      </div>
+      <p>
+        If, on the other hand, $D$ is a type II plane region, then
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = \left\{(x,y,z)~|~ c\leq y\leq d,~ m(y)\leq x \leq n(y),~ r(x,y)\leq z \leq s(x,y) \right\}
+        \]
+      </div>
+      <p>and in this case we have</p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{type-1-type-II}
+        \iiint_R f(x,y,z)~dV = \int_c^d \int_{m(y)}^{n(y)} \int_{r(x,y)}^{s(x,y)} f(x,y,z)~dz ~dx ~dy.
+        \end{eqnarray}
+      </div>
+
+      <p>
+        Now, a solid region $R$ is of <strong>type 2</strong> if it is of the form
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = \left\{(x,y,z)~|~ (y,z)\in D,~ r(y,z)leq z \leq s(y,z) \right\}
+        \]
+      </div>
+      <p>
+        where, in this case, $D$ is the projection of $R$ onto the $yz$-plane.
+        Then we have
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{type-2}
+        \iiint_R f(x,y,z)~dV = \iint_D\left[\int_{r(y,z)}^{s(y,z)}f(x,y,z)\right]dA
+        \end{eqnarray}
+      </div>
+
+      <p>
+        Finally, a solid region $R$ is of <strong>type 2</strong> if it is of the form
+      </p>
+      <div class="eqwrapper">
+        \[
+        R = \left\{(x,y,z)~|~ (x,z)\in D,~ r(x,z)leq z \leq s(x,z) \right\}
+        \]
+      </div>
+      <p>
+        where, in this case, $D$ is the projection of $R$ onto the $xz$-plane.
+        For this type of region we have
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{type-3}
+        \iiint_R f(x,y,z)~dV = \iint_D\left[\int_{r(x,z)}^{s(x,z)}f(x,y,z)\right]dA
+        \end{eqnarray}
+      </div>
+
+      <p>
+        In each of Equations (\ref{type-1}) and (\ref{type-3}) there may be two
+        possible expressions for the integral
+        depending on whether $D$ is a type I or type II plane
+        region, similar to to Equations (\ref{type-1-type-I}) and (\ref{type-1-type-II}).
+      </p>
 
     </div>
 
