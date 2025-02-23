@@ -2535,6 +2535,7 @@ https://www.w3schools.com/cssref/playdemo.php?filename=playcss_accent-color
   border-left: 5px solid #3b87f9 !important;
   padding: 8px 16px 8px 16px;
   text-align: justify;
+  font-size: 1rem;
 }
 
 .infotip #myinfo.show {
@@ -2647,13 +2648,13 @@ var(--body-color);
   }
   @page {
     margin-top: 20mm;
-    margin-right: 20mm;
+    margin-right: 15mm;
     margin-bottom: 20mm;
-    margin-left: 20mm;
+    margin-left: 15mm;
   }
   body {
     margin: 0px;
-    padding: 10px 10px 20px 50px;
+    padding: 10px 10px 20px 40px;
   }
 }
 /* The Modal (background) */
