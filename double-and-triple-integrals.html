@@ -1634,7 +1634,8 @@
         </p>
         <p>The region $R$ is bounded by $x=0,$ $y=0$ and the intersection
           of $z=0$ with $z=1-x-y,$
-          i.e., $0=1-x-y,$ or $x+y=1.$
+          i.e.,
+          $0=1-x-y,$ or $x+y=1.$
         </p>
 
         <p>This region $D_{xy}$ is of both types (I and II).
@@ -1647,11 +1648,278 @@
           &amp;=&amp; \int _{x=0}^{x=1} \int_{y=0}^{y=1-x} \left[ \int_{z=0}^{z=1-x-y}z~dz \right]dy~dx\\
           &amp;=&amp; \int _{x=0}^{x=1} \int_{y=0}^{y=1-x} \left[\frac{z^2}{2}\bigg|_{z=0}^{z=1-x-y} \right]dy~dx\\
           &amp;=&amp; \int _{x=0}^{x=1} \int_{y=0}^{y=1-x} \frac{(1-x-y)^2}{2} dy~dx\\
-          &amp;=&amp;  \int _{x=0}^{x=1} \left[ -\frac{1}{6}\left( 1-y-x \right)^3 \bigg|_{y=0}^{y=1-x} \right]dx\\
-          &amp;=&amp;  \int _{x=0}^{x=1} \frac{1}{6}\left(1-x \right)^3dx\\
+          &amp;=&amp; \int _{x=0}^{x=1} \left[ -\frac{1}{6}\left( 1-y-x \right)^3 \bigg|_{y=0}^{y=1-x} \right]dx\\
+          &amp;=&amp; \int _{x=0}^{x=1} \frac{1}{6}\left(1-x \right)^3dx\\
           &amp;=&amp; -\frac{1}{24}\left(1-x\right)^4 \Bigg|_{x=0}^{x=1} \\
           &amp;=&amp; \frac{1}{24}.
           \end{eqnarray*}
+        </div>
+
+
+      </div>
+
+
+      <div class="example">
+        Express $I= \ds\int_{0}^{1}\int_{\sqrt{x}}^{1}\int_{0}^{1-y} f(x,y,z)~dz~dy~dx$
+        in the orders $dz~dx~dy$ and $dy~dz~dx.$
+
+        <p>
+          We can write
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          I = \int_{x=0}^{x=1}\int_{y=\sqrt{x}}^{y=1}\left[ \int_{z=0}^{z=1-y} f ~dz \right]dy~dx &amp;=&amp; \iiint_{R}
+          f(x,y,z)~dz~ dy~dx
+          \end{eqnarray*}
+        </div>
+        <p>
+          where $R= \left\{(x,y,z)~|~ 0\leq x\leq 1,~ \sqrt{x}\leq y \leq 1,~ 0\leq z\leq 1-y \right\}.$
+          This description will enable us to write projection onto different planes.
+        </p>
+
+        <p>
+          First, let's express $I$
+          in the order $dz~dx~dy.$
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          I = \int_{x=0}^{x=1}\int_{y=\sqrt{x}}^{y=1}\left[ \int_{z=0}^{z=1-y} f ~dz \right]dy~dx &amp;=&amp; \iint_{D}\left[
+          \int_{z=0}^{z=1-y} f ~dz \right]dy~dx
+          \end{eqnarray*}
+        </div>
+        <p>
+          Here $D$ is the projection of the region on the plane $xy.$ Then
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          I &amp;=&amp; \iint_{D}\left[ \int_{z=0}^{z=1-y} f ~dz \right] dx~dy \\
+          &amp;=&amp; \int_{y=0}^{y=1}\int_{x=0}^{x=y^2}\left[ \int_{z=0}^{z=1-y} f ~dz \right]dx~dy
+          \end{eqnarray*}
+        </div>
+
+        <p>
+          The original integral was of type I.
+          But when we change the order $dy~dx$ to
+          $dx~dy,$ we have now a type II integral.
+        </p>
+
+        <p>
+          Now, let's express $I$ in the order $dy~dz~dx.$
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          I = \int_{x=0}^{x=1}\int_{y=\sqrt{x}}^{y=1}\left[ \int_{z=0}^{z=1-y} f ~dz \right]dy~dx
+          &amp;=&amp;\int_{x=0}^{x=1}\left[ \int_{y=\sqrt{x}}^{y=1} \int_{z=0}^{z=1-y} f ~dz~ dy\right]dx \\
+          &amp;=&amp; \int_{x=0}^{x=1}\bigg[ \int_{z=0}^{z=1-\sqrt{x}} \int_{y=\sqrt{x}}^{y=1-z} f~\bigg]dx \\
+          &amp;=&amp; \int_{x=0}^{x=1} \int_{z=0}^{z=1-\sqrt{x}}\left[ \int_{y=\sqrt{x}}^{y=1-z} f~dy \right] dz~dx \\
+          &amp;=&amp; \iint_D \left[ \int_{y=\sqrt{x}}^{y=1-z} f~dy \right] dA
+          \end{eqnarray*}
+        </div>
+        <p>
+          Here $D$ is the projection of the region on the plane $xz.$
+        </p>
+
+        <p>In any case, we have that</p>
+
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \int_{x=0}^{x=1}\int_{y=\sqrt{x}}^{y=1}\left[ \int_{z=0}^{z=1-y} f
+          ~dz
+          \right]dy~dx = \int_{x=0}^{x=1} \int_{z=0}^{z=1-\sqrt{x}}
+          \left[ \int_{y=\sqrt{x}}^{y=1-z}
+          f~dy
+          \right]
+          dz~dx
+          \end{eqnarray*}
+        </div>
+
+        <figure>
+          <img width="60%" src="https://www.dynamicmath.xyz/math2001/images/chapter-30/chapter-30-3-example-projection-xz.jpg">
+          <figcaption></figcaption>
+        </figure>
+
+        <p>
+          There are other three more possible orders in which we can integrate.
+          Below you can see all the possible combinations with their corresponding
+          projections on the $xy,$ $yz,$ and $xz$ planes.
+        </p>
+
+        <div style="text-align: center;">
+          <table style="width:100%;">
+            <tbody><tr>
+              <td style="width:20%">
+                <div style="text-align:center">
+                  <img width="100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-30/xy-proj.png">
+                </div>
+              </td>
+              <td style="width:80%;text-align:left">
+
+                <span>
+                  $ \quad \ra \displaystyle \int_0^1$
+                </span>
+                <span>
+                  $\displaystyle \int_{\sqrt{x}}^{1}$
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{1-y} $
+                </span>
+                <span>
+                  $f$
+                </span>
+                <span>
+                  $ dz$
+                </span>
+                <span>
+                  $dy$
+                </span>
+                <span>
+                  $dx$
+                </span>
+                <span>
+                  $ \,= $
+                </span>
+                <span>
+                  $\displaystyle \int_0^1 $
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{y^2} $
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{1-y}$
+                </span>
+                <span>
+                  $f$
+                </span>
+                <span>
+                  $ dz$
+                </span>
+                <span>
+                  $dx$
+                </span>
+                <span>
+                  $dy$
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td style="width:20%">
+                <div style="text-align:center">
+                  <img width="100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-30/yz-proj.png">
+                </div>
+              </td>
+              <td style="width:80%;text-align:left">
+                <span>
+                  $\quad \ra\displaystyle \int_0^1$
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{1-z}$
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{y^2}$
+                </span>
+                <span>
+                  $f$
+                </span>
+                <span>
+                  $dx$
+                </span>
+                <span>
+                  $dy$
+                </span>
+                <span">
+                  $dz$
+                  
+                  <span>
+                    $ \,= $
+                  </span>
+                  <span>
+                    $\displaystyle \int_0^1$
+                  </span>
+                  <span>
+                    $\displaystyle\int_{0}^{1-y}$
+                  </span>
+                  <span>
+                    $\displaystyle\int_{0}^{y^2}$
+                  </span>
+                  <span>
+                    $f$
+                  </span>
+                  <span>
+                    $ dx$
+                  </span>
+                  <span>
+                    $dz$
+                  </span>
+                  <span>
+                    $dy$
+                  </span>
+              </span"></td>
+            </tr>
+            <tr>
+              <td style="width:20%">
+                <div style="text-align:center">
+                  <img width="100%" src="https://www.dynamicmath.xyz/math2001/images/chapter-30/xz-proj.png">
+                </div>
+              </td>
+              <td style="width:80%;text-align:left">
+                <span>
+                  $\quad \ra\displaystyle \int_0^1$
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{1-\sqrt{x}}$
+                </span>
+                <span>
+                  $\displaystyle \int_{\sqrt{x}}^{1-z}$
+                </span>
+                <span>
+                  $f$
+                </span>
+                <span>
+                  $ dy$
+                </span>
+                <span>
+                  $dz$
+                </span>
+                <span>
+                  $dx$
+                </span>
+                <span>
+                  $ \,= $
+                </span>
+                <span>
+                  $\displaystyle \int_0^1 $
+                </span>
+                <span>
+                  $\displaystyle \int_{0}^{(1-z)^2}$
+                </span>
+                <span>
+                  $\displaystyle \int_{\sqrt{x}}^{1-z}$
+                </span>
+                <span>
+                  $f$
+                </span>
+                <span>
+                  $ dy$
+                </span>
+                <span>
+                  $dx$
+                </span>
+                <span>
+                  $dz$
+                </span>
+              </td>
+            </tr>
+
+
+          </tbody></table>
+        </div>
+
+        <p>
+          If you want, you can explore all the projections in the following applet:
+        </p>
+
+        <div style="text-align: center;">
+          <iframe loading="lazy" scrolling="no" title="Chapter-30-3: Example" src="https://www.geogebra.org/material/iframe/id/uwy9fuar/width/489/height/431/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/true" width="489px" height="431px" style="border:0px;" allowfullscreen=""> </iframe>
         </div>
 
 
