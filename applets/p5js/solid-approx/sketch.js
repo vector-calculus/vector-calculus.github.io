@@ -22,7 +22,7 @@ let slider;
 let w;
 
 let isDragging = false; // Flag to track user interaction
-let animationTime = -1; // Time variable for animation
+let animationTime = 1.5; // Time variable for animation
 
 function preload() {
     // load the shader

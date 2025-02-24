@@ -3,7 +3,7 @@
 // 08-Aug-2022
 // Link: https://www.shadertoy.com/view/NtcyRB
 // This version by Juan Carlos Ponce Campuzano
-// 05-Sep-2022
+// 24-Feb-2025
 
 // These are necessary definitions that let you graphics card know how to render the shader
 #ifdef GL_ES
@@ -114,6 +114,16 @@ mat3 calcLookAtMatrix(vec3 ro, vec3 ta, vec3 up) {
 }
 
 
+// https://iquilezles.org/articles/palettes/
+vec3 palette( in float t)
+{
+    vec3 A = vec3(0.5, 0.5, 0.5); 
+    vec3 B = vec3(0.5, 0.5, 0.5); 
+    vec3 C = vec3(0.8, 0.8, 0.5); 
+    vec3 D = vec3(0, 0.2, 0.5);
+    return A + B*cos( 6.283185*(C*t+D) );
+}
+
 void main() {
     // copy the vTexCoord
     // vTexCoord is a value that goes from 0.0 - 1.0 depending on the pixels location
@@ -132,8 +142,8 @@ void main() {
     v = v * scale;
   
     float smoothness = iParam;
-    //float smoothness = sin(u_time * .15 - PI * .5) * .5 + .5; // This creates the animation
-    float voxelSize = mix(5., .2, smoothness);
+    //float smoothness = sin(iTime * .15 - PI * .5) * .5 + .5; // This creates the animation
+    float voxelSize = mix(5., .1, smoothness);
   
     vec2 p = vec2(u, v);
   
@@ -234,6 +244,7 @@ void main() {
 
         col = model.col;
         //col = surfacePosition / 10.; // Adds color to the solid
+        col = palette( 0.05*voxelPosition.y );
         vec3 snor = calcNormal(surfacePosition);
         vec3 nor = calcNormal(closestPosition);
         vec3 vnor = -(mask * sign(rayDirection));
@@ -248,7 +259,7 @@ void main() {
         float fog = 1. - exp((rayLength - 6.) * -.5);
     }
   
-    col = pow(col, vec3(1.0/2.2));
+    col = pow(col, vec3(1.0/3.5));
 
   // gl_FragColor is a built in shader variable, and your .frag file must contain it
   // We are setting the vec3 color into a new vec4, with a transparency of 1 (no opacity)
