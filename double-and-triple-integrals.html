@@ -159,6 +159,8 @@
   <!-- Sections -->
   <div class="w3-container section-content">
 
+    <!--
+    
     <div>
       <div>
         <h2>Under Construction!</h2>
@@ -181,16 +183,21 @@
         In the mean time enjoy this beautiful animation:
       </p>
 
-      <iframe frameborder="0" height="500px" scrolling="no" src="https://www.dynamicmath.xyz/math2001/sketches/solid-approx/" style="border: 1px solid black; overflow: hidden;" width="100%">
+      <iframe frameborder="0" height="500px" scrolling="no"
+        src="https://www.dynamicmath.xyz/math2001/sketches/solid-approx/"
+        style="border: 1px solid black; overflow: hidden;" width="100%">
       </iframe>
 
       <div style="text-align: center;">
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.patreon.com/jcponce" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://www.patreon.com/jcponce"
+          target="_blank">
           Support this project in Patreon <i class="fa-brands fa-patreon"></i>
         </a>
       </div>
-      <hr>
+      <hr />
     </div>
+
+    -->
 
     <div id="section-1">
 
@@ -328,6 +335,37 @@
         We call $f$ integrable if the limit exists. Note that every
         continuous function is integrable.
       </p>
+
+      <h3>
+        Historical note
+      </h3>
+
+      <p>
+        The exhaustion method for computing volumes in
+        calculus is an ancient technique, dating back to
+        Archimedes, that approximates a given volume by
+        inscribing and circumscribing a sequence of simpler
+        shapes (e.g., prisms or cylinders) whose volumes can
+        be precisely computed. The key idea is to take an
+        increasing number of these shapes, making their total
+        volume approach the true volume of the solid.
+      </p>
+
+      <p>
+        In modern calculus, this idea evolved into Riemann
+        integration and is formalized through definite integrals.
+        So in essence, to compute the volume of a solid 
+        using the exhaustion method:
+      </p>
+      <ol>
+        <li>Slice the solid into thin sections (e.g., disks, boxes, or shells).</li>
+        <li>Approximate each section's volume using a simple geometric shape.</li>
+        <li>Sum the volumes of these sections to form an approximation.</li>
+        <li>Take the limit as the number of slices increases and their thickness approaches zero.</li>
+      </ol>
+
+      <iframe frameborder="0" height="450px" scrolling="no" src="https://www.dynamicmath.xyz/math2001/sketches/solid-approx/" style="border: 1px solid black; overflow: hidden;" width="100%">
+      </iframe>
 
     </div>
 
@@ -1750,7 +1788,7 @@
         </figure>
 
         <p>
-          There are  three more possible orders in which we can integrate.
+          There are three more possible orders in which we can integrate.
           Below you can see all the possible combinations with their corresponding
           projections on the $xy,$ $yz,$ and $xz$ planes.
         </p>
@@ -1990,39 +2028,39 @@
 
       <div class="example">
         Find the volume of a cylinder of
-        radius $R$ and height $H.$ 
-        
+        radius $R$ and height $H.$
+
         <p>
-          Of course, we learned from elementary school that 
-          the volume is $\pi~ R^2 H.$ Here we are going use triple integrals 
+          Of course, we learned from elementary school that
+          the volume is $\pi~ R^2 H.$ Here we are going use triple integrals
           to obtain the same result.
         </p>
 
         <p>
-          Recall that if $f(x,y)\geq 0,$ then the double integral 
-          can be interpreted as the volume under the surface 
-          $z=f(x,y).$ 
+          Recall that if $f(x,y)\geq 0,$ then the double integral
+          can be interpreted as the volume under the surface
+          $z=f(x,y).$
         </p>
 
         <p>
-          If $f(x,y,z)\geq 0,$ then the triple integral 
+          If $f(x,y,z)\geq 0,$ then the triple integral
           can be interpreted as the "hypervolume" of a $4D$
-          object. 
+          object.
           However, this is very difficult to visualize. 😕
           So, let's consider the special case where $f(x,y,z)=1$
-          for every $(x,y,z)\in E,$ the domain of $f.$ 
+          for every $(x,y,z)\in E,$ the domain of $f.$
           Then
           the triple integral represents the volume of $E.$
           That is
           \[
-          \iiint_E  ~dV = \text{Volume of } E.
+          \iiint_E ~dV = \text{Volume of } E.
           \]
         </p>
 
         <p>
           Thus, to find the volume of a cylinder of
-          radius $R$ and height $H,$ 
-          we can use  the cylindrical coordinates (\ref{cylindrical-coord}).
+          radius $R$ and height $H,$
+          we can use the cylindrical coordinates (\ref{cylindrical-coord}).
           So we have that
           \[
           0\leq r \leq R,\quad 0\leq \theta \leq 2\pi,\quad 0\leq z \leq H.
@@ -2031,9 +2069,10 @@
         <p>Then</p>
         <div class="eqwrapper">
           \begin{eqnarray*}
-          V =  \iiint_E  ~dV &amp;=&amp; \int_{z=0}^{z=H} \int_{r=0}^{r=R} \int_{\theta=0}^{\theta=2\pi} r~d\theta~ dr ~dz \\
-          &amp;=&amp; \left( \int_{\theta=0}^{\theta=2\pi} ~d\theta \right) \left( \int_{r=0}^{r=R} r~dr\right) \left(\int_{z=0}^{z=H} dz\right) \\
-          &amp;=&amp;  \large 2\pi ~\frac{R^2}{2} H \\
+          V = \iiint_E ~dV &amp;=&amp; \int_{z=0}^{z=H} \int_{r=0}^{r=R} \int_{\theta=0}^{\theta=2\pi} r~d\theta~ dr ~dz \\
+          &amp;=&amp; \left( \int_{\theta=0}^{\theta=2\pi} ~d\theta \right) \left( \int_{r=0}^{r=R} r~dr\right)
+          \left(\int_{z=0}^{z=H} dz\right) \\
+          &amp;=&amp; \large 2\pi ~\frac{R^2}{2} H \\
           &amp;=&amp; \pi ~R^2 H.
           \end{eqnarray*}
         </div>
@@ -2085,7 +2124,7 @@
       </p>
       <div class="eqwrapper">
         \begin{eqnarray}\label{spherical-integral}
-        \iiint_{R} f(x,y,z) ~dx~dy~dz   =\iiint_{S} f\left(r\cos \theta \sin \phi, r \sin
+        \iiint_{R} f(x,y,z) ~dx~dy~dz =\iiint_{S} f\left(r\cos \theta \sin \phi, r \sin
         \theta \sin \phi,r\cos \phi \right) r^2\sin \phi ~dr~d\theta ~d\phi.
         \end{eqnarray}
       </div>
@@ -2112,15 +2151,18 @@
           V= \{(r,\theta, \phi), ~|~ 0 \leq r \leq R, \; 0\leq \theta \leq 2 \pi, \; 0\leq \phi \leq
           \pi\}.
           \]
-          </div>
+        </div>
         <p>Hence</p>
         <div class="eqwrapper">
           \begin{eqnarray*}
-          V =  \iiint_V  ~dV &amp;=&amp; \int_{\phi=0}^{\phi=\pi} \int_{\theta=0}^{\theta=2\pi} \int_{r=0}^{r=R} r^2\sin \phi ~dr~d\theta~ d\phi \\
-          &amp;=&amp; \left( \int_{\phi=0}^{\phi=\pi} \sin\phi ~d\phi \right) \left( \int_{\theta=0}^{\theta=2\pi}~d\theta \right)\left( \int_{r=0}^{r=R}r^2~dr\right) \\
-          &amp;=&amp; \bigg( -\cos\phi \bigg|_{\phi=0}^{\phi=\pi} \bigg) \bigg(\theta\bigg|_{\theta=0}^{\theta=2\pi} \bigg)\left(\frac{r^3}{3}\bigg|_{r=0}^{r=R}\right) \\
-          &amp;=&amp;  2 ~(2 \pi) \left( \frac{R^3}{3}\right)\\ 
-          &amp;=&amp;  \frac{4}{3} \pi R^3.
+          V = \iiint_V ~dV &amp;=&amp; \int_{\phi=0}^{\phi=\pi} \int_{\theta=0}^{\theta=2\pi} \int_{r=0}^{r=R} r^2\sin \phi
+          ~dr~d\theta~ d\phi \\
+          &amp;=&amp; \left( \int_{\phi=0}^{\phi=\pi} \sin\phi ~d\phi \right) \left( \int_{\theta=0}^{\theta=2\pi}~d\theta
+          \right)\left( \int_{r=0}^{r=R}r^2~dr\right) \\
+          &amp;=&amp; \bigg( -\cos\phi \bigg|_{\phi=0}^{\phi=\pi} \bigg) \bigg(\theta\bigg|_{\theta=0}^{\theta=2\pi}
+          \bigg)\left(\frac{r^3}{3}\bigg|_{r=0}^{r=R}\right) \\
+          &amp;=&amp; 2 ~(2 \pi) \left( \frac{R^3}{3}\right)\\
+          &amp;=&amp; \frac{4}{3} \pi R^3.
           \end{eqnarray*}
         </div>
 
@@ -2128,7 +2170,7 @@
       </div>
 
 
-      
+
 
     </div>
 
