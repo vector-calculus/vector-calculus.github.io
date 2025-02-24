@@ -97,6 +97,9 @@
     General Regions</a>
             <a class="w3-bar-item w3-button" href="#section-5"> Doble Integrals in Polar Coordinates</a>
             <a class="w3-bar-item w3-button" href="#section-6"> Triple Integrals</a>
+            <a class="w3-bar-item w3-button" href="#section-7">
+    Triple Integrals in Cylindrical Coordinates</a>
+            <a class="w3-bar-item w3-button" href="#section-8"> Triple Integrals in Spherical Coordinates</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="applications-of-integration.html">6. Applications of
@@ -330,6 +333,7 @@
 
     <br>
     <hr>
+    <br>
 
     <div id="section-2">
       <h2>
@@ -427,7 +431,9 @@
 
     </div>
 
+    <br>
     <hr>
+    <br>
 
 
     <div id="section-3">
@@ -659,6 +665,7 @@
 
     <br>
     <hr>
+    <br>
 
 
     <div id="section-4">
@@ -1116,6 +1123,10 @@
 
 
     </div>
+
+    <br>
+    <hr>
+    <br>
 
     <div id="section-5">
 
@@ -1924,6 +1935,200 @@
 
 
       </div>
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-7">
+      <h2>Triple Integrals in Cylindrical Coordinates</h2>
+
+      <p>
+        Sometimes it is useful to use cylindrical coordinates in order to
+        simplify the integral. This involves the transformation
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{cylindrical-coord}
+        x= r\cos \theta ,\quad y=r\sin \theta, \quad z =z.
+        \end{eqnarray}
+      </div>
+
+      <div style="text-align: center;">
+        <iframe loading="lazy" scrolling="no" title="Chapter-31-1: Cylindrical coordinates" src="https://www.geogebra.org/material/iframe/id/dmwgd6ft/width/638/height/455/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="638px" height="455px" style="border:0px;" allowfullscreen=""> </iframe>
+      </div>
+
+      <p>
+        We now aim to calculate a small element of volume of a cylindrical
+        shell. This will then show how in a triple integral we can
+        transform from rectangular coordinates to cylindrical
+        coordinates by substituting the transformation
+        (\ref{cylindrical-coord}) and
+        by making the change
+        \[
+        dx~dy~dz\rightarrow r~dr~d\theta ~dz
+        \]
+      </p>
+
+      <figure>
+        <img src="https://www.dynamicmath.xyz/math2001/images/chapter-31/cylindrical-04.png" width="50%">
+        <figcaption></figcaption>
+      </figure>
+
+      <p>
+        The important result is that the triple integral
+        in rectangular coordinates transforms as follows:
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{cylindrical-integral}
+        \iiint_{R} f(x,y,z) ~dx~dy~dz = \iiint_{C} f\left(r\cos \theta , r \sin \theta,
+        z \right) r~dr~d\theta ~dz.
+        \end{eqnarray}
+      </div>
+
+
+      <div class="example">
+        Find the volume of a cylinder of
+        radius $R$ and height $H.$ 
+        
+        <p>
+          Of course, we learned from elementary school that 
+          the volume is $\pi~ R^2 H.$ Here we are going use triple integrals 
+          to obtain the same result.
+        </p>
+
+        <p>
+          Recall that if $f(x,y)\geq 0,$ then the double integral 
+          can be interpreted as the volume under the surface 
+          $z=f(x,y).$ 
+        </p>
+
+        <p>
+          If $f(x,y,z)\geq 0,$ then the triple integral 
+          can be interpreted as the "hypervolume" of a $4D$
+          object. 
+          However, this is very difficult to visualize. 😕
+          So, let's consider the special case where $f(x,y,z)=1$
+          for every $(x,y,z)\in E,$ the domain of $f.$ 
+          Then
+          the triple integral represents the volume of $E.$
+          That is
+          \[
+          \iiint_E  ~dV = \text{Volume of } E.
+          \]
+        </p>
+
+        <p>
+          Thus, to find the volume of a cylinder of
+          radius $R$ and height $H,$ 
+          we can use  the cylindrical coordinates (\ref{cylindrical-coord}).
+          So we have that
+          \[
+          0\leq r \leq R,\quad 0\leq \theta \leq 2\pi,\quad 0\leq z \leq H.
+          \]
+        </p>
+        <p>Then</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          V =  \iiint_E  ~dV &amp;=&amp; \int_{z=0}^{z=H} \int_{r=0}^{r=R} \int_{\theta=0}^{\theta=2\pi} r~d\theta~ dr ~dz \\
+          &amp;=&amp; \left( \int_{\theta=0}^{\theta=2\pi} ~d\theta \right) \left( \int_{r=0}^{r=R} r~dr\right) \left(\int_{z=0}^{z=H} dz\right) \\
+          &amp;=&amp;  \large 2\pi ~\frac{R^2}{2} H \\
+          &amp;=&amp; \pi ~R^2 H.
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-8">
+      <h2>Triple Integrals in Spherical Coordinates</h2>
+
+      <p>
+        Sometimes it is useful to use spherical coordinates in order to simplify
+        the integral. This involves the transformation
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{spherical-coord}
+        x= r\cos \theta \sin \phi ,\quad y=r\sin \theta \sin \phi , \quad z = r \cos \phi. \qquad
+        \end{eqnarray}
+      </div>
+
+      <div style="text-align: center;">
+        <iframe loading="lazy" scrolling="no" title="Chapter-32: Spherical coordinates" src="https://www.geogebra.org/material/iframe/id/yjnvedbc/width/638/height/455/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="638px" height="455px" style="border:0px;" allowfullscreen=""> </iframe>
+      </div>
+
+      <p>We now aim to calculate a small element of volume of a spherical shell.
+        This will then show how in a triple integral we can transform
+        from rectangular coordinates to spherical coordinates by
+        substituting the transformation (\ref{spherical-coord}) and by making the
+        change
+        \[
+        dx~dy~dz\rightarrow r^2\sin \phi ~dr~d\theta ~d\phi
+        \]
+      </p>
+      <p>
+        Consider the following diagram.
+      </p>
+      <figure>
+        <img src="https://www.dynamicmath.xyz/math2001/images/chapter-32/spherical-04.png" width="50%">
+        <figcaption></figcaption>
+      </figure>
+
+      <p>The important result is that the triple integral
+        in rectangular coordinates transforms as follows:
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray}\label{spherical-integral}
+        \iiint_{R} f(x,y,z) ~dx~dy~dz   =\iiint_{S} f\left(r\cos \theta \sin \phi, r \sin
+        \theta \sin \phi,r\cos \phi \right) r^2\sin \phi ~dr~d\theta ~d\phi.
+        \end{eqnarray}
+      </div>
+
+      <div class="example">
+        Find the volume of a sphere of radius $R.$
+
+        <p>
+          Recall that
+          \[
+          \text{Volume } = \iiint_V ~dV.
+          \]
+          We describe the sphere as:
+        </p>
+
+        <div class="eqwrapper">
+          \[
+          0 \leq r \leq R, \; 0\leq \theta \leq 2 \pi, \; 0\leq \phi \leq \pi.
+          \]
+        </div>
+        <p>Then</p>
+        <div class="eqwrapper">
+          \[
+          V= \{(r,\theta, \phi), ~|~ 0 \leq r \leq R, \; 0\leq \theta \leq 2 \pi, \; 0\leq \phi \leq
+          \pi\}.
+          \]
+          </div>
+        <p>Hence</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          V =  \iiint_V  ~dV &amp;=&amp; \int_{\phi=0}^{\phi=\pi} \int_{\theta=0}^{\theta=2\pi} \int_{r=0}^{r=R} r^2\sin \phi ~dr~d\theta~ d\phi \\
+          &amp;=&amp; \left( \int_{\phi=0}^{\phi=\pi} \sin\phi ~d\phi \right) \left( \int_{\theta=0}^{\theta=2\pi}~d\theta \right)\left( \int_{r=0}^{r=R}r^2~dr\right) \\
+          &amp;=&amp; \left( -\cos\phi \Bigg|_{\phi=0}^{\phi=\pi} \right) \left(\theta\Bigg|_{\theta=0}^{\theta=2\pi} \right)\left(\frac{r^3}{3}\Bigg|_{r=0}^{r=R}\right) \\
+          &amp;=&amp;  2 ~(2 \pi) \left( \frac{R^3}{3}\right)\\ 
+          &amp;=&amp;  \frac{4}{3} \pi R^3.
+          \end{eqnarray*}
+        </div>
+
+
+      </div>
+
+
+      
 
     </div>
 
