@@ -350,8 +350,8 @@
         that we can define. One of them is called
         scalar multiplication. This product
         combines scalars (real numbers) and elements of
-        $R^3$ (ordered triples) to yield elements of
-        $R^3$ as follows: Given a scalar $s$
+        $\R^3$ (ordered triples) to yield elements of
+        $\R^3$ as follows: Given a scalar $s$
         and a triple $(a_1, a_2, a_3),$ we
         define the scalar multiple by
         \[
@@ -370,28 +370,44 @@
       </div>
 
       <p>
-        The operations of addition and scalar multiplication 
-        of triples satisfy the following properties:
+        The set $\R^3,$ together with the operations of addition 
+        and scalar multiplication
+        of triples, is known a vector space satisfying 
+        the following properties:
       </p>
 
       <ol>
         <li>
-          Associativity: $(s\,t)(a_1,a_2,a_3) = s\left[t(a_1,a_2,a_3)\right]$
+          Associativity of vector addition: 
+          $$(a_1,a_2,a_3) + \left[(b_1,b_2,b_3)+(c_1,c_2,c_3)\right] = \left[(a_1,a_2,a_3) + (b_1,b_2,b_3)\right] +(c_1,c_2,c_3)$$
         </li>
         <li>
-          Distributivity: $(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$
+          Commutativity of vector addition: 
+          $$(a_1,a_2,a_3) + (b_1,b_2,b_3) = (b_1,b_2,b_3) +(a_1,a_2,a_3) $$
         </li>
         <li>
-          Distributivity: $s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$
+          Identity element of vector addition: 
+          $$(a_1,a_2,a_3) + 0= (a_1,a_2,a_3) $$
         </li>
         <li>
-          Zero element: $s(0,0,0)= (0,0,0)$
+          Inverse elements of vector addition: 
+          $$(a_1,a_2,a_3) + (-a_1,-a_2,-a_3)= (0,0,0) $$
         </li>
         <li>
-          Zero element: $0(a_2,a_2,a_3)= (0,0,0)$
+          Compatibility of scalar multiplication with field multiplication: 
+          $$(s\,t) (a_1,a_2,a_3)= s \left[t (a_1,a_2,a_3)\right] $$
         </li>
         <li>
-          Unit element: $1(a_2,a_2,a_3)= (a_2,a_2,a_3)$
+          Identity element of scalar multiplication: 
+          $$1(a_2,a_2,a_3)= (a_2,a_2,a_3)$$
+        </li>
+        <li>
+          Distributivity of scalar multiplication with respect to vector addition: 
+          $$s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$$
+        </li>
+        <li>
+          Distributivity of scalar multiplication with respect to field addition: 
+          $$(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$$
         </li>
       </ol>
 
