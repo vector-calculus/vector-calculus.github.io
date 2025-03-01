@@ -82,6 +82,12 @@
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="vectors-and-the-geometry-of-space.html">1. Vectors and the
       Geometry of Space</a>
+
+    <div class="toc-chapter" id="toc-chapter">
+            <a class="w3-bar-item w3-button" href="#section-1">Geometry of the 3D space</a>
+            <a class="w3-bar-item w3-button" href="#section-2">Addition and Scalar Multiplication</a>
+    </div>
+
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
     <a class="w3-bar-item w3-button" id="chapterBar" href="higher-order-derivatives.html">3. Higher Order
       Derivatives</a>
@@ -145,7 +151,7 @@
   <!-- Sections -->
   <div class="w3-container section-content">
 
-    <div id="section-1">
+    <div>
 
       <div id="path-integral">
         <h2>Under Construction!</h2>
@@ -176,83 +182,232 @@
           Support this project in Patreon <i class="fa-brands fa-patreon"></i>
         </a>
       </div>
-      <hr>
 
 
 
     </div>
 
+    <br>
+    <hr>
+    <br>
 
 
+    <div id="section-1">
 
+      <h2>
+        Geometry of the 3D space
+      </h2>
+
+      <p>To specify a point in a plane, two numbers are required. Any point in the plane can be represented as an
+        ordered
+        pair \((a_1,a_2)\) of real numbers, where \(a_1\) is the <i>x</i>-coordinate and \(a_2\) is the
+        <i>y</i>-coordinate. Because of this, a plane is referred to as two-dimensional.
+      </p>
+
+      <div style="text-align: center;">
+        <iframe loading="lazy" scrolling="no" title="2D cartesian coordinates" src="https://www.geogebra.org/material/iframe/id/pypz5rvh/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;" allowfullscreen=""> </iframe>
+      </div>
+
+      <p>To specify a point in space, three numbers are needed. A point in space is represented by an ordered triple
+        \((a_1, a_2, a_3)\) of real numbers. To define a coordinate system in space, we begin by selecting a fixed point
+        \(O\) (the origin) and three mutually perpendicular directed lines passing through \(O\). These lines, known as
+        the coordinate axes, are labeled as the \(x\)-axis, \(y\)-axis, and \(z\)-axis.</p>
+
+      <p>Typically, the \(x\)- and \(y\)-axes are considered horizontal, while the \(z\)-axis is vertical. The
+        orientation of these axes is illustrated in Figure 1. The direction of the \(z\)-axis follows the right-hand
+        rule, as shown in Figure 2: If you curl the fingers of your right hand around the \(z\)-axis in the direction of
+        a 90° counterclockwise rotation from the positive \(x\)-axis to the positive \(y\)-axis, your thumb points in
+        the positive direction of the \(z\)-axis.</p>
+
+      <p>The three coordinate axes define three coordinate planes, depicted in the figure. The \(xy\)-plane contains the
+        \(x\)- and \(y\)-axes, the \(yz\)-plane contains the \(y\)- and \(z\)-axes, and the \(xz\)-plane contains the
+        \(x\)- and \(z\)-axes. These three planes divide space into eight regions, known as octants. The first octant,
+        which appears in the foreground, is determined by the positive directions of the coordinate axes.</p>
+
+      <p>
+        Now if $P$ is any point in space, let $a_1$ be the (directed)
+        distance from the yz-plane to $P,$
+        let $a_2$ be the distance from the $xz$-plane to $P,$
+        and let $a_3$ be the distance from the $xy$-plane to
+        $P.$ We represent the point $P$ by the ordered triple
+        $(a_1,a_2,a_3)$ of real numbers and we call
+        $a_1,$ $a_2,$ and $a_3$ the coordinates of $P.$
+        We say that $a_1$ is the
+        $x$-coordinate, $a_2$ is the $y$-coordinate, and $a_3$
+        is the $z$-coordinate. Thus, to locate
+        the point $(a_1,a_2,a_3)$
+        we can start at the origin $O$ and move
+        $a_1$ units along the $x$-axis, then $a_2$
+        units parallel to the y-axis, and then
+        $a_3$ units parallel to the
+        $z$-axis as in Figure 4.
+      </p>
+
+      <p>
+        The point $P=(a_1,a_2,a_3)$ determines a rectangular box.
+        If we drop a perpendicular
+        from $P$ to the $xy$-plane, we get a point $Q$
+        with coordinates $Q=(a_1,a_2,0)$ called the projection
+        of $P$ onto the $xy$-plane. Similarly, $R=(0,a_2,a_3)$
+        and $S=(a_1,0,a_3)$ are the projections of
+        $P$ onto the $yz$-plane and $xz$-plane, respectively.
+      </p>
+
+      <div style="text-align: center;">
+        <iframe loading="lazy" scrolling="no" title="3D coordinates" src="https://www.geogebra.org/material/iframe/id/z9hbpf6y/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;" allowfullscreen=""> </iframe>
+      </div>
+
+      <p>
+        We will use the following notation for the line, the plane and
+        the three-dimensional space:
+      </p>
+      <ol>
+        <li>
+          The real number line is denoted $\R^1,$ or simply $\R.$
+        </li>
+        <li>
+          The set of all ordered pairs $(x,y)$ of real numbers is denoted $\R^2.$
+        </li>
+        <li>
+          The set of all ordered triplets $(x,y,z)$ of real numbers is denoted $\R^3.$
+        </li>
+      </ol>
+
+      <p>
+        We can also use the notation $\R^n,$ where $n=1,$ $2,$ or $3.$
+        Later we will also study $\R^n$ for $n=4,5,6,\ldots,$
+        but the cases $n=1,2,3$ are closest to our geometric intuition.
+      </p>
+
+    </div>
+
+
+    <div id="section-2">
+
+      <h2>Addition and Scalar Multiplication</h2>
+
+      <p>
+        We are already familiar with addition of real numbers.
+        This idea extends naturally to \(\mathbb{R}^2\) and
+        \(\mathbb{R}^3.\) In \(\mathbb{R}^3,\) given two
+        triples \((a_1, a_2, a_3)\) and \((b_1, b_2, b_3),\)
+        their <strong>sum</strong> is defined as:
+      </p>
+
+      <div class="eqwrapper">
+        \[
+        (a_1,a_2,a_3) + (b_1,b_2,b_3) = (a_1+b_1,a_2+b_2,a_3+b_3).
+        \]
+      </div>
+
+      <div class="example">
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          (1,2,3) + (2,-1,-10) &amp;=&amp; (3, 1, -7),\\
+          (3,-1,6) + (a_1,a_2,a_3) &amp;=&amp; (3+a_1, -1+a_2, 6+a_3),\\
+          (x,0,z) + (0,y,0) &amp;=&amp; (x, y, z).
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <p>
+        The element \((0, 0, 0)\) is known as the <strong>zero element</strong>
+        (or simply <strong>zero</strong>) of \(\mathbb{R}^3.\)
+        The element
+        \((-a_1, -a_2, -a_3)\) is called the <strong>additive inverse</strong>
+        (or <strong>negative</strong>) of \((a_1, a_2, a_3),\)
+        and we denote
+        subtraction as:
+        \[
+        (a_1, a_2, a_3) - (b_1, b_2, b_3) = (a_1, a_2, a_3) + (-b_1, -b_2, -b_3).
+        \]
+        The additive inverse, when summed with the vector itself,
+        naturally results in the zero element:
+        \[
+        (a_1, a_2, a_3) + (-a_1, -a_2, -a_3) = (0,0,0).
+        \]
+      </p>
+
+      <p>
+        In \(\R^3\), several important product
+        operations can be defined. One such operation is
+        <strong>scalar multiplication</strong>, where the
+        term "scalar" refers to a real number. This operation
+        combines scalars and elements of \(\R^3\)
+        (ordered triples) to produce new elements in
+        \(\R^3\).
+        Given a scalar \(k\) and a triple
+        \((a_1, a_2, a_3)\), the scalar multiple is defined as:
+      </p>
+      <div class="eqwrapper">
+        \[
+        k(a_1, a_2, a_3) = (k \,a_1, k\, a_2, k \,a_3).
+        \]
+      </div>
+
+      <p>
+        Now, in $\R^3$ there are several important product operations
+        that we can define. One of them is called
+        scalar multiplication. This product
+        combines scalars (real numbers) and elements of
+        $R^3$ (ordered triples) to yield elements of
+        $R^3$ as follows: Given a scalar $s$
+        and a triple $(a_1, a_2, a_3),$ we
+        define the scalar multiple by
+        \[
+        s(a_1, a_2, a_3) = (s\,a_2,s\,a_2,s\,a_3).
+        \]
+      </p>
+
+      <div class="example">
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          3(4,y,1) &amp;=&amp; (3\cdot 4, 3 \cdot y, 3 \cdot 1) = ( 12, 3y, 3),\\
+          -2(0,-1,-6) &amp;=&amp; (0, 2, 12),\\
+          0(p,q,r) &amp;=&amp; (0,0,0).
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <p>
+        The operations of addition and scalar multiplication 
+        of triples satisfy the following properties:
+      </p>
+
+      <ol>
+        <li>
+          Associativity: $(s\,t)(a_1,a_2,a_3) = s\left[t(a_1,a_2,a_3)\right]$
+        </li>
+        <li>
+          Distributivity: $(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$
+        </li>
+        <li>
+          Distributivity: $s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$
+        </li>
+        <li>
+          Zero element: $s(0,0,0)= (0,0,0)$
+        </li>
+        <li>
+          Zero element: $0(a_2,a_2,a_3)= (0,0,0)$
+        </li>
+        <li>
+          Unit element: $1(a_2,a_2,a_3)= (a_2,a_2,a_3)$
+        </li>
+      </ol>
+
+      <p>
+        In the case of $\R^2,$ addition and scalar multiplication 
+        can be defined in a similar way as in $\R^3,$ 
+        with the third component of each vector 
+        dropped off. And all the properties mentioned previously 
+        still hold.
+      </p>
+
+
+    </div>
 
   </div>
   <!-- Ends main content -->
-
-
-  <!-- Extra scripts for applets -->
-  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
-
-  <!--
-  <iframe scrolling="no" title="Parametrization"
-        data-src="https://www.geogebra.org/material/iframe/id/shrbv6cs/width/643/height/496/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
-        width="643px" height="496px" style="border:0px;">
-      </iframe>-->
-  <script>
-
-    let paramsPathIntegral = {
-      "width": 770,
-      "height": 530,
-      "material_id": "yqtvz3zm",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-
-    let paramsAreaFence = {
-      "width": 760,
-      "height": 460,
-      "material_id": "r4csvyeq",
-      "borderColor": "888888",
-      "playButton": true,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-
-    let paramsSeq = {
-      "width": 643,
-      "height": 493,
-      "material_id": "shrbv6cs",
-      "borderColor": "888888",
-      "playButton": false,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": false,
-      "showResetIcon": true
-    };
-    let paramsIntPath = {
-      "width": 617,
-      "height": 452,
-      "material_id": "ptz7hgj7",
-      "borderColor": "888888",
-      "playButton": false,
-      "showFullscreenButton": true,
-      "enableShiftDragZoom": true,
-      "showResetIcon": true
-    };
-    let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
-    let appletAreaFence = new GGBApplet(paramsAreaFence, true);
-    let appletSeq = new GGBApplet(paramsSeq, true);
-    let appletIntPath = new GGBApplet(paramsIntPath, true);
-    window.addEventListener("load", () => {
-      appletPathIntegral.inject('ggb-element-path-integral');
-      appletAreaFence.inject('ggb-element-area-fence');
-      appletIntPath.inject('ggb-element-int-path');
-      appletSeq.inject('ggb-element');
-    });
-  </script>
 
 </section>
     </div>
