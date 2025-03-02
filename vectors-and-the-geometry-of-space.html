@@ -198,31 +198,73 @@
         Geometry of the 3D space
       </h2>
 
-      <p>To specify a point in a plane, two numbers are required. Any point in the plane can be represented as an
+      <p>To specify a point in a plane, two numbers are required. 
+        Any point in the plane can be represented as an
         ordered
-        pair \((a_1,a_2)\) of real numbers, where \(a_1\) is the <i>x</i>-coordinate and \(a_2\) is the
-        <i>y</i>-coordinate. Because of this, a plane is referred to as two-dimensional.
+        pair \((a_1,a_2)\) of real numbers, where \(a_1\) is the 
+        <i>x</i>-coordinate and \(a_2\) is the
+        <i>y</i>-coordinate. Because of this, a plane is 
+        referred to as two-dimensional.
       </p>
 
       <div style="text-align: center;">
-        <iframe loading="lazy" scrolling="no" title="2D cartesian coordinates" src="https://www.geogebra.org/material/iframe/id/pypz5rvh/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;" allowfullscreen=""> </iframe>
+        <iframe loading="lazy" scrolling="no" title="2D cartesian coordinates" 
+        src="https://www.geogebra.org/material/iframe/id/pypz5rvh/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;"
+        allowfullscreen=""> </iframe>
       </div>
 
-      <p>To specify a point in space, three numbers are needed. A point in space is represented by an ordered triple
-        \((a_1, a_2, a_3)\) of real numbers. To define a coordinate system in space, we begin by selecting a fixed point
-        \(O\) (the origin) and three mutually perpendicular directed lines passing through \(O\). These lines, known as
-        the coordinate axes, are labeled as the \(x\)-axis, \(y\)-axis, and \(z\)-axis.</p>
+      <p>To specify a point in space, three numbers are needed. 
+        A point in space is represented by an ordered triple
+        \((a_1, a_2, a_3)\) of real numbers. To define a coordinate 
+        system in space, we begin by selecting a fixed point
+        \(O\) (the origin) and three mutually perpendicular directed 
+        lines passing through \(O\). These lines, known as
+        the coordinate axes, are labeled as the \(x\)-axis, 
+        \(y\)-axis, and \(z\)-axis. Typically, the \(x\)- and 
+        \(y\)-axes are considered horizontal, 
+        while the \(z\)-axis is vertical. The
+        orientation of these axes is illustrated in Figure 1.
+      </p>
 
-      <p>Typically, the \(x\)- and \(y\)-axes are considered horizontal, while the \(z\)-axis is vertical. The
-        orientation of these axes is illustrated in Figure 1. The direction of the \(z\)-axis follows the right-hand
-        rule, as shown in Figure 2: If you curl the fingers of your right hand around the \(z\)-axis in the direction of
-        a 90° counterclockwise rotation from the positive \(x\)-axis to the positive \(y\)-axis, your thumb points in
-        the positive direction of the \(z\)-axis.</p>
+      <figure>
+        <img style="width: 50%;" 
+             src="imgs/vectors-and-the-geometry-of-space/3d-coord-system.png">
+        <figcaption>
+          3D coordinate system.
+        </figcaption>
+      </figure>
 
-      <p>The three coordinate axes define three coordinate planes, depicted in the figure. The \(xy\)-plane contains the
-        \(x\)- and \(y\)-axes, the \(yz\)-plane contains the \(y\)- and \(z\)-axes, and the \(xz\)-plane contains the
-        \(x\)- and \(z\)-axes. These three planes divide space into eight regions, known as octants. The first octant,
-        which appears in the foreground, is determined by the positive directions of the coordinate axes.</p>
+      <!--
+      <p>
+       
+         The direction of the \(z\)-axis follows the right-hand
+        rule, as shown in Figure 2: If you curl the fingers 
+        of your right hand around the \(z\)-axis in the 
+        direction of
+        a 90° counterclockwise rotation from the positive 
+        \(x\)-axis to the positive \(y\)-axis, your thumb points in
+        the positive direction of the \(z\)-axis.
+      </p>-->
+
+      <p>The three coordinate axes define three coordinate 
+        planes, depicted in Figure 2. The \(xy\)-plane 
+        contains the
+        \(x\)- and \(y\)-axes, the \(yz\)-plane contains 
+        the \(y\)- and \(z\)-axes, and the \(xz\)-plane 
+        contains the
+        \(x\)- and \(z\)-axes. These three planes divide 
+        space into eight regions, known as octants. The first octant,
+        which appears in the foreground, is determined by 
+        the positive directions of the coordinate axes.
+      </p>
+
+      <figure>
+        <img style="width: 50%;" 
+             src="imgs/vectors-and-the-geometry-of-space/planes-3d.png">
+        <figcaption>
+          Three planes divide space into eight regions.
+        </figcaption>
+      </figure>
 
       <p>
         Now if $P$ is any point in space, let $a_1$ be the (directed)
@@ -242,6 +284,14 @@
         $a_3$ units parallel to the
         $z$-axis as in Figure 4.
       </p>
+
+      <figure>
+        <img style="width: 50%;" 
+             src="imgs/vectors-and-the-geometry-of-space/locate-point-3d.png">
+        <figcaption>
+          Point $P=(a_1,a_2,a_3).$
+        </figcaption>
+      </figure>
 
       <p>
         The point $P=(a_1,a_2,a_3)$ determines a rectangular box.
