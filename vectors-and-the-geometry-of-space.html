@@ -582,41 +582,41 @@
       </div>
 
 
-      
+
       <div class="exercise">
-          Here is a little challenge:
-          Given two vectors $\mathbf a$ and $\mathbf b,$
-          how do you represent
-          the vector $\mathbf b - \mathbf a$ geometrically, that
-          is, what is the geometry of vector subtraction?
-          <br><br>
-  
+        Here is a little challenge:
+        Given two vectors $\mathbf a$ and $\mathbf b,$
+        how do you represent
+        the vector $\mathbf b - \mathbf a$ geometrically, that
+        is, what is the geometry of vector subtraction?
+        <br><br>
+
         <details>
-  
+
           <summary>
             <strong>
               Show solution.
             </strong>
           </summary>
 
-          
-  
+
+
           <p>
             Because $\mathbf a+(\mathbf b- \mathbf a)= \mathbf b,$
             we see that $\mathbf b- \mathbf a$
-            is the vector that we add to $\mathbf a$ to 
+            is the vector that we add to $\mathbf a$ to
             obtain $\mathbf b. $
             So, we may conclude that $\mathbf b - \mathbf a$ is the
             vector parallel to, and with the same magnitude as,
             the directed line segment beginning
-            at the endpoint of $\mathbf a$ 
+            at the endpoint of $\mathbf a$
             and terminating at the endpoint
             of $\mathbf b$ when $\mathbf a$ and $\mathbf b$
-             begin at the same point. Does that make sense?
+            begin at the same point. Does that make sense?
           </p>
-  
+
         </details>
-  
+
       </div>
 
 
@@ -699,23 +699,114 @@
       </p>
 
       <p>
-        The addition of two vectors in $\R^2$ is defined as
-        \[
-        \mathbf a + \mathbf b = (a_1,a_2) + (b_1,b_2) = (a_1+b_1, a_2+b_2).
-        \]
-        And similarly for vectors in $\R^3$
-        \[
-        \mathbf a + \mathbf b = (a_1,a_2,a_3) + (b_1,b_2,b_3) = (a_1+b_1, a_2+b_2,a_3+b_3).
-        \]
-        In the case of the scalar multiplication, if $s$ is a scalar, and
-        $\mathbf a$ a vector, we define $s\,a$ to be the vector
-        that is $|s|$ times as long as $\mathbf a,$ with the same
-        direction as a if $s &gt; 0,$ but with the opposite direction
-        if $s \lt 0.$ In other words,
-        \[
-        s\, \mathbf = (s\,a_1,s\,a_2)\quad \text{or} \quad s\, \mathbf = (s\,a_1,s\,a_2,s\, a_3).
-        \]
+        Now we can introduce the definition of addition,
+        subtraction and scalar multiplication:
       </p>
+
+      <div class="definition">
+        If
+        $\mathbf a = (a_1,a_2)$ and $\mathbf b = (b_1,b_2),$ then
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \mathbf a + \mathbf b &amp;=&amp; (a_1,a_2) + (b_1,b_2) = (a_1+b_1, a_2+b_2),\\
+          \mathbf a - \mathbf b &amp;=&amp; (a_1,a_2) - (b_1,b_2) = (a_1-b_1, a_2-b_2),\\
+          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2)\quad (s\text{ a scalar})
+          \end{eqnarray*}
+        </div>
+        <p>
+          Similarly, for vectors in $\R^3,$
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \mathbf a + \mathbf b &amp;=&amp; (a_1,a_2,a_3) + (b_1,b_2,b_3) = (a_1+b_1, a_2+b_2, a_3+b_3),\\
+          \mathbf a - \mathbf b &amp;=&amp; (a_1,a_2,a_3) - (b_1,b_2,b_3) = (a_1-b_1, a_2-b_2, a_3+b_3),\\
+          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2,s\,a_3)\quad (s\text{ a scalar})
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <h3>
+        The Standard Basis Vectors
+      </h3>
+
+      <p>
+        To describe vectors in space, it is convenient 
+        to introduce three special vectors along
+        the $x,$ $y,$ and $z$ axes:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \i = (1,0,0),\quad \j = (0,1,0),\quad\k =(0,0,0)
+        \]
+      </div>
+      <p>
+        The vectors $\i,$ $\j,$ and $\k$ are called the 
+        <strong>standard basis vectors</strong>. 
+        In the plane we have the
+        standard basis $\i$ and $\j$ with components 
+        $(1, 0)$ and $(0, 1),$ respectively. 
+      </p>
+
+      <p>
+        Let $\mathbf a$  be any vector, and let 
+        $(a_1, a_2, a_3) $ be its components. Then
+      </p>
+      <div class="eqwrapper">
+        \[
+        \mathbf a = a_1\,i+a_2\,\j +a_3\k,
+        \]
+      </div>
+      <p>
+        because the right-hand side is given in components by
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        a_1(1,0,0)+ a_2(0,1,0)+a_3(0,0,1) &amp;=&amp; (a_1,0,0)+(0,a_2,0)+(0,0,a_3)\\
+        &amp;=&amp; (a_1,a_2,a_3).
+        \end{eqnarray*}
+      </div>
+      <p>
+        Thus, we can express every vector 
+        as a sum of scalar multiples of $\i,$ $\j,$ and $\k.$
+      </p>
+
+      <h3>
+        Vector Joining Two Points
+      </h3>
+
+      <p>
+        Sometimes it will be useful to assign a vector to a <em>pair</em>
+        of points in the plane or space. Given two points $P$ and
+        $P',$ we can draw the vector $\v$ with tail $P$ and head $P',$
+        where $\v = \overrightarrow{PP'}.$ If $P = (x,y,z)$ and 
+        $P'=(x',y',z'),$ then the vectors from the origin 
+        $P$ and $P'$ are $\mathbf a = x\,\i+ y\,\j + z\,\k$
+        and $\mathbf a' = x'\,\i+ y'\,\j + z'\,\k,$ respectively.
+        Thus the vector $\overrightarrow{PP'}$ is the difference 
+      </p>
+      <div>
+        \[
+        \mathbf a' - \mathbf a = (x'-x)\i+ (y'-y)\j+(z'-z)\k.
+        \]
+      </div>
+
+      <figure>
+        <img style="width: 60%;" src="imgs/vectors-and-the-geometry-of-space/2d-vector-two-points.svg">
+        <figcaption>
+          Vector joining two points.
+        </figcaption>
+      </figure>
+
+      
+
+      
+
+
+
+
+      
+
+
 
 
 
@@ -724,7 +815,19 @@
       <!--
       
 
-     
+     <div class="definition">
+        The <strong>magnitude</strong> or
+        <strong>length</strong> of a two-dimensional vector
+        $\mathbf a = (a_1,a_2)$ is
+        \[
+        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2}
+        \]
+        The length of a three-dimensional vector
+        $\mathbf a = (a_1,a_2, a_3)$ is
+        \[
+        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2+a_3^2}.
+        \]
+      </div>
 
       <figure>
         <iframe loading="lazy" allowfullscreen="" scrolling="no" title="3D vectors from origin"
