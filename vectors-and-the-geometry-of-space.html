@@ -86,6 +86,9 @@
     <div class="toc-chapter" id="toc-chapter">
             <a class="w3-bar-item w3-button" href="#section-1">Geometry of the 3D space</a>
             <a class="w3-bar-item w3-button" href="#section-2">Addition and Scalar Multiplication</a>
+            <a class="w3-bar-item w3-button" href="#section-3">
+    The Geometry of Vectors</a>
+            <a class="w3-bar-item w3-button" href="#section-4">Algebraic Operations of Vectors</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
@@ -198,69 +201,54 @@
         Geometry of the 3D space
       </h2>
 
-      <p>To specify a point in a plane, two numbers are required. 
+      <p>To specify a point in a plane, two numbers are required.
         Any point in the plane can be represented as an
         ordered
-        pair \((a_1,a_2)\) of real numbers, where \(a_1\) is the 
+        pair \((a_1,a_2)\) of real numbers, where \(a_1\) is the
         <i>x</i>-coordinate and \(a_2\) is the
-        <i>y</i>-coordinate. Because of this, a plane is 
+        <i>y</i>-coordinate. Because of this, a plane is
         referred to as two-dimensional.
       </p>
 
       <div style="text-align: center;">
-        <iframe loading="lazy" scrolling="no" title="2D cartesian coordinates" 
-        src="https://www.geogebra.org/material/iframe/id/pypz5rvh/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;"
-        allowfullscreen=""> </iframe>
+        <iframe loading="lazy" scrolling="no" title="2D cartesian coordinates" src="https://www.geogebra.org/material/iframe/id/pypz5rvh/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;" allowfullscreen=""> </iframe>
       </div>
 
-      <p>To specify a point in space, three numbers are needed. 
+      <p>To specify a point in space, three numbers are needed.
         A point in space is represented by an ordered triple
-        \((a_1, a_2, a_3)\) of real numbers. To define a coordinate 
+        \((a_1, a_2, a_3)\) of real numbers. To define a coordinate
         system in space, we begin by selecting a fixed point
-        \(O\) (the origin) and three mutually perpendicular directed 
+        \(O\) (the origin) and three mutually perpendicular directed
         lines passing through \(O\). These lines, known as
-        the coordinate axes, are labeled as the \(x\)-axis, 
-        \(y\)-axis, and \(z\)-axis. Typically, the \(x\)- and 
-        \(y\)-axes are considered horizontal, 
+        the coordinate axes, are labeled as the \(x\)-axis,
+        \(y\)-axis, and \(z\)-axis. Typically, the \(x\)- and
+        \(y\)-axes are considered horizontal,
         while the \(z\)-axis is vertical. The
         orientation of these axes is illustrated in Figure 1.
       </p>
 
       <figure>
-        <img style="width: 50%;" 
-             src="imgs/vectors-and-the-geometry-of-space/3d-coord-system.png">
+        <img style="width: 50%;" src="imgs/vectors-and-the-geometry-of-space/3d-coord-system.png">
         <figcaption>
           3D coordinate system.
         </figcaption>
       </figure>
 
-      <!--
-      <p>
-       
-         The direction of the \(z\)-axis follows the right-hand
-        rule, as shown in Figure 2: If you curl the fingers 
-        of your right hand around the \(z\)-axis in the 
-        direction of
-        a 90° counterclockwise rotation from the positive 
-        \(x\)-axis to the positive \(y\)-axis, your thumb points in
-        the positive direction of the \(z\)-axis.
-      </p>-->
 
-      <p>The three coordinate axes define three coordinate 
-        planes, depicted in Figure 2. The \(xy\)-plane 
+      <p>The three coordinate axes define three coordinate
+        planes, depicted in Figure 2. The \(xy\)-plane
         contains the
-        \(x\)- and \(y\)-axes, the \(yz\)-plane contains 
-        the \(y\)- and \(z\)-axes, and the \(xz\)-plane 
+        \(x\)- and \(y\)-axes, the \(yz\)-plane contains
+        the \(y\)- and \(z\)-axes, and the \(xz\)-plane
         contains the
-        \(x\)- and \(z\)-axes. These three planes divide 
+        \(x\)- and \(z\)-axes. These three planes divide
         space into eight regions, known as octants. The first octant,
-        which appears in the foreground, is determined by 
+        which appears in the foreground, is determined by
         the positive directions of the coordinate axes.
       </p>
 
       <figure>
-        <img style="width: 50%;" 
-             src="imgs/vectors-and-the-geometry-of-space/planes-3d.png">
+        <img style="width: 50%;" src="imgs/vectors-and-the-geometry-of-space/planes-3d.png">
         <figcaption>
           Three planes divide space into eight regions.
         </figcaption>
@@ -268,7 +256,7 @@
 
       <p>
         Now if $P$ is any point in space, let $a_1$ be the (directed)
-        distance from the yz-plane to $P,$
+        distance from the $yz$-plane to $P,$
         let $a_2$ be the distance from the $xz$-plane to $P,$
         and let $a_3$ be the distance from the $xy$-plane to
         $P.$ We represent the point $P$ by the ordered triple
@@ -282,12 +270,11 @@
         $a_1$ units along the $x$-axis, then $a_2$
         units parallel to the y-axis, and then
         $a_3$ units parallel to the
-        $z$-axis as in Figure 4.
+        $z$-axis as in Figure 3.
       </p>
 
       <figure>
-        <img style="width: 50%;" 
-             src="imgs/vectors-and-the-geometry-of-space/locate-point-3d.png">
+        <img style="width: 50%;" src="imgs/vectors-and-the-geometry-of-space/locate-point-3d.png">
         <figcaption>
           Point $P=(a_1,a_2,a_3).$
         </figcaption>
@@ -331,6 +318,10 @@
 
     </div>
 
+
+    <br>
+    <hr>
+    <br>
 
     <div id="section-2">
 
@@ -420,54 +411,333 @@
       </div>
 
       <p>
-        The set $\R^3,$ together with the operations of addition 
+        The set $\R^3,$ together with the operations of addition
         and scalar multiplication
-        of triples, is known a vector space satisfying 
+        of triples, is known a vector space satisfying
         the following properties:
       </p>
 
       <ol>
         <li>
-          Associativity of vector addition: 
-          $$(a_1,a_2,a_3) + \left[(b_1,b_2,b_3)+(c_1,c_2,c_3)\right] = \left[(a_1,a_2,a_3) + (b_1,b_2,b_3)\right] +(c_1,c_2,c_3)$$
+          Associativity of vector addition:
+          $$(a_1,a_2,a_3) + \left[(b_1,b_2,b_3)+(c_1,c_2,c_3)\right] = \left[(a_1,a_2,a_3) + (b_1,b_2,b_3)\right]
+          +(c_1,c_2,c_3)$$
         </li>
         <li>
-          Commutativity of vector addition: 
+          Commutativity of vector addition:
           $$(a_1,a_2,a_3) + (b_1,b_2,b_3) = (b_1,b_2,b_3) +(a_1,a_2,a_3) $$
         </li>
         <li>
-          Identity element of vector addition: 
+          Identity element of vector addition:
           $$(a_1,a_2,a_3) + 0= (a_1,a_2,a_3) $$
         </li>
         <li>
-          Inverse elements of vector addition: 
+          Inverse elements of vector addition:
           $$(a_1,a_2,a_3) + (-a_1,-a_2,-a_3)= (0,0,0) $$
         </li>
         <li>
-          Compatibility of scalar multiplication with field multiplication: 
+          Compatibility of scalar multiplication with field multiplication:
           $$(s\,t) (a_1,a_2,a_3)= s \left[t (a_1,a_2,a_3)\right] $$
         </li>
         <li>
-          Identity element of scalar multiplication: 
+          Identity element of scalar multiplication:
           $$1(a_2,a_2,a_3)= (a_2,a_2,a_3)$$
         </li>
         <li>
-          Distributivity of scalar multiplication with respect to vector addition: 
+          Distributivity of scalar multiplication with respect to vector addition:
           $$s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$$
         </li>
         <li>
-          Distributivity of scalar multiplication with respect to field addition: 
+          Distributivity of scalar multiplication with respect to field addition:
           $$(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$$
         </li>
       </ol>
 
       <p>
-        In the case of $\R^2,$ addition and scalar multiplication 
-        can be defined in a similar way as in $\R^3,$ 
-        with the third component of each vector 
-        dropped off. And all the properties mentioned previously 
+        In the case of $\R^2,$ addition and scalar multiplication
+        can be defined in a similar way as in $\R^3,$
+        with the third component of each vector
+        dropped off. And all the properties mentioned previously
         still hold.
       </p>
+
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+
+    <div id="section-3">
+
+      <h2>The Geometry of Vectors</h2>
+
+      <p>
+        The term <strong>vector</strong> is used
+        in different scientific
+        contexts to
+        indicate a <em>quantity</em> (such as
+        <em>displacement</em> or
+        <em>velocity</em> or <em>force</em>)
+        that has both <strong>magnitude</strong>
+        and <strong>direction</strong>.
+        A vector is often represented by
+        an arrow or a directed line segment.
+        The length of the arrow represents the magnitude of
+        the vector and the arrow points in the
+        direction of the vector.
+      </p>
+
+      <div style="text-align: center;">
+        <iframe allowfullscreen="" loading="lazy" scrolling="no" title="Vector: Mag and Dir" src="https://www.geogebra.org/material/iframe/id/gpvwevuj/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;"> </iframe>
+      </div>
+
+      <p>
+        There is one notable exception to vectors having
+        a direction: the
+        <strong>zero vector</strong>, denoted by boldface
+        \(\mathbf{0}\). This vector has zero length,
+        meaning it does not point
+        in any specific direction. Since there
+        is only one vector with zero length,
+        we refer to it as <em>the</em> zero vector.
+      </p>
+
+
+
+      <p>
+        Now, assume that a particle moves along a line segment
+        from point $A$ to point $B.$ The
+        corresponding <strong>displacement vector</strong>
+        \(\mathbf u,\)
+        shown in Figure 4, has
+        initial point $A$ (the tail) and terminal point
+        $B$ (the tip) and we indicate this by writing $\u = \overrightarrow{AB}.$
+      </p>
+
+
+      <figure>
+        <img style="width: 36%;" src="imgs/vectors-and-the-geometry-of-space/2d-vector-displacement.gif">
+        <figcaption>
+          Displacement of a particle from point $A$ to point $B.$
+        </figcaption>
+      </figure>
+
+      <p>
+        By the way, in print, vectors are typically
+        denoted by boldface letters like
+        \(\mathbf{a},\)
+        while by hand, they are often written as
+        \(\vec{a},\)
+        sometimes with a line or wavy line underneath.
+      </p>
+
+      <p>
+        Suppose that a particle moves from point $A$ to $B,$
+        and then from $B$ to $C,$ with the displacement vectors
+        $\u$ and $\v;$ respectively.
+        The combined effect of these displacements
+        is that the particle has moved from $A$ to $C.$
+        The resulting displacement vector $\w = \overrightarrow{AC}$
+        is called the <strong>sum</strong> of $\u$ and $\v$
+        and we write
+        \[
+        \w= \u + \v
+        \]
+      </p>
+
+
+
+      <figure>
+        <img style="width: 50%;" src="imgs/vectors-and-the-geometry-of-space/2d-vector-displacement-sum.gif">
+        <figcaption>
+          Displacement from $A$ to point $B,$
+          then from $B$ to $C.$
+        </figcaption>
+      </figure>
+
+      <p>
+        In the previous Figure you can see why the sum of two vectors
+        is called sometimes the <strong>Triangle Law</strong>.
+        Another geometric representation is known as the
+        <strong>Parallelogram Law</strong>. You can explore both in
+        the applet below:
+      </p>
+
+      <div style="text-align: center;">
+        <iframe allowfullscreen="" loading="lazy" scrolling="no" title="Geometric representations of the sum of vectors" src="https://www.geogebra.org/material/iframe/id/gtnkk7kv/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" width="750px" height="422px" style="border:0px;"> </iframe>
+      </div>
+
+      <p>
+        It is possible to multiply a vector by a
+        scalar $s,$ a real number.
+        For instance, we want $3\u$ to be the same
+        vector as $\u+\u+\u$ which has the same direction as
+        $\u$ but is three times longer.
+      </p>
+
+      <div style="text-align: center;">
+        <iframe allowfullscreen="" loading="lazy" scrolling="no" title="Scalar multiplication" src="https://www.geogebra.org/material/iframe/id/uuvz77f4/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="750px" height="422px" style="border:0px;"> </iframe>
+      </div>
+
+
+      
+      <div class="exercise">
+          Here is a little challenge:
+          Given two vectors $\mathbf a$ and $\mathbf b,$
+          how do you represent
+          the vector $\mathbf b - \mathbf a$ geometrically, that
+          is, what is the geometry of vector subtraction?
+          <br><br>
+  
+        <details>
+  
+          <summary>
+            <strong>
+              Show solution.
+            </strong>
+          </summary>
+
+          
+  
+          <p>
+            Because $\mathbf a+(\mathbf b- \mathbf a)= \mathbf b,$
+            we see that $\mathbf b- \mathbf a$
+            is the vector that we add to $\mathbf a$ to 
+            obtain $\mathbf b. $
+            So, we may conclude that $\mathbf b - \mathbf a$ is the
+            vector parallel to, and with the same magnitude as,
+            the directed line segment beginning
+            at the endpoint of $\mathbf a$ 
+            and terminating at the endpoint
+            of $\mathbf b$ when $\mathbf a$ and $\mathbf b$
+             begin at the same point. Does that make sense?
+          </p>
+  
+        </details>
+  
+      </div>
+
+
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-4">
+
+      <h2>Algebraic Operations of Vectors</h2>
+
+      <p>
+        After exploring the applets from the previous section,
+        you probably have already noticed that vectors can also be
+        represented algebraically using a coordinate system.
+        If we place the initial point of a vector $\mathbf a$
+        at the origin of a coordinate
+        system, then the terminal point of $\mathbf a$
+        has coordinates of the form $(a_1,a_2,a_3)$ or
+        $(a_1, a_2, a_3),$
+        depending on whether our coordinate system is two- or
+        three-dimensional.
+        These coordinates are called the
+        <strong>components</strong>
+        of $\mathbf a$ and we write
+      </p>
+      <div class="eqwrapper">
+        \[
+        \mathbf a = (a_1,a_2)\quad \text{or}\quad \mathbf a = (a_1,a_2,a_3).
+        \]
+      </div>
+
+      <figure>
+        <img style="width: 80%;" src="imgs/vectors-and-the-geometry-of-space/2d-3d-vector.svg">
+        <figcaption>
+          Vector represented algebraically with their components.
+        </figcaption>
+      </figure>
+
+      <p>
+        For this reason, the elements of $\R^2$ and $\R^3$ not only
+        are ordered pairs or triples of real numbers, but are
+        also regarded as vectors.
+        The pair $(0,0)$ and the triple $(0, 0, 0)$ are the zero
+        vectors of $\R^2$ and $\R^3;$ respectively, and they
+        are both denoted as $\mathbf 0.$
+      </p>
+
+      <p>
+        Two vectors $\mathbf a = (a_1, a_2)$ and
+        $\mathbf b= (b_1, b_2)$
+        are equal if and only if
+        $a_1 = b_1,$ and $a_2 = b_2$
+        (the same is true for vectors in $\R^3$).
+        Geometrically this
+        means that a and b have the same direction
+        and the same length, or magnitude.
+        This can be appreciated in the following applet.
+      </p>
+
+      <div style="text-align: center;">
+        <iframe allowfullscreen="" loading="lazy" scrolling="no" title="Equivalent vectors" src="https://www.geogebra.org/material/iframe/id/cruajsa8/width/751/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="751px" height="422px" style="border:0px;"> </iframe>
+      </div>
+
+      <p>
+        The vector \(\mathbf{u}\) in the previous
+        applet is defined from the origin to point
+        \(A\) and is equal to all the other vectors
+        because they share the same components.
+        These vectors are considered equivalent,
+        even though they occupy different positions
+        on the plane. Ultimately, knowing a vector's
+        components allows us to determine its magnitude
+        and direction (which we will explore later).
+        However, in most cases, we will focus on
+        vectors whose initial point is at the origin.
+      </p>
+
+      <p>
+        The addition of two vectors in $\R^2$ is defined as
+        \[
+        \mathbf a + \mathbf b = (a_1,a_2) + (b_1,b_2) = (a_1+b_1, a_2+b_2).
+        \]
+        And similarly for vectors in $\R^3$
+        \[
+        \mathbf a + \mathbf b = (a_1,a_2,a_3) + (b_1,b_2,b_3) = (a_1+b_1, a_2+b_2,a_3+b_3).
+        \]
+        In the case of the scalar multiplication, if $s$ is a scalar, and
+        $\mathbf a$ a vector, we define $s\,a$ to be the vector
+        that is $|s|$ times as long as $\mathbf a,$ with the same
+        direction as a if $s &gt; 0,$ but with the opposite direction
+        if $s \lt 0.$ In other words,
+        \[
+        s\, \mathbf = (s\,a_1,s\,a_2)\quad \text{or} \quad s\, \mathbf = (s\,a_1,s\,a_2,s\, a_3).
+        \]
+      </p>
+
+
+
+
+
+      <!--
+      
+
+     
+
+      <figure>
+        <iframe loading="lazy" allowfullscreen="" scrolling="no" title="3D vectors from origin"
+          src="https://www.geogebra.org/material/iframe/id/gfsuh8dr/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
+          width="750px" height="422px" style="border:0px;"> </iframe>
+        <figcaption>
+          Vector represented as arrow from the origin.
+        </figcaption>
+      </figure>
+
+
+
+     -->
 
 
     </div>
