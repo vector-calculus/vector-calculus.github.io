@@ -83,12 +83,16 @@
     <a class="w3-bar-item w3-button" id="chapterBar" href="vectors-and-the-geometry-of-space.html">1. Vectors and the
       Geometry of Space</a>
 
+
+
     <div class="toc-chapter" id="toc-chapter">
             <a class="w3-bar-item w3-button" href="#section-1">Geometry of the 3D space</a>
             <a class="w3-bar-item w3-button" href="#section-2">Addition and Scalar Multiplication</a>
             <a class="w3-bar-item w3-button" href="#section-3">
     The Geometry of Vectors</a>
             <a class="w3-bar-item w3-button" href="#section-4">Algebraic Operations of Vectors</a>
+            <a class="w3-bar-item w3-button" href="#section-5">
+    The Dot Product, Length, and Distance</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
@@ -359,9 +363,15 @@
         (or <strong>negative</strong>) of \((a_1, a_2, a_3),\)
         and we denote
         subtraction as:
+
+      </p>
+      <div class="eqwrapper">
         \[
         (a_1, a_2, a_3) - (b_1, b_2, b_3) = (a_1, a_2, a_3) + (-b_1, -b_2, -b_3).
         \]
+
+      </div>
+      <p>
         The additive inverse, when summed with the vector itself,
         naturally results in the zero element:
         \[
@@ -420,12 +430,17 @@
       <ol>
         <li>
           Associativity of vector addition:
-          $$(a_1,a_2,a_3) + \left[(b_1,b_2,b_3)+(c_1,c_2,c_3)\right] = \left[(a_1,a_2,a_3) + (b_1,b_2,b_3)\right]
-          +(c_1,c_2,c_3)$$
+          <div class="eqwrapper">
+            $$(a_1,a_2,a_3) + \left[(b_1,b_2,b_3)+(c_1,c_2,c_3)\right] = \left[(a_1,a_2,a_3) + (b_1,b_2,b_3)\right]
+            +(c_1,c_2,c_3)$$
+          </div>
         </li>
         <li>
           Commutativity of vector addition:
-          $$(a_1,a_2,a_3) + (b_1,b_2,b_3) = (b_1,b_2,b_3) +(a_1,a_2,a_3) $$
+          <div class="eqwrapper">
+            $$(a_1,a_2,a_3) + (b_1,b_2,b_3) = (b_1,b_2,b_3) +(a_1,a_2,a_3) $$
+          </div>
+
         </li>
         <li>
           Identity element of vector addition:
@@ -433,11 +448,16 @@
         </li>
         <li>
           Inverse elements of vector addition:
-          $$(a_1,a_2,a_3) + (-a_1,-a_2,-a_3)= (0,0,0) $$
+          <div class="eqwrapper">
+            $$(a_1,a_2,a_3) + (-a_1,-a_2,-a_3)= (0,0,0) $$
+          </div>
+
         </li>
         <li>
           Compatibility of scalar multiplication with field multiplication:
-          $$(s\,t) (a_1,a_2,a_3)= s \left[t (a_1,a_2,a_3)\right] $$
+          <div class="eqwrapper">
+            $$(s\,t) (a_1,a_2,a_3)= s \left[t (a_1,a_2,a_3)\right] $$
+          </div>
         </li>
         <li>
           Identity element of scalar multiplication:
@@ -445,11 +465,15 @@
         </li>
         <li>
           Distributivity of scalar multiplication with respect to vector addition:
-          $$s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$$
+          <div class="eqwrapper">
+            $$s\left[(a_1,a_2,a_3)+(b_1,b_2,b_3)\right] = s(a_1,a_2,a_3)+ s(b_1,b_2,b_3)$$
+          </div>
         </li>
         <li>
           Distributivity of scalar multiplication with respect to field addition:
-          $$(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$$
+          <div class="eqwrapper">
+            $$(s+t)(a_1,a_2,a_3) = s(a_1,a_2,a_3)+ t(a_1,a_2,a_3)$$
+          </div>
         </li>
       </ol>
 
@@ -631,6 +655,9 @@
 
       <h2>Algebraic Operations of Vectors</h2>
 
+      <h3>
+        Components
+      </h3>
       <p>
         After exploring the applets from the previous section,
         you probably have already noticed that vectors can also be
@@ -698,6 +725,8 @@
         vectors whose initial point is at the origin.
       </p>
 
+
+
       <p>
         Now we can introduce the definition of addition,
         subtraction and scalar multiplication:
@@ -730,7 +759,7 @@
       </h3>
 
       <p>
-        To describe vectors in space, it is convenient 
+        To describe vectors in space, it is convenient
         to introduce three special vectors along
         the $x,$ $y,$ and $z$ axes:
       </p>
@@ -740,15 +769,15 @@
         \]
       </div>
       <p>
-        The vectors $\i,$ $\j,$ and $\k$ are called the 
-        <strong>standard basis vectors</strong>. 
+        The vectors $\i,$ $\j,$ and $\k$ are called the
+        <strong>standard basis vectors</strong>.
         In the plane we have the
-        standard basis $\i$ and $\j$ with components 
-        $(1, 0)$ and $(0, 1),$ respectively. 
+        standard basis $\i$ and $\j$ with components
+        $(1, 0)$ and $(0, 1),$ respectively.
       </p>
 
       <p>
-        Let $\mathbf a$  be any vector, and let 
+        Let $\mathbf a$ be any vector, and let
         $(a_1, a_2, a_3) $ be its components. Then
       </p>
       <div class="eqwrapper">
@@ -766,7 +795,7 @@
         \end{eqnarray*}
       </div>
       <p>
-        Thus, we can express every vector 
+        Thus, we can express every vector
         as a sum of scalar multiples of $\i,$ $\j,$ and $\k.$
       </p>
 
@@ -778,11 +807,11 @@
         Sometimes it will be useful to assign a vector to a <em>pair</em>
         of points in the plane or space. Given two points $P$ and
         $P',$ we can draw the vector $\v$ with tail $P$ and head $P',$
-        where $\v = \overrightarrow{PP'}.$ If $P = (x,y,z)$ and 
-        $P'=(x',y',z'),$ then the vectors from the origin 
+        where $\v = \overrightarrow{PP'}.$ If $P = (x,y,z)$ and
+        $P'=(x',y',z'),$ then the vectors from the origin
         $P$ and $P'$ are $\mathbf a = x\,\i+ y\,\j + z\,\k$
         and $\mathbf a' = x'\,\i+ y'\,\j + z'\,\k,$ respectively.
-        Thus the vector $\overrightarrow{PP'}$ is the difference 
+        Thus the vector $\overrightarrow{PP'}$ is the difference
       </p>
       <div>
         \[
@@ -797,14 +826,14 @@
         </figcaption>
       </figure>
 
-      
-
-      
 
 
 
 
-      
+
+
+
+
 
 
 
@@ -815,19 +844,7 @@
       <!--
       
 
-     <div class="definition">
-        The <strong>magnitude</strong> or
-        <strong>length</strong> of a two-dimensional vector
-        $\mathbf a = (a_1,a_2)$ is
-        \[
-        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2}
-        \]
-        The length of a three-dimensional vector
-        $\mathbf a = (a_1,a_2, a_3)$ is
-        \[
-        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2+a_3^2}.
-        \]
-      </div>
+     
 
       <figure>
         <iframe loading="lazy" allowfullscreen="" scrolling="no" title="3D vectors from origin"
@@ -842,6 +859,100 @@
 
      -->
 
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-5">
+
+      <h2>
+        The Dot Product, Length, and Distance
+      </h2>
+
+      <p>
+        So far, we have explored adding two vectors
+        and multiplying a vector by a scalar. This
+        naturally leads to the question: can two
+        vectors be multiplied in a way that produces
+        a meaningful result? One such operation is
+        the <strong>dot product</strong>, which we define
+        next. Another is the <strong>cross product</strong>,
+        which will be covered in the following section.
+      </p>
+
+      <div class="definition">
+        If $\mathbf a= (a_1,a_2,a_3)$ and $\mathbf b= (b_1,b_2,b_3),$
+        then the <strong>dot product</strong> of $\mathbf a$ and
+        $\mathbf b$ the the number $\mathbf a \pd \mathbf b $ given by
+        \[
+        \mathbf a \pd \mathbf b = a_1b_1 + a_2b_2 + a_3b_3.
+        \]
+      </div>
+
+      <p>
+        To compute the dot product of \(\mathbf{a}\) 
+        and \(\mathbf{b}\), we multiply their 
+        corresponding components and
+        sum the results. The outcome is not a vector 
+        but a real number—a scalar. Because of this, 
+        the dot product is
+        also known as the <em>scalar product</em> 
+        (or <em>inner product</em>). While 
+        Definition 2 applies to
+        three-dimensional vectors, the dot 
+        product is defined similarly for two-dimensional vectors:
+        \[
+        \mathbf a \pd \mathbf b = a_1b_1 + a_2b_2 .
+        \]
+      </p>
+
+
+      <p>
+        Certain properties of the dot product follow directly 
+        from the definition. If $\mathbf a,$ $\mathbf b,$
+        and $\mathbf c$ are vectors in $\R^3$ and $s,t$ are real 
+        numbers, then
+      </p>
+      <ol>
+        <li>
+          $\mathbf a \pd \mathbf a\geq 0;$ <br>
+          $\mathbf a\pd  \mathbf a = 0$ if and only if $\mathbf a=\mathbf 0.$
+        </li>
+        <li>
+          $s\,\mathbf a \pd \mathbf b = s(\mathbf a\pd \mathbf b)$ and $\mathbf a\pd t\, \mathbf b = t(\mathbf a\pd \mathbf b).$ 
+        </li>
+        <li>
+          $\mathbf a\pd (\mathbf b+ \mathbf c) = \mathbf a \pd \mathbf b + \mathbf a\pd \mathbf c$ and $(\mathbf a+\mathbf b)\pd \mathbf c = \mathbf a\pd \mathbf c + \mathbf b \pd \mathbf c.$
+        </li>
+        <li>
+          $\mathbf a\pd \mathbf b = \mathbf b\pd \mathbf a.$
+        </li>
+      </ol>
+
+
+      <p>
+        Now, using the Pythagorean Theorem, we can obtain the 
+        length of any vector. So we have the following:
+      </p>
+
+
+
+      <div class="definition">
+        The <strong>length</strong> or
+        <strong>magnitude</strong> of a two-dimensional vector
+        $\mathbf a = (a_1,a_2)$ is
+        \[
+        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2}
+        \]
+        The length of a three-dimensional vector
+        $\mathbf a = (a_1,a_2, a_3)$ is
+        \[
+        \norm{\mathbf a} = \sqrt{a_1^2+a_2^2+a_3^2}.
+        \]
+      </div>
 
     </div>
 
