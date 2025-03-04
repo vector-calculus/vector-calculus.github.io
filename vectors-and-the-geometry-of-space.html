@@ -739,7 +739,7 @@
           \begin{eqnarray*}
           \mathbf a + \mathbf b &amp;=&amp; (a_1,a_2) + (b_1,b_2) = (a_1+b_1, a_2+b_2),\\
           \mathbf a - \mathbf b &amp;=&amp; (a_1,a_2) - (b_1,b_2) = (a_1-b_1, a_2-b_2),\\
-          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2)\quad (s\text{ a scalar})
+          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2)\quad (s\text{ is a scalar})
           \end{eqnarray*}
         </div>
         <p>
@@ -749,7 +749,7 @@
           \begin{eqnarray*}
           \mathbf a + \mathbf b &amp;=&amp; (a_1,a_2,a_3) + (b_1,b_2,b_3) = (a_1+b_1, a_2+b_2, a_3+b_3),\\
           \mathbf a - \mathbf b &amp;=&amp; (a_1,a_2,a_3) - (b_1,b_2,b_3) = (a_1-b_1, a_2-b_2, a_3+b_3),\\
-          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2,s\,a_3)\quad (s\text{ a scalar})
+          s\, \mathbf a &amp;= &amp;(s\,a_1,s\,a_2,s\,a_3)\quad (s\text{ is a scalar})
           \end{eqnarray*}
         </div>
       </div>
@@ -775,6 +775,13 @@
         standard basis $\i$ and $\j$ with components
         $(1, 0)$ and $(0, 1),$ respectively.
       </p>
+
+      <figure>
+        <img style="width: 80%;" src="imgs/vectors-and-the-geometry-of-space/standard-basis.svg">
+        <figcaption>
+          The standard basis in $\R^2$ and $\R^3.$
+        </figcaption>
+      </figure>
 
       <p>
         Let $\mathbf a$ be any vector, and let
@@ -827,20 +834,6 @@
       </figure>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <!--
       
 
@@ -880,7 +873,7 @@
         a meaningful result? One such operation is
         the <strong>dot product</strong>, which we define
         next. Another is the <strong>cross product</strong>,
-        which will be covered in the following section.
+        which will be covered later in this chapter.
       </p>
 
       <div class="definition">
@@ -893,39 +886,45 @@
       </div>
 
       <p>
-        To compute the dot product of \(\mathbf{a}\) 
-        and \(\mathbf{b}\), we multiply their 
+        To compute the dot product of \(\mathbf{a}\)
+        and \(\mathbf{b}\), we multiply their
         corresponding components and
-        sum the results. The outcome is not a vector 
-        but a real number—a scalar. Because of this, 
+        sum the results. The outcome is not a vector
+        but a real number, a scalar. Because of this,
         the dot product is
-        also known as the <em>scalar product</em> 
-        (or <em>inner product</em>). While 
+        also known as the <strong>scalar product</strong>
+        (or <strong>inner product</strong>). While
         Definition 2 applies to
-        three-dimensional vectors, the dot 
+        three-dimensional vectors, the dot
         product is defined similarly for two-dimensional vectors:
         \[
         \mathbf a \pd \mathbf b = a_1b_1 + a_2b_2 .
         \]
+        Sometimes the dot product is denoted
+        $\langle \mathbf a, \mathbf b\rangle$ thus, $\langle a, b\rangle$
+        and $\mathbf a \pd \mathbf b$ mean <em>exactly
+          the same thing</em>.
       </p>
 
 
       <p>
-        Certain properties of the dot product follow directly 
+        Certain properties of the dot product follow directly
         from the definition. If $\mathbf a,$ $\mathbf b,$
-        and $\mathbf c$ are vectors in $\R^3$ and $s,t$ are real 
+        and $\mathbf c$ are vectors in $\R^3$ and $s,t$ are real
         numbers, then
       </p>
       <ol>
         <li>
           $\mathbf a \pd \mathbf a\geq 0;$ <br>
-          $\mathbf a\pd  \mathbf a = 0$ if and only if $\mathbf a=\mathbf 0.$
+          $\mathbf a\pd \mathbf a = 0$ if and only if $\mathbf a=\mathbf 0.$
         </li>
         <li>
-          $s\,\mathbf a \pd \mathbf b = s(\mathbf a\pd \mathbf b)$ and $\mathbf a\pd t\, \mathbf b = t(\mathbf a\pd \mathbf b).$ 
+          $s\,\mathbf a \pd \mathbf b = s(\mathbf a\pd \mathbf b)$ and $\mathbf a\pd t\, \mathbf b = t(\mathbf a\pd
+          \mathbf b).$
         </li>
         <li>
-          $\mathbf a\pd (\mathbf b+ \mathbf c) = \mathbf a \pd \mathbf b + \mathbf a\pd \mathbf c$ and $(\mathbf a+\mathbf b)\pd \mathbf c = \mathbf a\pd \mathbf c + \mathbf b \pd \mathbf c.$
+          $\mathbf a\pd (\mathbf b+ \mathbf c) = \mathbf a \pd \mathbf b + \mathbf a\pd \mathbf c$ and $(\mathbf
+          a+\mathbf b)\pd \mathbf c = \mathbf a\pd \mathbf c + \mathbf b \pd \mathbf c.$
         </li>
         <li>
           $\mathbf a\pd \mathbf b = \mathbf b\pd \mathbf a.$
@@ -934,8 +933,8 @@
 
 
       <p>
-        Now, using the Pythagorean Theorem, we can obtain the 
-        length of any vector. So we have the following:
+        Now, using the Pythagorean Theorem, we can define the
+        length of any vector.
       </p>
 
 
@@ -953,6 +952,271 @@
         \norm{\mathbf a} = \sqrt{a_1^2+a_2^2+a_3^2}.
         \]
       </div>
+
+      <figure>
+        <img style="width: 80%;" src="imgs/vectors-and-the-geometry-of-space/vector-length.svg">
+        <figcaption>
+          The length of a vector in $\R^2$ and $\R^3.$
+        </figcaption>
+      </figure>
+
+      <p>
+        The quantity $\norm{\mathbf a}$ is often
+        called the <strong>norm</strong> of
+        $\mathbf a,$ and because
+        $\mathbf a \pd \mathbf a = a_1^2+a_2^2+a_3^2$
+        it follows that
+        \[
+        \norm{\mathbf a} = (\mathbf a \pd \mathbf a )^{1/2}.
+        \]
+      </p>
+
+      <p>
+        Vectors with norm 1 are called <strong>unit vectors</strong>.
+        For instance, the vectors $\i,$ $\j,$ $\k$ are unit
+        vectors. Note that for any nonzero vector
+        \[
+        \frac{\mathbf a}{\norm{\mathbf a} }
+        \]
+        is a unit vector. When we divide
+        $\mathbf a$ by $\norm{\mathbf a} ,$
+        we say that we have normalized $\mathbf a.$
+      </p>
+
+      <h3>
+        The Distance and Angle Between Two Vectors
+      </h3>
+
+      <p>
+        If $\mathbf a$ and $\mathbf b$ are vectors,
+        the vector $\mathbf b - \mathbf a$ is parallel
+        to and has the same
+        magnitude as the directed line segment from
+        the endpoint of $\mathbf a$ to the endpoint of
+        $\mathbf b.$
+        It follows that the <strong>distance</strong> from the
+        endpoint of $\mathbf a$ to the endpoint of $\mathbf b$ is
+        $\norm{\mathbf a -\mathbf b}.$
+      </p>
+
+      <figure>
+        <img style="width: 40%;" src="imgs/vectors-and-the-geometry-of-space/angle-between-vectors.svg">
+        <figcaption>
+          The distance $\norm{\mathbf a -\mathbf b}$ between 
+          $\mathbf a$ and $\mathbf b,$ 
+          and the angle between them.
+        </figcaption>
+      </figure>
+
+      <p>
+        Now, suppose we have two vectors $\mathbf a$ and
+        $\mathbf b$ in $\R^3$ and we wish to determine
+        the angle between them, that is, the smaller angle
+        subtended by a and b in the plane
+        that they span. The dot product enables us to do
+        this.
+      </p>
+
+      <div class="theorem">
+        Let $\mathbf a$ and $\mathbf b$ be two vectors in
+        $\R^3$ and
+        let $\theta,$ with $0 \leq \theta \leq \pi,$ be
+        the angle between them. Then
+        \[
+        \mathbf a \pd \mathbf b = \norm{\mathbf a}\norm{\mathbf b}\cos \theta.
+        \]
+      </div>
+
+      <div class="proof">
+        Considering the
+        diagram shown in Figure 10
+        we can apply the law of cosines from trigonometry
+        to the triangle with one
+        vertex at the origin and adjacent sides determined
+        by the vectors $\mathbf a$ and $\mathbf b.$       
+
+        <p>
+          Then we have that
+        </p>
+
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf b-\mathbf a}^2 = \norm{\mathbf a}^2+\norm{\mathbf b}^2 -2 \norm{\mathbf a}\norm{\mathbf
+          b}\cos\theta .
+          \]
+        </div>
+
+        <p>
+          Since
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \norm{\mathbf b-\mathbf a}^2 =(\mathbf b-\mathbf a)\pd (\mathbf b-\mathbf a),
+          \end{eqnarray*}
+        </div>
+        <p>
+          $\norm{\mathbf a}^2 = \mathbf a\pd \mathbf a,$
+          and $\norm{\mathbf b}^2 = \mathbf b\pd \mathbf b,$ we
+          have
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray}\label{eq-01}
+          (\mathbf b-\mathbf a)\pd (\mathbf b-\mathbf a) =\mathbf a\pd \mathbf a \pd \mathbf b\pd \mathbf b - 2
+          \norm{\mathbf a}\norm{\mathbf b}\cos\theta .
+          \end{eqnarray}
+        </div>
+
+        <p>
+          We obtain
+        </p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          (\mathbf b-\mathbf a)\pd (\mathbf b-\mathbf a) &amp;=&amp; \mathbf b\pd (\mathbf b-\mathbf a) -\mathbf a\pd (\mathbf
+          b-\mathbf a)\\
+          &amp;=&amp; \mathbf b \pd \mathbf b - \mathbf b\pd \mathbf a - \mathbf a\pd\mathbf b + \mathbf a\pd \mathbf a\\
+          &amp;=&amp; \mathbf a \pd \mathbf a + \mathbf b \pd \mathbf b - 2\mathbf a \pd \mathbf b.
+          \end{eqnarray*}
+        </div>
+
+        <p>Thus, substituting in (\ref{eq-01}), we get</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \mathbf a \pd \mathbf a + \mathbf b \pd \mathbf b - 2\mathbf a \pd \mathbf b &amp;=&amp; \mathbf a\pd \mathbf a \pd
+          \mathbf b\pd \mathbf b - 2 \norm{\mathbf a}\norm{\mathbf b}\cos\theta .
+          \end{eqnarray*}
+        </div>
+        <p>Hence</p>
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \mathbf a \pd \mathbf b &amp;=&amp; \norm{\mathbf a}\norm{\mathbf b}\cos\theta .
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <p>
+        An immediate consequence from equation
+        $\mathbf a \pd \mathbf b = \norm{\mathbf a}\norm{\mathbf b}\cos \theta,$
+        is that if $\mathbf a$ and $\mathbf b$ are nonzero,
+        we can express the angle between them as
+      </p>
+      <div class="eqwrapper">
+        \[
+        \theta = \cos^{-1}\left(\frac{\mathbf a \pd \mathbf b }{\norm{\mathbf a}\norm{\mathbf b}}\right).
+        \]
+      </div>
+
+      <div class="corollary">
+        <span style="font-style: normal;font-weight: bold;">(Cauchy-Schwarz Inequality)</span>
+        For any two vectors $\mathbf a$ and $\mathbf b,$
+        we have
+        \[
+        |\mathbf a \pd \mathbf b|\leq \norm{\mathbf a }\norm{\mathbf b}
+        \]
+        with equality holds if and only if $\mathbf a $ is a scalar
+        multiple of $\mathbf b,$ or one of them is the vector $\mathbf 0.$
+
+      </div>
+
+      <p>
+        If \(\mathbf{a}\) and \(\mathbf{b}\) are nonzero
+        vectors in \(\mathbb{R}^3\) and \(\theta\)
+        is the angle between them, then
+        \(\mathbf{a} \cdot \mathbf{b} = 0\) if and
+        only if \(\cos \theta = 0.\) This means that
+        <em>the inner product of two nonzero vectors
+          is zero if and only if the vectors are perpendicular</em>.
+        As a result, the inner product provides
+        a useful method for determining whether
+        two vectors are perpendicular. In such cases,
+        we often say the vectors are <strong>orthogonal</strong>.
+
+      </p>
+
+      <figure>
+        <img style="width: 70%;" src="imgs/vectors-and-the-geometry-of-space/orthogonality-vectors.svg">
+        <figcaption>
+          The nonzero vectors $\mathbf{a}$ and $\mathbf{b}$  are orthogonal when $\mathbf{a} \cdot \mathbf{b} = 0.$  
+        </figcaption>
+      </figure>
+
+      <p>
+        The standard basis vectors
+        \(\mathbf{i},\) \(\mathbf{j},\)
+        and \(\mathbf{k}\) are mutually orthogonal
+        and have a length of 1; any such system is
+        called <strong>orthonormal</strong>.
+        By convention, we consider the zero vector
+        to be orthogonal to all vectors.
+      </p>
+
+      <h3>
+        The Triangle Inequality
+      </h3>
+
+      <p>
+        A key consequence of the Cauchy-Schwarz inequality,
+        known as the <strong>triangle inequality</strong>,
+        establishes a
+        relationship between the lengths of the vectors
+        \(\mathbf{a}\) and \(\mathbf{b}\) and their sum,
+        \(\mathbf{a} +
+        \mathbf{b}.\) Geometrically, the triangle
+        inequality states that the length of any side
+        of a triangle is always
+        less than or equal to the sum of the lengths
+        of the other two sides.
+      </p>
+
+      <figure>
+        <img style="width: 50%;" src="imgs/vectors-and-the-geometry-of-space/triangle-inequality.svg">
+        <figcaption>
+          A geometric representation of the triangle inequality.
+        </figcaption>
+      </figure>
+
+      <div class="theorem" id="triangle-inequality">
+        <span style="font-style: normal;font-weight: bold;">
+          Triangle Inequality
+        </span>
+        For vectors $\mathbf a$ and $\mathbf b$ in space,
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf a+ \mathbf b} \leq \norm{\mathbf a} + \norm{\mathbf b}.
+          \]
+        </div>
+      </div>
+
+      <div class="proof">
+        Consider the square of the left-hand side:
+
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf a+ \mathbf b}^2 = (\mathbf a+ \mathbf b)\pd (\mathbf a+ \mathbf b) = \norm{\mathbf a}^2 +2\mathbf
+          a \pd \mathbf b +\norm{\mathbf b}^2 .
+          \]
+        </div>
+        <p>
+          Using the Cauchy-Schwarz inequality, we obtain
+        </p>
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf a}^2 +2\mathbf a \pd \mathbf b +\norm{\mathbf b}^2 \leq \norm{\mathbf a}^2+ 2\norm{\mathbf a}\norm{ \mathbf b}+
+          \norm{\mathbf b}^2 = (\norm{\mathbf a}+\norm{\mathbf b} )^2.
+          \]
+        </div>
+        <p>
+          Therefore
+        </p>
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf a+ \mathbf b} \leq \norm{\mathbf a} + \norm{\mathbf b}.
+          \]
+        </div>
+      </div>
+
+
+
+
 
     </div>
 
