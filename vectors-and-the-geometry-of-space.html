@@ -754,6 +754,8 @@
         </div>
       </div>
 
+      <br>
+
       <h3>
         The Standard Basis Vectors
       </h3>
@@ -806,6 +808,21 @@
         as a sum of scalar multiples of $\i,$ $\j,$ and $\k.$
       </p>
 
+      <div class="example">
+        We can express the vectors $u = (-1,\sqrt{3})$ and
+        $\v = (\pi, -\sqrt{2}, 1)$ in 
+        the standard basis. That is 
+        <div class="eqwrapper">
+          \begin{eqnarray*} 
+          \u &amp;=&amp; - \i + \sqrt{3}\,\j,\\
+          \v &amp;=&amp; \pi\, \i - \sqrt{2}\, \j + \k.
+          \end{eqnarray*}
+        </div>
+
+      </div>
+
+      <br>
+
       <h3>
         Vector Joining Two Points
       </h3>
@@ -832,6 +849,16 @@
           Vector joining two points.
         </figcaption>
       </figure>
+
+      <div class="example">
+        Consider the points $P=(3,5)$ and $Q=(4,7).$ 
+        To determine the components of the vector 
+        from $P$ to $Q$ we subtract 
+        \[
+        (4,7) - (3,5) = (1,2).
+        \]
+        Thus, we obtain the vector $\mathbf v = \overrightarrow{PQ} = (1,2).$
+      </div>
 
 
       <!--
@@ -900,15 +927,26 @@
         \[
         \mathbf a \pd \mathbf b = a_1b_1 + a_2b_2 .
         \]
-        Sometimes the dot product is denoted
-        $\langle \mathbf a, \mathbf b\rangle$ thus, $\langle a, b\rangle$
+        Sometimes the dot product is denoted as
+        $\langle \mathbf a, \mathbf b\rangle$ thus, 
+        $\langle  \mathbf a, \mathbf b\rangle$
         and $\mathbf a \pd \mathbf b$ mean <em>exactly
-          the same thing</em>.
+        the same thing</em>.
       </p>
+
+      <div class="example">
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          (2,-3)\pd (4,-2) &amp;=&amp; 2(4) + (-3)(-2) = 14,\\
+          \left(-1, 7,4\right) \pd \left(6, 2,-\frac{1}{2}\right)  &amp;=&amp; (-1)(6) + 7(2) + 4\left(-\frac{1}{2}\right) = 6,\\
+          (\i + 2\,\j -4\,\k)\pd (2\,\j -\k)&amp; =&amp;1(0) + 2(2) + (-4)(-1) = 8.
+          \end{eqnarray*}
+        </div>
+      </div>
 
 
       <p>
-        Certain properties of the dot product follow directly
+        Some properties of the dot product follow directly
         from the definition. If $\mathbf a,$ $\mathbf b,$
         and $\mathbf c$ are vectors in $\R^3$ and $s,t$ are real
         numbers, then
@@ -983,6 +1021,26 @@
         we say that we have normalized $\mathbf a.$
       </p>
 
+      <div class="example">
+        Consider the vector $\v = 2\,\i + 3\, \j -\frac{1}{2}\k.$ 
+        To normalized $\v,$ first we need to find its length. 
+        That is,
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \norm{\v} = \sqrt{2^2+3^3+\left(\frac{1}{2}\right)^2} =\frac{1}{2}\sqrt{53}.
+          \end{eqnarray*}
+        </div>
+        Hence the normalization of $\v$ is 
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \u = \frac{\v}{\norm{\v} } &amp; = &amp; \frac{2\,\i + 3\, \j -\frac{1}{2}\k}{\frac{1}{2}\sqrt{53}}\\
+          &amp;=&amp; \frac{4}{\sqrt{53}}\i + \frac{6}{\sqrt{53}}\j - \frac{1}{\sqrt{53}}\k.
+          \end{eqnarray*}
+        </div>
+      </div>
+
+      <br>
+
       <h3>
         The Distance and Angle Between Two Vectors
       </h3>
@@ -1002,11 +1060,25 @@
       <figure>
         <img style="width: 40%;" src="imgs/vectors-and-the-geometry-of-space/angle-between-vectors.svg">
         <figcaption>
-          The distance $\norm{\mathbf a -\mathbf b}$ between 
-          $\mathbf a$ and $\mathbf b,$ 
-          and the angle between them.
+          The distance $\norm{\mathbf a -\mathbf b}$ from the
+          endpoint of $\mathbf a$ to the endpoint of $\mathbf b,$ 
+          and the angle between them the two vectors.
         </figcaption>
       </figure>
+
+      <div class="example">
+        Let's compute the distance from the endpoint of the 
+        vector $\j$ that is, the point 
+        $(0, 1, 0),$ to the
+        endpoint of the vector $\k,$ that is, the point $(0, 0, 1).$
+        That is,
+        <div class="eqwrapper">
+          \begin{eqnarray*}
+          \norm{\k-\j} = \sqrt{ (0- 0)^2 + (0-1)^2 + (1-0)^2} =\sqrt{2}.
+          \end{eqnarray*}
+        </div>
+       
+      </div>
 
       <p>
         Now, suppose we have two vectors $\mathbf a$ and
@@ -1148,6 +1220,8 @@
         By convention, we consider the zero vector
         to be orthogonal to all vectors.
       </p>
+
+      <br>
 
       <h3>
         The Triangle Inequality
