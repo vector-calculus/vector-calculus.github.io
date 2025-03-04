@@ -810,10 +810,10 @@
 
       <div class="example">
         We can express the vectors $u = (-1,\sqrt{3})$ and
-        $\v = (\pi, -\sqrt{2}, 1)$ in 
-        the standard basis. That is 
+        $\v = (\pi, -\sqrt{2}, 1)$ in
+        the standard basis. That is
         <div class="eqwrapper">
-          \begin{eqnarray*} 
+          \begin{eqnarray*}
           \u &amp;=&amp; - \i + \sqrt{3}\,\j,\\
           \v &amp;=&amp; \pi\, \i - \sqrt{2}\, \j + \k.
           \end{eqnarray*}
@@ -851,9 +851,9 @@
       </figure>
 
       <div class="example">
-        Consider the points $P=(3,5)$ and $Q=(4,7).$ 
-        To determine the components of the vector 
-        from $P$ to $Q$ we subtract 
+        Consider the points $P=(3,5)$ and $Q=(4,7).$
+        To determine the components of the vector
+        from $P$ to $Q$ we subtract
         \[
         (4,7) - (3,5) = (1,2).
         \]
@@ -928,17 +928,17 @@
         \mathbf a \pd \mathbf b = a_1b_1 + a_2b_2 .
         \]
         Sometimes the dot product is denoted as
-        $\langle \mathbf a, \mathbf b\rangle$ thus, 
-        $\langle  \mathbf a, \mathbf b\rangle$
+        $\langle \mathbf a, \mathbf b\rangle$ thus,
+        $\langle \mathbf a, \mathbf b\rangle$
         and $\mathbf a \pd \mathbf b$ mean <em>exactly
-        the same thing</em>.
+          the same thing</em>.
       </p>
 
       <div class="example">
         <div class="eqwrapper">
           \begin{eqnarray*}
           (2,-3)\pd (4,-2) &amp;=&amp; 2(4) + (-3)(-2) = 14,\\
-          \left(-1, 7,4\right) \pd \left(6, 2,-\frac{1}{2}\right)  &amp;=&amp; (-1)(6) + 7(2) + 4\left(-\frac{1}{2}\right) = 6,\\
+          \left(-1, 7,4\right) \pd \left(6, 2,-\frac{1}{2}\right) &amp;=&amp; (-1)(6) + 7(2) + 4\left(-\frac{1}{2}\right) = 6,\\
           (\i + 2\,\j -4\,\k)\pd (2\,\j -\k)&amp; =&amp;1(0) + 2(2) + (-4)(-1) = 8.
           \end{eqnarray*}
         </div>
@@ -1022,15 +1022,15 @@
       </p>
 
       <div class="example">
-        Consider the vector $\v = 2\,\i + 3\, \j -\frac{1}{2}\k.$ 
-        To normalized $\v,$ first we need to find its length. 
+        Consider the vector $\v = 2\,\i + 3\, \j -\frac{1}{2}\k.$
+        To normalized $\v,$ first we need to find its length.
         That is,
         <div class="eqwrapper">
           \begin{eqnarray*}
           \norm{\v} = \sqrt{2^2+3^3+\left(\frac{1}{2}\right)^2} =\frac{1}{2}\sqrt{53}.
           \end{eqnarray*}
         </div>
-        Hence the normalization of $\v$ is 
+        Hence the normalization of $\v$ is
         <div class="eqwrapper">
           \begin{eqnarray*}
           \u = \frac{\v}{\norm{\v} } &amp; = &amp; \frac{2\,\i + 3\, \j -\frac{1}{2}\k}{\frac{1}{2}\sqrt{53}}\\
@@ -1061,14 +1061,14 @@
         <img style="width: 40%;" src="imgs/vectors-and-the-geometry-of-space/angle-between-vectors.svg">
         <figcaption>
           The distance $\norm{\mathbf a -\mathbf b}$ from the
-          endpoint of $\mathbf a$ to the endpoint of $\mathbf b,$ 
+          endpoint of $\mathbf a$ to the endpoint of $\mathbf b,$
           and the angle between them the two vectors.
         </figcaption>
       </figure>
 
       <div class="example">
-        Let's compute the distance from the endpoint of the 
-        vector $\j$ that is, the point 
+        Let's compute the distance from the endpoint of the
+        vector $\j$ that is, the point
         $(0, 1, 0),$ to the
         endpoint of the vector $\k,$ that is, the point $(0, 0, 1).$
         That is,
@@ -1077,7 +1077,7 @@
           \norm{\k-\j} = \sqrt{ (0- 0)^2 + (0-1)^2 + (1-0)^2} =\sqrt{2}.
           \end{eqnarray*}
         </div>
-       
+
       </div>
 
       <p>
@@ -1105,7 +1105,7 @@
         we can apply the law of cosines from trigonometry
         to the triangle with one
         vertex at the origin and adjacent sides determined
-        by the vectors $\mathbf a$ and $\mathbf b.$       
+        by the vectors $\mathbf a$ and $\mathbf b.$
 
         <p>
           Then we have that
@@ -1177,16 +1177,32 @@
         \]
       </div>
 
-      <div class="corollary">
-        <span style="font-style: normal;font-weight: bold;">(Cauchy-Schwarz Inequality)</span>
-        For any two vectors $\mathbf a$ and $\mathbf b,$
-        we have
-        \[
-        |\mathbf a \pd \mathbf b|\leq \norm{\mathbf a }\norm{\mathbf b}
-        \]
-        with equality holds if and only if $\mathbf a $ is a scalar
-        multiple of $\mathbf b,$ or one of them is the vector $\mathbf 0.$
-
+      <div class="example">
+        To find the angle between $\u = (2,2,-1)$ and
+        $\v = (5,-3,2), $ first we have
+        <div class="eqwrapper">
+          \[
+          \norm{\u} = \sqrt{2^2+2^2+(-1)^2} = 3, \quad \norm{\v} = \sqrt{5^2+(-3)^2+2^2}=\sqrt{38}.
+          \]
+        </div>
+        Since
+        <div class="eqwrapper">
+          \[
+          \u\pd \v = 2(5) + 2(-3) +(-1)(2) = 2,
+          \]
+        </div>
+        then
+        <div class="eqwrapper">
+          \[
+          \cos \theta = \frac{\u\pd \v }{\norm{\u}\norm{\v}} = \frac{2}{3\sqrt{38}}.
+          \]
+        </div>
+        Thus the able between $\u$ and $\v$ is
+        <div class="eqwrapper">
+          \[
+          \theta = \cos^{-1}\left(\frac{2}{3\sqrt{38}} \right).
+          \]
+        </div>
       </div>
 
       <p>
@@ -1207,7 +1223,7 @@
       <figure>
         <img style="width: 70%;" src="imgs/vectors-and-the-geometry-of-space/orthogonality-vectors.svg">
         <figcaption>
-          The nonzero vectors $\mathbf{a}$ and $\mathbf{b}$  are orthogonal when $\mathbf{a} \cdot \mathbf{b} = 0.$  
+          The nonzero vectors $\mathbf{a}$ and $\mathbf{b}$ are orthogonal when $\mathbf{a} \cdot \mathbf{b} = 0.$
         </figcaption>
       </figure>
 
@@ -1220,6 +1236,90 @@
         By convention, we consider the zero vector
         to be orthogonal to all vectors.
       </p>
+
+      <p>
+        Theorem 1 establishes that the inner
+        product of two vectors equals the product
+        of their lengths multiplied by
+        the cosine of the angle between them.
+        This relationship is particularly useful
+        in solving geometric problems.
+        One important consequence of Theorem 1 is:
+      </p>
+
+
+
+      <div class="corollary">
+        <span style="font-style: normal;font-weight: bold;">(Cauchy-Schwarz Inequality)</span>
+        For any two vectors $\mathbf a$ and $\mathbf b,$
+        we have
+        <div class="eqwrapper">
+          \[
+          |\mathbf a \pd \mathbf b|\leq \norm{\mathbf a }\norm{\mathbf b}
+          \]
+        </div>
+        with equality holds if and only if $\mathbf a $ is a scalar
+        multiple of $\mathbf b,$ or one of them is the vector $\mathbf 0.$
+
+      </div>
+
+      <div class="proof">
+        If \(\mathbf{a}\) is not a scalar multiple of
+        \(\mathbf{b},\) then the angle \(\theta\) between
+        them is neither \(0\) nor \(\pi\). In this case,
+        \(|\cos \theta| \lt 1\), ensuring that the inequality
+        holds. Moreover, if both \(\mathbf{a}\) and \(\mathbf{b}\)
+        are nonzero, the inequality is strict.
+        However, if \(\mathbf{a}\) is a scalar multiple of
+        \(\mathbf{b},\) then \(\theta = 0\) or \(\pi\),
+        which implies \(|\cos \theta| = 1\), leading to equality in this
+        case.
+      </div>
+
+      <div class="example">
+        Let \(\mathbf{u} = (-1, 1, 1)\) and \(\mathbf{v} = (3, 0, 1)\).
+        We want to verify the Cauchy-Schwarz
+        inequality:
+
+        <p>Step 1: Compute the dot product \(\mathbf{u} \cdot \mathbf{v}\):</p>
+        <div class="eqwrapper">
+          \[
+          \mathbf{u} \pd \mathbf{v} = -3+0+1 = -2
+          \]
+        </div>
+
+
+        <p>Step 2: Compute the magnitudes \(||\mathbf{u}||\) and \(||\mathbf{v}||\):</p>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{u}|| = \sqrt{(-1)^2 + 1^2 + 1^2} = \sqrt{1 + 1 + 1} = \sqrt{3}
+          \]
+        </div>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{v}|| = \sqrt{3^2 + 0^2 + 1^2} = \sqrt{9+1} = \sqrt{10}
+          \]
+        </div>
+
+
+
+        <p>Step 3: Verify the Cauchy-Schwarz inequality:</p>
+        <div class="eqwrapper">
+          \[
+          |\mathbf{u} \pd \mathbf{v}| = |2| = 2 \quad \text{and} \quad ||\mathbf{u}|| ||\mathbf{v}|| = \sqrt{3} \cdot
+          \sqrt{10}
+          \]
+        </div>
+
+
+        <p>
+          Since \(\sqrt{3}\cdot \sqrt{10}\gt \sqrt{3}\cdot \sqrt{3} = 3 \geq 2\),
+          the Cauchy-Schwarz inequality is satisfied.
+        </p>
+
+      </div>
+
+
 
       <br>
 
@@ -1265,7 +1365,8 @@
 
         <div class="eqwrapper">
           \[
-          \norm{\mathbf a+ \mathbf b}^2 = (\mathbf a+ \mathbf b)\pd (\mathbf a+ \mathbf b) = \norm{\mathbf a}^2 +2\mathbf
+          \norm{\mathbf a+ \mathbf b}^2 = (\mathbf a+ \mathbf b)\pd (\mathbf a+ \mathbf b) = \norm{\mathbf a}^2
+          +2\mathbf
           a \pd \mathbf b +\norm{\mathbf b}^2 .
           \]
         </div>
@@ -1274,7 +1375,8 @@
         </p>
         <div class="eqwrapper">
           \[
-          \norm{\mathbf a}^2 +2\mathbf a \pd \mathbf b +\norm{\mathbf b}^2 \leq \norm{\mathbf a}^2+ 2\norm{\mathbf a}\norm{ \mathbf b}+
+          \norm{\mathbf a}^2 +2\mathbf a \pd \mathbf b +\norm{\mathbf b}^2 \leq \norm{\mathbf a}^2+ 2\norm{\mathbf
+          a}\norm{ \mathbf b}+
           \norm{\mathbf b}^2 = (\norm{\mathbf a}+\norm{\mathbf b} )^2.
           \]
         </div>
@@ -1289,6 +1391,59 @@
       </div>
 
 
+      <div class="example">
+        Let \(\mathbf{a} = (1, 2, 3)\) and 
+        \(\mathbf{b} = (4, -1, 2)\). We will 
+        verify the triangle inequality:
+
+        <p>Step 1: Compute the sum of \(\mathbf{a}\) and \(\mathbf{b}\):</p>
+        <div class="eqwrapper">
+          \[
+          \mathbf{a} + \mathbf{b} = (1 + 4, 2 + (-1), 3 + 2) = (5, 1, 5)
+          \]
+        </div>
+
+        <p>Step 2: Compute the magnitudes of \(\mathbf{a}\), \(\mathbf{b}\), and \(\mathbf{a} + \mathbf{b}\):</p>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{a}|| = \sqrt{1^2 + 2^2 + 3^2} = \sqrt{1 + 4 + 9} = \sqrt{14}
+          \]
+        </div>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{b}|| = \sqrt{4^2 + (-1)^2 + 2^2} = \sqrt{16 + 1 + 4} = \sqrt{21}
+          \]
+        </div>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{a} + \mathbf{b}|| = \sqrt{5^2 + 1^2 + 5^2} = \sqrt{25 + 1 + 25} = \sqrt{51}
+          \]
+        <p></p>
+
+        <p>Step 3: Verify the triangle inequality:</p>
+        <div class="eqwrapper">
+          \[
+          ||\mathbf{a} + \mathbf{b}|| = \sqrt{51} \quad \text{and} \quad ||\mathbf{a}|| + ||\mathbf{b}|| = \sqrt{14} +
+          \sqrt{21}
+          \]
+        </div>
+
+        <p>We now check if \(\sqrt{51} \leq \sqrt{14} + \sqrt{21}\). Squaring both sides:</p>
+        <div class="eqwrapper">
+          \[
+          51 \leq (\sqrt{14} + \sqrt{21})^2
+          \]
+        </div>
+
+        <p>Expanding the square on the right-hand side:</p>
+        <div class="eqwrapper">
+          \[
+          (\sqrt{14} + \sqrt{21})^2 = 14 + 21 + 2\sqrt{14 \times 21} = 35 + 2\sqrt{294} \approx 35 + 34.28 = 69.28
+          \]
+        </div>
+
+        <p>Since \(51 \leq 69.28\), the triangle inequality holds.</p>
+      </div>
 
 
 
@@ -1297,7 +1452,7 @@
   </div>
   <!-- Ends main content -->
 
-</section>
+</div></section>
     </div>
 
     <!-- Navigation -->
