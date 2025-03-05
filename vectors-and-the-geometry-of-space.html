@@ -97,6 +97,7 @@
             <a class="w3-bar-item w3-button" href="#section-7">Distance and Angle Between Two Vectors</a>
             <a class="w3-bar-item w3-button" href="#section-8">
     Triangle Inequality</a>
+            <a class="w3-bar-item w3-button" href="#section-9">The Cross Product</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
@@ -935,7 +936,7 @@
         </div>
 
         <p>
-          You can easily verify these results using GeoGebra. 
+          You can easily verify these results using GeoGebra.
           For instance, enter line by line, the following code:
         </p>
         <div class="w3-code jsHigh notranslate">
@@ -1053,7 +1054,7 @@
         </div>
 
         <p>
-          You can verify this  GeoGebra with the following code:
+          You can verify this GeoGebra with the following code:
         </p>
         <div class="w3-code jsHigh notranslate">
           v = (2, 3, -1/2)<br>
@@ -1065,7 +1066,7 @@
         </a>
 
         <p>
-          GeoGebra has built-in operations with vectors, 
+          GeoGebra has built-in operations with vectors,
           so you can also write:
         </p>
         <div class="w3-code jsHigh notranslate">
@@ -1516,12 +1517,372 @@
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
-
       </div>
 
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-9">
+      <h2>
+        The Cross Product
+      </h2>
+
+      <p>
+        Earlier, we introduced a vector product
+        that results in a scalar. In this section,
+        we will define a different
+        type of vector product that yields another
+        vector. Specifically, given two vectors
+        $\mathbf{a}$ and $\mathbf{b},$ we
+        can compute a third vector,
+        $\mathbf{a} \times \mathbf{b},$ known as
+        the cross product. This new vector has a
+        key geometric property: it is
+        perpendicular to the plane defined by
+        $\mathbf{a}$ and $\mathbf{b}.$ The definition
+        of the cross product is closely tied to the
+        concepts of matrices
+        and determinants.
+      </p>
+
+      <div class="definition">
+        If $\mathbf{a}= a_1\i+a_2\k+a_3\k$ and $\mathbf{b}= b_1\i+b_2\k+b_3\k$
+        are vectors in $\R^3,$ the <strong>cross product</strong>
+        or <strong>vector product</strong> of $\mathbf{a}$ and $\mathbf{b},$
+        denoted by $\mathbf{a} \times \mathbf{b},$ is defined as the
+        vector
+        <div class="eqwrapper">
+          \[
+          \mathbf{a} \times \mathbf{b} =
+          \left|
+          \begin{array}{cc}
+          a_2 &amp; a_3 \\
+          b_2 &amp; b_3
+          \end{array}
+          \right| \i -
+          \left|
+          \begin{array}{cc}
+          a_1 &amp; a_3 \\
+          b_1 &amp; b_3
+          \end{array}
+          \right| \j +
+          \left|
+          \begin{array}{cc}
+          a_1 &amp; a_2 \\
+          b_1 &amp; b_2
+          \end{array}
+          \right| \k,
+          \]
+        </div>
+        <p>or, symbolically</p>
+        <div class="eqwrapper">
+          \[
+          \mathbf{a} \times \mathbf{b} =
+          \left|
+          \begin{array}{ccc}
+          \i &amp; \j &amp; \k \\
+          a_1 &amp; a_2 &amp; a_3 \\
+          b_1 &amp; b_2 &amp; b_3
+          \end{array}
+          \right| .
+          \]
+        </div>
+      </div>
+
+      <br>
 
 
+      <details>
+        <summary>
+          <strong>
+            <picture>
+              <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f914/512.webp" type="image/webp">
+              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f914/512.gif" alt="🤔" width="32" height="32">
+            </picture>
+            Who invented the <em>cross product?</em>
+          </strong>
+        </summary>
 
+        <div class="w3-padding-large">
+          <p>
+            The cross product was introduced by the
+            Irish mathematician Sir
+            <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Hamilton/" target="_blank">
+              William Rowan Hamilton
+            </a>
+            (1805-1865), who developed quaternions, an
+            early precursor to vectors. Hamilton was a
+            linguistic prodigy —by the age of five, he could
+            read Latin, Greek, and Hebrew. By eight, he had
+            added French and Italian, and by ten, he could
+            read Arabic and Sanskrit. Remarkably, at just 21
+            years old, while still an undergraduate at
+            Trinity College in Dublin, he was appointed
+            Professor of Astronomy at the university and
+            Royal Astronomer of Ireland.
+          </p>
+
+          <ul>
+            <li>
+              Bruno, Leonard C. (1999).
+              <a href="https://archive.org/details/mathmathematicia00brun" target="_blank">Math and mathematicians: the
+                history of math discoveries around the world. </a>
+              Baker, Lawrence W. Detroit, Mich.: USA.
+            </li>
+          </ul>
+        </div>
+      </details>
+
+      <p>
+        It is important to note that the cross product
+        $\mathbf{a} \times \mathbf{b}$ is only defined for three-dimensional vectors.
+        To simplify the computation of the cross product, we make use of determinant notation.
+        A <strong>determinant of order 2</strong> is defined as:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \begin{vmatrix} a &amp; b \\ c &amp; d \end{vmatrix} = ad - bc
+        \]
+      </div>
+      <p>
+        (Multiply the elements along the main diagonal and subtract the product of the elements along the other
+        diagonal.)
+        For example:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \begin{vmatrix} 3 &amp; 5 \\ 2 &amp; 7 \end{vmatrix} = (3 \times 7) - (5 \times 2) = 21 - 10 = 11.
+        \]
+      </div>
+      <p>
+        A <strong>determinant of order 3</strong> extends this idea by expressing it in terms of second-order
+        determinants,
+        also known as minors. Given a $3 \times 3$ matrix:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \begin{vmatrix}
+        a &amp; b &amp; c \\
+        d &amp; e &amp; f \\
+        g &amp; h &amp; i
+        \end{vmatrix} =
+        a \begin{vmatrix} e &amp; f \\ h &amp; i \end{vmatrix}
+        - b \begin{vmatrix} d &amp; f \\ g &amp; i \end{vmatrix}
+        + c \begin{vmatrix} d &amp; e \\ g &amp; h \end{vmatrix}.
+        \]
+      </div>
+      <p>
+        This determinant formula will be useful in defining and computing the cross product
+        of two vectors in $\mathbb{R}^3$.
+      </p>
+
+      <p>
+        Note that $\mathbf{a} \times \mathbf{b}$ is
+        defined only when a and b are three-dimensional vectors.
+        In order to make Definition 4 easier to remember,
+        we use the notation of determinants.
+        A <strong>determinant of order 2</strong> is defined by
+      </p>
+      <div class="eqwrapper">
+
+      </div>
+      <p>
+        (Multiply across the diagonals and subtract.) For example,
+      </p>
+      <div class="eqwrapper">
+
+      </div>
+      <p>
+        A <strong>determinant of order 3</strong> can be defined in terms of
+        second-order determinants as
+        follows:
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        \begin{vmatrix}
+        2 &amp; -3 &amp; 1 \\
+        5 &amp; 4 &amp; -2 \\
+        3 &amp; -1 &amp; 2
+        \end{vmatrix} &amp;=&amp; 2 \begin{vmatrix} 4 &amp; -2 \\ -1 &amp; 2 \end{vmatrix}
+        - (-3) \begin{vmatrix} 5 &amp; -2 \\ 3 &amp; 2 \end{vmatrix}
+        + 1 \begin{vmatrix} 5 &amp; 4 \\ 3 &amp; -1 \end{vmatrix}.
+        \end{eqnarray*}
+      </div>
+      <p>
+        Evaluating the \(2 \times 2\) determinants:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \begin{vmatrix} 4 &amp; -2 \\ -1 &amp; 2 \end{vmatrix} = (4 \times 2) - (-2 \times -1) = 8 - 2 = 6,
+        \]
+        \[
+        \begin{vmatrix} 5 &amp; -2 \\ 3 &amp; 2 \end{vmatrix} = (5 \times 2) - (-2 \times 3) = 10 + 6 = 16,
+        \]
+        \[
+        \begin{vmatrix} 5 &amp; 4 \\ 3 &amp; -1 \end{vmatrix} = (5 \times -1) - (4 \times 3) = -5 - 12 = -17.
+        \]
+      </div>
+      <p>
+        Substituting these values we obtain:
+      </p>
+      <div class="eqwrapper">
+        \[
+        \begin{vmatrix}
+        2 &amp; -3 &amp; 1 \\
+        5 &amp; 4 &amp; -2 \\
+        3 &amp; -1 &amp; 2
+        \end{vmatrix} = (2 \times 6) - (-3 \times 16) + (1 \times -17) = 12 + 48 - 17 = 43.
+        \]
+      </div>
+
+      <div class="exercise">
+        If $\mathbf a = (1,3,4)$ and $\mathbf b = (2,7, -5),$ find the
+        cross product $\mathbf a \times \mathbf b.$
+        <br><br>
+
+        <details>
+          <summary>
+            <strong>Show solution!</strong>
+          </summary>
+          <p>
+            We have to compute the following determinant
+          </p><div class="eqwrapper">
+            \[
+            \mathbf{a} \times \mathbf{b} =
+            \begin{vmatrix}
+            \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+            1 &amp; 3 &amp; 4 \\
+            2 &amp; 7 &amp; -5
+            \end{vmatrix}.
+            \]
+          </div>
+          <p>
+            That is
+          </p>
+          <div class="eqwrapper">
+            \[
+            \mathbf{a} \times \mathbf{b} =
+            \begin{vmatrix} 3 &amp; 4 \\ 7 &amp; -5 \end{vmatrix} \mathbf{i}
+            - \begin{vmatrix} 1 &amp; 4 \\ 2 &amp; -5 \end{vmatrix} \mathbf{j}
+            + \begin{vmatrix} 1 &amp; 3 \\ 2 &amp; 7 \end{vmatrix} \mathbf{k}.
+            \]
+          </div>
+          <p>
+            Computing the \(2 \times 2\) determinants we obtain
+          </p>
+          <div class="eqwrapper">
+            \[
+            \begin{vmatrix} 3 &amp; 4 \\ 7 &amp; -5 \end{vmatrix} = (3 \times -5) - (4 \times 7) = -15 - 28 = -43,
+            \]
+            \[
+            \begin{vmatrix} 1 &amp; 4 \\ 2 &amp; -5 \end{vmatrix} = (1 \times -5) - (4 \times 2) = -5 - 8 = -13,
+            \]
+            \[
+            \begin{vmatrix} 1 &amp; 3 \\ 2 &amp; 7 \end{vmatrix} = (1 \times 7) - (3 \times 2) = 7 - 6 = 1.
+            \]
+          </div>
+          <p>
+            Substituting these values we get
+          </p>
+          <div class="eqwrapper">
+            \begin{eqnarray*}
+            \mathbf{a} \times \mathbf{b} &amp;=&amp; (-43) \mathbf{i} - (-13) \mathbf{j} + (1) \mathbf{k}\\
+            &amp;=&amp; -43 \mathbf{i} +13 \mathbf{j} + \mathbf{k} \\
+            &amp;=&amp; (-43, 13, 1).
+            \end{eqnarray*}
+          </div>
+          <p>
+            Therefore, the cross product is \( \mathbf{a} \times \mathbf{b} = (-43, 13, 1) \).
+          </p>
+          <p></p>
+        </details>
+      </div>
+
+      <p>
+        As mentioned before, the vector $\mathbf a \times \mathbf b$
+        is perpendicular to the plane defined by
+        $\mathbf{a}$ and $\mathbf{b}.$ This means that
+        $\mathbf a \times \mathbf b$ is orthogonal to
+        $\mathbf{a}$ and $\mathbf{b}.$ For example
+      </p>
+      <div class="eqwrapper">
+        \begin{eqnarray*}
+        (\mathbf a \times \mathbf b) \pd \mathbf a &amp;=&amp; \begin{vmatrix} a_2 &amp; a_3 \\ b_2 &amp; b_3 \end{vmatrix} a_1 -
+        \begin{vmatrix} a_1 &amp; a_3 \\ b_1 &amp; b_3 \end{vmatrix} a_2 + \begin{vmatrix} a_1 &amp; a_2 \\ b_2 &amp; b_2 \end{vmatrix}
+        a_3 \\
+        &amp;=&amp; a_1(a_2b_3-a_3b_2)-a_2(a_1b_3-a_3b_1)+a_3(a_1b_2-a_2b_1)\\
+        &amp;=&amp; a_1a_2b_3 -a_1b_2a_3-a_1a_2b_3 + b_1a_2a_3 +a_1b_2a_3 -b_1a_2a_3.\\
+        &amp;=&amp; 0.
+        \end{eqnarray*}
+      </div>
+      <p>
+        Using a similar procedure we find that $ (\mathbf a \times \mathbf b) \pd \mathbf b = 0.$
+        Therefore, we just proved the following:
+      </p>
+
+      <div class="theorem">
+        The vector $\mathbf a \times \mathbf b$ is orthogonal to both $\mathbf{a}$ and $\mathbf{b}.$
+      </div>
+
+      <table>
+        <tbody><tr>
+          <td style="width: 25%;">
+            <img style="width: 100%;" src="imgs/vectors-and-the-geometry-of-space/Right_hand_rule_cross_product.png">
+          </td>
+          <td style="width: 75%;">
+            <p class="w3-padding">
+              It turns out that the direction of
+              $\mathbf a \times \mathbf b$ is
+              given by the <em>right-hand rule</em>:
+              if the fingers
+              of your right hand curl in the direction of
+              a rotation (through an angle less than 180°)
+              from $\mathbf a $ to $\mathbf b,$
+              then your thumb points in the
+              direction of $\mathbf a \times \mathbf b.$
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
+
+      <p>
+        In the previous argument we used the cross product
+        and the dot product. This operation has a particular name.
+        Given three vectors
+        $\u,$ $\v,$ and $\w$ the real number
+        \[
+        (\u \times \v) \pd \w
+        \]
+        is called the <strong>triple product</strong>
+        of $\u,$ $\v,$ and $\w,$ in that order.
+      </p>
+
+      <p>
+        Now that we know the direction of the
+        vector $\mathbf a \times \mathbf b$
+        the remaining thing we need to
+        complete its geometric description is its length
+        $\norm{\mathbf a \times \mathbf b}.$
+        This is given by the following
+        theorem
+      </p>
+
+      <div class="theorem">
+        If $\theta$ is the angle between $\mathbf a$
+        and $\mathbf b,$ then
+        <div class="eqwrapper">
+          \[
+          \norm{\mathbf a \times \mathbf b} = \norm{\mathbf a}\norm{\mathbf b}\sin\theta
+          \]
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <iframe loading="lazy" allowfullscreen="" scrolling="no" title="Cross produc visualization" src="https://www.geogebra.org/material/iframe/id/zzsg49zt/width/742/height/421/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="742px" height="421px" style="border:0px;"> </iframe>
+      </div>
 
 
     </div>
