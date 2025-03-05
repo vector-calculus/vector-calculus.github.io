@@ -799,7 +799,7 @@
       </p>
       <div class="eqwrapper">
         \[
-        \mathbf a = a_1\,i+a_2\,\j +a_3\k,
+        \mathbf a = a_1\,\i+a_2\,\j +a_3\k,
         \]
       </div>
       <p>
@@ -933,6 +933,19 @@
           (\i + 2\,\j -4\,\k)\pd (2\,\j -\k)&amp; =&amp;1(0) + 2(2) + (-4)(-1) = 8.
           \end{eqnarray*}
         </div>
+
+        <p>
+          You can easily verify these results using GeoGebra. 
+          For instance, enter line by line, the following code:
+        </p>
+        <div class="w3-code jsHigh notranslate">
+          u = (-1, 7, 4)<br>
+          v = (6, 2, -1/2)<br>
+          DotProduct = u * v
+        </div>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=u=(-1,7,4);v=(6,2,-1/2);DotProduct=u*v;" target="_blank">
+          Open 3D graph <i class="fas fa-external-link-alt"></i>
+        </a>
       </div>
 
 
@@ -942,9 +955,9 @@
         and $\mathbf c$ are vectors in $\R^3$ and $s,t$ are real
         numbers, then
       </p>
-      <ol>
+      <ol class="roman-list">
         <li>
-          $\mathbf a \pd \mathbf a\geq 0;$ <br>
+          $\mathbf a \pd \mathbf a\geq 0;$ &nbsp;
           $\mathbf a\pd \mathbf a = 0$ if and only if $\mathbf a=\mathbf 0.$
         </li>
         <li>
@@ -1028,7 +1041,7 @@
         That is,
         <div class="eqwrapper">
           \begin{eqnarray*}
-          \norm{\v} = \sqrt{2^2+3^3+\left(\frac{1}{2}\right)^2} =\frac{1}{2}\sqrt{53}.
+          \norm{\v} = \sqrt{2^2+3^3+\left(-\frac{1}{2}\right)^2} =\frac{1}{2}\sqrt{53}.
           \end{eqnarray*}
         </div>
         Hence the normalization of $\v$ is
@@ -1038,6 +1051,32 @@
           &amp;=&amp; \frac{4}{\sqrt{53}}\i + \frac{6}{\sqrt{53}}\j - \frac{1}{\sqrt{53}}\k.
           \end{eqnarray*}
         </div>
+
+        <p>
+          You can verify this  GeoGebra with the following code:
+        </p>
+        <div class="w3-code jsHigh notranslate">
+          v = (2, 3, -1/2)<br>
+          Length_v = sqrt(2^2+3^2+(-1/2)^2)<br>
+          u = v/Length_v<br>
+        </div>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=v=(2,3,-1/2);Length_v=sqrt(2^2--3^2--(-1/2)^2);u=v/Length_v;Length_u=|u|;SetLineThickness(v,2);SetColor(u,%22Red%22);ZoomIn(1.5);CenterView((0,0,-0.5));SetVisibleInView(xOyPlane,-1,false);" target="_blank">
+          Open 3D graph <i class="fas fa-external-link-alt"></i>
+        </a>
+
+        <p>
+          GeoGebra has built-in operations with vectors, 
+          so you can also write:
+        </p>
+        <div class="w3-code jsHigh notranslate">
+          v = (2, 3, -1/2)<br>
+          Length_v = |v|<br>
+          u = UnitVector(v)<br>
+          Length_u = |u|
+        </div>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=v=(2,3,-1/2);Length_v=|v|;u=UnitVector(v);Length_u=|u|;SetLineThickness(v,2);SetColor(u,%22Red%22);ZoomIn(1.5);CenterView((0,0,-0.5));SetVisibleInView(xOyPlane,-1,false);" target="_blank">
+          Open 3D graph <i class="fas fa-external-link-alt"></i>
+        </a>
       </div>
 
 
@@ -1416,7 +1455,7 @@
         <p>Step 1: Compute the sum of \(\mathbf{a}\) and \(\mathbf{b}\):</p>
         <div class="eqwrapper">
           \[
-          \mathbf{a} + \mathbf{b} = (1 + 4, 2 + (-1), 3 + 2) = (5, 1, 5)
+          \mathbf{a} + \mathbf{b} = \big( 1 + 4, 2 + (-1), 3 + 2 \big) = (5, 1, 5)
           \]
         </div>
 
@@ -1473,7 +1512,7 @@
           Val_2 = |u| + |v|<br>
           TriangleIneqHolds = If(Val_1&lt;=Val_2,"True","False")
         </div>
-        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=u=(1,2,3);v=(4,-1,2);w=u--v;Val_1=|u--v|;Val_2=|u|--|v|;TriangleIneqHolds=If(Val_1%3C=Val_2,%22True%22,%22False%22);" target="_blank">
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=u=(1,2,3);v=(4,-1,2);w=u--v;Val_1=|u--v|;Val_2=|u|--|v|;TriangleIneqHolds=If(Val_1%3C=Val_2,%22True%22,%22False%22);SetColor(u,%22Red%22);SetColor(v,%22Blue%22);SetColor(w,%22Green%22);" target="_blank">
           Open 3D graph <i class="fas fa-external-link-alt"></i>
         </a>
 
