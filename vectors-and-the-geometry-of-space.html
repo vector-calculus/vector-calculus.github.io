@@ -92,7 +92,11 @@
     The Geometry of Vectors</a>
             <a class="w3-bar-item w3-button" href="#section-4">Algebraic Operations of Vectors</a>
             <a class="w3-bar-item w3-button" href="#section-5">
-    The Dot Product, Length, and Distance</a>
+    The Dot Product</a>
+            <a class="w3-bar-item w3-button" href="#section-6">Length of a Vector</a>
+            <a class="w3-bar-item w3-button" href="#section-7">Distance and Angle Between Two Vectors</a>
+            <a class="w3-bar-item w3-button" href="#section-8">
+    Triangle Inequality</a>
     </div>
 
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
@@ -137,7 +141,7 @@
         <span id="myTitle" class="w3-hide">
           <span class="w3-hide-small">Vectors and the Geometry of Space</span>
           <span class="w3-hide-large w3-hide-medium">Vectors and ...</span>
-          
+
         </span>
 
         <span title="Dark/Night Mode" id="dark-mode-toggle" class="topDark w3-theme w3-hide-small">
@@ -865,23 +869,6 @@
       </div>
 
 
-      <!--
-      
-
-     
-
-      <figure>
-        <iframe loading="lazy" allowfullscreen="" scrolling="no" title="3D vectors from origin"
-          src="https://www.geogebra.org/material/iframe/id/gfsuh8dr/width/750/height/422/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
-          width="750px" height="422px" style="border:0px;"> </iframe>
-        <figcaption>
-          Vector represented as arrow from the origin.
-        </figcaption>
-      </figure>
-
-
-
-     -->
 
 
     </div>
@@ -893,7 +880,7 @@
     <div id="section-5">
 
       <h2>
-        The Dot Product, Length, and Distance
+        The Dot Product
       </h2>
 
       <p>
@@ -974,6 +961,16 @@
       </ol>
 
 
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-6">
+
+      <h2>Length of a Vector</h2>
+
       <p>
         Now, using the Pythagorean Theorem, we can define the
         length of any vector.
@@ -1043,11 +1040,21 @@
         </div>
       </div>
 
-      <br>
 
-      <h3>
-        The Distance and Angle Between Two Vectors
-      </h3>
+
+
+
+    </div>
+
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-7">
+      <h2>
+        Distance and Angle Between Two Vectors
+      </h2>
 
       <p>
         If $\mathbf a$ and $\mathbf b$ are vectors,
@@ -1325,11 +1332,17 @@
 
 
 
-      <br>
 
-      <h3>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div id="section-8">
+      <h2>
         The Triangle Inequality
-      </h3>
+      </h2>
 
       <p>
         A key consequence of the Cauchy-Schwarz inequality,
@@ -1396,8 +1409,8 @@
 
 
       <div class="example">
-        Let \(\mathbf{a} = (1, 2, 3)\) and 
-        \(\mathbf{b} = (4, -1, 2)\). We will 
+        Let \(\mathbf{a} = (1, 2, 3)\) and
+        \(\mathbf{b} = (4, -1, 2)\). We will
         verify the triangle inequality:
 
         <p>Step 1: Compute the sum of \(\mathbf{a}\) and \(\mathbf{b}\):</p>
@@ -1422,41 +1435,63 @@
           \[
           ||\mathbf{a} + \mathbf{b}|| = \sqrt{5^2 + 1^2 + 5^2} = \sqrt{25 + 1 + 25} = \sqrt{51}
           \]
-        <p></p>
+          <p></p>
 
-        <p>Step 3: Verify the triangle inequality:</p>
-        <div class="eqwrapper">
-          \[
-          ||\mathbf{a} + \mathbf{b}|| = \sqrt{51} \quad \text{and} \quad ||\mathbf{a}|| + ||\mathbf{b}|| = \sqrt{14} +
-          \sqrt{21}
-          \]
+          <p>Step 3: Verify the triangle inequality:</p>
+          <div class="eqwrapper">
+            \[
+            ||\mathbf{a} + \mathbf{b}|| = \sqrt{51} \quad \text{and} \quad ||\mathbf{a}|| + ||\mathbf{b}|| = \sqrt{14} +
+            \sqrt{21}
+            \]
+          </div>
+
+          <p>We now check if \(\sqrt{51} \leq \sqrt{14} + \sqrt{21}\). Squaring both sides:</p>
+          <div class="eqwrapper">
+            \[
+            51 \leq (\sqrt{14} + \sqrt{21})^2
+            \]
+          </div>
+
+          <p>Expanding the square on the right-hand side:</p>
+          <div class="eqwrapper">
+            \[
+            (\sqrt{14} + \sqrt{21})^2 = 14 + 21 + 2\sqrt{14 \times 21} = 35 + 2\sqrt{294} \approx 35 + 34.28 = 69.28
+            \]
+          </div>
+
+          <p>Since \(51 \leq 69.28\), the triangle inequality holds.</p>
         </div>
 
-        <p>We now check if \(\sqrt{51} \leq \sqrt{14} + \sqrt{21}\). Squaring both sides:</p>
-        <div class="eqwrapper">
-          \[
-          51 \leq (\sqrt{14} + \sqrt{21})^2
-          \]
+        <p>
+          You can check this result using GeoGebra:
+        </p>
+        <div class="w3-code jsHigh notranslate">
+          u = (1, 2, 3)<br>
+          v = (4, -1, 2)<br>
+          w = u + v<br>
+          Val_1 = |u + v|<br>
+          Val_2 = |u| + |v|<br>
+          TriangleIneqHolds = If(Val_1&lt;=Val_2,"True","False")
         </div>
+        <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="https://geogebra.org/3d?command=u=(1,2,3);v=(4,-1,2);w=u--v;Val_1=|u--v|;Val_2=|u|--|v|;TriangleIneqHolds=If(Val_1%3C=Val_2,%22True%22,%22False%22);" target="_blank">
+          Open 3D graph <i class="fas fa-external-link-alt"></i>
+        </a>
 
-        <p>Expanding the square on the right-hand side:</p>
-        <div class="eqwrapper">
-          \[
-          (\sqrt{14} + \sqrt{21})^2 = 14 + 21 + 2\sqrt{14 \times 21} = 35 + 2\sqrt{294} \approx 35 + 34.28 = 69.28
-          \]
-        </div>
 
-        <p>Since \(51 \leq 69.28\), the triangle inequality holds.</p>
       </div>
+
+
+
 
 
 
     </div>
 
   </div>
+
   <!-- Ends main content -->
 
-</div></section>
+</section>
     </div>
 
     <!-- Navigation -->
