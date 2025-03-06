@@ -2230,8 +2230,26 @@ label.sidenote-toggle:not(.sidenote-number) {
 }
 
 /* sidenotes inside blockquotes are indented more */
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns content to the right */
+  width: 25vw;
+  margin-left: auto; /* Pushes the entire container to the right */
+}
+
 blockquote {
   font-size: 0.9em;
+  width: 25vw;
+  text-align: justify;
+  margin: 0 0 1em 1em; /* Adds spacing to the left */
+}
+
+cite {
+  font-size: 0.9em;
+  display: block; /* Ensures it appears below the blockquote */
+  text-align: right; /* Aligns the text to the right */
+  margin-top: 0.5em; /* Adds spacing between blockquote and cite */
 }
 
 blockquote .sidenote {

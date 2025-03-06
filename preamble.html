@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>  Preamble
+</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="An introduction to Vector Calculus" />
+  <meta name="keywords" content="vector, calculus, analysis, mathematics" />
+
+  <!--
+    https://www.everywheremarketer.com/blog/ultimate-guide-to-social-meta-tags-open-graph-and-twitter-cards
+  -->
+  <!--Facebook-->
+  <meta property="og:title" content="Vector Calculus" />
+  <meta property="og:url" content="https://vector-calculus.github.io/" />
+  <meta property="og:description" content="An interactive introduction to Vector Calculus" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vector Calulus">
+
+  <!--Twitter/X-->
+  <meta name="twitter:title" content="Vector Calculus" />
+  <meta name="twitter:site" content="https://vector-calculus.github.io/" />
+  <meta name="twitter:description" content="An interactive introduction to Vector Calculus" />
+  <meta name="twitter:type" content="website" />
+  <meta name="twitter:creator" content="@jcponcemath" />
+
+  <link rel="icon" type="image/png" href="imgs/infinity32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="imgs/infinity16.png" sizes="16x16">
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0V5C760K4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-F0V5C760K4');
+  </script>
+
+  <!-- MathCell applets + MathJax -->
+  <script src="js/math.js"></script>
+  <script src="js/mathcell.js"></script>
+  <script src="js/mathjax.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+
+</head>
+
+<body data-type="book" id="top">
+
+  <!-- Loader fullscreen -->
+  <div class="myLoader" id="loader">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="loadingMessage">Loading...</div>
+  </div>
+
+  <div class="w3-main w3-large" style="margin-left:250px;">
+
+
+
+    <!-- Main DIV Starts here -->
+    <div class="container">
+      <section data-type="chapter" id="index">
+
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-card" id="mySidebar">
+        <a class="w3-bar-item w3-button w3-border-bottom w3-large w3-center" href="/"><img id="myLogo" src="imgs/my-logo-black.png"></a>
+
+        <a class="w3-bar-item w3-button w3-hide-large w3-large w3-center" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa-solid fa-xmark w3-large"></i></a>
+
+
+        <a class="w3-bar-item w3-button" id="chapterBar" href="preamble.html">0. Preamble</a>
+
+        <div class="toc-chapter" id="toc-chapter">
+                        <a class="w3-bar-item w3-button" href="#section-1">Introduction</a>
+                        <a class="w3-bar-item w3-button" href="#section-2">Navigation</a>
+                        <a class="w3-bar-item w3-button" href="#section-3">Acknowledgements</a>
+                        <a class="w3-bar-item w3-button" href="#section-4">License</a>
+        </div>
+
+        <a class="w3-bar-item w3-button" id="chapterBar" href="vectors-and-the-geometry-of-space.html">1. Vectors and
+            the
+            Geometry of Space</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="higher-order-derivatives.html">3. Higher Order
+            Derivatives</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="vector-functions.html">4. Vector
+            Functions</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="double-and-triple-integrals.html">5. Double and Triple
+            Integrals</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="applications-of-integration.html">6. Applications of
+            Integration</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="integrals-over-paths-and-surfaces.html">7. Integrals Over
+            Paths
+            and Surfaces</a>
+        <a class="w3-bar-item w3-button" id="chapterBar" href="integration-theorems.html">8. Integration Theorems</a>
+
+        <!-- Support button -->
+<br>
+
+<span class="w3-center w3-large" style="width: 80%; display: block; margin: 0 auto;">
+  <hr>
+</span>
+
+<span style="width: 55%; display: block; margin: 0 auto;" onclick="document.getElementById('myModal').style.display='block'" class="w3-bar-item w3-button w3-round-large w3-center w3-large">
+  <i class="fa-regular fa-heart"></i> <strong>Support</strong>
+  <br>
+  <strong>∞</strong>
+</span>
+    </nav>
+
+    <!-- Overlay to close navbar -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay">
+    </div>
+
+    <!-- Starts main content -->
+
+    <!-- !PAGE CONTENT! -->
+
+    <!-- Main text starts here -->
+
+    <!-- Bar on top shows/hides after scrolling -->
+    <div id="myTop" class="w3-container w3-top w3-theme-bar w3-large">
+        <div id="myTextBar">
+            <p>
+                <i class="fa-solid fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+
+                <span id="myTitle" class="w3-hide">
+                    Preamble
+                </span>
+
+                <span title="Dark/Night Mode" id="dark-mode-toggle" class="topDark w3-theme w3-hide-small">
+                    <i class="fa-regular fa-sun"></i>
+                </span>
+
+                <span onclick="document.getElementById('myModal').style.display='block'" class="topDonate w3-button w3-theme w3-round-small w3-hide-small">
+                    <i class="fa-regular fa-heart"></i> Support
+                </span>
+
+            </p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme header-section">
+
+        <h1>Preamble</h1>
+
+    </header>
+
+    <!-- Sections -->
+    <div class="w3-container  section-content">
+
+        <div id="section-1">
+
+            <div class="quote-container">
+                <blockquote>
+                    Quaternions came from Hamilton ... and have been an unmixed
+                    evil to those who have touched them in any way. Vector
+                    is a useless survival ... and has never been of the slightest use
+                    to any creature.<br>
+                    <cite>— Lord Kelvin</cite>
+                </blockquote>
+            </div>
+
+            <h2>
+                Introduction
+            </h2>
+
+            <p>
+                Vector Calculus is a powerful branch of mathematics that extends
+                calculus into multiple dimensions, enabling us to study and model
+                phenomena involving direction and magnitude. It forms the
+                mathematical backbone for fields such as physics, engineering,
+                and computer graphics, where understanding how quantities
+                change in space is essential.
+            </p>
+
+            <iframe src="applets/p5js/flow-field-noise-white" style="width: 100%; height: 300px; border: 0;" noscrolling="">
+            </iframe>
+
+
+            <p>
+                This interactive book takes a hands-on approach
+                to learning Vector Calculus by combining
+                theoretical concepts with dynamic,
+                interactive visualizations.
+                Using open-source mathematical
+                software, you'll explore key topics such as vector fields,
+                line and surface integrals, and fundamental theorems,
+                all within an interactive environment that bridges
+                intuition and rigor.
+            </p>
+
+            <p>
+                Through these explorations, you'll develop a deep
+                understanding of the subject while seeing its beauty
+                and practicality
+                in action.
+            </p>
+
+            <p>
+                What sets this online book apart from traditional 
+                texts is its use of interactive applets, 
+                allowing you to explore vector calculus concepts 
+                dynamically and visualize vector fields, 
+                gradients, divergence, curl, and surface 
+                integrals through interactive simulations. 
+                The applets are designed using the following 
+                open-source software: 
+                <strong>GeoGebra, Desmos,
+                p5js, Three.js, MathBox,</strong> 
+                and <strong>MathCell.js</strong>.
+            </p>
+            
+            <p>
+                While I advocate for using computers to 
+                aid geometric reasoning, I strongly encourage you to 
+                develop your problem-solving skills by 
+                working through the suggested exercises and filling in 
+                missing details throughout the chapters.
+            </p>
+            
+            <p>
+                Think of the computer as a physicist thinks 
+                of a laboratory: a tool for testing ideas, 
+                verifying predictions, and uncovering new 
+                phenomena that inspire further inquiry. 
+                In some sections, I provide detailed 
+                instructions for exploring vector calculus with 
+                specific software. However, remember that 
+                computer hardware and software are fleeting—
+                mathematical ideas, in contrast, are timeless.
+            </p>
+
+            <p class="callout"><strong>NOTE!</strong> If you're on a mobile device, some of the applets might not work
+                super well for you.
+                They are designed for mouse input, so if you're getting frustrated or your finger is in the way, try the
+                site on a computer.</p>
+
+
+        </div>
+
+
+
+        <br>
+        <hr>
+        <br>
+
+        <div id="section-2">
+            <h2>
+                Navigation
+            </h2>
+
+            <p>
+                To access the chapters just click on the menu 
+                located on the left side. 
+            </p>
+            <div style="text-align: center;">
+                <img style="width: 70%;" src="imgs/nav.gif">
+            </div>
+
+            <p>
+                To hide the navigation bar, just 
+                adjust the width of your browser. Or zoom in 
+                with the keyboard combination:
+            </p>
+            <ul>
+                <li>Mac: <code>Command</code> + <code>+</code></li>
+                <li>Windows: <code>Control</code> + <code>+</code></li>
+            </ul>
+
+
+            <p>
+                While exploring this book you will encounter 
+                two kinds of <strong>hidden extra notes</strong>. 
+                The first one looks like this:
+            </p>
+
+            <details>
+                <summary><strong>Click here to expand!</strong></summary>
+                <p class="w3-padding">
+                    Hello!
+                    <picture>
+                        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f636_200d_1f32b_fe0f/512.webp" type="image/webp">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f636_200d_1f32b_fe0f/512.gif" alt="😶" width="32" height="32">
+                    </picture>
+                    You just found me! This block will contain extra 
+                    information such as: solutions or hints to exercises, 
+                    or short historical notes.
+                    <br><br>
+                    That's it! Now you can click on the same text again to
+                    hide me!
+                </p>
+            </details>
+
+
+            <p>
+                Another type of hidden notes look like this:
+                <span class="infotip">
+                    <strong id="toggleButton">Click here! 📃</strong>
+                    <span id="myinfo">
+                        Here you will find short notes, and maybe
+                        some math jokes.
+                        <picture>
+                            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f609/512.webp" type="image/webp">
+                            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f609/512.gif" alt="😉" width="32" height="32">
+                        </picture>
+                        <br>
+                        You can close this note by clicking 
+                        again on the same text.
+                    </span>
+                </span>
+
+            </p>
+
+
+            <p>That's it! If you are ready to start exploring 
+                Vector Calculus, skip ahead to 
+                <a href="vectors-and-the-geometry-of-space.html">Chapter 1</a>
+            </p>
+
+            
+            <!--
+            <div style="text-align: center;align-content: center;align-items: center;">
+                <a href="vectors-and-the-geometry-of-space.html"><button
+                        class="w3-center w3-button w3-dark-grey w3-round-xlarge w3-hover-shadow ">
+                        I am ready to start!</button></a>
+            </div>-->
+
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+        <div id="section-3">
+            <h2>Acknowledgements</h2>
+
+            <p>
+                This book would not have been possible without a ton 
+                of people sharing their great work. As much as possible, 
+                I've tried to keep track of all the online resources, 
+                books and articles that I have used.
+            </p>
+
+
+            <p>
+                The designed of this website was inspired by the following projects:
+            </p>
+
+
+            <ul>
+                <li>
+                    <a href="https://github.com/vincentdoerig/latex-css" target="_blank">LaTeX.CSS</a> by Vincent
+                    Dörig
+                </li>
+                <li>
+                    <a href="https://github.com/davidrzs/latexcss" target="_blank">LatexCSS</a> by David Zollikofer
+                </li>
+                <li>
+                    <a href="https://complex-analysis.com/" target="_blank">Complex Analysis</a> by Juan Carlos
+                    Ponce Campuzano
+                </li>
+
+            </ul>
+
+            <p>And it was built using amazing open-source software:</p>
+
+            <ul>
+                <li>
+                    <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">W3.CSS</a>.
+                </li>
+                <li>
+                    <a href="https://github.com/magicbookproject" target="_blank">Magic Book project</a>.
+                </li>
+            </ul>
+
+            <p class="callout">
+                <strong>Note!</strong> This project is still under construction 🏗️.
+
+                It exists thanks to the support of my patrons: <br>
+                <strong>
+                    Edward Huff, Abei, pmben, Sophia Wood (Fractal Kitty),
+                    Adam Parrott, Doug Kuhlmann, Dennis Watson, bleh,
+                    Miguel Díaz, Ruan Ramon, Maciej Lasota,
+                    Christopher-Alexander Hermanns, Aarón Reyes,
+                    Gabriela Sofia Marin Sanchez, Jerome Siegler,
+                    Yashar Shoraka, Jeff Butterworth,
+                    Scott Pedersen, Ihsan Karabulut,
+                    Elias Sanchez Angarano, Emanuel Silva.
+                </strong>
+
+                <br>
+                If you found this project useful, please consider becoming a member in
+                <a href="https://www.patreon.com/bePatron?u=10515025"><strong>Patreon</strong></a>.
+                ♾️ Thanks!
+
+
+            </p>
+
+            <!-- 
+            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=Rp15-WKVPl92BEVohYDsoC24keCnztkEy1gA2YWWU5o&cl=ffffff&w=a"></script>-->
+
+            <p>
+                If you would like to support this project, you can do it using the following links:
+            </p>
+
+            <div class="button-container">
+                <button id="modal-link">
+                    <a href="https://www.patreon.com/jcponce"><i class="fa-brands fa-patreon"></i>
+                        <strong>Patreon</strong></a>
+                </button>
+                <button id="modal-link">
+                    <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=WTMTR7D8RYZ26&amp;item_name=Your+support+will+help+me+to+improve+and+keep+up+to+date+the+applets+of+this+book.+Sincerely+appreciate+it%21&amp;currency_code=AUD&amp;source=url">
+                        <strong><i class="fa-brands fa-paypal"></i> PayPal</strong>
+                    </a>
+                </button>
+                <button id="modal-link">
+                    <a target="_blank" href="https://jcponcemath.secure-decoration.com/">
+                        <strong>Get a <i class="fa-solid fa-shirt"></i></strong>
+                    </a>
+                </button>
+            </div>
+
+            <p class="w3-center">
+                Thank you for your support!
+                <br>
+                <picture>
+                    <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f422/512.webp" type="image/webp">
+                    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f422/512.gif" alt="🐢" width="32" height="32">
+                </picture>
+            </p>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+
+
+
+        
+
+        <div id="section-4">
+            <h2>License</h2>
+
+            <p>This book's entire contents, including the examples, problems and applets, is released under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons
+                    Attribution, Non-Commercial, Share-Alike license</a>. This means:</p>
+
+            <ol>
+                <li>You're welcome to use the examples, problems and applets for your personal studies or research. If
+                    you are using this book for a project (homework or research), please cite it somewhere in your
+                    project.</li>
+                <li>You can only use the book's text, examples, problems and applets for non-commercial projects. That
+                    means you can remix or make your own version of the book, and you can fork and create new applets,
+                    so long as they are not commercial projects (i.e. publishing a book with a publisher).</li>
+                <li>If you do make a project that forks or remixes this book, it must be released under this same
+                    license or a looser one.</li>
+            </ol>
+
+            <p>
+                If you have any questions about what you can and can't do with these examples or applets, please <a href="mailto:jcponcemath@gmail.com">get in touch</a>.
+                
+            </p>
+
+            <br>
+
+            <iframe src="applets/threejs/3d-surfaces" style="width: 100%; height: 400px; border: 0;" noscrolling="">
+            </iframe>
+
+
+        </div>
+
+
+        
+
+
+
+    </div>
+
+    <!-- Ends main content -->
+
+</section>
+    </div>
+
+    <!-- Navigation -->
+<!-- Buttons to navigate -->
+<div class="w3-container w3-center w3-padding-large section-content"  id="navigation">
+    <a href="index.html"><button
+            class="w3-left w3-button w3-dark-grey w3-round-xlarge w3-hover-shadow ">&#10094; Previous</button></a>
+
+    <a href="vectors-and-the-geometry-of-space.html"><button
+            class="w3-right w3-button w3-dark-grey w3-round-xlarge w3-hover-shadow ">Next &#10095;</button></a>
+</div>
+    <br />
+
+    <!-- Footer -->
+<footer class="w3-main w3-container w3-center w3-theme" id="myFooter">
+
+  <div class="w3-row ">
+
+    <div class="w3-col m6">
+      <span class="w3-hide-small">
+        Vector Calculus <i class="fa-regular fa-copyright"></i>
+        <span>
+          <script>document.write(new Date().getFullYear());</script>
+        </span><br />
+        by J. C. Ponce Campuzano
+      </span>
+      <span class="w3-hide-large w3-hide-medium">
+        Vector Calculus <i class="fa-regular fa-copyright"></i>
+        <span>
+          <script>document.write(new Date().getFullYear());</script>
+        </span>
+        <br />by J. C. Ponce Campuzano
+      </span>
+    </div>
+
+    <div class="w3-col m6 license">
+
+      <a style="text-decoration: none;" rel="license"
+        href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank">
+        <i class="fa-brands fa-creative-commons"></i>
+        <i class="fa-brands fa-creative-commons-by"></i>
+        <i class="fa-brands fa-creative-commons-nc"></i>
+        <i class="fa-brands fa-creative-commons-sa"></i>
+      </a>
+    </div>
+
+  </div>
+
+</footer>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span><br />
+          <h1 class="w3-xlarge">Hello! 👋</h1>
+        </div>
+        <div class="modal-body">
+
+          <div w3-include-html="message-modal.html"></div>
+
+          <br />
+        </div>
+        <div class="modal-footer">
+          <p class="w3-large">Thank you! 🙏 I highly appreciate your support! 🤗</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Button to Top -->
+  <button onclick="topFunction()" id="toTop" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+  <!-- General scripts -->
+  <script src="js/w3codecolor.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+
+</html>
