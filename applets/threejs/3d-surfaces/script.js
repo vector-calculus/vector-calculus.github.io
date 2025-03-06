@@ -49,7 +49,7 @@ const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THR
 
 const objects = [];
 const rotationSpeeds = []; // Array to store unique rotation speeds
-const maxObjects = 350;
+const maxObjects = 400;
 
 // Function to create Klein bottle
 const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
@@ -76,7 +76,7 @@ const mobiusGeometry = new ParametricGeometry((u, v, target) => {
     target.set(x, y, z);
 }, 50, 50);
 
-scene.background = new THREE.Color(0x000000); // Set background to black (hex format)
+scene.background = new THREE.Color('#000'); // Set background to black (hex format)
 
 for (let i = 0; i < maxObjects; i++) {
     let geometry;
