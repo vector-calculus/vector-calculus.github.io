@@ -26,7 +26,7 @@ matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 const fontLoader = new FontLoader();
 
 fontLoader.load('static/fonts/helvetiker_regular.typeface.json', (font) => {
-    const textGeometry = new TextGeometry('      Exploring\nVector Calculus', {
+    const textGeometry = new TextGeometry('Parametric Surfaces', {
         font: font,
         size: 0.5,
         height: 0.2,
