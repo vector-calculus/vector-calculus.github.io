@@ -49,7 +49,7 @@ const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THR
 
 const objects = [];
 const rotationSpeeds = []; // Array to store unique rotation speeds
-const maxObjects = 300;
+const maxObjects = 350;
 
 // Function to create Klein bottle
 const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
@@ -172,9 +172,9 @@ const tick = () => {
 
     // Rotate objects independently
     objects.forEach((object, i) => {
-        object.rotation.x += rotationSpeeds[i].x * 0.01; // Adjust speed factor if needed
-        object.rotation.y += rotationSpeeds[i].y * 0.01;
-        object.rotation.z += rotationSpeeds[i].z * 0.01;
+        object.rotation.x += rotationSpeeds[i].x * 0.005; // Adjust speed factor if needed
+        object.rotation.y += rotationSpeeds[i].y * 0.005;
+        object.rotation.z += rotationSpeeds[i].z * 0.005;
     });
 
     controls.update();
