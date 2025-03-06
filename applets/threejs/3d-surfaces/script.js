@@ -15,8 +15,10 @@ const scene = new THREE.Scene();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
+const matcapTexture = textureLoader.load('static/textures/matcaps/2.png');
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
+const matcapTextureText = textureLoader.load('static/textures/matcaps/8.png');
+matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 
 /**
  * Fonts
@@ -37,7 +39,7 @@ fontLoader.load('static/fonts/helvetiker_regular.typeface.json', (font) => {
     });
 
     textGeometry.center();
-    const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
+    const material = new THREE.MeshMatcapMaterial({ matcap: matcapTextureText });
     const text = new THREE.Mesh(textGeometry, material);
     scene.add(text);
 });
@@ -49,16 +51,16 @@ const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THR
 
 const objects = [];
 const rotationSpeeds = []; // Array to store unique rotation speeds
-const maxObjects = 400;
+const maxObjects = 500;
 
 // Function to create Klein bottle
 const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
 
-const torusGeometry =  new THREE.TorusGeometry( 10, 4, 30, 30 );
+const torusGeometry = new THREE.TorusGeometry(10, 4, 30, 30);
 
-const knotGeometry = new THREE.TorusKnotGeometry( 10, 2, 90, 50 );
+const knotGeometry = new THREE.TorusKnotGeometry(10, 2, 90, 50);
 
-const sphereGeometry = new ParametricGeometries.SphereGeometry( 5, 30, 30 );
+const sphereGeometry = new ParametricGeometries.SphereGeometry(5, 30, 30);
 
 // Function to create Möbius strip
 const mobiusGeometry = new ParametricGeometry((u, v, target) => {
@@ -69,14 +71,14 @@ const mobiusGeometry = new ParametricGeometry((u, v, target) => {
     //const w = 1.5; // Half-width of the strip
 
     // Parametric equations for Möbius strip
-    const x = (R + 2*v * Math.cos(u / 2)) * Math.cos(u);
-    const y = (R + 2*v * Math.cos(u / 2)) * Math.sin(u);
+    const x = (R + 2 * v * Math.cos(u / 2)) * Math.cos(u);
+    const y = (R + 2 * v * Math.cos(u / 2)) * Math.sin(u);
     const z = v * Math.sin(u / 2);
 
     target.set(x, y, z);
 }, 50, 50);
 
-scene.background = new THREE.Color('#000'); // Set background to black (hex format)
+scene.background = new THREE.Color('#f9fafb'); // Set background to black (hex format)
 
 for (let i = 0; i < maxObjects; i++) {
     let geometry;
@@ -111,7 +113,11 @@ for (let i = 0; i < maxObjects; i++) {
     );
 
     // Random scale
-    const scale = Math.random() * 0.03;
+    const min = 0.01;  // Set your desired minimum value
+    const max = 0.03;   // Set your desired maximum value
+
+    // Generate a random number in the range [min, max]
+    const scale = Math.random() * (max - min) + min;
     object.scale.set(scale, scale, scale);
 
     scene.add(object);
@@ -168,7 +174,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 const clock = new THREE.Clock();
 
 const tick = () => {
-    const elapsedTime = clock.getElapsedTime();
+    //const elapsedTime = clock.getElapsedTime();
 
     // Rotate objects independently
     objects.forEach((object, i) => {
