@@ -2882,6 +2882,7 @@ var(--body-color);
   display: block;
   margin: 12px 0;
   font-style: normal;
+  text-align: justify;
   position: relative;
 }
 
