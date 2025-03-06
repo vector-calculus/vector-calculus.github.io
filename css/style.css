@@ -2132,9 +2132,12 @@ input[type=text] {
 /* GeoGebra Canvas */
 .ggbElement {
   display: block;
-  /*margin-left: auto;
-  margin-right: auto;*/
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .intro {
