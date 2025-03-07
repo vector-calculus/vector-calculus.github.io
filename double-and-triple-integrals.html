@@ -1995,9 +1995,7 @@
         \end{eqnarray}
       </div>
 
-      <div style="text-align: center;">
-        <iframe loading="lazy" scrolling="no" title="Chapter-31-1: Cylindrical coordinates" src="https://www.geogebra.org/material/iframe/id/dmwgd6ft/width/638/height/455/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="638px" height="455px" style="border:0px;" allowfullscreen=""> </iframe>
-      </div>
+      <div class="ggbElement" id="cylindricalCoord"></div>
 
       <p>
         We now aim to calculate a small element of volume of a cylindrical
@@ -2100,9 +2098,7 @@
         \end{eqnarray}
       </div>
 
-      <div style="text-align: center;">
-        <iframe loading="lazy" scrolling="no" title="Chapter-32: Spherical coordinates" src="https://www.geogebra.org/material/iframe/id/yjnvedbc/width/638/height/455/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="638px" height="455px" style="border:0px;" allowfullscreen=""> </iframe>
-      </div>
+      <div class="ggbElement" id="sphericalCoord"></div>
 
       <p>We now aim to calculate a small element of volume of a spherical shell.
         This will then show how in a triple integral we can transform
@@ -2300,6 +2296,39 @@
       "enableShiftDragZoom": true,
       "showResetIcon": false
     };
+
+    let paramsPolar = {
+      "width": 520,
+      "height": 437,
+      "material_id": "zhcdsprq",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": false
+    };
+
+    let paramsCylindrical = {
+      "width": 638,
+      "height": 455,
+      "material_id": "w8eqrhu9",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": false
+    };
+
+    let paramsSpherical = {
+      "width": 638,
+      "height": 455,
+      "material_id": "nnmcv83p",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": false
+    };
   
 
 
@@ -2314,6 +2343,12 @@
     let appletExample010 = new GGBApplet(paramsExample010, true);
     let appletExample011 = new GGBApplet(paramsExample011, true);
 
+    
+    let appletPolar = new GGBApplet(paramPolar, true);
+    let appletCylindrical = new GGBApplet(paramsCylindrical, true);
+    let appletSpherical = new GGBApplet(paramsSpherical, true);
+
+
     window.addEventListener("load", () => {
 
       appletExample001.inject('example001');
@@ -2326,6 +2361,10 @@
       appletExample009.inject('example009');
       appletExample010.inject('example010');
       appletExample011.inject('example011');
+
+      appletPolar.inject('polarCoord');
+      appletCylindrical.inject('cylindricalCoord');
+      appletSpherical.inject('sphericalCoord');
 
     });
 
