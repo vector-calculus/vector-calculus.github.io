@@ -72,7 +72,7 @@ function setup() {
 
 function initParticles() {
   particles = [];
-  let numberOfParticles = w * h / 1500;
+  let numberOfParticles = w * h / 800;
   for(let i = 0; i < numberOfParticles; i++) {
     let particle = new Particle(Math.random() * w, Math.random() * h);
     particles.push(particle);
