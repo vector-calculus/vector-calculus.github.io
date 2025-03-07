@@ -2239,7 +2239,7 @@ label.sidenote-toggle:not(.sidenote-number) {
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* Aligns content to the right */
-  width: 25vw;
+  width: 30vw;
   margin-left: auto; /* Pushes the entire container to the right */
 }
 
