@@ -2245,7 +2245,7 @@ label.sidenote-toggle:not(.sidenote-number) {
 
 blockquote {
   font-size: 0.9em;
-  width: 25vw;
+  width: 50vw;
   text-align: justify;
   margin: 0 0 1em 1em; /* Adds spacing to the left */
 }
