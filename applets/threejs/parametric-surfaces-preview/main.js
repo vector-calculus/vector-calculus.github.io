@@ -25,22 +25,22 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace;
 
 // Handles mouse interactions for texture effect
 function toggleTexture(event, enable) {
-  event.preventDefault();
-  let index = event.target?.dataset?.index;
-  if (index !== undefined) {
-      const object = scenes[index].children[0];
+    event.preventDefault();
+    let index = event.target?.dataset?.index;
+    if (index !== undefined) {
+        const object = scenes[index].children[0];
 
-      // Check if texture should be enabled
-      if (enable) {
-        // Set material back to its original material (you might need to store the original material)
-          // Assuming you have the original material saved (let's call it originalMaterial)
-          object.material = object.originalMaterial || new THREE.MeshNormalMaterial({ side: THREE.DoubleSide, wireframe: false });
-          
-      } else {
-          // Set material to MeshMatcapMaterial with texture
-          object.material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THREE.DoubleSide });
-      }
-  }
+        // Check if texture should be enabled
+        if (enable) {
+            // Set material back to its original material (you might need to store the original material)
+            // Assuming you have the original material saved (let's call it originalMaterial)
+            object.material = object.originalMaterial || new THREE.MeshNormalMaterial({ side: THREE.DoubleSide, wireframe: false });
+
+        } else {
+            // Set material to MeshMatcapMaterial with texture
+            object.material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THREE.DoubleSide });
+        }
+    }
 }
 
 // **Sea Shell Surface**
@@ -74,32 +74,87 @@ function bonanJeener(u, v, target) {
 }
 
 function pineCone(u, v, target) {
-  u = u * Math.PI * 1;
-  v = v * Math.PI * 17;
+    u = u * Math.PI * 1;
+    v = v * Math.PI * 17;
 
-  let s = (Math.PI / 2) * Math.exp(-v / (8 * Math.PI));
-  let factor = 1 - 0.5 * ((5 / 4) * Math.pow(1 - ((3.6 * v) % (2 * Math.PI)) / Math.PI, 2) - 0.25) ** 2;
-  
-  let h = 1.95653 * u ** 2 * (1.27689 * u - 1) ** 2 * Math.sin(s);
-  let r = factor * (u * Math.sin(s) + h * Math.cos(s));
-  
-  let x = r * Math.sin(v);
-  let y = r * Math.cos(v);
-  let z = factor * (u * Math.cos(s) - h * Math.sin(s));
+    let s = (Math.PI / 2) * Math.exp(-v / (8 * Math.PI));
+    let factor = 1 - 0.5 * ((5 / 4) * Math.pow(1 - ((3.6 * v) % (2 * Math.PI)) / Math.PI, 2) - 0.25) ** 2;
 
-  target.set(x, y, z);
+    let h = 1.95653 * u ** 2 * (1.27689 * u - 1) ** 2 * Math.sin(s);
+    let r = factor * (u * Math.sin(s) + h * Math.cos(s));
+
+    let x = r * Math.sin(v);
+    let y = r * Math.cos(v);
+    let z = factor * (u * Math.cos(s) - h * Math.sin(s));
+
+    target.set(x, y, z);
 }
 
 function apple1(u, v, target) {
-  u = 2 * Math.PI * u;
-  v = 2 * Math.PI * v - Math.PI;
+    u = 2 * Math.PI * u;
+    v = 2 * Math.PI * v - Math.PI;
 
-  let x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
-  let y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
-  let z = (Math.cos(v) + Math.sin(v) - 1) * (1 + Math.sin(v)) * Math.log(1 - (Math.PI * v) / 10) + 7.5 * Math.sin(v);
+    let x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
+    let y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
+    let z = (Math.cos(v) + Math.sin(v) - 1) * (1 + Math.sin(v)) * Math.log(1 - (Math.PI * v) / 10) + 7.5 * Math.sin(v);
 
-  target.set(x, y, z);
+    target.set(x, y, z);
 }
+
+function klein1(t, a, e) {
+    // Convert parameters to radians
+    t *= Math.PI * 2;
+    a *= Math.PI * 2;
+
+    // Compute Cartesian coordinates
+    const commonFactor = 2 + Math.cos(a / 2) * Math.sin(t) - Math.sin(a / 2) * Math.sin(2 * t);
+    const x = commonFactor * Math.cos(a);
+    const y = commonFactor * Math.sin(a);
+    const z = Math.sin(a / 2) * Math.sin(t) + Math.cos(a / 2) * Math.sin(2 * t);
+
+    return e.set(x, y, z);
+}
+
+function twistedTorus2(t, a, e) {
+    // Convert parameters to radians
+    t *= 4 * Math.PI;
+    a *= 2 * Math.PI;
+
+    // Compute Cartesian coordinates
+    const commonFactor = 3 + Math.cos(1.5 * t) * Math.sin(a) - Math.sin(1.5 * t) * Math.sin(2 * a);
+    const x = commonFactor * Math.cos(0.5 * t);
+    const y = commonFactor * Math.sin(0.5 * t);
+    const z = Math.sin(1.5 * t) * Math.sin(a) + Math.cos(1.5 * t) * Math.sin(2 * a);
+
+    return e.set(x, y, z);
+}
+
+function juliaHeart(t, a, e) {
+    // Convert parameters to radians
+    t *= Math.PI * 2;
+    a *= Math.PI;
+
+    // Compute Cartesian coordinates
+    const x = (4 * Math.sin(t) - Math.sin(3 * t)) * Math.sin(a);
+    const y = 2 * Math.cos(a);
+    const z = 1.2 * (4 * Math.cos(t) - Math.cos(2 * t) - Math.cos(3 * t) / 2) * Math.sin(a);
+
+    return e.set(x, y, z);
+}
+
+function tanhSpiral(t, a, e) {
+    // Adjust t parameter
+    t = 3 * t - 1.5;
+    
+    // Compute Cartesian coordinates
+    const denominator = Math.cos(10 * t) + Math.cosh(2 * t);
+    const x = Math.sinh(2 * t) / denominator;
+    const y = a; // a is unchanged
+    const z = Math.sin(10 * t) / denominator;
+
+    return e.set(x, y, z);
+}
+
 
 // =========================
 // **Scene and Object Setup**
@@ -142,6 +197,30 @@ appleGeometry.rotateX(-Math.PI / 4);
 appleGeometry.scale(0.12, 0.12, 0.12);
 appleGeometry.userData.title = "Apple";
 geometries.push(appleGeometry);
+
+let klein1Geometry = new ParametricGeometry(klein1, 50, 50);
+klein1Geometry.scale(0.3, 0.3, 0.3);
+klein1Geometry.userData.title = "Klein Bottle";
+geometries.push(klein1Geometry);
+
+let twistedTorus2Geometry = new ParametricGeometry(twistedTorus2, 50, 50);
+twistedTorus2Geometry.scale(0.25, 0.25, 0.25);
+twistedTorus2Geometry.userData.title = "Twisted Torus";
+geometries.push(twistedTorus2Geometry);
+
+let juliaHeartGeometry = new ParametricGeometry(juliaHeart, 50, 50);
+juliaHeartGeometry.rotateX(-Math.PI / 2);
+juliaHeartGeometry.scale(0.2, 0.2, 0.2);
+juliaHeartGeometry.userData.title = "Julia's Parametric Heart";
+geometries.push(juliaHeartGeometry);
+
+let tanhSpiralGeometry = new ParametricGeometry(tanhSpiral, 300, 4);
+tanhSpiralGeometry.rotateX(-Math.PI / 2);
+tanhSpiralGeometry.scale(0.35, 0.35, 0.35);
+tanhSpiralGeometry.userData.title = "Julia's Parametric Heart";
+geometries.push(tanhSpiralGeometry);
+
+
 
 // ==============================
 // **Create Gallery for Objects**
@@ -222,7 +301,7 @@ for (let i = 0; i < geometries.length; i++) {
 // =====================
 function render() {
     requestAnimationFrame(render);
-    
+
     let width = canvas.clientWidth;
     let height = canvas.clientHeight;
 
