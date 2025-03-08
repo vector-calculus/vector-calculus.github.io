@@ -317,7 +317,7 @@
       </p>
 
       <figure>
-        <div style="display:block;" class="ggbElement" id="ggb-element-area-fence"></div>
+        <div class="ggbElement" id="ggb-element-area-fence"></div>
         <figcaption>
           Slowly, drag the slider. Use mouse to move 3D graphics view.
         </figcaption>
@@ -348,9 +348,9 @@
       </p>
 
       <figure>
-        <div style="display:block;" class="ggbElement" id="ggb-element-calculator"></div>
+        <div class="ggbElement" id="ggb-element-calculator"></div>
         <figcaption>
-          Calculator. <a href="https://www.geogebra.org/m/EnTucWv5" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+          Calculator. <a href="https://www.geogebra.org/m/rutuqxfb" target="_blank"><i class="fa fa-external-link-alt"></i></a>
         </figcaption>
       </figure>
 
@@ -615,13 +615,9 @@
           $F$ will not do any work on a particle moving along the circle.
         </p>
 
-        <div style="text-align: center;">
-          <iframe loading="lazy" scrolling="no" title="Work zero" src="https://www.geogebra.org/material/iframe/id/pbuarhav/width/491/height/479/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="491px" height="479px" style="border:0px;" allowfullscreen="">
-          </iframe>
-        </div>
-
-
-
+        
+        <div class="ggbElement" id="ggb-element-work-zero"></div>
+        
 
         <p>
           We can easily verify this by computing:
@@ -641,7 +637,9 @@
         </p>
 
         <details>
-          <summary>Show extra work!</summary>
+          <summary>
+            <strong>Show extra work!</strong>
+          </summary>
           <p>
             For $\c(t) = \cos^3 t~\i + \sin^3 t~\j +t~\k,$ we have that
             \[
@@ -665,10 +663,7 @@
 
         <p>This means that the field impedes movement along the path.</p>
 
-        <div style="text-align: center;">
-          <iframe loading="lazy" scrolling="no" title="Work negative" src="https://www.geogebra.org/material/iframe/id/d9ek2f5c/width/491/height/479/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" width="491px" height="479px" style="border:0px;" allowfullscreen="">
-          </iframe>
-        </div>
+        <div class="ggbElement" id="ggb-element-work-neg"></div>
 
       </div>
 
@@ -842,7 +837,7 @@
 
         <details>
           <summary>
-            Show me a hint!
+            <strong>Show me a hint!</strong>
           </summary>
 
           <p>
@@ -1089,15 +1084,13 @@
         For instance, to create a torus, one can start
         with a squared region of the plane, roll it into a tube,
         and then connect the two ends together. Drag the slider
-        in the following Figure:
+        in the following applet:
       </p>
 
-      <figure>
-        <div id="ggb-element-torus"></div>
-        <figcaption>
-          Drag the slider!
-        </figcaption>
-      </figure>
+      
+      <div class="ggbElement" id="ggb-element-square-torus"></div>
+       
+      
 
       <!--
       <table>
@@ -2094,7 +2087,7 @@
 
         <figcaption>
           Möbius strip. Observe the position of the normal vectors defined on the
-          surface. <a href="https://www.geogebra.org/m/qmdpw9gg" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+          surface. <a href="https://www.geogebra.org/m/adds7pje" target="_blank"><i class="fa fa-external-link-alt"></i></a>
         </figcaption>
       </figure>
 
@@ -2105,7 +2098,7 @@
       <figure>
         <img loading="lazy" style="width: 60%;" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNFQEFXJKBDTM74DOD_az_we0o_qq-YtTnXZj7FbwCzp8mIzVWwUlnJ4inqoqvGP_A2SV60nT13wYNrtAg4LKagaW4ddJEYSoVzLilmd27CwijPUBPqZvIp_L7yLqsonwmtefOaBy8-p06DvytMNLiSgHNYd8MlLtmwxBVktEdzruSdOs/s1600/klein-mobius.gif">
         <figcaption>
-          Klein bottle. Notice the Möbius strip. <a href="https://www.geogebra.org/m/hpn4kxj2" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+          Klein bottle. Notice the Möbius strip. <a href="https://www.geogebra.org/m/uvrveucy" target="_blank"><i class="fa fa-external-link-alt"></i></a>
         </figcaption>
       </figure>
 
@@ -2284,9 +2277,9 @@
           The following applet simulates the motion of particles
           determined by the velocity field $\F(x,y,z)= z~\i+y~\j+x~\k.$
         </p>
-
+ 
         <div style="text-align: center;">
-          <iframe loading="lazy" width="90%" height="500px" scrolling="no" style="border: 1px solid black; overflow: hidden; margin-top: 10px;" src="applets/p5js/flux-surface-example-cylinder"></iframe>
+          <iframe loading="lazy" width="90%" height="500px" noscrolling="" style="border: 1px solid black; overflow: hidden; margin-top: 10px;" src="applets/p5js/flux-surface-example-cylinder"></iframe>
         <br>
          <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="applets/p5js/flux-surface-example-cylinder" target="_blank">
           Fullscreen <i class="fas fa-external-link-alt"></i>
@@ -2456,25 +2449,17 @@
   </div>
   <!-- Ends main content -->
 
-
   <!-- Extra scripts for applets -->
   <script src="https://www.geogebra.org/apps/deployggb.js"></script>
 
-  <!--
-  <iframe scrolling="no" title="Parametrization"
-        data-src="https://www.geogebra.org/material/iframe/id/shrbv6cs/width/643/height/496/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false"
-        width="643px" height="496px" style="border:0px;">
-      </iframe>-->
   <script>
-
-    
 
     let paramsAreaFence = {
       "width": 760,
       "height": 460,
       "material_id": "r4csvyeq",
       "borderColor": "888888",
-      "playButton": true,
+      "playButton": false,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -2491,12 +2476,34 @@
       "showResetIcon": true
     };
 
-    let paramsTorus = {
+    let paramsWorkZero = {
+      "width": 491,
+      "height": 479,
+      "material_id": "gjyvxvkp",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
+    let paramsWorkNeg = {
+      "width": 491,
+      "height": 479,
+      "material_id": "esgp8gst",
+      "borderColor": "888888",
+      "playButton": false,
+      "showFullscreenButton": true,
+      "enableShiftDragZoom": true,
+      "showResetIcon": true
+    };
+
+    let paramsSquareTorus = {
       "width": 643,
       "height": 496,
-      "material_id": "pxrjga6u",
+      "material_id": "jmysethv",
       "borderColor": "888888",
-      "playButton": true,
+      "playButton": false,
       "showFullscreenButton": false,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -2505,7 +2512,7 @@
     let paramsOrientationSphere = {
       "width": 780,
       "height": 401,
-      "material_id": "b44hcjrs",
+      "material_id": "rkhnwmb6",
       "borderColor": "888888",
       "playButton": true,
       "showFullscreenButton": false,
@@ -2513,20 +2520,22 @@
       "showResetIcon": true
     };
 
-
-
-    //let appletPathIntegral = new GGBApplet(paramsPathIntegral, true);
     let appletAreaFence = new GGBApplet(paramsAreaFence, true);
     let appletCalculator = new GGBApplet(paramsCalculator, true);
-    let appletTorus = new GGBApplet(paramsTorus, true);
+    let appletWorkZero = new GGBApplet(paramsWorkZero, true);
+    let appletWorkNeg = new GGBApplet(paramsWorkNeg, true);
+
+    let appletSquareTorus = new GGBApplet(paramsSquareTorus, true);
     let appletOrientationSphere = new GGBApplet(paramsOrientationSphere, true);
+
     window.addEventListener("load", () => {
-      //appletPathIntegral.inject('ggb-element-path-integral');
       appletAreaFence.inject('ggb-element-area-fence');
       appletCalculator.inject('ggb-element-calculator');
-      appletTorus.inject('ggb-element-torus');
-      appletOrientationSphere.inject('ggb-element-ort-sphere');
+      appletWorkZero.inject('ggb-element-work-zero');
+      appletWorkNeg.inject('ggb-element-work-neg');
 
+      appletSquareTorus.inject('ggb-element-square-torus');
+      appletOrientationSphere.inject('ggb-element-ort-sphere');
     });
 
     // GeoGebra logo
@@ -2534,13 +2543,12 @@
     // needed if you use the "clickToLoad" parameter
     let playButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAhFBMVEUAAABmZmb///9qampsbGz+/v6qqqpvb29ubm6enp6rq6t3d3d1dXVxcXH6+vqCgoJ+fn719fXv7+/n5+eTk5N0dHSXl5eNjY2KioqIiIji4uLe3t6UlJSQkJDr6+vW1tbCwsK5ubmioqK7u7uzs7OmpqaFhYXk5OR7e3vNzc3Jycmvr6833NujAAAAAXRSTlMAQObYZgAAAlhJREFUWMPVmNuW2jAMRS2Ogk0JCZBwvzPATNv//7/SdrqyBoxl2U/dH7DXUeSLYvP/czrPAPAdgG+DTNsCRKAvMJKlQwLIA4BWb2st02tAQ13OFcloSncUR2wnmGKZG5k3gKIBRN8H6YAQ0pGacchHKawEnxo4wadn5vdZSmbr37rpYOcRgjKA4NMzevQtBaF68TBlgogOQ5Wavxww/ta1I4e0iOQBx6poTmwpFtf5BuShnPTuNH2GvmbrPeF7f6jWu1jlLNhi/lb0PpVNbaH6iqW3gH7R+8fk+9BSBG3XEn/Cjv0RHB+RpIR3iubMiBS2QWGn3LSOo64DhEvuqN5XFhERSUrYMT3MHAVgSehRnsCCUCj5ieYMDpa8lRM+dmduERigakHoYbKvnV+4vAuXJJTsVR4An7C+C8dSQj9rfnE+LJ0o9PMT/jYPZonCDfuF1zJR+PZC2E8UNsNX1/MtRVhtxnh1Oiz0y6ZYDxgv1+FCnbC5gkMDslI4PQp7WSecrJ+ulxxhNV1YiOchYoXFumUmEoUc1+Vi3xdvvrqbNcWE0x/MJGGihZPDeASKFQ6lkqtp7UAypfkEwYTV+9ZBN34hlHB/YdYO7lePEdvi776wluLAxQQjYvO7Fx8WKUP2HPSMPV1KBkWzFP8bmUmBe3gYoEyQ9Gcmr8GOEWXB5pFzXkbzTEkZ1J1HXbTc4fzGIOPVRv6A+VXDBOBEXyAjSMfYSOTEy30QgjNRrEBRsOaBOIKb0TAWwmFrtOwgFJvAyuLBCiKUA5PDrp4xs3PsmO1wrpXl8wsCuyePXN5O7AAAAABJRU5ErkJggg==';
     // preview to show while loading
-    
-    let previewTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
     let previewAreaFence = 'imgs/integrals-over-paths-and-surfaces/preview-area-fence.jpg';
+    let previewSquareTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
     let previewOrtSphere = 'imgs/integrals-over-paths-and-surfaces/preview-orient-sphere.jpg';
-
-    appletTorus.setPreviewImage(previewTorus, ggbLogo, playButton);
+    
     appletAreaFence.setPreviewImage(previewAreaFence, ggbLogo, playButton);
+    appletSquareTorus.setPreviewImage(previewSquareTorus, ggbLogo, playButton);
     appletOrientationSphere.setPreviewImage(previewOrtSphere, ggbLogo, playButton);
   </script>
 
