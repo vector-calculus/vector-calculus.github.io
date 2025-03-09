@@ -1,5 +1,3 @@
-const gui = new GUI();
-
 const GLOBAL = {
 	particles: 40,
 	vectors: true,
@@ -19,18 +17,23 @@ const GLOBAL = {
 		'#FFF'
 	],
 	reload() { location.reload() }
-}
+};
 
-//gui.add( document, 'title' );
+const params = { ...GLOBAL };
+//console.log(params)
 
-gui.add(GLOBAL, 'particles', 0, 100, 1).onChange(value => {
+const gui = new GUI();
+
+gui.add(document, 'title').name('Title');
+
+gui.add(params, 'particles', 0, 100, 1).name('No. Particles').onChange(value => {
 	w.emitter.max = value;
 }); 	// number field
-gui.add(GLOBAL, 'friction', 0, 1, 0.01); 	// number field
-gui.add(GLOBAL, 'damping', 0, 1, 0.01); 	// number field
-gui.add(GLOBAL, 'restitution', 0, 1, 0.01); 	// number field
-gui.add(GLOBAL, 'g', 0.01, 0.5, 0.01).name('K'); 	// number field
-gui.add(GLOBAL, 'lifeSpan', 100, 1000, 1).name('Particle Lifespan').onChange(value => {
+gui.add(params, 'friction', 0, 1, 0.01).name('Friction'); 	// number field
+gui.add(params, 'damping', 0, 1, 0.01).name('Damping'); 	// number field
+gui.add(params, 'restitution', 0, 1, 0.01).name('Restitution'); 	// number field
+gui.add(params, 'g', 0.01, 0.5, 0.01).name('k'); 	// number field
+gui.add(params, 'lifeSpan', 100, 1000, 1).name('Particle Lifespan').onChange(value => {
 	var v = value;
 	if (value > 900)
 		v = Infinity;
@@ -39,33 +42,32 @@ gui.add(GLOBAL, 'lifeSpan', 100, 1000, 1).name('Particle Lifespan').onChange(val
 ); 	// number field
 
 
-gui.add(GLOBAL, 'vectors').onChange(value => {
-	console.log('Vectors');
+gui.add(params, 'vectors').name('Show Vectors').onChange(value => {
+	//console.log('Vectors');
 	w.showVectors = value;
 });
 
-gui.add(GLOBAL, 'attraction').onChange(value => {
-	console.log('Attraction Particles');
+gui.add(params, 'attraction').name('Particle Attraction').onChange(value => {
+	//console.log('Attraction Particles');
 	w.particleAttraction = value;
 });
 
-gui.add(GLOBAL, 'walls').onChange(value => {
-	console.log('Walls');
+gui.add(params, 'walls').name('Walls').onChange(value => {
+	//console.log('Walls');
 	w.walls = value;
 });
 
-
-gui.add(GLOBAL, 'gravity').onChange(value => {
-	console.log('Gravity');
+gui.add(params, 'gravity').name('Gravity').onChange(value => {
+	//console.log('Gravity');
 	w.gravity = value * 0.3;
 });
 
-gui.add(GLOBAL, 'attractor').onChange(value => {
-	console.log('Attractor');
+gui.add(params, 'attractor').name('Central Attractor').onChange(value => {
+	//console.log('Attractor');
 	w.centralGravity = value;
 });
 
-gui.add( GLOBAL, 'reload' ).name( 'Reset' );
+gui.add(params, 'reload').name('Reset');
 
 gui.close();
 
@@ -79,23 +81,28 @@ gui.close();
 
 // });
 
-let ax, ay, bx, by, dragging;
+let ax, ay, bx, by;
 
-document.querySelector('#world').addEventListener('mousedown', function (e) {
+// Select the world element
+const world = document.querySelector('#world');
+
+// Add event listeners
+world.addEventListener('pointerdown', (e) => {
 	ax = e.clientX;
 	ay = e.clientY;
 
-	clearTimeout(helpModal)
+	clearTimeout(helpModal); // Clears the timeout if dragging starts
 
 	w.startDragHandler(ax, ay);
 });
 
-document.querySelector('#world').addEventListener('mouseup', function (e) {
+world.addEventListener('pointerup', (e) => {
 	bx = e.clientX;
 	by = e.clientY;
 
 	w.endDragHandler(bx, by);
 });
+
 
 //document.querySelector('#k').addEventListener('input', function (e) {
 //	CONST.g = parseFloat(this.value);
@@ -157,61 +164,70 @@ document.querySelector('#world').addEventListener('mouseup', function (e) {
 //	w.gravity = this.checked * 0.3;
 //})
 
-var ModalSpring = {
-	target: 48,
-	start: -48,
-	p: 0,
-	v: 0,
-	bounce: 0.5,
-	damping: 0.6,
+class ModalSpring {
+	constructor(target = 48, start = -48) {
+		this.target = target;
+		this.start = start;
+		this.p = start;
+		this.v = 0;
+		this.bounce = 0.5;
+		this.damping = 0.6;
+		this.animationFrame = null;
 
-	e: new Event('spring'),
+		this.event = new Event('spring');
+	}
 
-	set: function (start, target) {
-		window.clearInterval();
+	set(start, target) {
 		this.start = start;
 		this.target = target;
 		this.p = start;
-	},
+		this.v = 0;
+	}
 
-	release: function () {
-		this.tick();
-		window.setInterval(function () {
-			if (ModalSpring.v > 0.0001 || Math.abs(ModalSpring.target - ModalSpring.p) > 0.0001) {
-				ModalSpring.tick();
-			} else {
-				this.clearInterval();
-			}
-		}, 16);
-	},
+	release() {
+		if (this.animationFrame) {
+			cancelAnimationFrame(this.animationFrame);
+		}
+		this.animate();
+	}
 
-	tick: function () {
-		var dist = this.target - this.p;
-		var force = this.bounce * dist;
+	animate = () => {
+		const dist = this.target - this.p;
+		const force = this.bounce * dist;
 		this.v += force;
 		this.v *= this.damping;
 		this.p += this.v;
 
-		window.dispatchEvent(this.e)
+		window.dispatchEvent(this.event);
+
+		if (Math.abs(this.v) > 0.0001 || Math.abs(dist) > 0.0001) {
+			this.animationFrame = requestAnimationFrame(this.animate);
+		}
 	}
 }
 
-let modal = document.querySelector('.modal');
+// Create the modal spring instance
+const modalSpring = new ModalSpring();
 
-window.addEventListener('spring', function (e) {
-	modal.style.top = ModalSpring.p + 'px';
+// Select modal element
+const modal = document.querySelector('.modal');
+
+// Update modal position on 'spring' event
+window.addEventListener('spring', () => {
+	modal.style.top = `${modalSpring.p}px`;
 });
 
-var helpModal = window.setTimeout(function () {
+// Show modal after 10 seconds
+const helpModal = setTimeout(() => {
 	modal.classList.remove('hidden');
-	ModalSpring.set(-150, 48);
-	ModalSpring.release();
+	modalSpring.set(-150, 48);
+	modalSpring.release();
 
-	modal.querySelector('.dismiss').addEventListener('click', function (e) {
+	modal.querySelector('.dismiss').addEventListener('click', () => {
 		modal.classList.add('hidden');
-		ModalSpring.set(48, -150);
-		ModalSpring.release();
+		modalSpring.set(48, -150);
+		modalSpring.release();
 	});
+}, 10000);
 
-}, 1500)
 

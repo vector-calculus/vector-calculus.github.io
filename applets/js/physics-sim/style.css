@@ -140,6 +140,7 @@ fieldset {
 	float: right;
 }
 
+/*
 input[type=checkbox] {
 	position: absolute;
 	top: -99999px;
@@ -167,6 +168,8 @@ input[type=checkbox]:checked ~ label::before {
 input[type=checkbox]:checked ~ label {
 	opacity: 1;
 }
+*/
+
 
 input[type=range] {
   -webkit-appearance: none;
