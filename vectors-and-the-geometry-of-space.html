@@ -2145,7 +2145,7 @@
       <script type="text/javascript" src="https://www.dynamicmath.xyz/math2001/sketches/cindyjs/v0.7.11/Cindy.js"></script>
       <script type="text/javascript" src="https://www.dynamicmath.xyz/math2001/sketches/cindyjs/v0.7.11/CindyGL.js"></script>
       <script type="text/javascript" src="https://www.dynamicmath.xyz/math2001/sketches/cindyjs/symbolic.js"></script>
-      <div style="text-align: center;">
+      <div style="text-align: center;" class="w3-hide-small">
         <script id="csinit" type="text/x-cindyscript">
           use("CindyGL");
           
@@ -2260,7 +2260,7 @@
           
           color(x) := (
                 z = v(pixel2coord(x));
-                gray(.5);
+                gray(.65);
           );
         
           colorplot(L, R, "N",
@@ -2296,7 +2296,7 @@
             sh = imagergb(L, R, "Nb", #);
             val=h(pixel2coord(#));
             if(|val|>1,val=val/|val|);
-             sh = |sh|*(val+.5, 0.5, -val+.5);//Here you change the colors
+             sh = |sh|*(val+.7, 0.7, -val+.7);//Here you change the colors
           );
         
           drawimage([-2, -2], [2, -2], "Show");
@@ -2383,7 +2383,7 @@
         described
         using a velocity vector, which determines
         both the speed and direction 
-        (see for example <a href="https://wizard-game-voidereles-projects.vercel.app/" target="_blank">The Wizard Game</a>). When forces
+        (for example <a href="https://wizard-game-voidereles-projects.vercel.app/" target="_blank">The Wizard Game</a>). When forces
         like gravity or collisions
         occur, vector operations such as addition
         and scalar multiplication help compute the resulting motion
