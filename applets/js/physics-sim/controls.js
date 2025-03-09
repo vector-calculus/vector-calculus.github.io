@@ -79,12 +79,12 @@ document.addEventListener('mousemove', (e) =>  {
 	GLOBAL.y = e.clientY
 });
 
-document.addEventListener('touchmove', (e) => {
-    if (e.touches.length > 0) {
-        GLOBAL.x = e.touches[0].clientX;
-        GLOBAL.y = e.touches[0].clientY;
-    }
-}, { passive: true }); // Improves performance on mobile
+// document.addEventListener('touchmove', (e) => {
+//     if (e.touches.length > 0) {
+//         GLOBAL.x = e.touches[0].clientX;
+//         GLOBAL.y = e.touches[0].clientY;
+//     }
+// }, { passive: true }); // Improves performance on mobile
 
 // document.addEventListener('click', function(e) {
 
