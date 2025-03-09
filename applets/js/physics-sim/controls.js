@@ -77,7 +77,14 @@ gui.close();
 document.addEventListener('mousemove', (e) =>  {
 	GLOBAL.x = e.clientX,
 	GLOBAL.y = e.clientY
-})
+});
+
+document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+        GLOBAL.x = e.touches[0].clientX;
+        GLOBAL.y = e.touches[0].clientY;
+    }
+}, { passive: true }); // Improves performance on mobile
 
 // document.addEventListener('click', function(e) {
 
@@ -110,67 +117,6 @@ world.addEventListener('pointerup', (e) => {
 
 	w.endDragHandler(bx, by);
 });
-
-
-//document.querySelector('#k').addEventListener('input', function (e) {
-//	CONST.g = parseFloat(this.value);
-//});
-
-//document.querySelector('#damping').addEventListener('input', function (e) {
-//	CONST.damping = 1 - parseFloat(this.value);
-//});
-
-//document.querySelector('#friction').addEventListener('input', function (e) {
-//	CONST.friction = 1 - parseFloat(this.value);
-//});
-
-//document.querySelector('#restitution').addEventListener('input', function (e) {
-//	CONST.restitution = parseFloat(this.value);
-//});
-
-//document.querySelector('#numParticles').addEventListener('input', function (e) {
-//	w.emitter.max = this.value;
-//});
-
-//document.querySelector('#connectors').addEventListener('change', function(e) {
-//	w.showRanges = this.checked;
-//});
-
-//document.querySelector('#vectors').addEventListener('change', function (e) {
-//	w.showVectors = this.checked;
-//});
-
-//document.querySelector('#smbh').addEventListener('change', function (e) {
-//	w.centralGravity = this.checked;
-//});
-
-//document.querySelector('#lifespan').addEventListener('change', function (e) {
-//	var v = this.value;
-//	if (this.value > 900)
-//		v = Infinity;
-//	w.particleLifespan = v;
-//});
-
-//document.querySelector('#walls').addEventListener('change', function (e) {
-//	w.walls = this.checked;
-//})
-
-//document.querySelector('#random').addEventListener('change', function (e) {
-//	w.emitter.randomSpawn = this.checked;
-//})
-
-//document.querySelector('#clear').addEventListener('click', function (e) {
-//	e.preventDefault();
-//	w.objects = [];
-//});
-
-//document.querySelector('#particleGravity').addEventListener('change', function (e) {
-//	w.particleAttraction = this.checked;
-//})
-
-//document.querySelector('#verticalGravity').addEventListener('change', function (e) {
-//	w.gravity = this.checked * 0.3;
-//})
 
 class ModalSpring {
 	constructor(target = 48, start = -48) {
