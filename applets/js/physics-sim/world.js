@@ -30,7 +30,7 @@ class World {
 		};
 
 		this.dragging = false;
-		this.dragParticleRadius = 10;
+		this.dragParticleRadius = 13;
 
 		this.tick = this.tick.bind(this);
 		requestAnimationFrame(this.tick);
@@ -54,35 +54,35 @@ class World {
 	_drawDragGuide() {
 		const arrowSize = 20; // Length of arrowhead lines
 		const arrowAngle = Math.PI / 6; // 30-degree arrowhead
-	
+
 		// Draw start point (where drag began)
 		this.context.beginPath();
 		this.context.arc(this.d1x, this.d1y, 3, 0, 2 * Math.PI);
 		this.context.strokeStyle = this.particleColor;
 		this.context.lineWidth = 2;
 		this.context.stroke();
-	
+
 		// Draw guide line
 		this.context.beginPath();
 		this.context.moveTo(this.d1x, this.d1y);
-		this.context.lineTo(CONST.x, CONST.y);
+		this.context.lineTo(GLOBAL.x, GLOBAL.y);
 		this.context.stroke();
-	
+
 		// Draw target point (where the particle is dragged)
 		this.context.beginPath();
-		this.context.arc(CONST.x, CONST.y, this.dragParticleRadius, 0, 2 * Math.PI);
+		this.context.arc(GLOBAL.x, GLOBAL.y, this.dragParticleRadius, 0, 2 * Math.PI);
 		this.context.stroke();
-	
+
 		// Compute arrowhead points at (this.d1x, this.d1y)
-		const dx = CONST.x - this.d1x;
-		const dy = CONST.y - this.d1y;
+		const dx = GLOBAL.x - this.d1x;
+		const dy = GLOBAL.y - this.d1y;
 		const angle = Math.atan2(dy, dx);
-	
+
 		const leftX = this.d1x - arrowSize * Math.cos(angle + Math.PI - arrowAngle);
 		const leftY = this.d1y - arrowSize * Math.sin(angle + Math.PI - arrowAngle);
 		const rightX = this.d1x - arrowSize * Math.cos(angle + Math.PI + arrowAngle);
 		const rightY = this.d1y - arrowSize * Math.sin(angle + Math.PI + arrowAngle);
-	
+
 		// Draw arrowhead at (this.d1x, this.d1y)
 		this.context.beginPath();
 		this.context.moveTo(this.d1x, this.d1y);
@@ -91,7 +91,7 @@ class World {
 		this.context.lineTo(rightX, rightY);
 		this.context.stroke();
 	}
-	
+
 
 
 	_drawVectors() {
@@ -267,3 +267,24 @@ class World {
 		requestAnimationFrame(this.tick);
 	}
 }
+
+/* Get things started */
+let worldStage = document.getElementById('world');
+
+worldStage.style.width = window.innerWidth + 'px';
+worldStage.style.height = window.innerHeight + 'px';
+
+worldStage.width = worldStage.clientWidth;
+worldStage.height = worldStage.clientHeight;
+
+let w = new World(worldStage);
+w.particleAttraction = false;
+//w.centralGravity = true;
+//w.showRanges = true;
+w.emitter.radius = 5;
+w.emitter.rangeMin = -5;
+w.emitter.y = w.h * .5;
+w.emitter.rangeMax = 5;
+w.emitter.max = 40;
+w.emitter.randomSpawn = true;
+w.emitting = true;

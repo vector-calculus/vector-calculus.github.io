@@ -2,14 +2,11 @@
 <html>
 
 <head>
-	
+
 	<title>Physics World</title>
 	<link href='style.css' rel='stylesheet'>
 
 	<script src="./lil-gui.min.js"></script>
-	<script>
-		let GUI = lil.GUI;
-	</script>
 
 </head>
 
@@ -18,40 +15,16 @@
 
 	<div class='modal hidden'>
 		<p>
-			Open Controls
-			to change parameters.
+			Open Controls to change parameters.
 		</p> <span class='dismiss'>&times;</span>
 		<br />
 		<p>Click and drag to launch particles.</p>
 
 	</div>
 
-	<script src='const.js'></script>
+	<script src='controls.js'></script>
 	<script src='object.js'></script>
 	<script src='world.js'></script>
-	<script src='editor.js'></script>
-	<script type="text/javascript">
-		let worldStage = document.getElementById('world');
-
-		worldStage.style.width = window.innerWidth + 'px';
-		worldStage.style.height = window.innerHeight + 'px';
-
-		worldStage.width = worldStage.clientWidth;
-		worldStage.height = worldStage.clientHeight;
-
-		let w = new World(worldStage);
-		w.particleAttraction = false;
-		//w.centralGravity = true;
-		//w.showRanges = true;
-		w.emitter.radius = 5;
-		w.emitter.rangeMin = -5;
-		w.emitter.y = w.h * .5;
-		w.emitter.rangeMax = 5;
-		w.emitter.max = 40;
-		w.emitter.randomSpawn = true;
-		w.emitting = true;
-	</script>
-
 
 </body>
 

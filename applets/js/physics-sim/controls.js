@@ -1,15 +1,17 @@
 const GLOBAL = {
 	particles: 40,
-	vectors: true,
-	walls: false,
-	attraction: false,
 	friction: 0.8,
 	damping: 1,
 	restitution: 0.3,
 	lifeSpan: 1000,
 	g: 0.05,
+	x : 0,
+	y : 0,
 	gravity: false,
 	attractor: false,
+	vectors: true,
+	walls: false,
+	attraction: false,
 	palette: [
 		'#FFE74C',
 		'#FF5964',
@@ -22,6 +24,7 @@ const GLOBAL = {
 const params = { ...GLOBAL };
 //console.log(params)
 
+const GUI = lil.GUI;
 const gui = new GUI();
 
 gui.add(document, 'title').name('Title');
@@ -70,6 +73,11 @@ gui.add(params, 'attractor').name('Central Attractor').onChange(value => {
 gui.add(params, 'reload').name('Reset');
 
 gui.close();
+
+document.addEventListener('mousemove', (e) =>  {
+	GLOBAL.x = e.clientX,
+	GLOBAL.y = e.clientY
+})
 
 // document.addEventListener('click', function(e) {
 
@@ -229,5 +237,3 @@ const helpModal = setTimeout(() => {
 		modalSpring.release();
 	});
 }, 10000);
-
-

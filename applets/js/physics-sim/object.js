@@ -13,8 +13,8 @@ class Particle {
   }
 
   checkMouseInside() {
-    const dx = CONST.x - (this.x + this.vx);
-    const dy = CONST.y - (this.y + this.vy);
+    const dx = GLOBAL.x - (this.x + this.vx);
+    const dy = GLOBAL.y - (this.y + this.vy);
     return Math.hypot(dx, dy) < this.radius + 10;
   }
 
@@ -111,7 +111,7 @@ class Particle {
     const dvLength = Math.hypot(dvx, dvy);
     if (dvLength < p1.radius + this.radius) return;
 
-    const gravity = (p1.mass * CONST.g) / dvLength;
+    const gravity = (p1.mass * GLOBAL.g) / dvLength;
     this.vx += gravity * (dvx / dvLength);
     this.vy += gravity * (dvy / dvLength);
   }

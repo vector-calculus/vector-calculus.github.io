@@ -1,3 +1,5 @@
+// Old version
+
 window.CONST = {
 	g : 0.05,
 	friction : 0.8,
@@ -14,6 +16,6 @@ window.CONST = {
 }
 
 document.addEventListener('mousemove', function(e) {
-	CONST.x = e.clientX,
-	CONST.y = e.clientY
+	GLOBAL.x = e.clientX,
+	GLOBAL.y = e.clientY
 })
