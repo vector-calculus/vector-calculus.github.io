@@ -49,7 +49,7 @@ function drawParticles() {
 }
 
 function drawFlowField() {
-  let mg = 6;
+  let mg = 5;
   for(let x = 0; x < columns; x++) {
     for(let y = 0; y < rows; y++) {
       push();
@@ -63,19 +63,19 @@ function drawFlowField() {
       stroke(col, 70, 50, sh);
       
       // Draw arrow
-      let arrowSize = 5; // Size of the arrowhead
-      let angle = atan2(v.y, v.x); // Calculate the angle of the vector
+      //let arrowSize = 5; // Size of the arrowhead
+      //let angle = atan2(v.y, v.x); // Calculate the angle of the vector
       
       // Line for the arrow body
       line(0, 0, v.x * sizeField * mg, v.y * sizeField * mg);
       
       // Arrowhead (2 lines forming a triangle shape)
-      push();
-      translate(v.x * sizeField * mg, v.y * sizeField * mg);
-      rotate(angle);
-      line(0, 0, -arrowSize, arrowSize / 2); // Left side of arrowhead
-      line(0, 0, -arrowSize, -arrowSize / 2); // Right side of arrowhead
-      pop();
+      //push();
+      //translate(v.x * sizeField * mg, v.y * sizeField * mg);
+      //rotate(angle);
+      //line(0, 0, -arrowSize, arrowSize / 2); // Left side of arrowhead
+      //line(0, 0, -arrowSize, -arrowSize / 2); // Right side of arrowhead
+      //pop();
       
       pop();
     }
