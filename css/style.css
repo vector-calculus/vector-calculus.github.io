@@ -2706,7 +2706,7 @@ var(--body-color);
   color: var(--body-color);
   display: inline-block;
   font-size: 0.8em;
-  padding: 2px 4px;
+  padding: 2px 5px 0px 5px;
   border: 1px solid var(--body-color);
   border-radius: 4px;
   background-color: var(--body-bg-color);
