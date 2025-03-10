@@ -2322,7 +2322,7 @@ input.sidenote-toggle {
 
 .arrow-container {
   position: absolute;
-  bottom: 1%; /* Adjust as needed */
+  bottom: 5%; /* Adjust as needed */
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -2330,9 +2330,33 @@ input.sidenote-toggle {
   font-size: 2rem; /* Adjust the size of the arrow */
   animation: bounce 1.5s infinite;
   animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-  opacity: 70%;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInArrow 0.5s forwards 2.5s; /* Arrow appears smoothly */
 }
 
+/* Inner div handles only vertical movement */
+.arrow-bounce {
+  animation: bounce 1.5s infinite 3s; /* Delay bounce so it starts after fade-in */
+}
+
+/* Fade in the arrow */
+@keyframes fadeInArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+/* Fade in the arrow after text and bar animations */
+@keyframes fadeInArrow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7; /* Match previous opacity */
+  }
+}
 /* Bouncing arrow animation */
 @keyframes bounce {
   0%, 100% {
