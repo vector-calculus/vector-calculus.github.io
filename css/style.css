@@ -2320,6 +2320,28 @@ input.sidenote-toggle {
   /* Center horizontally */
 }
 
+.arrow-container {
+  position: absolute;
+  bottom: 1%; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2rem; /* Adjust the size of the arrow */
+  color: var(--body-color); /* Use your theme color */
+  animation: bounce 1.5s infinite;
+  animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+  opacity: 70%;
+}
+
+/* Bouncing arrow animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
 /* Animated text */
 .text {
   opacity: 0;
@@ -2337,6 +2359,7 @@ input.sidenote-toggle {
     opacity: 1;
   }
 }
+/* Expanding bar */
 .expanding-bar {
   width: 0;
   height: 6px;
