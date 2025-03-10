@@ -2326,8 +2326,8 @@ input.sidenote-toggle {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  font-size: 2rem; /* Adjust the size of the arrow */
   color: var(--body-color); /* Use your theme color */
+  font-size: 2rem; /* Adjust the size of the arrow */
   animation: bounce 1.5s infinite;
   animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   opacity: 70%;
@@ -2678,6 +2678,16 @@ var(--body-color);
     margin-left: 0;
   }
 }
+.boxKey {
+  color: var(--body-color);
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 2px 4px;
+  border: 1px solid var(--body-color);
+  border-radius: 4px;
+  background-color: var(--body-bg-color);
+}
+
 /*
   For PDF print version
   https://benfrain.com/create-print-styles-using-css3-media-queries/
