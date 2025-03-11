@@ -36,9 +36,10 @@
       <p>
         <picture>
           <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.webp" type="image/webp">
-          <img style="width: 20px;height: 20px;" src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif" alt="🚀" >
+          <img style="width: 20px;height: 20px;" src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f680/512.gif"
+            alt="🚀">
         </picture>
-        <a href="https://codepen.io/usefulthink" target="_blank">Inspired by <br/>Martin Schuhfuss
+        <a href="https://codepen.io/usefulthink" target="_blank">Inspired by <br />Martin Schuhfuss
 
 
         </a>
@@ -46,9 +47,27 @@
     </div>
   </div>
 
+  <!-- Link with Expand Icon -->
+  <a href="applets/threejs/gravity" target="_blank" class="expand-link">
+    <i class="fa-solid fa-expand"></i>
+  </a>
+
 
 
   <script type="module" src="./script.js"></script>
+
+
+  <script>
+    document.addEventListener("keydown", (event) => {
+      if (event.key.toLowerCase() === "f") {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      }
+    });
+  </script>
 
 </body>
 
