@@ -80,7 +80,7 @@
 
     <a class="w3-bar-item w3-button w3-hide-large w3-large w3-center" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa-solid fa-xmark w3-large"></i></a>
 
-      <a class="w3-bar-item w3-button" id="chapterBar" href="preamble.html">0. Preamble</a>
+    <a class="w3-bar-item w3-button" id="chapterBar" href="preamble.html">0. Preamble</a>
     <a class="w3-bar-item w3-button" id="chapterBar" href="vectors-and-the-geometry-of-space.html">1. Vectors and the
       Geometry of Space</a>
     <a class="w3-bar-item w3-button" id="chapterBar" href="partial-derivatives.html">2. Partial Derivatives</a>
@@ -615,9 +615,9 @@
           $F$ will not do any work on a particle moving along the circle.
         </p>
 
-        
+
         <div class="ggbElement" id="ggb-element-work-zero"></div>
-        
+
 
         <p>
           We can easily verify this by computing:
@@ -890,8 +890,18 @@
         \[
         \int_a^bf(x)~dx = F(b)-F(a),
         \]
-        by the fundamental theorem of calculus. Thus
-        the value of the integral of $f$ depends only on the value of $F$ at the
+        by the
+        <span class="infotip">
+          <strong id="toggleButton">fundamental theorem of calculus 📃</strong>.
+          <span id="myinfo">
+            If $f$ is continuous over the interval $[a,b]$ and $F(x)$
+            is any antiderivative of $f(x),$ then
+            \[
+            \int_a^bf(x)\,dx = F(b)-F(a).
+            \]
+          </span>
+        </span> Thus the value of the integral
+        of $f$ depends only on the value of $F$ at the
         end points of the interval $[a,b].$
       </p>
 
@@ -982,19 +992,20 @@
           x=x(u,v),\ \ y=y(u,v),\ \ z=z(u,v)
           $$
         </span>
-        <span>
-          and the vector
-          $$
-          \r(u,v) = x(u,v)~\i+y(u,v)~\j+z(u,v)~\k
-          $$
-          traces out the surface as $u,v$ vary over some region $D$ in the
-          "$uv$-plane".
-        </span>
-        <span>
-          So for every point $(u,v)$ in $D,$ there corresponds a point on
-          the surface $S$.
-        </span>
+        and the vector
       </p>
+      <div class="eqwrapper">
+        $$
+        \r(u,v) = x(u,v)~\i+y(u,v)~\j+z(u,v)~\k
+        $$
+        traces out the surface as $u,v$ vary over some region $D$ in the
+        "$uv$-plane".
+      </div>
+      <p>
+        So for every point $(u,v)$ in $D,$ there corresponds a point on
+        the surface $S$.
+      </p>
+
 
       <p>
         <span>
@@ -1087,10 +1098,10 @@
         in the following applet:
       </p>
 
-      
+
       <div class="ggbElement" id="ggb-element-square-torus"></div>
-       
-      
+
+
 
       <!--
       <table>
@@ -1139,10 +1150,12 @@
       <p>
         We can obtain a better picture
         with a computer using the parametrization:
+      </p>
+      <div class="eqwrapper">
         \[
         \r= 2 \cos u \sin v~\i + 2 \sin u \sin v ~\j + 2\cos v.
         \]
-      </p>
+      </div>
 
       <figure>
         <img style="width:55%;" src="https://www.dynamicmath.xyz/math2001/images/chapter-40/sphere-parametric.png">
@@ -1183,7 +1196,7 @@
       </table>-->
 
 
-      <h2>Parametrization of surfaces using cylindrical and spherical coordinates</h2>
+      <h3>Cylindrical and Spherical Coordinates</h3>
 
       <p>
         <span>
@@ -1376,10 +1389,13 @@
 
       <p>
         Let $S$ be a surface parametrized by
+      </p>
+      <div class="eqwrapper">
         $$
         \r(u,v) = x(u,v)~\i+y(u,v)~\j+z(u,v)~\k.
         $$
-        Here we find the tangent plane to $S$ at a
+      </div>
+      <p> Here we find the tangent plane to $S$ at a
         point $P$ specified by $\r(a,b)$.
         There are two important families of curves on $S$.
         One where $u$ is a constant, the other where $v$ is a constant.
@@ -1401,22 +1417,27 @@
         Setting $u=a$ defines a curve on $S$ parametrized by $\r(a,v)$, for all values
         of $v$ such that $(a,v)$ lies in $D$.
         A tangent vector to this curve at $P$ is
+      </p>
+      <div class="eqwrapper">
         \[
         \r_v = \frac{\partial x}{\partial v}(a,b)~\i+\frac{\partial y}{\partial v}(a,b)~\j+\frac{\partial z}{\partial
         v}(a,b)~\k.
         \]
-      </p>
+      </div>
 
 
       <p>
         Similarly setting $v=b$ defines another curve on $S$ parametrized by $\r(u,b)$.
 
         A tangent vector to this curve at $P$ is
+
+      </p>
+      <div class="eqwrapper">
         \[
         \r_u = \frac{\partial x}{\partial u}(a,b)~\i+\frac{\partial y}{\partial u}(a,b)~\j+\frac{\partial z}{\partial
         u}(a,b)~\k.
         \]
-      </p>
+      </div>
 
 
 
@@ -1558,7 +1579,7 @@
         </a>
       </div>
 
-      
+
 
 
     </div>
@@ -1596,7 +1617,7 @@
 
       <p>
         Using Pythagoras' law in three dimensions,
-        we can approximate the length of this edge as=
+        we can approximate the length of this edge as
       </p>
       <div class="eqwrapper">
         \begin{eqnarray*}
@@ -1666,7 +1687,6 @@
 
       <p>
         Finally taking the limit as $\Delta u, \Delta v \to 0$ we obtain
-
       </p>
       <div class="eqwrapper">
         \[
@@ -1871,11 +1891,13 @@
           First, consider the surface $S_1$.
           Here we have a disc in the $xy$-plane
           of radius $1$.
-          Then the parametrization is
+          So the parametrization is
+        </p>
+        <div class="eqnarray">
           \[
           \r(x,y) = x~\i+y~\j+0~\k\quad (x^2+y^2\leq 1).
           \]
-        </p>
+        </div>
         <p>
           Then $\r_x = \i,$ $\r_y = \j$ and
           \[
@@ -1914,10 +1936,12 @@
         </div>
         <p>
           Finally
+        </p>
+        <div class="eqwrapper">
           \[
           \iint_{S_1}~dS = \text{Area of the disc of radius 1} = \pi.
           \]
-        </p>
+        </div>
 
         <p>
           Now consider surface $S_2$. Here we have a half sphere of radius 1.
@@ -2009,7 +2033,7 @@
 
       </div>
 
-  
+
 
 
 
@@ -2246,19 +2270,22 @@
           $\r_u\times \r_v$ points in the direction of
           positive flux. If not, we use $\r_v\times \r_u.$
           Adding these approximations over the entire surface $S$, we obtain
-          \[
-          \text{flux across } S \approx \sum_{i} \v_i\pd \n_i~\Delta S_i = \sum_i \v\left(u_i,v_i\right)\pd
-          \left(\r_u\times \r_v\right)\Delta u_i~\Delta v_i.
-          \]
+          <div class="eqwrapper">
+            \[
+            \text{flux across } S \approx \sum_{i} \v_i\pd \n_i~\Delta S_i = \sum_i \v\left(u_i,v_i\right)\pd
+            \left(\r_u\times \r_v\right)\Delta u_i~\Delta v_i.
+            \]
+          </div>
         </li>
 
         <li>
           <strong>Step 4:</strong> To obtain an exact expression for the
           flux across $S$ we take the limit as $\Delta u,\Delta v \to 0\,$:
-          \[
-          \text{flux across } S = \iint_S \v\pd \n~dS = \iint_D \v\pd \left(\r_u\times \r_v\right)du~dv.
-          \]
-
+          <div class="eqwrapper">
+            \[
+            \text{flux across } S = \iint_S \v\pd \n~dS = \iint_D \v\pd \left(\r_u\times \r_v\right)du~dv.
+            \]
+          </div>
         </li>
       </ul>
 
@@ -2269,20 +2296,22 @@
       <div class="example">
         Let's compute the net outward flux of $\F(x,y,z)= z~\i+y~\j+x~\k$
         across the surface of the cylindrical solid given by
-        \[
-        \left\{(x,y,z)~|~ x^2+y^2\leq1, 0\leq z\leq 2\right\}
-        \]
+        <div class="eqwrapper">
+          \[
+          \left\{(x,y,z)~|~ x^2+y^2\leq1, 0\leq z\leq 2\right\}
+          \]
+        </div>
 
         <p>
           The following applet simulates the motion of particles
-          determined by the velocity field $\F(x,y,z)= z~\i+y~\j+x~\k.$
+          determined by the velocity field $\F(x,y,z)= (z,y,x).$
         </p>
- 
+
         <div style="text-align: center;">
           <iframe loading="lazy" width="90%" height="500px" noscrolling="" style="border: 1px solid black; overflow: hidden; margin-top: 10px;" src="applets/p5js/flux-surface-example-cylinder"></iframe>
-        <br>
-         <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="applets/p5js/flux-surface-example-cylinder" target="_blank">
-          Fullscreen <i class="fas fa-external-link-alt"></i>
+          <br>
+          <a class="w3-medium w3-button w3-round-xlarge w3-theme w3-hover-grey" href="applets/p5js/flux-surface-example-cylinder" target="_blank">
+            Fullscreen <i class="fas fa-external-link-alt"></i>
           </a>
         </div>
 
@@ -2329,7 +2358,7 @@
           But $\r_z\times\r_{\theta} $ is directed inward! 😥
         </p>
 
-        <p>Actually, there is no problem! 😃 
+        <p>Actually, there is no problem! 😃
           Just take $\r_{\theta}\times\r_z = \cos \theta ~\i + \sin \theta ~\j,$
           which directs outward, with the same direction as $\n_1.$
         </p>
@@ -2387,7 +2416,7 @@
         <div class="eqwrapper">
           \begin{eqnarray*}
           \iint_{S_2} \F\pd \n_2~ dS &amp;=&amp; \iint_{x^2+y^2\leq 1} \F(\r(x,y))\pd \left(\r_{x}\times\r_y\right) dx~dy\\
-          &amp;=&amp;  0.
+          &amp;=&amp; 0.
           \end{eqnarray*}
         </div>
 
@@ -2481,7 +2510,7 @@
       "height": 479,
       "material_id": "gjyvxvkp",
       "borderColor": "888888",
-      "playButton": false,
+      "playButton": true,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -2492,7 +2521,7 @@
       "height": 479,
       "material_id": "esgp8gst",
       "borderColor": "888888",
-      "playButton": false,
+      "playButton": true,
       "showFullscreenButton": true,
       "enableShiftDragZoom": true,
       "showResetIcon": true
@@ -2546,10 +2575,14 @@
     let previewAreaFence = 'imgs/integrals-over-paths-and-surfaces/preview-area-fence.jpg';
     let previewSquareTorus = 'imgs/integrals-over-paths-and-surfaces/preview-torus.jpg';
     let previewOrtSphere = 'imgs/integrals-over-paths-and-surfaces/preview-orient-sphere.jpg';
-    
+    let previewWorkZero = 'imgs/integrals-over-paths-and-surfaces/preview-work-0.jpg';
+    let previewWorkNeg = 'imgs/integrals-over-paths-and-surfaces/preview-work-neg.jpg';
+
     appletAreaFence.setPreviewImage(previewAreaFence, ggbLogo, playButton);
     appletSquareTorus.setPreviewImage(previewSquareTorus, ggbLogo, playButton);
     appletOrientationSphere.setPreviewImage(previewOrtSphere, ggbLogo, playButton);
+    appletWorkZero.setPreviewImage(previewWorkZero, ggbLogo, playButton);
+    appletWorkNeg.setPreviewImage(previewWorkNeg, ggbLogo, playButton);
   </script>
 
 </section>
