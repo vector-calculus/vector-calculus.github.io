@@ -68,7 +68,7 @@ a:active {
   background-color: darkgray;
 }
 
-@media (min-height: 350px) {
+@media (min-height: 351px) {
   .expand-link {
       display: none !important;
   }
