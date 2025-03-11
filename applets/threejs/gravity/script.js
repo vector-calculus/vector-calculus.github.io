@@ -1,5 +1,4 @@
 /*
- 
   Updated version of 
   Gravity (three.js / instancing / glsl)
   using Three.js version 1.74.0
@@ -13,7 +12,6 @@
   This version by 
   Juan Carlos Ponce Campuzano
   11/Mar/2025
-
 */
 
 import * as THREE from 'three';
@@ -25,62 +23,7 @@ const ARROW_FORWARD = new THREE.Vector3(0, 0, 1);
 const UP = new THREE.Vector3(0, 1, 0);
 const v3 = new THREE.Vector3();
 
-function init(scene) {
-  const numInstances = NUM_INSTANCES;
-
-  // Setup instance-attribute buffers
-  const iOffsets = new Float32Array(numInstances * 3);
-  const iRotations = new Float32Array(numInstances * 4);
-  const iColors = new Float32Array(numInstances * 4);
-
-  // Setup geometry with instance-attributes
-  const geometry = new THREE.InstancedBufferGeometry();
-
-  const baseGeometry = getArrowGeometry();
-  // Copy attributes from the base geometry
-  geometry.index = baseGeometry.index;
-  geometry.attributes.position = baseGeometry.attributes.position;
-  geometry.attributes.normal = baseGeometry.attributes.normal;
-
-  geometry.setAttribute('iOffset', new THREE.InstancedBufferAttribute(iOffsets, 3));
-  geometry.setAttribute('iRotation', new THREE.InstancedBufferAttribute(iRotations, 4));
-  geometry.setAttribute('iColor', new THREE.InstancedBufferAttribute(iColors, 4));
-
-
-
-  geometry.attributes.iRotation.setUsage(THREE.DynamicDrawUsage);
-  geometry.attributes.iOffset.setUsage(THREE.DynamicDrawUsage);
-
-  const arrows = [];
-  for (let index = 0; index < numInstances; index++) {
-    arrows.push(new Arrow(index, {
-      position: iOffsets,
-      rotation: iRotations,
-      color: iColors
-    }));
-  }
-
-  const mesh = new THREE.Mesh(geometry, material);
-  scene.add(mesh);
-  mesh.frustumCulled = false;
-
-  let t0 = performance.now();
-  return t => {
-    const dt = Math.min((t - t0) / 1000, 0.1);
-
-    for (let i = 0; i < numInstances; i++) {
-      arrows[i].update(dt);
-    }
-
-    //console.log(arrows[0].position)
-
-    geometry.attributes.iRotation.needsUpdate = true;
-    geometry.attributes.iOffset.needsUpdate = true;
-
-    t0 = t;
-  };
-}
-
+/* Class and extra functions */
 class Arrow {
   constructor(index, buffers) {
     this.index = index;
@@ -141,11 +84,22 @@ class Arrow {
   }
 }
 
+/* Random values */
+function rnd(min = 1, max = 0, pow = 1) {
+  if (arguments.length < 2) {
+    max = min;
+    min = 0;
+  }
+
+  const rnd = (pow === 1) ? Math.random() : Math.pow(Math.random(), pow);
+  return (max - min) * rnd + min;
+}
+
 /**
  * Creates the arrow-geometry.
  * @return {THREE.BufferGeometry}
  */
-function getArrowGeometry() {
+const getArrowGeometry = () => {
   const shape = new THREE.Shape([
     [-1.5, -1], [-0.03, 3], [-0.01, 3.017], [0.0, 1.0185],
     [0.01, 3.017], [0.03, 3], [1.5, -1], [0, -0.5]
@@ -168,17 +122,97 @@ function getArrowGeometry() {
 
   //return new THREE.InstancedBufferGeometry().copy(arrowGeometry);; // Already a BufferGeometry
   return arrowGeometry;
-}
-
-const materialTest = new THREE.MeshBasicMaterial({
-  color: 0xffffff, // Red color for testing
-  side: THREE.DoubleSide
-});
+};
 
 /**
- * The material required to render the instanced geometry. We are 
- * using a raw shader material so we don't have to deal with possible 
- * naming-conflicts and so on.
+ * Sizes
+ */
+const sizes = {
+  width: window.innerWidth,
+  height: window.innerHeight
+};
+
+window.addEventListener('resize', () => {
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});
+
+const canvas = document.querySelector('canvas.webgl');
+const scene = new THREE.Scene();
+
+/**
+ * Camera
+ */
+const camera = new THREE.PerspectiveCamera(60, sizes.width / sizes.height, 0.1, 5000);
+camera.position.set(-80, 50, 20);
+camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+/**
+ * Controls
+ */
+const controls = new OrbitControls(camera, canvas);
+
+/**
+ * Renderer
+ */
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  alpha: true,
+  antialias: true
+});
+renderer.setSize(sizes.width, sizes.height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x000000);
+
+// Debugging logs
+//console.log('Camera position:', camera.position);
+//console.log('Arrow geometry:', getArrowGeometry());
+
+/*
+ * Define Geometry
+ */
+const numInstances = NUM_INSTANCES;
+
+// Setup instance-attribute buffers
+const iOffsets = new Float32Array(numInstances * 3);
+const iRotations = new Float32Array(numInstances * 4);
+const iColors = new Float32Array(numInstances * 4);
+
+// Setup geometry with instance-attributes
+const geometry = new THREE.InstancedBufferGeometry();
+const baseGeometry = getArrowGeometry();
+
+// Copy attributes from the base geometry
+geometry.index = baseGeometry.index;
+geometry.attributes.position = baseGeometry.attributes.position;
+geometry.attributes.normal = baseGeometry.attributes.normal;
+
+geometry.setAttribute('iOffset', new THREE.InstancedBufferAttribute(iOffsets, 3));
+geometry.setAttribute('iRotation', new THREE.InstancedBufferAttribute(iRotations, 4));
+geometry.setAttribute('iColor', new THREE.InstancedBufferAttribute(iColors, 4));
+
+geometry.attributes.iRotation.setUsage(THREE.DynamicDrawUsage);
+geometry.attributes.iOffset.setUsage(THREE.DynamicDrawUsage);
+
+const arrows = [];
+for (let index = 0; index < numInstances; index++) {
+  arrows.push(new Arrow(index, {
+    position: iOffsets,
+    rotation: iRotations,
+    color: iColors
+  }));
+}
+
+/**
+ * Define material required to render the instanced geometry. 
+ * We are using a raw shader material so we don't 
+ * have to deal with possible naming-conflicts and so on.
  */
 const material = new THREE.RawShaderMaterial({
   uniforms: {},
@@ -227,7 +261,6 @@ const material = new THREE.RawShaderMaterial({
           vec4(iOffset + rotate(position, iRotation), 1.0);
     }
   `,
-
   fragmentShader: `
     precision highp float;
     varying vec3 vLighting;
@@ -238,61 +271,34 @@ const material = new THREE.RawShaderMaterial({
       gl_FragColor.a = 1.0;
     }
   `,
-
   side: THREE.DoubleSide,
   transparent: false
 });
 
-function rnd(min = 1, max = 0, pow = 1) {
-  if (arguments.length < 2) {
-    max = min;
-    min = 0;
-  }
+/**
+ * Define the mesh
+ */
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+mesh.frustumCulled = false;
 
-  const rnd = (pow === 1) ? Math.random() : Math.pow(Math.random(), pow);
-  return (max - min) * rnd + min;
-}
+/**
+ * Animate
+ */
+const update = (() => {
+  let prevTime = performance.now();
 
-// ---- Bootstrapping code
-const width = window.innerWidth;
-const height = window.innerHeight;
+  return (time) => {
+    const dt = Math.min((time - prevTime) / 1000, 0.1);
+    arrows.forEach(a => a.update(dt));
+    Object.values(geometry.attributes).forEach(attr => attr.needsUpdate = true);
+    prevTime = time;
+  };
+})();
 
-const renderer = new THREE.WebGLRenderer({
-  alpha: true,
-  antialias: true
-});
-renderer.setSize(width, height);
-renderer.setClearColor(0x000000);
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 5000);
-const controls = new OrbitControls(camera, renderer.domElement);
-
-camera.position.set(-80, 50, 20);
-camera.lookAt(new THREE.Vector3(0, 0, 0));
-
-// Debugging logs
-//console.log('Camera position:', camera.position);
-//console.log('Arrow geometry:', getArrowGeometry());
-
-const update = init(scene, camera);
-
-requestAnimationFrame(function loop(time) {
-  controls.update();
+(function animate() {
+  requestAnimationFrame(animate);
   update(performance.now());
-
-
+  controls.update();
   renderer.render(scene, camera);
-  requestAnimationFrame(loop);
-});
-
-window.addEventListener('resize', () => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
-  renderer.setSize(width, height);
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-});
-
-document.body.appendChild(renderer.domElement);
+})();
