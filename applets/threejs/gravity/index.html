@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
+  
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
   <title>Gravity (three.js / instancing / glsl)</title>
   <link rel="stylesheet" href="style.css">
 
@@ -48,40 +50,10 @@
     </div>
   </div>
 
-  <!-- Link with Expand Icon -->
-   <!-- Link with Expand Icon -->
-   <a target="_blank" href="https://vector-calculus.github.io/applets/threejs/gravity/" id="expand-btn" class="expand-link">
-    <i class="fa-solid fa-expand"></i>
-</a>
-
-
-
   <script type="module" src="./script.js"></script>
 
 
   <script>
-     function toggleExpandButton() {
-            const expandBtn = document.getElementById("expand-btn");
-
-            // Check if inside an iframe
-            const inIframe = window !== window.parent;
-
-            // Get iframe height (only works if same-origin policy allows it)
-            const iframeHeight = inIframe ? window.innerHeight : 0;
-
-            if (inIframe && iframeHeight >= 350) {
-                expandBtn.style.display = "flex";
-            } else {
-                expandBtn.style.display = "none";
-            }
-        }
-
-        // Run on load and resize
-        window.addEventListener("load", toggleExpandButton);
-        window.addEventListener("resize", toggleExpandButton);
-
-
-
     document.addEventListener("keydown", (event) => {
       if (event.key.toLowerCase() === "f") {
         if (!document.fullscreenElement) {

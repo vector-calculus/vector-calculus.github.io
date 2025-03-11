@@ -46,30 +46,3 @@ a:hover {
 a:active {
   color: #00cc99;
 }
-
-.expand-link {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.706);
-  color: white;
-  border-radius: 5px;
-  font-size: 1.2em;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.3em;
-  height: 1.3em;
-}
-
-.expand-link:hover {
-  background-color: darkgray;
-}
-
-@media (min-height: 351px) {
-  .expand-link {
-      display: none !important;
-  }
-}
