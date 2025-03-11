@@ -2608,7 +2608,7 @@ https://www.w3schools.com/cssref/playdemo.php?filename=playcss_accent-color
   border-left: 5px solid #3b87f9 !important;
   padding: 8px 16px 8px 16px;
   text-align: justify;
-  font-size: 1rem;
+  font-size: inherit;
 }
 
 .infotip #myinfo.show {
