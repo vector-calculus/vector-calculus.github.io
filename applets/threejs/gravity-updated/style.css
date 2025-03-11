@@ -1,0 +1,46 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+  overflow: hidden;
+  background-color: black;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+
+div.sticky {
+  position: fixed;
+  left: 15px;
+  width: 50%;
+  top: 0px;
+  margin: auto;
+  font-size: 0.95em;
+  font-family: Georgia;
+  line-height: 20px;
+} 
+
+/* unvisited link */
+a:link {
+  color: #d3dff1;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #a281ca;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #8de0f2;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: #00cc99;
+}
