@@ -17,20 +17,19 @@ div.sticky {
   width: 50%;
   top: 0px;
   margin: auto;
-  font-size: 0.95em;
+  font-size: 1em;
   font-family: Georgia;
-  line-height: 20px;
 } 
 
 /* unvisited link */
 a:link {
-  color: #d3dff1;
+  color: #b3d9ff;
   text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-  color: #a281ca;
+  color: #99ccff;
   text-decoration: none;
 }
 
