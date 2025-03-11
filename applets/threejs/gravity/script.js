@@ -147,8 +147,8 @@ class Arrow {
  */
 function getArrowGeometry() {
   const shape = new THREE.Shape([
-    [-0.8, -2], [-0.03, 1], [-0.01, 1.017], [0.0, 1.0185],
-    [0.01, 1.017], [0.03, 1], [0.8, -2], [0, -0.5]
+    [-1.5, -1], [-0.03, 3], [-0.01, 3.017], [0.0, 1.0185],
+    [0.01, 3.017], [0.03, 3], [1.5, -1], [0, -0.5]
   ].map(p => new THREE.Vector2(...p)));
 
   const arrowGeometry = new THREE.ExtrudeGeometry(shape, {
