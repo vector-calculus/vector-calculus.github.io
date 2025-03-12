@@ -56,14 +56,14 @@
 
       let x = r * Math.sin(v);
       let y = r * Math.cos(v);
-      let z = factor * (u * Math.cos(s) - h * Math.sin(s)) +65;
+      let z = factor * (u * Math.cos(s) - h * Math.sin(s)) + 65;
 
       target.set(x, y, z);
     }
 
 
     let geometry = new ParametricGeometry(parametricFunc, 25, 400);
-    geometry.rotateX(Math.PI / 2);
+    geometry.rotateX(Math.PI / 1.9);
     geometry.scale(0.012, 0.012, 0.012);
 
     // Load MatCap texture
@@ -104,6 +104,8 @@
     // Controls
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = - 0.2;
 
     // Add material toggle dropdown
     gui.add(options, 'material', ['Matcap', 'Normal']).name('Style').onChange((value) => {
