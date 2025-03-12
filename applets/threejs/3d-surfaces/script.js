@@ -17,7 +17,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
-const matcapTextureText = textureLoader.load('static/textures/matcaps/matcap.png');
+const matcapTextureText = textureLoader.load('static/textures/matcaps/13.png');
 matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 
 /**
@@ -26,7 +26,7 @@ matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 const fontLoader = new FontLoader();
 
 fontLoader.load('static/fonts/helvetiker_regular.typeface.json', (font) => {
-    const textGeometry = new TextGeometry('Parametric Surfaces', {
+    const textGeometry = new TextGeometry('Parametric\n Surfaces', {
         font: font,
         size: 0.5,
         height: 0.2,
@@ -35,7 +35,7 @@ fontLoader.load('static/fonts/helvetiker_regular.typeface.json', (font) => {
         bevelThickness: 0.03,
         bevelSize: 0.02,
         bevelOffset: 0,
-        bevelSegments: 5
+        bevelSegments: 6
     });
 
     textGeometry.center();
@@ -51,7 +51,7 @@ const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THR
 
 const objects = [];
 const rotationSpeeds = []; // Array to store unique rotation speeds
-const maxObjects = 500;
+const maxObjects = 700;
 
 // Function to create Klein bottle
 const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
@@ -60,7 +60,7 @@ const torusGeometry = new THREE.TorusGeometry(10, 4, 30, 30);
 
 const knotGeometry = new THREE.TorusKnotGeometry(10, 2, 90, 50);
 
-const sphereGeometry = new ParametricGeometries.SphereGeometry(5, 30, 30);
+//const sphereGeometry = new ParametricGeometries.SphereGeometry(5, 30, 30);
 
 // Function to create Möbius strip
 const mobiusGeometry = new ParametricGeometry((u, v, target) => {
@@ -105,12 +105,15 @@ for (let i = 0; i < maxObjects; i++) {
         (Math.random() - 0.5) * 10
     );
 
-    // Random rotation
-    object.rotation.set(
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI
-    );
+    const radius = 7 * Math.cbrt(Math.random()); // Cube root ensures uniform distribution inside the sphere
+    const theta = Math.random() * Math.PI * 2;  // Random azimuthal angle
+    const phi = Math.acos(2 * Math.random() - 1); // Random polar angle (ensures uniformity)
+
+    const x = radius * Math.sin(phi) * Math.cos(theta);
+    const y = radius * Math.sin(phi) * Math.sin(theta);
+    const z = radius * Math.cos(phi);
+
+    object.position.set(x, y, z);
 
     // Random scale
     const min = 0.01;  // Set your desired minimum value
