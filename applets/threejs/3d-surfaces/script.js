@@ -5,6 +5,8 @@ import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
 import { ParametricGeometries } from 'three/addons/geometries/ParametricGeometries.js';
 
+//import gsap from 'gsap';
+
 /**
  * Base
  */
@@ -17,7 +19,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
-const matcapTextureText = textureLoader.load('static/textures/matcaps/13.png');
+const matcapTextureText = textureLoader.load('static/textures/matcaps/11.png');
 matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 
 /**
@@ -25,7 +27,7 @@ matcapTextureText.colorSpace = THREE.SRGBColorSpace;
  */
 const fontLoader = new FontLoader();
 
-fontLoader.load('static/fonts/helvetiker_regular.typeface.json', (font) => {
+fontLoader.load('static/fonts/Palatino_Roman.json', (font) => {
     const textGeometry = new TextGeometry('Parametric\n Surfaces', {
         font: font,
         size: 0.5,
@@ -157,8 +159,17 @@ window.addEventListener('resize', () => {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
-camera.position.set(1, 1, 4);
+camera.position.set(0, 0, 0);
 scene.add(camera);
+
+gsap.to(camera.position, {
+    x: 0,
+    y: 1,
+    z: 4,
+    duration: 5,
+    ease: "power2.in",
+    onUpdate: () => camera.lookAt(0, 0, 0)
+});
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
