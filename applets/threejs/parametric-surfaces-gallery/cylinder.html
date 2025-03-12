@@ -50,7 +50,7 @@
       const scale = 1;
       let x = scale * (Math.cos(u));
       let y = scale * (Math.sin(u));
-      let z = scale * ( v  );
+      let z = scale * ( v -0.5 );
       target.set(x, y, z);
     }
 
@@ -108,7 +108,7 @@
     });
 
     // Add parameter
-    gui.add(options, 'h', -5, 5, 0.01).onChange(() => {
+    gui.add(options, 'h', 0, 3, 0.01).onChange(() => {
       // Regenerate geometry with the new 'a' value
       geometry.dispose(); // Dispose of the old geometry to free up memory
       geometry = new ParametricGeometry(parametricFunc, 100, 60);
