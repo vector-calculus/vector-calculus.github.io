@@ -17,7 +17,7 @@ const scene = new THREE.Scene();
 const textureLoader = new THREE.TextureLoader();
 const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
-const matcapTextureText = textureLoader.load('static/textures/matcaps/3.png');
+const matcapTextureText = textureLoader.load('static/textures/matcaps/matcap.png');
 matcapTextureText.colorSpace = THREE.SRGBColorSpace;
 
 /**
@@ -78,7 +78,6 @@ const mobiusGeometry = new ParametricGeometry((u, v, target) => {
     target.set(x, y, z);
 }, 50, 50);
 
-//scene.background = new THREE.Color('#f9fafb'); // Set background to black (hex format)
 scene.background = new THREE.Color('#000'); // Set background to black (hex format)
 
 for (let i = 0; i < maxObjects; i++) {
