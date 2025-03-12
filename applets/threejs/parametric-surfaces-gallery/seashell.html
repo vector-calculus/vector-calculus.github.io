@@ -51,12 +51,13 @@
       const scale = 0.4;
       let x = scale * ( 2 * f * Math.cos(u) * Math.cos(v / 2) * Math.cos(v / 2));
       let y = scale * ( 2 * (-f) * Math.sin(u) * Math.cos(v / 2) * Math.cos(v / 2));
-      let z = scale * ( 3 - Math.exp(u / (options.a)) - Math.sin(v) + Math.exp(u / (Math.PI * 6 * 1)) * Math.sin(v));
+      let z = scale * ( 4 - Math.exp(u / (options.a)) - Math.sin(v) + Math.exp(u / (Math.PI * 6 * 1)) * Math.sin(v));
       target.set(x, y, z);
     }
 
-    let geometry = new ParametricGeometry(seaShell, 60, 60);
+    let geometry = new ParametricGeometry(seaShell, 100, 60);
     geometry.rotateX(-Math.PI / 2);
+    geometry.rotateY(Math.PI / 4);
 
     // Load MatCap texture
     const textureLoader = new THREE.TextureLoader();
@@ -112,12 +113,15 @@
     gui.add(options, 'a', 8, 18, 0.01).onChange(() => {
       // Regenerate geometry with the new 'a' value
       geometry.dispose(); // Dispose of the old geometry to free up memory
-      geometry = new ParametricGeometry(seaShell, 60, 60);
+      geometry = new ParametricGeometry(seaShell, 100, 60);
       geometry.rotateX(-Math.PI / 2);
+      geometry.rotateY(Math.PI / 4);
 
       // Update the mesh with the new geometry
       mesh.geometry = geometry;
     });
+
+    gui.close();
 
     /**
      * Renderer
