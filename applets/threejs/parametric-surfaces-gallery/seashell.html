@@ -36,7 +36,7 @@
     const canvas = document.querySelector('canvas.webgl');
     const scene = new THREE.Scene();
 
-    const geometry = new ParametricGeometry(PS.seaShell, 64, 64);
+    const geometry = new ParametricGeometry(PS.seaShell, 30, 60);
     geometry.translate(0,0,-0.5);
     geometry.rotateX(-Math.PI / 2);
     // Load MatCap texture
