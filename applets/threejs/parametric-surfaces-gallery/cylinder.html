@@ -45,8 +45,9 @@
 
     // **Cylinder Surface**
     function parametricFunc(u, v, target) {
-      u *= 2*Math.PI;
-      v *= options.h;
+      u = 2 * Math.PI * u;
+      v = options.h * v;
+
       const scale = 1;
       let x = scale * (Math.cos(u));
       let y = scale * (Math.sin(u));
@@ -108,7 +109,7 @@
     });
 
     // Add parameter
-    gui.add(options, 'h', 0, 3, 0.01).onChange(() => {
+    gui.add(options, 'h', 0, 2, 0.01).onChange(() => {
       // Regenerate geometry with the new 'a' value
       geometry.dispose(); // Dispose of the old geometry to free up memory
       geometry = new ParametricGeometry(parametricFunc, 100, 60);

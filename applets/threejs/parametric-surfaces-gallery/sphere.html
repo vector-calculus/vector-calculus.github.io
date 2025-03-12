@@ -46,7 +46,7 @@
     /**
      * Sphere as a Parametric Surface
      */
-    function parametricSphere(u, v, target) {
+    function parametricFunc(u, v, target) {
       const theta = u * Math.PI * 2;
       const phi = v * Math.PI;
       const r = options.r;
@@ -56,7 +56,7 @@
       target.set(x, y, z);
     }
 
-    let geometry = new ParametricGeometry(parametricSphere, 50, 50);
+    let geometry = new ParametricGeometry(parametricFunc, 50, 50);
     geometry.rotateX(-Math.PI / 2);
 
     // Load MatCap texture
@@ -113,7 +113,7 @@
     gui.add(options, 'r', 0.01, 2, 0.01).onChange(() => {
       // Regenerate geometry with the new 'a' value
       geometry.dispose(); // Dispose of the old geometry to free up memory
-      geometry = new ParametricGeometry(parametricSphere, 50, 50);
+      geometry = new ParametricGeometry(parametricFunc, 50, 50);
       geometry.rotateX(-Math.PI / 2);
 
       // Update the mesh with the new geometry
