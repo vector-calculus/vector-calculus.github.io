@@ -43,6 +43,13 @@
     const canvas = document.querySelector('canvas.webgl');
     const scene = new THREE.Scene();
 
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4); // Soft global light
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
     /**
      * Sphere as a Parametric Surface
      */
@@ -61,11 +68,17 @@
 
     // Load MatCap texture
     const textureLoader = new THREE.TextureLoader();
-    const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
+    const matcapTexture = textureLoader.load('static/textures/matcaps/14.png');
 
     // Define materials
     const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THREE.DoubleSide });
     const normalMaterial = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide });
+
+    const metalMaterial = new THREE.MeshStandardMaterial({
+      metalness: 1,
+      roughness: 0.6,
+      side: THREE.DoubleSide
+    });
 
     let mesh = new THREE.Mesh(geometry, matcapMaterial);
     scene.add(mesh);
