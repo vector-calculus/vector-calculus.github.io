@@ -10,18 +10,7 @@ function parametricSphere(u, v, target) {
     target.set(x, y, z);
 }
 
-// **Sea Shell Surface**
-function seaShell(u, v, target) {
-    u *= 2;
-    v *= 2;
-    let factor = 1 - 0.5 * v;
-    let x =
-        0.5 * factor * Math.cos(3 * v * Math.PI) * (1 + Math.cos(u * Math.PI));
-    let y =
-        0.5 * factor * Math.sin(3 * v * Math.PI) * (1 + Math.cos(u * Math.PI));
-    let z = v + 0.5 * factor * Math.sin(u * Math.PI);
-    target.set(x, y, z);
-}
+
 
 // **Another Example Surface**
 function kleinBottle(u, v, target) {

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parametric Surface - Sphere</title>
+  <title>Parametric Surface - Seashell</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -28,7 +28,14 @@
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
     import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-    import * as PS from './parametricSurfaces.js';
+
+    // GUI setup
+    const gui = new GUI();
+    const options = {
+      material: 'Matcap', // Default material
+      wireframe: false,    // Default wireframe state
+      a: 13,
+    };
 
     /**
      * Base
@@ -36,19 +43,30 @@
     const canvas = document.querySelector('canvas.webgl');
     const scene = new THREE.Scene();
 
-    const geometry = new ParametricGeometry(PS.seaShell, 30, 60);
-    geometry.translate(0,0,-0.5);
+    // **Sea Shell Surface**
+    function seaShell(u, v, target) {
+      u *= 20;
+      v *= 2 * Math.PI;
+      const f = Math.exp(u / (Math.PI * 6 * 1)) - 1;
+      const scale = 0.4;
+      let x = scale * ( 2 * f * Math.cos(u) * Math.cos(v / 2) * Math.cos(v / 2));
+      let y = scale * ( 2 * (-f) * Math.sin(u) * Math.cos(v / 2) * Math.cos(v / 2));
+      let z = scale * ( 3 - Math.exp(u / (options.a)) - Math.sin(v) + Math.exp(u / (Math.PI * 6 * 1)) * Math.sin(v));
+      target.set(x, y, z);
+    }
+
+    let geometry = new ParametricGeometry(seaShell, 60, 60);
     geometry.rotateX(-Math.PI / 2);
+
     // Load MatCap texture
     const textureLoader = new THREE.TextureLoader();
-    const matcapTexture = textureLoader.load('static/textures/matcaps/2.png');
+    const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
 
     // Define materials
-    const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture,  side: THREE.DoubleSide });
-    const normalMaterial = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide});
+    const matcapMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THREE.DoubleSide });
+    const normalMaterial = new THREE.MeshNormalMaterial({ side: THREE.DoubleSide });
 
-    const mesh = new THREE.Mesh(geometry, matcapMaterial);
-    
+    let mesh = new THREE.Mesh(geometry, matcapMaterial);
     scene.add(mesh);
 
     /**
@@ -79,13 +97,6 @@
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
 
-    // GUI setup
-    const gui = new GUI();
-    const options = {
-      material: 'Matcap', // Default material
-      wireframe: false    // Default wireframe state
-    };
-
     // Add material toggle dropdown
     gui.add(options, 'material', ['Matcap', 'Normal']).onChange((value) => {
       mesh.material = value === 'Matcap' ? matcapMaterial : normalMaterial;
@@ -97,11 +108,21 @@
       mesh.material.wireframe = value;
     });
 
+    // Add parameter
+    gui.add(options, 'a', 8, 18, 0.01).onChange(() => {
+      // Regenerate geometry with the new 'a' value
+      geometry.dispose(); // Dispose of the old geometry to free up memory
+      geometry = new ParametricGeometry(seaShell, 60, 60);
+      geometry.rotateX(-Math.PI / 2);
+
+      // Update the mesh with the new geometry
+      mesh.geometry = geometry;
+    });
 
     /**
      * Renderer
      */
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true});
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
