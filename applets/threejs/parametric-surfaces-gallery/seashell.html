@@ -99,13 +99,13 @@
     controls.enableDamping = true;
 
     // Add material toggle dropdown
-    gui.add(options, 'material', ['Matcap', 'Normal']).onChange((value) => {
+    gui.add(options, 'material', ['Matcap', 'Normal']).name('Style').onChange((value) => {
       mesh.material = value === 'Matcap' ? matcapMaterial : normalMaterial;
       mesh.material.wireframe = options.wireframe; // Keep wireframe state
     });
 
     // Add wireframe toggle
-    gui.add(options, 'wireframe').onChange((value) => {
+    gui.add(options, 'wireframe').name('Frame').onChange((value) => {
       mesh.material.wireframe = value;
     });
 
