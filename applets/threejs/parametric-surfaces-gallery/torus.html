@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parametric surface - Pinecone</title>
+  <title>Parametric surface - Torus</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -34,7 +34,8 @@
     const options = {
       material: 'Matcap', // Default material
       wireframe: false,    // Default wireframe state
-      h: 1,
+      r: 2,
+      R: 2
     };
 
     /**
@@ -43,28 +44,23 @@
     const canvas = document.querySelector('canvas.webgl');
     const scene = new THREE.Scene();
 
-    // **Pinecone Surface**
+    // **Torus Surface**
     function parametricFunc(u, v, target) {
-      u = u * Math.PI * 1;
-      v = v * Math.PI * 17;
+      u = 2 * Math.PI * u;
+      v = 2 * Math.PI * v;
 
-      let s = (Math.PI / 2) * Math.exp(-v / (8 * Math.PI));
-      let factor = 1 - 0.5 * ((5 / 4) * Math.pow(1 - ((3.6 * v) % (2 * Math.PI)) / Math.PI, 2) - 0.25) ** 2;
 
-      let h = 1.95653 * u ** 2 * (1.27689 * u - 1) ** 2 * Math.sin(s);
-      let r = factor * (u * Math.sin(s) + h * Math.cos(s));
-
-      let x = r * Math.sin(v);
-      let y = r * Math.cos(v);
-      let z = factor * (u * Math.cos(s) - h * Math.sin(s)) + 65;
+      let x = (Math.cos(u) * (options.r / 2 * Math.cos(v) + options.R));
+      let y = (Math.sin(u) * (options.r / 2 * Math.cos(v) + options.R));
+      let z = (options.r / 2 * Math.sin(v));
 
       target.set(x, y, z);
     }
 
 
-    let geometry = new ParametricGeometry(parametricFunc, 25, 400);
-    geometry.rotateX(Math.PI / 1.9);
-    geometry.scale(0.012, 0.012, 0.012);
+    let geometry = new ParametricGeometry(parametricFunc, 64, 64);
+    geometry.rotateX(-Math.PI / 3);
+    geometry.scale(0.35, 0.35, 0.35);
 
     // Load MatCap texture
     const textureLoader = new THREE.TextureLoader();
@@ -105,7 +101,7 @@
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = - 0.2;
+    controls.autoRotateSpeed = - 0.6;
 
     // Add material toggle dropdown
     gui.add(options, 'material', ['Matcap', 'Normal']).name('Style').onChange((value) => {
@@ -119,16 +115,26 @@
     });
 
     // Add parameter
-    // gui.add(options, 'h', 0, 3, 0.01).onChange(() => {
-    //   // Regenerate geometry with the new 'a' value
-    //   geometry.dispose(); // Dispose of the old geometry to free up memory
-    //   geometry = new ParametricGeometry(parametricFunc, 100, 60);
-    //   geometry.rotateX(-Math.PI / 4);
-    //   geometry.scale(0.12, 0.12, 0.12);
+    gui.add(options, 'r', 0.01, 3, 0.01).onChange(() => {
+      // Regenerate geometry with the new 'a' value
+      geometry.dispose(); // Dispose of the old geometry to free up memory
+      geometry = new ParametricGeometry(parametricFunc, 64, 64);
+      geometry.rotateX(-Math.PI / 3);
+      geometry.scale(0.35, 0.35, 0.35);
 
-    //   // Update the mesh with the new geometry
-    //   mesh.geometry = geometry;
-    // });
+      // Update the mesh with the new geometry
+      mesh.geometry = geometry;
+    });
+    gui.add(options, 'R', 0.01, 3, 0.01).onChange(() => {
+      // Regenerate geometry with the new 'a' value
+      geometry.dispose(); // Dispose of the old geometry to free up memory
+      geometry = new ParametricGeometry(parametricFunc, 64, 64);
+      geometry.rotateX(-Math.PI / 4);
+      geometry.scale(0.35, 0.35, 0.35);
+
+      // Update the mesh with the new geometry
+      mesh.geometry = geometry;
+    });
 
     gui.close();
 
