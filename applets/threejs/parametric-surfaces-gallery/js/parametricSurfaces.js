@@ -55,6 +55,18 @@ export function enneperSurface(u, v, target) {
     target.set(x, y, z);
 }
 
+export function hornSurface(u, v, target, a, b, c) {
+    u = 1 * u;
+    v = 2 * PI * v - PI;
+
+    let x, y, z;
+    x = (a + u * cos(v) ) * sin(b * PI * u);
+    y = (a + u * cos(v) ) * cos(b * PI * u) + c * u;
+    z = u * sin(v);
+
+    target.set(x, y, z);
+}
+
 export function hyperhelicoidSurface(u, v, target, a) {
     u = 8 * u - 4;
     v = 8 * v - 4;
@@ -88,6 +100,18 @@ export function hyperspiralSurface(u, v, target, H, a) {
     let z = sin(u) / u;
 
     target.set(x, y, z);
+}
+
+export function juliaheartSurface(u, v, target) {
+    // Convert parameters to radians
+    u *= PI * 2;
+    v *= PI;
+
+    const x = (4 * sin(u) - sin(3 * u)) * sin(v);
+    const y = 2 * cos(v);
+    const z = 1.2 * (4 * cos(u) - cos(2 * u) - cos(3 * u) / 2) * sin(v);
+
+    return target.set(x, y, z);
 }
 
 export function kleinbottleSurface(u, v, target, a, b, c) {
