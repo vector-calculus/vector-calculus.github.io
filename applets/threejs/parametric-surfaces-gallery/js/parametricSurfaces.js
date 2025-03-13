@@ -20,6 +20,16 @@ export function cylinderSurface(u, v, target, h) {
     target.set(x, y, z);
 }
 
+export function mobiusSurface(u, v, target, R) {
+    u = 2 * u -1;
+    v = 2 * Math.PI * v;
+
+    let x = (R + u * Math.cos(v / 2)) * Math.cos(v);
+    let y = (R + u * Math.cos(v / 2)) * Math.sin(v);
+    let z = u * Math.sin(v / 2)
+    target.set(x, y, z);
+}
+
 export function pineconeSurface(u, v, target) {
     u = u * Math.PI * 1;
     v = v * Math.PI * 17;
