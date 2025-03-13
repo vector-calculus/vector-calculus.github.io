@@ -20,8 +20,30 @@ export function cylinderSurface(u, v, target, h) {
     target.set(x, y, z);
 }
 
+export function dinniSurface(u, v, target, a, b) {
+    u = 4 * Math.PI * u;
+    v = Math.max(0.01, Math.min(2, v));  // Ensure v is between 0.01 and 2
+
+    let x = a * Math.cos(u) * Math.sin(v);
+    let y = a * Math.sin(u) * Math.sin(v);
+    let z = a * (Math.cos(v) + Math.log(Math.tan(v / 2))) + b * u;
+
+    target.set(x, y, z);
+}
+
+export function enneperSurface(u, v, target) {
+    u = 3 * u - 1.5;
+    v = 3 * v - 1.5;
+
+    let x = u - Math.pow(u, 3) + u * v ** 2;
+    let y = v - Math.pow(v, 3) + u ** 2 * v;
+    let z = u **2 - v ** 2;
+
+    target.set(x, y, z);
+}
+
 export function mobiusSurface(u, v, target, R) {
-    u = 2 * u -1;
+    u = 2 * u - 1;
     v = 2 * Math.PI * v;
 
     let x = (R + u * Math.cos(v / 2)) * Math.cos(v);
