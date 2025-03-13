@@ -11,7 +11,7 @@ const options = {
     material: 'Matcap', // Default material
     mesh: false,
     autoRotate: true,
-    a: 4,
+    a: 3,
     b: 7,
     c: 6.2831,
     color: '#049ef4'
@@ -66,18 +66,18 @@ gui.add(options, 'mesh').name('Mesh').onChange((value) => {
     wireframeMesh.visible = value;
 });
 
-gui.add(options, 'a', 0.01, 3, 0.01).onChange(() => {
+gui.add(options, 'a', 0, 5, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b), 64, 64);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), 64, 64);
     geometry.rotateX(-Math.PI / 3);
     geometry.scale(0.17, 0.17, 0.17);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'b', 0.01, 3, 0.01).onChange(() => {
+gui.add(options, 'b', 4, 12, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b), 64, 64);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), 64, 64);
     geometry.rotateX(-Math.PI / 3);
     geometry.scale(0.17, 0.17, 0.17);
     mesh.geometry = geometry;
