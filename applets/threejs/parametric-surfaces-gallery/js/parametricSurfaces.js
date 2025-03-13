@@ -1,6 +1,8 @@
 // Define commonly used Math functions
 const cos = Math.cos;
 const sin = Math.sin;
+const cosh = Math.cosh;
+const sinh = Math.sinh;
 const log = Math.log;
 const exp = Math.exp;
 const pow = Math.pow;
@@ -53,11 +55,46 @@ export function enneperSurface(u, v, target) {
     target.set(x, y, z);
 }
 
+export function hyperhelicoidSurface(u, v, target, a) {
+    u = 8 * u - 4;
+    v = 8 * v - 4;
+
+    const d = 1 + cosh(u) * cosh(v);
+
+    let x = sinh(v) * cos(a * u) / d;
+    let y = sinh(v) * sin(a * u) / d;
+    let z = cosh(v) * sinh(u) / d;
+
+    target.set(x, y, z);
+}
+
+export function hyperoctahedronSurface(u, v, target) {
+    u = PI * u - PI / 2;
+    v = 2 * PI * v - PI;
+
+    let x = pow(cos(u) * cos(v), 3);
+    let y = pow(sin(u) * cos(v), 3);
+    let z = pow(sin(v), 3);
+
+    target.set(x, y, z);
+}
+
+export function hyperspiralSurface(u, v, target, H, a) {
+    u = a * u;
+    v = 1 * v;
+
+    let x = cos(u) / u;
+    let y = H * v - 0.5;
+    let z = sin(u) / u;
+
+    target.set(x, y, z);
+}
+
 export function kleinbottleSurface(u, v, target, a, b, c) {
     u = c * u;
     v = 2 * PI * v;
 
-    const r = 2.5 * (1-cos(u) / 2);
+    const r = 2.5 * (1 - cos(u) / 2);
 
     let x, y, z;
     if (0 <= u && u < PI) {
