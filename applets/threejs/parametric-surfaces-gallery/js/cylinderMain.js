@@ -10,6 +10,7 @@ const gui = new GUI();
 const options = {
     material: 'Matcap', // Default material
     mesh: false,
+    autoRotate: true,
     h: 1,
     color: '#049ef4'
 };
@@ -68,6 +69,10 @@ gui.add(options, 'h', 0, 2, 0.01).onChange(() => {
     geometry.rotateX(-Math.PI / 2.1);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
+});
+
+gui.add(options, 'autoRotate').name('Auto Rotate').onChange(value => {
+    controls.autoRotate = value;
 });
 
 gui.close();
