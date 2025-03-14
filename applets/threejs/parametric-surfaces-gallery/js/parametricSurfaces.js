@@ -134,6 +134,18 @@ export function kleinbottleSurface(u, v, target, a, b, uComponent) {
     target.set(x, y, z);
 }
 
+export function kleinbottlenordstrandSurface(u, v, target, uComponent) {
+    u = uComponent * u;
+    v = 2 * PI * v;
+
+    let x, y, z;
+    x = cos(u) * (cos(u / 2) * (pow(2, 1 / 2) + + cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    y = sin(u) * (cos(u / 2) * (pow(2, 1 / 2) + + cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    z = - sin(u / 2) * ( (pow(2, 1 / 2) + + cos(v)) + cos(u / 2) * sin(v) * cos(v));
+
+    target.set(x, y, z);
+}
+
 export function mobiusSurface(u, v, target, R, vComponent) {
     u = 2 * u - 1;
     v = vComponent * v;
@@ -243,7 +255,7 @@ export function torustwisted8Surface(u, v, target, r, R, uComponent, vComponent)
 
     let x = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * cos(u);
     let y = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * sin(u);
-    let z = r*(sin(u/2) * sin(v) + cos(u/2)* sin(2*v));
+    let z = r * (sin(u / 2) * sin(v) + cos(u / 2) * sin(2 * v));
 
     target.set(x, y, z);
 }
@@ -252,9 +264,9 @@ export function torusumbilicSurface(u, v, target, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
 
-    let x = sin(u) *(7 + cos(u/3 - 2*v) + 2 * cos(u/3 + v)); 
-    let y = cos(u) *(7 + cos(u/3 - 2*v) + 2 * cos(u/3 + v));
-    let z = sin(u/3 - 2 * v) + 2 * sin(u/3 + v);
+    let x = sin(u) * (7 + cos(u / 3 - 2 * v) + 2 * cos(u / 3 + v));
+    let y = cos(u) * (7 + cos(u / 3 - 2 * v) + 2 * cos(u / 3 + v));
+    let z = sin(u / 3 - 2 * v) + 2 * sin(u / 3 + v);
 
     target.set(x, y, z);
 }
