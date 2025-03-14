@@ -62,7 +62,7 @@ gui.add(options, 'b', 4, 12, 0.01).onChange(() => {
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'c', 0, 6.2831, 0.0001).name('u').onChange(() => {
+gui.add(options, 'uComponent', 0, 6.2831, 0.0001).name('u').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
