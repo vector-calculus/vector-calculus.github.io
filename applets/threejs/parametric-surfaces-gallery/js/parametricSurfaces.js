@@ -158,7 +158,7 @@ export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
     z = cos(u / 2) * cos(v) / (1 + w);
 
     target.set(x, y, z);
-}
+} 
 
 export function mobiusSurface(u, v, target, R, vComponent) {
     u = 2 * u - 1;
