@@ -139,9 +139,23 @@ export function kleinbottlenordstrandSurface(u, v, target, uComponent) {
     v = 2 * PI * v;
 
     let x, y, z;
-    x = cos(u) * (cos(u / 2) * (pow(2, 1 / 2) +  cos(v)) + sin(u / 2) * sin(v) * cos(v));
-    y = sin(u) * (cos(u / 2) * (pow(2, 1 / 2) +  cos(v)) + sin(u / 2) * sin(v) * cos(v));
-    z = - sin(u / 2) * ( (pow(2, 1 / 2) + + cos(v)) + cos(u / 2) * sin(v) * cos(v));
+    x = cos(u) * (cos(u / 2) * (pow(2, 0.5) + cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    y = sin(u) * (cos(u / 2) * (pow(2, 0.5) + cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    z = - sin(u / 2) * ((pow(2, 0.5) + + cos(v)) + cos(u / 2) * sin(v) * cos(v));
+
+    target.set(x, y, z);
+}
+
+export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z, w;
+    w = (sin(u) * sin(v) + sin(u / 2) * cos(v)) / pow(2, 0.5);
+
+    x = (sin(u) * sin(v) - sin(u / 2) * cos(v)) * pow(1/2, 0.5) / (1 + w);
+    y = cos(u) * sin(v) / (1 + w);
+    z = cos(u / 2) * cos(v) / (1 + w);
 
     target.set(x, y, z);
 }
