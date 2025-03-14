@@ -139,8 +139,8 @@ export function kleinbottlenordstrandSurface(u, v, target, uComponent) {
     v = 2 * PI * v;
 
     let x, y, z;
-    x = cos(u) * (cos(u / 2) * (pow(2, 1 / 2) + + cos(v)) + sin(u / 2) * sin(v) * cos(v));
-    y = sin(u) * (cos(u / 2) * (pow(2, 1 / 2) + + cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    x = cos(u) * (cos(u / 2) * (pow(2, 1 / 2) +  cos(v)) + sin(u / 2) * sin(v) * cos(v));
+    y = sin(u) * (cos(u / 2) * (pow(2, 1 / 2) +  cos(v)) + sin(u / 2) * sin(v) * cos(v));
     z = - sin(u / 2) * ( (pow(2, 1 / 2) + + cos(v)) + cos(u / 2) * sin(v) * cos(v));
 
     target.set(x, y, z);
