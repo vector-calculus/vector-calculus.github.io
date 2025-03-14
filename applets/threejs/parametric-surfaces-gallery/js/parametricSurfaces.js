@@ -60,8 +60,8 @@ export function hornSurface(u, v, target, a, b, c) {
     v = 2 * PI * v - PI;
 
     let x, y, z;
-    x = (a + u * cos(v) ) * sin(b * PI * u);
-    y = (a + u * cos(v) ) * cos(b * PI * u) + c * u;
+    x = (a + u * cos(v)) * sin(b * PI * u);
+    y = (a + u * cos(v)) * cos(b * PI * u) + c * u;
     z = u * sin(v);
 
     target.set(x, y, z);
@@ -114,8 +114,8 @@ export function juliaheartSurface(u, v, target) {
     return target.set(x, y, z);
 }
 
-export function kleinbottleSurface(u, v, target, a, b, c) {
-    u = c * u;
+export function kleinbottleSurface(u, v, target, a, b, uComponent) {
+    u = uComponent * u;
     v = 2 * PI * v;
 
     const r = 2.5 * (1 - cos(u) / 2);
@@ -134,9 +134,9 @@ export function kleinbottleSurface(u, v, target, a, b, c) {
     target.set(x, y, z);
 }
 
-export function mobiusSurface(u, v, target, R) {
+export function mobiusSurface(u, v, target, R, vComponent) {
     u = 2 * u - 1;
-    v = 2 * PI * v;
+    v = vComponent * v;
 
     let x = (R + u * cos(v / 2)) * cos(v);
     let y = (R + u * cos(v / 2)) * sin(v);
@@ -173,8 +173,8 @@ export function planeSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-export function seashellSurface(u, v, target, a) {
-    u *= 20;
+export function seashellSurface(u, v, target, a, uComponent) {
+    u *= uComponent;
     v *= 2 * PI;
     const f = exp(u / (PI * 6 * 1)) - 1;
     const scale = 0.4;
@@ -193,13 +193,68 @@ export function sphereSurface(u, v, target, r) {
     target.set(x, y, z);
 }
 
-export function torusSurface(u, v, target, r, R) {
-    u = 2 * PI * u;
-    v = 2 * PI * v;
+export function torusSurface(u, v, target, r, R, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
 
     let x = cos(u) * (r / 2 * cos(v) + R);
     let y = sin(u) * (r / 2 * cos(v) + R);
     let z = r / 2 * sin(v);
+
+    target.set(x, y, z);
+}
+
+export function torus8figureSurface(u, v, target, c, uComponent, vComponent) {
+    u = uComponent * u - PI;
+    v = vComponent * v - PI;
+
+    let x = cos(u) * (c + sin(v) * cos(u) - sin(2 * v) * sin(u) / 2);
+    let y = sin(u) * sin(v) + cos(u) * sin(2 * v) / 2
+    let z = sin(u) * (c + sin(v) * cos(u) - sin(2 * v) * sin(u) / 2);
+
+    target.set(x, y, z);
+}
+
+export function torusantisymmetricSurface(u, v, target, a, r, R, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x = (R + r * cos(v) * (a + sin(u))) * cos(u);
+    let y = (R + r * cos(v) * (a + sin(u))) * sin(u);
+    let z = r * sin(v) * (a + sin(u));
+
+    target.set(x, y, z);
+}
+
+export function torusbraidedSurface(u, v, target, a, n, r, R, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x = r * cos(v) * cos(u) + R * cos(u) * (1 + a * cos(n * u));
+    let y = 2.5 * (r * sin(v) + a * sin(n * u));
+    let z = r * cos(v) * sin(u) + R * sin(u) * (1 + a * cos(n * u));
+
+    target.set(x, y, z);
+}
+
+export function torustwisted8Surface(u, v, target, r, R, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * cos(u);
+    let y = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * sin(u);
+    let z = r*(sin(u/2) * sin(v) + cos(u/2)* sin(2*v));
+
+    target.set(x, y, z);
+}
+
+export function torusumbilicSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x = sin(u) *(7 + cos(u/3 - 2*v) + 2 * cos(u/3 + v)); 
+    let y = cos(u) *(7 + cos(u/3 - 2*v) + 2 * cos(u/3 + v));
+    let z = sin(u/3 - 2 * v) + 2 * sin(u/3 + v);
 
     target.set(x, y, z);
 }

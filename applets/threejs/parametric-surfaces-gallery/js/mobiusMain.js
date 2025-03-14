@@ -4,6 +4,7 @@ import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.j
 import { mobiusSurface as parametricSurface } from './parametricSurfaces.js';
 import { createMaterials } from './materials.js';
 import { setupScene } from './sceneSetup.js';
+import { commonUI } from './commonUI.js';
 
 // GUI setup
 const gui = new GUI();
@@ -12,7 +13,9 @@ const options = {
     mesh: false,
     autoRotate: true,
     R: 2,
-    color: '#049ef4'
+    vComponent: 6.2831,
+    color: '#049ef4',
+    colorBackground: '#000000'
 };
 
 // Scene setup
@@ -23,65 +26,43 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.R), 25, 64);
+const meshRes = { x: 30, y: 64 };
+const geoScale = { x: 0.4, y: 0.4, z: 0.4 };
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.R, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 3);
-geometry.scale(0.5, 0.5, 0.5);
+geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
 // Mesh
 let mesh = new THREE.Mesh(geometry, materials.matcapMaterial);
 scene.add(mesh);
+scene.background = new THREE.Color('#000000'); // Initial Black background
 
 // Wireframe mesh
 let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 
 // GUI controls
-gui.add(options, 'material', ['Matcap', 'Normal', 'Phong']).name('Style').onChange((value) => {
-    mesh.material = value === 'Matcap' ? materials.matcapMaterial :
-        value === 'Normal' ? materials.normalMaterial :
-            materials.phongMaterial;
-    if (value === 'Phong') {
-        colorController.show();
-    } else {
-        colorController.hide();
-    }
-});
-
-const colorController = gui.addColor(options, 'color').name('Color').onChange((value) => {
-    materials.phongMaterial.color.set(value);
-});
-colorController.hide();
-
-gui.add(options, 'mesh').name('Mesh').onChange((value) => {
-    if (value) {
-        if (!scene.children.includes(wireframeMesh)) {
-            scene.add(wireframeMesh);
-        }
-    } else {
-        if (scene.children.includes(wireframeMesh)) {
-            scene.remove(wireframeMesh);
-        }
-    }
-    wireframeMesh.visible = value;
-});
-
+commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
 gui.add(options, 'R', 0.01, 3, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.R), 25, 64);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.R, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
-    geometry.scale(0.35, 0.35, 0.35);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'autoRotate').name('Auto Rotate').onChange(value => {
-    controls.autoRotate = value;
+gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.R, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 3);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
 });
 
-gui.close();
-
 controls.autoRotate = true;
-controls.autoRotateSpeed = - 0.6;
+controls.autoRotateSpeed = - 0.8;
 
 // Animation loop
 const tick = () => {

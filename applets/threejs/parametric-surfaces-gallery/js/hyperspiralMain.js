@@ -4,6 +4,7 @@ import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.j
 import { hyperspiralSurface as parametricSurface } from './parametricSurfaces.js';
 import { createMaterials } from './materials.js';
 import { setupScene } from './sceneSetup.js';
+import { commonUI } from './commonUI.js';
 
 // GUI setup
 const gui = new GUI();
@@ -13,7 +14,8 @@ const options = {
     autoRotate: true,
     H: 1,
     a: 40,
-    color: '#049ef4'
+    color: '#049ef4',
+    colorBackground: '#000000'
 };
 
 // Scene setup
@@ -24,13 +26,16 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), 120, 80);
+const meshRes = { x: 125, y: 80 };
+const geoScale = { x: 1.5, y: 1.5, z: 1.5 };
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
-geometry.scale(1.5,1.5,1.5);
+geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
 // Mesh
 let mesh = new THREE.Mesh(geometry, materials.matcapMaterial);
 scene.add(mesh);
+scene.background = new THREE.Color('#000000'); // Initial Black background
 
 // Wireframe mesh
 let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
@@ -67,18 +72,18 @@ gui.add(options, 'mesh').name('Mesh').onChange((value) => {
 
 gui.add(options, 'H', 0.01, 3, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H), 120, 80);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
-    geometry.scale(1.5,1.5,1.5);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
 gui.add(options, 'a', 5, 40, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), 120, 80);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
-    geometry.scale(1.5,1.5,1.5);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
