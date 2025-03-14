@@ -44,6 +44,25 @@ export function dinniSurface(u, v, target, a, b) {
     target.set(x, y, z);
 }
 
+export function dupincyclideSurface(u, v, target, a, b, c, d, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    const h = a - c * Math.cos(u) * Math.cos(v);
+
+    // Check if h is zero or very close to zero
+    if (Math.abs(h) < 1e-10) {
+        return null; // Return null to indicate an invalid point
+    }
+
+    const x = (d * (c - a * Math.cos(u) * Math.cos(v)) + b * b * Math.cos(u)) / h;
+    const y = (b * Math.sin(u) * (a - d * Math.cos(v))) / h;
+    const z = (b * Math.sin(v) * (c * Math.cos(u) - d)) / h;
+
+    target.set(x, y, z);
+    return target; // Return the valid point
+}
+
 export function enneperSurface(u, v, target) {
     u = 3 * u - 1.5;
     v = 3 * v - 1.5;
@@ -153,12 +172,22 @@ export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
     let x, y, z, w;
     w = (sin(u) * sin(v) + sin(u / 2) * cos(v)) / pow(2, 0.5);
 
-    x = (sin(u) * sin(v) - sin(u / 2) * cos(v)) * pow(1/2, 0.5) / (1 + w);
+    x = (sin(u) * sin(v) - sin(u / 2) * cos(v)) * pow(1 / 2, 0.5) / (1 + w);
     y = cos(u) * sin(v) / (1 + w);
     z = cos(u / 2) * cos(v) / (1 + w);
 
     target.set(x, y, z);
-} 
+}
+
+export function maederowlSurface(u, v, target) {
+    u = 4 * PI * u;
+    v = max(0.001, min(1, v));
+
+    let x = v * cos(u) - 0.5 * v * v * cos(2 * u);
+    let y = - v * sin(u) - 0.5 * v * v * sin(2 * u);
+    let z = 4 * exp(1.5 * log(v)) * cos(3 * u / 2) / 3
+    target.set(x, y, z);
+}
 
 export function mobiusSurface(u, v, target, R, vComponent) {
     u = 2 * u - 1;
