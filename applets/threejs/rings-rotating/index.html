@@ -17,6 +17,7 @@ https://www.geogebra.org/m/xsy4fy25
 <body>
 
     
+    
 
     <script type="importmap">
 			{
@@ -61,15 +62,15 @@ https://www.geogebra.org/m/xsy4fy25
 
             RectAreaLightUniformsLib.init();
 
-            const rectLight1 = new THREE.RectAreaLight("rgba(22, 219, 147, 1)", 10, 4, 10);
+            const rectLight1 = new THREE.RectAreaLight("rgba(65, 65, 62, 1)", 10, 4, 10);
             rectLight1.position.set(- 5, 5, 5);
             scene.add(rectLight1);
 
-            const rectLight2 = new THREE.RectAreaLight("rgba(4, 139, 168, 1)", 10, 4, 10);
+            const rectLight2 = new THREE.RectAreaLight("rgba(73, 74, 76, 1)", 10, 4, 10);
             rectLight2.position.set(0, 5, 5);
             scene.add(rectLight2);
 
-            const rectLight3 = new THREE.RectAreaLight("rgba(164, 3, 111, 1)", 10, 4, 10);
+            const rectLight3 = new THREE.RectAreaLight("rgba(41, 41, 46, 1)", 10, 4, 10);
             rectLight3.position.set(5, 5, 5);
             scene.add(rectLight3);
 
@@ -125,7 +126,7 @@ https://www.geogebra.org/m/xsy4fy25
 
         function animation(time) {
 
-            const speedFactor = 0.5;  // Adjust this factor to slow down or speed up the rotations
+            const speedFactor = 0.3;  // Adjust this factor to slow down or speed up the rotations
 
             let radius = 6;
 

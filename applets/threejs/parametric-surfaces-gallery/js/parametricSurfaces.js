@@ -31,16 +31,16 @@ export function bernatSurface(u, v, target, s) {
     fy = 3.266 * sin(v);
     fz = 0;
 
-    gx = s * 0.707 * 4.253 * cos(v);
+    gx = s * 3.006 * cos(v);
     gy = s * 2.266 * sin(v);
-    gz = - s * 0.707 * 4.253 * cos(v);
+    gz = - s * 3.006 * cos(v);
 
     q = 0.251 * pow(u, 3) + 0.389 * pow(u, 2) - 1.64 * u + 1;
 
 
-    let x = q * gx + u * fx;
-    let y = q * gy + u * fy;
-    let z = q * gz + u * fz;
+    let x = u * fx + q * gx;
+    let y = u * fy + q * gy;
+    let z = u * fz + q * gz;
 
     target.set(x, y, z);
 }
