@@ -211,19 +211,24 @@ export function mobiusSurface(u, v, target, R, vComponent) {
     target.set(x, y, z);
 }
 
-export function pineconeSurface(u, v, target) {
-    u = u * PI * 1;
-    v = v * PI * 17;
+/* 
+ * Rose-shaped by Paul Nylander
+ * https://nylander.wordpress.com/2006/06/21/rose-shaped-parametric-surface/
+ */
+export function roseSurface(u, v, target, uMin) {
+    u = 1 * u;
+    v = uMin + (20 * PI - ( uMin)) * v;
 
-    let s = (PI / 2) * exp(-v / (8 * PI));
-    let factor = 1 - 0.5 * pow((5 / 4) * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
+    let X, s, c, a, r, x, y, z;
+    X = 1 - 0.5 * pow(5 / 4 * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
+    s = sin(PI / 2 * exp(- v / (8 * PI)));
+    c = cos(PI / 2 * exp(- v / (8 * PI)));
+    a = 1.95653 * pow(u, 2) * pow(1.27689 * u - 1, 2);
+    r = u * s + a * s * c;
 
-    let h = 1.95653 * pow(u, 2) * pow(1.27689 * u - 1, 2) * sin(s);
-    let r = factor * (u * sin(s) + h * cos(s));
-
-    let x = r * sin(v);
-    let y = r * cos(v);
-    let z = factor * (u * cos(s) - h * sin(s)) + 65;
+    x = r * X * sin(v);
+    y = r * X * cos(v);
+    z = u * c - a * s * s;
 
     target.set(x, y, z);
 }
@@ -312,6 +317,25 @@ export function torusbraidedSurface(u, v, target, a, n, r, R, uComponent, vCompo
     let x = r * cos(v) * cos(u) + R * cos(u) * (1 + a * cos(n * u));
     let y = 2.5 * (r * sin(v) + a * sin(n * u));
     let z = r * cos(v) * sin(u) + R * sin(u) * (1 + a * cos(n * u));
+
+    target.set(x, y, z);
+}
+
+export function torusknotSurface(u, v, target, size) {
+    u = 4 * PI * u;
+    v = 2 * PI * v;
+
+    const constant = -1.8;
+
+    let XX, YY, ZZ;
+    XX = -size * (cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(1.5 * u) / 2)) + constant;
+    YY = size * (sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(1.5 * u) / 2));
+    ZZ = size * (sin(v) + 2 * cos(1.5 * u));
+    let norm2 = pow(XX, 2) + pow(YY, 2) + pow(ZZ, 2);
+
+    let x = 0.5 * XX / norm2;
+    let y = 0.5 * YY / norm2;
+    let z = 0.5 * ZZ / norm2;
 
     target.set(x, y, z);
 }
