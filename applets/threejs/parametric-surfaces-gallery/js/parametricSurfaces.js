@@ -22,6 +22,29 @@ export function appleSurface(u, v, target) {
     target.set(x, y, z);
 }
 
+export function bernatSurface(u, v, target, s) {
+    u = 1.2 * u;
+    v = 2 * PI * v;
+
+    let fx, fy, fz, gx, gy, gz, q;
+    fx = 4.503 * cos(v);
+    fy = 3.266 * sin(v);
+    fz = 0;
+
+    gx = s * 0.707 * 4.253 * cos(v);
+    gy = s * 2.266 * sin(v);
+    gz = - s * 0.707 * 4.253 * cos(v);
+
+    q = 0.251 * pow(u, 3) + 0.389 * pow(u, 2) - 1.64 * u + 1;
+
+
+    let x = q * gx + u * fx;
+    let y = q * gy + u * fy;
+    let z = q * gz + u * fz;
+
+    target.set(x, y, z);
+}
+
 export function cylinderSurface(u, v, target, h) {
     u = 2 * PI * u;
     v = h * v;
@@ -355,9 +378,9 @@ export function torustwistedSurface(u, v, target, n, t) {
     u = 2 * PI * u;
     v = 2 * PI * v;
 
-    let R = pow(pow(cos(v), n) + pow(sin(v), n), -1/n);
+    let R = pow(pow(cos(v), n) + pow(sin(v), n), -1 / n);
 
-    let x = (4 + R * cos(v +t * u)) * cos(u);
+    let x = (4 + R * cos(v + t * u)) * cos(u);
     let y = (4 + R * cos(v + t * u)) * sin(u);
     let z = R * sin(v + t * u);
 
