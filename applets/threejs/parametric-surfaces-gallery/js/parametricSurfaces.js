@@ -217,18 +217,18 @@ export function mobiusSurface(u, v, target, R, vComponent) {
  */
 export function roseSurface(u, v, target, uMin) {
     u = 1 * u;
-    v = uMin + (20 * PI - ( uMin)) * v;
+    v = uMin + (20 * PI - (uMin)) * v;
 
-    let X, s, c, a, r, x, y, z;
-    X = 1 - 0.5 * pow(5 / 4 * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
+    let alpha, s, c, beta, r, x, y, z;
+    alpha = 1 - 0.5 * pow(5 / 4 * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
     s = sin(PI / 2 * exp(- v / (8 * PI)));
     c = cos(PI / 2 * exp(- v / (8 * PI)));
-    a = 1.95653 * pow(u, 2) * pow(1.27689 * u - 1, 2);
-    r = u * s + a * s * c;
+    beta = 1.95653 * pow(u, 2) * pow(1.27689 * u - 1, 2);
+    r = s * (u + beta * c);
 
-    x = r * X * sin(v);
-    y = r * X * cos(v);
-    z = u * c - a * s * s;
+    x = r * alpha * sin(v);
+    y = r * alpha * cos(v);
+    z = u * c - beta * s * s;
 
     target.set(x, y, z);
 }
@@ -347,6 +347,19 @@ export function torustwisted8Surface(u, v, target, r, R, uComponent, vComponent)
     let x = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * cos(u);
     let y = (R + r * (cos(u / 2) * sin(v) - sin(u / 2) * sin(2 * v))) * sin(u);
     let z = r * (sin(u / 2) * sin(v) + cos(u / 2) * sin(2 * v));
+
+    target.set(x, y, z);
+}
+
+export function torustwistedSurface(u, v, target, n, t) {
+    u = 2 * PI * u;
+    v = 2 * PI * v;
+
+    let R = pow(pow(cos(v), n) + pow(sin(v), n), -1/n);
+
+    let x = (4 + R * cos(v +t * u)) * cos(u);
+    let y = (4 + R * cos(v + t * u)) * sin(u);
+    let z = R * sin(v + t * u);
 
     target.set(x, y, z);
 }
