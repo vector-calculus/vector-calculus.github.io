@@ -313,7 +313,7 @@ const cControl = gui.add(options, 'c', 0, 3, 0.01).onChange(() => {
     wireframeMesh.geometry = geometry;
 });
 
-const hControl = gui.add(options, 'h', 0, 3, 0.01).onChange(() => {
+const hControl = gui.add(options, 'h', -3, 3, 0.01).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.h, options.k, options.w, options.R, options.uMin, options.uMax, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
@@ -331,7 +331,7 @@ const kControl = gui.add(options, 'k', -7, 7, 0.01).onChange(() => {
     wireframeMesh.geometry = geometry;
 });
 
-const wControl = gui.add(options, 'w', 0, 1, 0.001).onChange(() => {
+const wControl = gui.add(options, 'w', -0.25, 1, 0.001).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.h, options.k, options.w, options.R, options.uMin, options.uMax, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
