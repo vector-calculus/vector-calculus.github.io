@@ -64,6 +64,9 @@ gui.add(options, 'uComponent', 0, 30, 0.01).name('u').onChange(() => {
     wireframeMesh.geometry = geometry;
 });
 
+controls.autoRotate = true;
+controls.autoRotateSpeed = - 0.6;
+
 // Animation loop
 const tick = () => {
     controls.update();

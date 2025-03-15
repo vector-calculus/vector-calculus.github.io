@@ -48,16 +48,28 @@ export function dupincyclideSurface(u, v, target, a, b, c, d, uComponent, vCompo
     u = uComponent * u;
     v = vComponent * v;
 
-    const h = a - c * Math.cos(u) * Math.cos(v);
+    const h = a - c * cos(u) * cos(v);
 
     // Check if h is zero or very close to zero
     if (Math.abs(h) < 1e-10) {
         return null; // Return null to indicate an invalid point
     }
 
-    const x = (d * (c - a * Math.cos(u) * Math.cos(v)) + b * b * Math.cos(u)) / h;
-    const y = (b * Math.sin(u) * (a - d * Math.cos(v))) / h;
-    const z = (b * Math.sin(v) * (c * Math.cos(u) - d)) / h;
+    const x = (d * (c - a * cos(u) * cos(v)) + b * b * cos(u)) / h;
+    const y = (b * sin(u) * (a - d * cos(v))) / h;
+    const z = (b * sin(v) * (c * cos(u) - d)) / h;
+
+    target.set(x, y, z);
+    return target; // Return the valid point
+
+}
+export function eggSurface(u, v, target, a, b, c, vComponent) {
+    u = a * u;
+    v = vComponent * v;
+
+    const x = c * pow(u * (u - a) * (u - b), 0.5) * sin(v);
+    const y = u;
+    const z = c * pow(u * (u - a) * (u - b), 0.5) * cos(v);
 
     target.set(x, y, z);
     return target; // Return the valid point
@@ -236,6 +248,18 @@ export function seashellSurface(u, v, target, a, uComponent) {
     let x = scale * (2 * f * cos(u) * cos(v / 2) * cos(v / 2));
     let y = scale * (2 * (-f) * sin(u) * cos(v / 2) * cos(v / 2));
     let z = scale * (4 - exp(u / a) - sin(v) + exp(u / (PI * 6 * 1)) * sin(v));
+    target.set(x, y, z);
+}
+
+export function snailsmusselsSurface(u, v, target, a, b, c, h, k, w, R, uMin, uMax, vComponent) {
+
+    u = uMin + (uMax - uMin) * u;
+    v = 2 * PI * v;
+
+    let x = (h + a * cos(v)) * exp(w * u) * cos(c * u);
+    let y = R * (h + a * cos(v)) * exp(w * u) * sin(c * u);
+    let z = (k + b * sin(v)) * exp(w * u);
+
     target.set(x, y, z);
 }
 
