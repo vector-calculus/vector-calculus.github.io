@@ -29,7 +29,7 @@ const materials = createMaterials(options);
 
 // Geometry
 const meshRes = { x: 100, y: 100 };
-const geoScale = { x: 0.33, y: 0.33, z: 0.33 };
+const geoScale = { x: 0.25, y: 0.25, z: 0.25 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.n, options.t), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 3);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
