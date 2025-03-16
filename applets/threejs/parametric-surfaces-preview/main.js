@@ -73,47 +73,47 @@ function bonanJeener(u, v, target) {
     target.set(x, y, z);
 }
 
-function pineCone(u, v, target) {
-    u = u * Math.PI * 1;
-    v = v * Math.PI * 17;
+// function pineCone(u, v, target) {
+//     u = u * Math.PI * 1;
+//     v = v * Math.PI * 17;
 
-    let s = (Math.PI / 2) * Math.exp(-v / (8 * Math.PI));
-    let factor = 1 - 0.5 * ((5 / 4) * Math.pow(1 - ((3.6 * v) % (2 * Math.PI)) / Math.PI, 2) - 0.25) ** 2;
+//     let s = (Math.PI / 2) * Math.exp(-v / (8 * Math.PI));
+//     let factor = 1 - 0.5 * ((5 / 4) * Math.pow(1 - ((3.6 * v) % (2 * Math.PI)) / Math.PI, 2) - 0.25) ** 2;
 
-    let h = 1.95653 * u ** 2 * (1.27689 * u - 1) ** 2 * Math.sin(s);
-    let r = factor * (u * Math.sin(s) + h * Math.cos(s));
+//     let h = 1.95653 * u ** 2 * (1.27689 * u - 1) ** 2 * Math.sin(s);
+//     let r = factor * (u * Math.sin(s) + h * Math.cos(s));
 
-    let x = r * Math.sin(v);
-    let y = r * Math.cos(v);
-    let z = factor * (u * Math.cos(s) - h * Math.sin(s));
+//     let x = r * Math.sin(v);
+//     let y = r * Math.cos(v);
+//     let z = factor * (u * Math.cos(s) - h * Math.sin(s));
 
-    target.set(x, y, z);
-}
+//     target.set(x, y, z);
+// }
 
-function apple1(u, v, target) {
-    u = 2 * Math.PI * u;
-    v = 2 * Math.PI * v - Math.PI;
+// function apple1(u, v, target) {
+//     u = 2 * Math.PI * u;
+//     v = 2 * Math.PI * v - Math.PI;
 
-    let x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
-    let y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
-    let z = (Math.cos(v) + Math.sin(v) - 1) * (1 + Math.sin(v)) * Math.log(1 - (Math.PI * v) / 10) + 7.5 * Math.sin(v);
+//     let x = Math.cos(u) * (4 + 3.8 * Math.cos(v));
+//     let y = Math.sin(u) * (4 + 3.8 * Math.cos(v));
+//     let z = (Math.cos(v) + Math.sin(v) - 1) * (1 + Math.sin(v)) * Math.log(1 - (Math.PI * v) / 10) + 7.5 * Math.sin(v);
 
-    target.set(x, y, z);
-}
+//     target.set(x, y, z);
+// }
 
-function klein1(t, a, e) {
-    // Convert parameters to radians
-    t *= Math.PI * 2;
-    a *= Math.PI * 2;
+// function klein1(t, a, e) {
+//     // Convert parameters to radians
+//     t *= Math.PI * 2;
+//     a *= Math.PI * 2;
 
-    // Compute Cartesian coordinates
-    const commonFactor = 2 + Math.cos(a / 2) * Math.sin(t) - Math.sin(a / 2) * Math.sin(2 * t);
-    const x = commonFactor * Math.cos(a);
-    const y = commonFactor * Math.sin(a);
-    const z = Math.sin(a / 2) * Math.sin(t) + Math.cos(a / 2) * Math.sin(2 * t);
+//     // Compute Cartesian coordinates
+//     const commonFactor = 2 + Math.cos(a / 2) * Math.sin(t) - Math.sin(a / 2) * Math.sin(2 * t);
+//     const x = commonFactor * Math.cos(a);
+//     const y = commonFactor * Math.sin(a);
+//     const z = Math.sin(a / 2) * Math.sin(t) + Math.cos(a / 2) * Math.sin(2 * t);
 
-    return e.set(x, y, z);
-}
+//     return e.set(x, y, z);
+// }
 
 function twistedTorus2(t, a, e) {
     // Convert parameters to radians
@@ -129,18 +129,18 @@ function twistedTorus2(t, a, e) {
     return e.set(x, y, z);
 }
 
-function juliaHeart(t, a, e) {
-    // Convert parameters to radians
-    t *= Math.PI * 2;
-    a *= Math.PI;
+// function juliaHeart(t, a, e) {
+//     // Convert parameters to radians
+//     t *= Math.PI * 2;
+//     a *= Math.PI;
 
-    // Compute Cartesian coordinates
-    const x = (4 * Math.sin(t) - Math.sin(3 * t)) * Math.sin(a);
-    const y = 2 * Math.cos(a);
-    const z = 1.2 * (4 * Math.cos(t) - Math.cos(2 * t) - Math.cos(3 * t) / 2) * Math.sin(a);
+//     // Compute Cartesian coordinates
+//     const x = (4 * Math.sin(t) - Math.sin(3 * t)) * Math.sin(a);
+//     const y = 2 * Math.cos(a);
+//     const z = 1.2 * (4 * Math.cos(t) - Math.cos(2 * t) - Math.cos(3 * t) / 2) * Math.sin(a);
 
-    return e.set(x, y, z);
-}
+//     return e.set(x, y, z);
+// }
 
 function tanhSpiral(t, a, e) {
     // Adjust t parameter
@@ -186,38 +186,19 @@ bonanJeenerGeometry.scale(0.1, 0.1, 0.1);
 bonanJeenerGeometry.userData.title = "Bonan-Jeener's Klein Surface";
 geometries.push(bonanJeenerGeometry);
 
-let pineConeGeometry = new ParametricGeometry(pineCone, 25, 400);
-pineConeGeometry.rotateX(Math.PI / 2);
-pineConeGeometry.scale(0.01, 0.01, 0.01);
-pineConeGeometry.userData.title = "Pinecone<br>(from <a target='_blank' href='https://nylander.wordpress.com/2006/06/21/rose-shaped-parametric-surface/'>Paul Nylander</a>)";
-geometries.push(pineConeGeometry);
 
-let appleGeometry = new ParametricGeometry(apple1, 25, 25);
-appleGeometry.rotateX(-Math.PI / 4);
-appleGeometry.scale(0.12, 0.12, 0.12);
-appleGeometry.userData.title = "Apple";
-geometries.push(appleGeometry);
-
-let klein1Geometry = new ParametricGeometry(klein1, 50, 50);
-klein1Geometry.scale(0.3, 0.3, 0.3);
-klein1Geometry.userData.title = "Klein Bottle";
-geometries.push(klein1Geometry);
 
 let twistedTorus2Geometry = new ParametricGeometry(twistedTorus2, 50, 50);
 twistedTorus2Geometry.scale(0.25, 0.25, 0.25);
 twistedTorus2Geometry.userData.title = "Twisted Torus";
 geometries.push(twistedTorus2Geometry);
 
-let juliaHeartGeometry = new ParametricGeometry(juliaHeart, 50, 50);
-juliaHeartGeometry.rotateX(-Math.PI / 2);
-juliaHeartGeometry.scale(0.2, 0.2, 0.2);
-juliaHeartGeometry.userData.title = "Julia's Parametric Heart";
-geometries.push(juliaHeartGeometry);
+
 
 let tanhSpiralGeometry = new ParametricGeometry(tanhSpiral, 300, 4);
 tanhSpiralGeometry.rotateX(-Math.PI / 2);
 tanhSpiralGeometry.scale(0.35, 0.35, 0.35);
-tanhSpiralGeometry.userData.title = "Julia's Parametric Heart";
+tanhSpiralGeometry.userData.title = "Tanh spiral";
 geometries.push(tanhSpiralGeometry);
 
 
