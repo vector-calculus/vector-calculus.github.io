@@ -92,7 +92,7 @@ function init(scene) {
       color: iColors
     }));
   }
-
+  console.log(arrows[0])
   // create the mesh that now contains all of our instances. 
   // (the material is defined a bit further down)
   const mesh = new THREE.Mesh(geometry, material);
@@ -369,6 +369,7 @@ camera.lookAt(new THREE.Vector3(0, 0, 0));
 // .... run demo-code
 // initialize simulation
 const update = init(scene, camera);
+
 requestAnimationFrame(function loop(time) {
   controls.update();
 
@@ -379,14 +380,11 @@ requestAnimationFrame(function loop(time) {
   requestAnimationFrame(loop);
 });
 
-// .... bind events
-window.addEventListener('resize', ev => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  
-  renderer.setSize(width, height);
-  camera.aspect = width / height;
+function handleWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-});
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener("resize", handleWindowResize, false);
 
 document.body.appendChild(renderer.domElement);

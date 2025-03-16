@@ -21,28 +21,29 @@ const matcapTexture = textureLoader.load('static/textures/matcaps/3.png');
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
 const matcapTextureText = textureLoader.load('static/textures/matcaps/11.png');
 matcapTextureText.colorSpace = THREE.SRGBColorSpace;
-
 /**
  * Fonts
  */
 const fontLoader = new FontLoader();
 
 fontLoader.load('static/fonts/Palatino_Roman.json', (font) => {
+    const materialText = new THREE.MeshMatcapMaterial({ matcap: matcapTextureText });
     const textGeometry = new TextGeometry('Parametric\n Surfaces', {
         font: font,
         size: 0.5,
-        height: 0.2,
+        depth: 50,
         curveSegments: 12,
         bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: 0.02,
+        bevelThickness: 0.01,
+        bevelSize: 0.005,
         bevelOffset: 0,
         bevelSegments: 6
     });
 
     textGeometry.center();
-    const material = new THREE.MeshMatcapMaterial({ matcap: matcapTextureText });
-    const text = new THREE.Mesh(textGeometry, material);
+    
+    const text = new THREE.Mesh(textGeometry, materialText);
+    text.scale.set(1, 1, 0.004); // Ensure no scaling is applied
     scene.add(text);
 });
 
@@ -53,7 +54,7 @@ const material = new THREE.MeshMatcapMaterial({ matcap: matcapTexture, side: THR
 
 const objects = [];
 const rotationSpeeds = []; // Array to store unique rotation speeds
-const maxObjects = 700;
+const maxObjects = 800;
 
 // Function to create Klein bottle
 const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
@@ -100,14 +101,9 @@ for (let i = 0; i < maxObjects; i++) {
 
     const object = new THREE.Mesh(geometry, material);
 
-    // Random position
-    object.position.set(
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10
-    );
+    
 
-    const radius = 7 * Math.cbrt(Math.random()); // Cube root ensures uniform distribution inside the sphere
+    const radius = 1 + 6 * Math.cbrt(Math.random());  // Cube root ensures uniform distribution inside the sphere
     const theta = Math.random() * Math.PI * 2;  // Random azimuthal angle
     const phi = Math.acos(2 * Math.random() - 1); // Random polar angle (ensures uniformity)
 
@@ -135,6 +131,12 @@ for (let i = 0; i < maxObjects; i++) {
         z: (Math.random() - 0.5) * 2
     });
 }
+
+// const gridHelper = new THREE.GridHelper(10, 10);
+// scene.add(gridHelper);
+
+// const axesHelper = new THREE.AxesHelper(5);
+// scene.add(axesHelper);
 
 /**
  * Sizes
