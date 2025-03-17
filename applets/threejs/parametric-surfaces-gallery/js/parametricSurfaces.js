@@ -261,9 +261,9 @@ export function mobiusSurface(u, v, target, R, vComponent) {
  * Rose-shaped by Paul Nylander
  * https://nylander.wordpress.com/2006/06/21/rose-shaped-parametric-surface/
  */
-export function roseSurface(u, v, target, uMin) {
+export function roseSurface(u, v, target, vMin) {
     u = 1 * u;
-    v = uMin + (20 * PI - (uMin)) * v;
+    v = vMin + (20 * PI - (vMin)) * v;
 
     let alpha, s, c, beta, r, x, y, z;
     alpha = 1 - 0.5 * pow(5 / 4 * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
