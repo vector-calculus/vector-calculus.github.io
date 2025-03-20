@@ -109,14 +109,14 @@ export function enneperSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-function projection(w, x, y, z){
+function projection(w, x, y, z) {
     let a, b, c;
 
     a = w / (1 - z);
     b = x / (1 - z);
     c = y / (1 - z);
 
-    return {x: a, y: b, z: c}
+    return { x: a, y: b, z: c }
 }
 
 export function figure8knotSurface(u, v, target) {
@@ -261,9 +261,9 @@ export function mobiusSurface(u, v, target, R, vComponent) {
  * Rose-shaped by Paul Nylander
  * https://nylander.wordpress.com/2006/06/21/rose-shaped-parametric-surface/
  */
-export function roseSurface(u, v, target, vMin) {
+export function roseSurface(u, v, target, uMin) {
     u = 1 * u;
-    v = vMin + (20 * PI - (vMin)) * v;
+    v = uMin + (20 * PI - (uMin)) * v;
 
     let alpha, s, c, beta, r, x, y, z;
     alpha = 1 - 0.5 * pow(5 / 4 * pow(1 - ((3.6 * v) % (2 * PI)) / PI, 2) - 0.25, 2);
@@ -367,19 +367,18 @@ export function torusbraidedSurface(u, v, target, a, n, r, R, uComponent, vCompo
     target.set(x, y, z);
 }
 
-export function torusknotSurface(u, v, target, size) {
+export function torusknotSurface(u, v, target, size, translate) {
     u = 4 * PI * u;
     v = 2 * PI * v;
 
     let NN = 1.5;
     let AA = 0.6;
-    let w =  3 * cos(u)/ 4;
-    const constant = -0;
+    let w = 3 * cos(u) / 4;
 
     let XX, YY, ZZ;
-    XX = -size * (cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(1.5 * u) / 2)) + constant;
-    YY = size * (sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(1.5 * u) / 2)) ;
-    ZZ = size * (sin(v) + 2 * cos(1.5 * u)) ;
+    XX = -size * (cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(1.5 * u) / 2)) + translate;
+    YY = size * (sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(1.5 * u) / 2));
+    ZZ = size * (sin(v) + 2 * cos(1.5 * u));
     let norm2 = pow(XX, 2) + pow(YY, 2) + pow(ZZ, 2);
 
     let x = 0.5 * XX / norm2;
@@ -423,3 +422,16 @@ export function torusumbilicSurface(u, v, target, uComponent, vComponent) {
 
     target.set(x, y, z);
 }
+
+export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, tx, ty, tz) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = -size * (cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(1.5 * u) / 2)) + tx;
+    y = size * (sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(1.5 * u) / 2)) + ty;
+    z = size * (sin(v) + 2 * cos(1.5 * u)) + tz;
+
+    target.set(x, y, z);
+}
+
