@@ -13,7 +13,8 @@ const options = {
     mesh: false,
     autoRotate: true,
     H: 1,
-    a: 40,
+    uComponent: 25,
+    vComponent: 1,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -28,7 +29,7 @@ const materials = createMaterials(options);
 // Geometry
 const meshRes = { x: 125, y: 80 };
 const geoScale = { x: 1.5, y: 1.5, z: 1.5 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), meshRes.x, meshRes.y);
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
@@ -72,16 +73,16 @@ gui.add(options, 'mesh').name('Mesh').onChange((value) => {
 
 gui.add(options, 'H', 0.01, 3, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'a', 5, 40, 0.01).onChange(() => {
+gui.add(options, 'uComponent', 5, 40, 0.01).name('u').onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.a), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.H, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;

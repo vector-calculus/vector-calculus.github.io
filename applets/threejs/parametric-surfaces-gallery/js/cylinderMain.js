@@ -13,6 +13,8 @@ const options = {
     mesh: false,
     autoRotate: true,
     h: 1,
+    uComponent: 6.2831,
+    vComponent: 2,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -26,7 +28,7 @@ const materials = createMaterials(options);
 
 // Geometry
 const meshRes = { x: 32, y: 32 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.h), meshRes.x, meshRes.y);
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2.3);
 
 // Mesh
@@ -40,9 +42,17 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
+gui.add(options, 'uComponent', 0, 6.2831, 0.01).name('u').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 2.3);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
+
 gui.add(options, 'h', 0, 2, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.h), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2.3);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;

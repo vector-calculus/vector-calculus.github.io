@@ -31,7 +31,7 @@ const materials = createMaterials(options);
 
 // Geometry
 const meshRes = { x: 120, y: 120 };
-const geoScale = { x: 1.2, y: 1.2, z: 1.2 };
+const geoScale = { x: 1.3, y: 1.3, z: 1.3 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.d, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 3);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
@@ -82,7 +82,8 @@ gui.add(options, 'd', -1, 1, 0.01).onChange(() => {
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
-gui.add(options, 'uComponent', 0, 6.2831, 0.0001).onChange(() => {
+
+gui.add(options, 'uComponent', 0, 6.2831, 0.0001).name('u').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.d, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
@@ -90,7 +91,8 @@ gui.add(options, 'uComponent', 0, 6.2831, 0.0001).onChange(() => {
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
-gui.add(options, 'vComponent', 0, 6.2831, 0.0001).onChange(() => {
+
+gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.d, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);

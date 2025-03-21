@@ -12,6 +12,8 @@ const options = {
     material: 'Matcap', // Default material
     mesh: false,
     autoRotate: true,
+    uComponent: 1.5707,
+    vComponent: 3.1415,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -26,7 +28,7 @@ const materials = createMaterials(options);
 // Geometry
 const meshRes = { x: 64, y: 64 };
 const geoScale = { x: 1.1, y: 1.1, z: 1.1 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target), meshRes.x, meshRes.y);
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
@@ -40,6 +42,22 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
+
+gui.add(options, 'uComponent', -1.5707, 1.5707, 0.0001).name('u').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 3);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
+
+gui.add(options, 'vComponent', -3.1415, 3.1415, 0.0001).name('v').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 3);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
 
 controls.autoRotate = true;
 controls.autoRotateSpeed = - 0.7;

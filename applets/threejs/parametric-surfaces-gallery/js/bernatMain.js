@@ -13,6 +13,8 @@ const options = {
     mesh: false,
     autoRotate: true,
     s: 0.87,
+    uComponent: 1.2,
+    vComponent: 6.2831,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -27,7 +29,7 @@ const materials = createMaterials(options);
 // Geometry
 const meshRes = { x: 64, y: 64 };
 const geoScale = { x: 0.3, y: 0.3, z: 0.3 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s), meshRes.x, meshRes.y);
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
@@ -44,14 +46,30 @@ commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call
 
 gui.add(options, 's', -2, 2, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
+gui.add(options, 'uComponent', 0, 1.5, 0.01).name('u').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 2);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
 
+gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.s, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 2);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
 
 controls.autoRotate = true;
 controls.autoRotateSpeed = - 0.6;

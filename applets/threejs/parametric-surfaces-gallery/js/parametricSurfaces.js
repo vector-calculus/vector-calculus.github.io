@@ -11,9 +11,18 @@ const PI = Math.PI;
 const max = Math.max;
 const min = Math.min;
 
-export function appleSurface(u, v, target) {
-    u = 2 * PI * u;
-    v = 2 * PI * v - PI;
+/**
+ * @param {*} u
+ * @param {*} v 
+ * @param {*} target 
+ * Extra parameters...
+ * @param {*} uComponent - slider
+ * @param {*} vComponent - slider
+ */
+
+export function appleSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = -PI + (vComponent - (-PI)) * v;
 
     let x = cos(u) * (4 + 3.8 * cos(v));
     let y = sin(u) * (4 + 3.8 * cos(v));
@@ -22,9 +31,9 @@ export function appleSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-export function bernatSurface(u, v, target, s) {
-    u = 1.2 * u;
-    v = 2 * PI * v;
+export function bernatSurface(u, v, target, s, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
 
     let fx, fy, fz, gx, gy, gz, q;
     fx = 4.503 * cos(v);
@@ -45,20 +54,19 @@ export function bernatSurface(u, v, target, s) {
     target.set(x, y, z);
 }
 
-export function cylinderSurface(u, v, target, h) {
-    u = 2 * PI * u;
+export function cylinderSurface(u, v, target, h, uComponent, vComponent) {
+    u = uComponent * u;
     v = h * v;
 
-    const scale = 1;
-    let x = scale * cos(u);
-    let y = scale * sin(u);
-    let z = scale * (v - 0.5);
+    let x = cos(u);
+    let y = sin(u);
+    let z = (v - 0.5);
     target.set(x, y, z);
 }
 
-export function dinniSurface(u, v, target, a, b) {
-    u = 4 * PI * u;
-    v = max(0.01, min(2, v));  // Ensure v is between 0.01 and 2
+export function dinniSurface(u, v, target, a, b, uComponent, vComponent) {
+    u = uComponent * u;
+    v = max(0.01, min(vComponent, v));  // Ensure v is between 0.01 and 2
 
     let x = a * cos(u) * sin(v);
     let y = a * sin(u) * sin(v);
@@ -71,21 +79,23 @@ export function dupincyclideSurface(u, v, target, a, b, c, d, uComponent, vCompo
     u = uComponent * u;
     v = vComponent * v;
 
-    const h = a - c * cos(u) * cos(v);
+    let h = a - c * cos(u) * cos(v);
 
     // Check if h is zero or very close to zero
     if (Math.abs(h) < 1e-10) {
         return null; // Return null to indicate an invalid point
     }
 
-    const x = (d * (c - a * cos(u) * cos(v)) + b * b * cos(u)) / h;
-    const y = (b * sin(u) * (a - d * cos(v))) / h;
-    const z = (b * sin(v) * (c * cos(u) - d)) / h;
+    let x, y, z;
+    x = (d * (c - a * cos(u) * cos(v)) + b * b * cos(u)) / h;
+    y = (b * sin(u) * (a - d * cos(v))) / h;
+    z = (b * sin(v) * (c * cos(u) - d)) / h;
 
     target.set(x, y, z);
     return target; // Return the valid point
 
 }
+
 export function eggSurface(u, v, target, a, b, c, vComponent) {
     u = a * u;
     v = vComponent * v;
@@ -98,12 +108,13 @@ export function eggSurface(u, v, target, a, b, c, vComponent) {
     return target; // Return the valid point
 }
 
-export function enneperSurface(u, v, target) {
-    u = 3 * u - 1.5;
-    v = 3 * v - 1.5;
+export function enneperSurface(u, v, target, uComponent, vComponent) {
+    const min = -2
+    u = min + (uComponent - min) * u;
+    v = min + (vComponent - min) * v; 
 
-    let x = u - pow(u, 3) + u * pow(v, 2);
-    let y = v - pow(v, 3) + pow(u, 2) * v;
+    let x = u - pow(u, 3) / 3  + u * pow(v, 2);
+    let y =  v - pow(v, 3)/ 3 + pow(u, 2) * v;
     let z = pow(u, 2) - pow(v, 2);
 
     target.set(x, y, z);
@@ -119,7 +130,7 @@ function projection(w, x, y, z) {
     return { x: a, y: b, z: c }
 }
 
-export function figure8knotSurface(u, v, target) {
+export function figure8knotSurface(u, v, target, uComponent, vComponent) {
     u = 2 * PI * u;
     v = 2 * PI * v;
 
@@ -130,11 +141,11 @@ export function figure8knotSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-
-
-export function hornSurface(u, v, target, a, b, c) {
-    u = 1 * u;
-    v = 2 * PI * v - PI;
+export function hornSurface(u, v, target, a, b, c, uComponent, vComponent) {
+    const umin = 0;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
 
     let x, y, z;
     x = (a + u * cos(v)) * sin(b * PI * u);
@@ -144,22 +155,26 @@ export function hornSurface(u, v, target, a, b, c) {
     target.set(x, y, z);
 }
 
-export function hyperhelicoidSurface(u, v, target, a) {
-    u = 8 * u - 4;
-    v = 8 * v - 4;
+export function hyperhelicoidSurface(u, v, target, a, uComponent, vComponent) {
+    const umin = -4;
+    const vmin = -4;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
 
     const d = 1 + cosh(u) * cosh(v);
 
-    let x = sinh(v) * cos(a * u) / d;
-    let y = sinh(v) * sin(a * u) / d;
+    let x = cos(a * u) * sinh(v) / d;
+    let y = sin(a * u) * sinh(v) / d;
     let z = cosh(v) * sinh(u) / d;
 
     target.set(x, y, z);
 }
 
-export function hyperoctahedronSurface(u, v, target) {
-    u = PI * u - PI / 2;
-    v = 2 * PI * v - PI;
+export function hyperoctahedronSurface(u, v, target, uComponent, vComponent) {
+    const umin = -PI / 2;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
 
     let x = pow(cos(u) * cos(v), 3);
     let y = pow(sin(u) * cos(v), 3);
@@ -168,30 +183,32 @@ export function hyperoctahedronSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-export function hyperspiralSurface(u, v, target, H, a) {
-    u = a * u;
-    v = 1 * v;
+export function hyperspiralSurface(u, v, target, H, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
 
-    let x = cos(u) / u;
-    let y = H * v - 0.5;
-    let z = sin(u) / u;
+    let x, y, z;
+    x = cos(u) / u;
+    y = H * v - 0.5;
+    z = sin(u) / u;
 
     target.set(x, y, z);
 }
 
-export function juliaheartSurface(u, v, target) {
+export function juliaheartSurface(u, v, target, uComponent, vComponent) {
     // Convert parameters to radians
-    u *= PI * 2;
-    v *= PI;
+    u *= uComponent;
+    v *= vComponent;
 
-    const x = (4 * sin(u) - sin(3 * u)) * sin(v);
-    const y = 2 * cos(v);
-    const z = 1.2 * (4 * cos(u) - cos(2 * u) - cos(3 * u) / 2) * sin(v);
+    let x, y, z;
+    x = (4 * sin(u) - sin(3 * u)) * sin(v);
+    y = 2 * cos(v);
+    z = 1.2 * (4 * cos(u) - cos(2 * u) - cos(3 * u) / 2) * sin(v);
 
     return target.set(x, y, z);
 }
 
-export function kleinbottleSurface(u, v, target, a, b, uComponent) {
+export function kleinbottleSurface(u, v, target, a, b, uComponent, vComponent) {
     u = uComponent * u;
     v = 2 * PI * v;
 
@@ -211,7 +228,7 @@ export function kleinbottleSurface(u, v, target, a, b, uComponent) {
     target.set(x, y, z);
 }
 
-export function kleinbottlenordstrandSurface(u, v, target, uComponent) {
+export function kleinbottlenordstrandSurface(u, v, target, uComponent, vComponent) {
     u = uComponent * u;
     v = 2 * PI * v;
 
@@ -237,7 +254,7 @@ export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
-export function maederowlSurface(u, v, target) {
+export function maederowlSurface(u, v, target, uComponent, vComponent) {
     u = 4 * PI * u;
     v = max(0.001, min(1, v));
 
@@ -247,7 +264,7 @@ export function maederowlSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-export function mobiusSurface(u, v, target, R, vComponent) {
+export function mobiusSurface(u, v, target, R, uComponent, vComponent) {
     u = 2 * u - 1;
     v = vComponent * v;
 
@@ -279,7 +296,7 @@ export function roseSurface(u, v, target, uMin) {
     target.set(x, y, z);
 }
 
-export function planeSurface(u, v, target) {
+export function planeSurface(u, v, target, uComponent, vComponent) {
     u = 3 * u - 1.5;
     v = 3 * v - 1.5;
 
@@ -291,7 +308,7 @@ export function planeSurface(u, v, target) {
     target.set(x, y, z);
 }
 
-export function seashellSurface(u, v, target, a, uComponent) {
+export function seashellSurface(u, v, target, a, uComponent, vComponent) {
     u *= uComponent;
     v *= 2 * PI;
     const f = exp(u / (PI * 6 * 1)) - 1;
@@ -314,7 +331,7 @@ export function snailsmusselsSurface(u, v, target, a, b, c, h, k, w, R, uMin, uM
     target.set(x, y, z);
 }
 
-export function sphereSurface(u, v, target, r) {
+export function sphereSurface(u, v, target, r, uComponent, vComponent) {
     const theta = u * PI * 2;
     const phi = v * PI;
     const x = r * sin(phi) * cos(theta);
@@ -399,7 +416,7 @@ export function torustwisted8Surface(u, v, target, r, R, uComponent, vComponent)
     target.set(x, y, z);
 }
 
-export function torustwistedSurface(u, v, target, n, t) {
+export function torustwistedSurface(u, v, target, n, t, uComponent, vComponent) {
     u = 2 * PI * u;
     v = 2 * PI * v;
 
@@ -434,4 +451,3 @@ export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, t
 
     target.set(x, y, z);
 }
-

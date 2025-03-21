@@ -15,6 +15,8 @@ const options = {
     a: 4,
     b: 2,
     c: 3.5,
+    uComponent: 1,
+    vComponent: 3.1415,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -28,8 +30,8 @@ const materials = createMaterials(options);
 
 // Geometry
 const meshRes = { x: 64, y: 64 };
-const geoScale = { x: 0.2, y: 0.2, z: 0.2 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), meshRes.x, meshRes.y);
+const geoScale = { x: 0.25, y: 0.25, z: 0.25 };
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 3);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
@@ -46,7 +48,7 @@ commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call
 
 gui.add(options, 'a', 1.5, 5, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
@@ -55,7 +57,7 @@ gui.add(options, 'a', 1.5, 5, 0.01).onChange(() => {
 
 gui.add(options, 'b', 0, 5, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
@@ -64,7 +66,25 @@ gui.add(options, 'b', 0, 5, 0.01).onChange(() => {
 
 gui.add(options, 'c', -5, 7, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c), meshRes.x, meshRes.y);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 3);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
+
+gui.add(options, 'uComponent', 0, 1, 0.01).name('u').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 3);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
+
+gui.add(options, 'vComponent', -3.1415, 3.1415, 0.0001).name('v').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 3);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
