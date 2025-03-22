@@ -278,7 +278,7 @@ function setPseudoheliceras() {
     wControl.updateDisplay();
     
 }
-
+ 
 gui.add({ setAstroceras: () => setAstroceras() }, 'setAstroceras').name('Astroceras');
 gui.add({ setBellerophina: () => setBellerophina() }, 'setBellerophina').name('Bellerophina');
 gui.add({ setMyarrenaria: () => setMyarrenaria() }, 'setMyarrenaria').name('Myarrenaria');

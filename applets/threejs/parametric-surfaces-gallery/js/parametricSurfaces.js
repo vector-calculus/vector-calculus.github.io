@@ -239,6 +239,30 @@ export function kleinbottlenordstrandSurface(u, v, target, uComponent, vComponen
     target.set(x, y, z);
 }
 
+export function knotsTorusSeifertSurface(u, v, target, p1, q1, R1, r1, p2, q2, R2, r2, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = ((1 - v) * (R1 + r1 * cos(q1 * u)) + v * (R2 + r2 * cos(q2 * u))) * cos((1 - v) * p1 * u + v * p2 * u);
+    y = ((1 - v) * (R1 + r1 * cos(q1 * u)) + v * (R2 + r2 * cos(q2 * u))) * sin((1 - v) * p1 * u + v * p2 * u);
+    z = (1 - v) * r1 * sin(q1 * u) + v * r2 * sin(q2 * u);
+
+    target.set(x, y, z);
+}
+
+export function knotTorusSurface(u, v, target, p, q, R1, R2, r, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = (R1 + R2 * cos(p * u) + r * cos(v)) * cos(q * u);
+    y = (R1 + R2 * cos(p * u) + r * cos(v)) * sin(q * u);
+    z = r * sin(v) + R2 * sin(p * u);
+
+    target.set(x, y, z);
+}
+
 export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
@@ -280,8 +304,6 @@ export function planeSurface(u, v, target, uComponent, vComponent) {
     u = umin + (uComponent - umin) * u;
     v = vmin + (vComponent - vmin) * v;
 
-    //u = 3 * u - 1.5;
-    //v = 3 * v - 1.5;
 
     let x = (1.5 * u - 1.0 * v + 1.0);
     let y = (1.0 * u + 1.0 * v + 0.5);
@@ -316,11 +338,79 @@ export function seashellSurface(u, v, target, a, uComponent, vComponent) {
     u *= uComponent;
     v *= vComponent;
 
-    const f = exp(u / (PI * 6 * 1)) - 1;
-    const scale = 0.4;
-    let x = scale * (2 * f * cos(u) * cos(v / 2) * cos(v / 2));
-    let y = scale * (2 * (-f) * sin(u) * cos(v / 2) * cos(v / 2));
-    let z = scale * (4 - exp(u / a) - sin(v) + exp(u / (PI * 6 * 1)) * sin(v));
+    const f = exp(u / (6 * PI)) - 1;
+    let x = (2 * f * cos(u) * cos(v / 2) * cos(v / 2));
+    let y = (2 * (-f) * sin(u) * cos(v / 2) * cos(v / 2));
+    let z = (4 - exp(u / a) - sin(v) + exp(u / (6 * PI)) * sin(v));
+    target.set(x, y, z);
+}
+
+export function sinecosineSurface(u, v, target, type, uComponent, vComponent) {
+    u *= uComponent;
+    v *= vComponent;
+
+    let x, y, z;
+    if (type === 'sine') {
+        x = sin(u);
+        y = sin(v);
+        z = sin(u + v);
+    } else {
+        x = cos(u);
+        y = cos(v);
+        z = cos(u + v);
+    }
+
+    target.set(x, y, z);
+}
+
+export function sinecubeSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = sin(u) * sin(v);
+    y = cos(u) * sin(v);
+    z = cos(u) * cos(v);
+    
+    target.set(x, y, z);
+}
+
+export function sinecosinewavesSurface(u, v, target, type, a, b, uComponent, vComponent) {
+    const umin = -15;
+    const vmin = -15;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x, y, z;
+    if (type === 'sine') {
+        x = u;
+        y = a * sin(b * pow(u ** 2 + v ** 2, 0.5));
+        z = v;
+    } else {
+        x = u;
+        y = a * cos(b * pow(u ** 2 + v ** 2, 0.5));
+        z = v;
+    }
+
+    target.set(x, y, z);
+}
+
+export function sinusoidalconeSurface(u, v, target, k, n, uComponent, vComponent) {
+    let umin = -10;
+    let vmin;
+    if (Number.isInteger(n)) {
+        vmin = -PI;
+    } else {
+        vmin = -2 * PI
+    }
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x, y, z;
+    x = u * cos(v);
+    y = u * sin(v);
+    z = k * u * cos(n * v);
+
     target.set(x, y, z);
 }
 
