@@ -15,6 +15,7 @@ const options = {
     a: 3,
     b: 7,
     uComponent: 12.5663,
+    vComponent: 6.2831,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -29,7 +30,7 @@ const materials = createMaterials(options);
 // Geometry
 const meshRes = { x: 84, y: 84 };
 const geoScale = { x: 0.35, y: 0.35, z: 0.35 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent), meshRes.x, meshRes.y);
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
@@ -46,8 +47,17 @@ commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call
 
 gui.add(options, 'uComponent', 0, 12.5663, 0.0001).name('u').onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 2);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
+});
+
+gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;

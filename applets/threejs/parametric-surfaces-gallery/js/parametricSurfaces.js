@@ -111,10 +111,10 @@ export function eggSurface(u, v, target, a, b, c, vComponent) {
 export function enneperSurface(u, v, target, uComponent, vComponent) {
     const min = -2
     u = min + (uComponent - min) * u;
-    v = min + (vComponent - min) * v; 
+    v = min + (vComponent - min) * v;
 
-    let x = u - pow(u, 3) / 3  + u * pow(v, 2);
-    let y =  v - pow(v, 3)/ 3 + pow(u, 2) * v;
+    let x = u - pow(u, 3) / 3 + u * pow(v, 2);
+    let y = v - pow(v, 3) / 3 + pow(u, 2) * v;
     let z = pow(u, 2) - pow(v, 2);
 
     target.set(x, y, z);
@@ -210,7 +210,7 @@ export function juliaheartSurface(u, v, target, uComponent, vComponent) {
 
 export function kleinbottleSurface(u, v, target, a, b, uComponent, vComponent) {
     u = uComponent * u;
-    v = 2 * PI * v;
+    v = vComponent * v;
 
     const r = 2.5 * (1 - cos(u) / 2);
 
@@ -218,24 +218,23 @@ export function kleinbottleSurface(u, v, target, a, b, uComponent, vComponent) {
     if (0 <= u && u < PI) {
         x = a * cos(u) * (1 + sin(u)) + r * cos(u) * cos(v);
         y = b * sin(u) + r * sin(u) * cos(v);
-        z = r * sin(v);
     } else if (PI <= u && u <= 2 * PI) {
         x = a * cos(u) * (1 + sin(u)) + r * cos(v + PI);
         y = b * sin(u);
-        z = r * sin(v);
     }
+    z = r * sin(v);
 
     target.set(x, y, z);
 }
 
 export function kleinbottlenordstrandSurface(u, v, target, uComponent, vComponent) {
     u = uComponent * u;
-    v = 2 * PI * v;
+    v = vComponent * v;
 
     let x, y, z;
     x = cos(u) * (cos(u / 2) * (pow(2, 0.5) + cos(v)) + sin(u / 2) * sin(v) * cos(v));
     y = sin(u) * (cos(u / 2) * (pow(2, 0.5) + cos(v)) + sin(u / 2) * sin(v) * cos(v));
-    z = - sin(u / 2) * ((pow(2, 0.5) + + cos(v)) + cos(u / 2) * sin(v) * cos(v));
+    z = - sin(u / 2) * (pow(2, 0.5) + cos(v) + cos(u / 2) * sin(v) * cos(v));
 
     target.set(x, y, z);
 }
@@ -247,7 +246,7 @@ export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
     let x, y, z, w;
     w = (sin(u) * sin(v) + sin(u / 2) * cos(v)) / pow(2, 0.5);
 
-    x = (sin(u) * sin(v) - sin(u / 2) * cos(v)) * pow(1 / 2, 0.5) / (1 + w);
+    x = (sin(u) * sin(v) - sin(u / 2) * cos(v)) / (pow(2, 0.5) * (1 + w));
     y = cos(u) * sin(v) / (1 + w);
     z = cos(u / 2) * cos(v) / (1 + w);
 
@@ -255,22 +254,39 @@ export function lawsonbottleSurface(u, v, target, uComponent, vComponent) {
 }
 
 export function maederowlSurface(u, v, target, uComponent, vComponent) {
-    u = 4 * PI * u;
-    v = max(0.001, min(1, v));
+    u = uComponent * u;
+    v = max(0.001, min(vComponent, v));
 
-    let x = v * cos(u) - 0.5 * v * v * cos(2 * u);
-    let y = - v * sin(u) - 0.5 * v * v * sin(2 * u);
+    let x = v * cos(u) - 0.5 * (v ** 2) * cos(2 * u);
+    let y = - v * sin(u) - 0.5 * (v ** 2) * sin(2 * u);
     let z = 4 * exp(1.5 * log(v)) * cos(3 * u / 2) / 3
     target.set(x, y, z);
 }
 
 export function mobiusSurface(u, v, target, R, uComponent, vComponent) {
-    u = 2 * u - 1;
+    const umin = -1;
+    u = umin + (uComponent - umin) * u;
     v = vComponent * v;
 
     let x = (R + u * cos(v / 2)) * cos(v);
     let y = (R + u * cos(v / 2)) * sin(v);
     let z = u * sin(v / 2);
+    target.set(x, y, z);
+}
+
+export function planeSurface(u, v, target, uComponent, vComponent) {
+    const umin = -1.5;
+    const vmin = -1.5;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    //u = 3 * u - 1.5;
+    //v = 3 * v - 1.5;
+
+    let x = (1.5 * u - 1.0 * v + 1.0);
+    let y = (1.0 * u + 1.0 * v + 0.5);
+    let z = (1.0 * u + 1.0 * v + 1.0);
+
     target.set(x, y, z);
 }
 
@@ -296,21 +312,10 @@ export function roseSurface(u, v, target, uMin) {
     target.set(x, y, z);
 }
 
-export function planeSurface(u, v, target, uComponent, vComponent) {
-    u = 3 * u - 1.5;
-    v = 3 * v - 1.5;
-
-    const scale = 0.4;
-    let x = scale * (1.5 * u - 1.0 * v + 1.0);
-    let y = scale * (1.0 * u + 1.0 * v + 0.5);
-    let z = scale * (1.0 * u + 1.0 * v + 1.0);
-
-    target.set(x, y, z);
-}
-
 export function seashellSurface(u, v, target, a, uComponent, vComponent) {
     u *= uComponent;
-    v *= 2 * PI;
+    v *= vComponent;
+
     const f = exp(u / (PI * 6 * 1)) - 1;
     const scale = 0.4;
     let x = scale * (2 * f * cos(u) * cos(v / 2) * cos(v / 2));
@@ -332,11 +337,15 @@ export function snailsmusselsSurface(u, v, target, a, b, c, h, k, w, R, uMin, uM
 }
 
 export function sphereSurface(u, v, target, r, uComponent, vComponent) {
-    const theta = u * PI * 2;
-    const phi = v * PI;
-    const x = r * sin(phi) * cos(theta);
-    const y = r * sin(phi) * sin(theta);
-    const z = r * cos(phi);
+
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = r * cos(u) * sin(v);
+    y = r * sin(u) * sin(v);
+    z = r * cos(v);
+
     target.set(x, y, z);
 }
 
@@ -352,8 +361,8 @@ export function torusSurface(u, v, target, r, R, uComponent, vComponent) {
 }
 
 export function torus8figureSurface(u, v, target, c, uComponent, vComponent) {
-    u = uComponent * u - PI;
-    v = vComponent * v - PI;
+    u = uComponent * u;
+    v = vComponent * v;
 
     let x = cos(u) * (c + sin(v) * cos(u) - sin(2 * v) * sin(u) / 2);
     let y = sin(u) * sin(v) + cos(u) * sin(2 * v) / 2
@@ -417,14 +426,14 @@ export function torustwisted8Surface(u, v, target, r, R, uComponent, vComponent)
 }
 
 export function torustwistedSurface(u, v, target, n, t, uComponent, vComponent) {
-    u = 2 * PI * u;
-    v = 2 * PI * v;
+    u = uComponent * u;
+    v = vComponent * v;
 
     let R = pow(pow(cos(v), n) + pow(sin(v), n), -1 / n);
 
-    let x = (4 + R * cos(v + t * u)) * cos(u);
-    let y = (4 + R * cos(v + t * u)) * sin(u);
-    let z = R * sin(v + t * u);
+    let x = (4 + R * cos(t * u + v)) * cos(u);
+    let y = (4 + R * cos(t * u + v)) * sin(u);
+    let z = R * sin(t * u + v);
 
     target.set(x, y, z);
 }

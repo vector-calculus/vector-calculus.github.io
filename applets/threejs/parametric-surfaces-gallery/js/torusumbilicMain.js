@@ -62,7 +62,7 @@ gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
 });
 
 controls.autoRotate = true;
-controls.autoRotateSpeed = - 0.6;
+controls.autoRotateSpeed = - 0.8;
 
 // Animation loop
 const tick = () => {

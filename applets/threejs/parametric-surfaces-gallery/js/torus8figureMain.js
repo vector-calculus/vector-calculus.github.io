@@ -30,7 +30,7 @@ const materials = createMaterials(options);
 const meshRes = { x: 128, y: 128 };
 const geoScale = { x: 0.35, y: 0.35, z: 0.35 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-geometry.rotateX(-Math.PI / 1.1);
+geometry.rotateX(-Math.PI / 1.15);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
 // Mesh
@@ -47,7 +47,7 @@ commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call
 gui.add(options, 'c', 0.01, 3, 0.01).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry.rotateX(-Math.PI / 1.15);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
@@ -56,7 +56,7 @@ gui.add(options, 'c', 0.01, 3, 0.01).onChange(() => {
 gui.add(options, 'uComponent', 0, 6.2831, 0.0001).name('u').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry.rotateX(-Math.PI / 1.15);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
@@ -65,7 +65,7 @@ gui.add(options, 'uComponent', 0, 6.2831, 0.0001).name('u').onChange(() => {
 gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.c, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry.rotateX(-Math.PI / 1.15);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
