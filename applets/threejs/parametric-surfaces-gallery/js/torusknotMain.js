@@ -32,7 +32,7 @@ let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, 
 geometry.rotateX(Math.PI/2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
-let geometrySphere = new ParametricGeometry((u, v, target) => sphereSurface(u, v, target, 1), 20, 20);
+let geometrySphere = new ParametricGeometry((u, v, target) => sphereSurface(u, v, target, 1, 6.2831, 3.1415), 20, 20);
 geometrySphere.rotateX(Math.PI/2);
 geometrySphere.scale(geoScale.x, geoScale.y, geoScale.z);
 
