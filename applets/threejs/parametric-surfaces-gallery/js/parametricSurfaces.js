@@ -195,6 +195,22 @@ export function hyperspiralSurface(u, v, target, H, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function hypertanspiralSurface(u, v, target, uComponent, vComponent) {
+    const umin = -1.5;
+    const vmin = -PI/2;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+    
+    // Compute Cartesian coordinates
+    const denominator = cos(10 * u) + cosh(2 * u);
+    const x = sinh(2 * u) / denominator;
+    const y = v; // v is unchanged
+    const z = sin(10 * u) / denominator;
+
+
+    target.set(x, y, z);
+}
+
 export function juliaheartSurface(u, v, target, uComponent, vComponent) {
     // Convert parameters to radians
     u *= uComponent;
@@ -371,7 +387,7 @@ export function sinecubeSurface(u, v, target, uComponent, vComponent) {
     x = sin(u) * sin(v);
     y = cos(u) * sin(v);
     z = cos(u) * cos(v);
-    
+
     target.set(x, y, z);
 }
 
