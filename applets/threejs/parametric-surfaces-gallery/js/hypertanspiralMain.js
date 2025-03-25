@@ -26,7 +26,7 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-const meshRes = { x: 300, y: 80 };
+const meshRes = { x: 400, y: 100 };
 const geoScale = { x: 0.5, y: 0.5, z: 0.5 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
