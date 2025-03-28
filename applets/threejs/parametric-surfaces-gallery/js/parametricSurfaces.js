@@ -58,9 +58,9 @@ export function coneSurface(u, v, target, a, b, c, uComponent, vComponent) {
     u = -1 + (uComponent - (-1)) * u;
     v = -PI + (vComponent - (-PI)) * v;
 
-    let x = u*a * cos(v);
-    let y = u* b  * sin(v);
-    let z =  - c * u;
+    let x = u * a * cos(v);
+    let y = u * b * sin(v);
+    let z = - c * u;
     target.set(x, y, z);
 }
 
@@ -193,6 +193,19 @@ export function hyperoctahedronSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function hyperparaboloidSurface(u, v, target, uComponent, vComponent) {
+    const umin = -1;
+    const vmin = -1;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x = u;
+    let y = v;
+    let z = u * v;
+
+    target.set(x, y, z);
+}
+
 export function hyperspiralSurface(u, v, target, H, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
@@ -207,10 +220,10 @@ export function hyperspiralSurface(u, v, target, H, uComponent, vComponent) {
 
 export function hypertanspiralSurface(u, v, target, uComponent, vComponent) {
     const umin = -1.5;
-    const vmin = -PI/2;
+    const vmin = -PI / 2;
     u = umin + (uComponent - umin) * u;
     v = vmin + (vComponent - vmin) * v;
-    
+
     // Compute Cartesian coordinates
     const denominator = cos(10 * u) + cosh(2 * u);
     const x = sinh(2 * u) / denominator;
@@ -270,9 +283,9 @@ export function knotFigure8Surface(u, v, target, e, h, uComponent, vComponent) {
     v = vComponent * v;
 
     let x, y, z;
-    x = sin((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u)))*(1.5+sin(1.5*v)/4) - (1.5+sin(1.5*v)/4));
-    y = cos((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u)))*(1.5+sin(1.5*v)/4) - (1.5+sin(1.5*v)/4));
-    z = (-2*h*sin((2 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u))) - 1)) + 0.1*cos(1.5*v);
+    x = sin((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u))) * (1.5 + sin(1.5 * v) / 4) - (1.5 + sin(1.5 * v) / 4));
+    y = cos((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u))) * (1.5 + sin(1.5 * v) / 4) - (1.5 + sin(1.5 * v) / 4));
+    z = (-2 * h * sin((2 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u))) - 1)) + 0.1 * cos(1.5 * v);
 
     target.set(x, y, z);
 }
@@ -306,9 +319,9 @@ export function knotTrefoilSurface(u, v, target, uComponent, vComponent) {
     v = vComponent * v;
 
     let x, y, z;
-    x = cos(u)*cos(v) + 3*cos(u)*(1.5+sin(1.5*u)/2);
-    y = sin(u)*cos(v) + 3*sin(u)*(1.5+sin(1.5*u)/2);
-    z = sin(v)+2*cos(1.5*u);
+    x = cos(u) * cos(v) + 3 * cos(u) * (1.5 + sin(1.5 * u) / 2);
+    y = sin(u) * cos(v) + 3 * sin(u) * (1.5 + sin(1.5 * u) / 2);
+    z = sin(v) + 2 * cos(1.5 * u);
 
     target.set(x, y, z);
 }
@@ -345,6 +358,20 @@ export function mobiusSurface(u, v, target, R, uComponent, vComponent) {
     let x = (R + u * cos(v / 2)) * cos(v);
     let y = (R + u * cos(v / 2)) * sin(v);
     let z = u * sin(v / 2);
+    target.set(x, y, z);
+}
+
+export function paraboloidSurface(u, v, target, a, h, uComponent, vComponent) {
+    const umin = 0;
+    const vmin = 0;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+
+    let x = a * pow(u / h, 0.5) * cos(v);
+    let y = a * pow(u / h, 0.5) * sin(v);
+    let z = u;
+
     target.set(x, y, z);
 }
 
