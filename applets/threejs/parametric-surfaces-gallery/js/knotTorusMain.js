@@ -34,7 +34,7 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-const meshRes = { x: 500, y: 50 };
+const meshRes = { x: 600, y: 50 };
 const geoScale = { x: 0.1, y: 0.1, z: 0.1 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.p, options.q, options.R1, options.R2, options.r, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
@@ -67,7 +67,7 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
-gui.add(options, 'p', 0, 20, 1).onChange(() => {
+gui.add(options, 'p', 0, 15, 1).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.p, options.q, options.R1, options.R2, options.r, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
@@ -77,7 +77,7 @@ gui.add(options, 'p', 0, 20, 1).onChange(() => {
 
 });
 
-gui.add(options, 'q', 0, 20, 1).onChange(() => {
+gui.add(options, 'q', 0, 15, 1).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.p, options.q, options.R1, options.R2, options.r, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
@@ -152,7 +152,7 @@ gui.add(options, 'vComponent', 0, 6.2931, 0.0001).onChange(() => {
 });
 
 // Add the show/hide torus control
-gui.add(options, 'showTorus').name('Show Torus').onChange((value) => {
+gui.add(options, 'showTorus').name('Inner Torus').onChange((value) => {
     meshTorus.visible = value;
 });
 
@@ -163,7 +163,7 @@ gui.add(options, 'showTorus').name('Show Torus').onChange((value) => {
 // scene.add(axesHelper);
 
 controls.autoRotate = true;
-controls.autoRotateSpeed = - 0.9;
+controls.autoRotateSpeed = - 0.6;
 
 // Animation loop
 const tick = () => {

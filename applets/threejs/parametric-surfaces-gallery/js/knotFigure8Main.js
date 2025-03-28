@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
-import { kleinbottleSurface as parametricSurface } from './parametricSurfaces.js';
+import { knotFigure8Surface as parametricSurface } from './parametricSurfaces.js';
 import { createMaterials } from './materials.js';
 import { setupScene } from './sceneSetup.js';
 import { commonUI } from './commonUI.js';
@@ -11,11 +11,11 @@ const gui = new GUI();
 const options = {
     material: 'Matcap', // Default material
     mesh: false,
-    autoRotate: true,
-    a: 3,
-    b: 7,
+    e: 0.3,
+    h: 0.4,
     uComponent: 6.2831,
-    vComponent: 6.2631,
+    vComponent: 6.2831,
+    autoRotate: true,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -28,15 +28,16 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-const meshRes = { x: 64, y: 64 };
-const geoScale = { x: 0.15, y: 0.15, z: 0.15 };
-let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-geometry.rotateX(-Math.PI / 3);
+const meshRes = { x: 200, y: 100 };
+const geoScale = { x: 0.55, y: 0.55, z: 0.55 };
+let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.e, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+//geometry.rotateZ(-Math.PI/2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
 
 // Mesh
 let mesh = new THREE.Mesh(geometry, materials.matcapMaterial);
 scene.add(mesh);
+
 scene.background = new THREE.Color('#000000'); // Initial Black background
 
 // Wireframe mesh
@@ -45,44 +46,51 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
-gui.add(options, 'a', 0, 5, 0.01).onChange(() => {
+gui.add(options, 'e', -0.5, 0.5, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.e, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    //geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'b', 4, 12, 0.01).onChange(() => {
+gui.add(options, 'h', -1, 1, 0.01).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.e, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    //geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'uComponent', 0, 6.2831, 0.0001).name('u').onChange(() => {
+gui.add(options, 'uComponent', 0, 6.2831, 0.0001).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.e, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    //geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'vComponent', 0, 6.2831, 0.0001).name('v').onChange(() => {
+gui.add(options, 'vComponent', 0, 6.2931, 0.0001).onChange(() => {
     geometry.dispose();
-    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.a, options.b, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
-    geometry.rotateX(-Math.PI / 3);
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.e, options.h, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
+    //geometry.rotateX(-Math.PI / 2);
     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
     mesh.geometry = geometry;
     wireframeMesh.geometry = geometry;
 });
+
+
+//  const gridHelper = new THREE.GridHelper(10, 10);
+//  scene.add(gridHelper);
+
+//  const axesHelper = new THREE.AxesHelper(1);
+//  scene.add(axesHelper);
 
 controls.autoRotate = true;
-controls.autoRotateSpeed = - 0.8;
+controls.autoRotateSpeed = - 0.5;
 
 // Animation loop
 const tick = () => {

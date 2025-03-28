@@ -54,6 +54,16 @@ export function bernatSurface(u, v, target, s, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function coneSurface(u, v, target, a, b, c, uComponent, vComponent) {
+    u = -1 + (uComponent - (-1)) * u;
+    v = -PI + (vComponent - (-PI)) * v;
+
+    let x = u*a * cos(v);
+    let y = u* b  * sin(v);
+    let z =  - c * u;
+    target.set(x, y, z);
+}
+
 export function cylinderSurface(u, v, target, h, uComponent, vComponent) {
     u = uComponent * u;
     v = h * v;
@@ -255,6 +265,18 @@ export function kleinbottlenordstrandSurface(u, v, target, uComponent, vComponen
     target.set(x, y, z);
 }
 
+export function knotFigure8Surface(u, v, target, e, h, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = sin((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u)))*(1.5+sin(1.5*v)/4) - (1.5+sin(1.5*v)/4));
+    y = cos((3 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u)))*(1.5+sin(1.5*v)/4) - (1.5+sin(1.5*v)/4));
+    z = (-2*h*sin((2 * u)) * ((e * sin((4 * u))) + 1) / ((e * sin((4 * u))) - 1)) + 0.1*cos(1.5*v);
+
+    target.set(x, y, z);
+}
+
 export function knotsTorusSeifertSurface(u, v, target, p1, q1, R1, r1, p2, q2, R2, r2, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
@@ -275,6 +297,18 @@ export function knotTorusSurface(u, v, target, p, q, R1, R2, r, uComponent, vCom
     x = (R1 + R2 * cos(p * u) + r * cos(v)) * cos(q * u);
     y = (R1 + R2 * cos(p * u) + r * cos(v)) * sin(q * u);
     z = r * sin(v) + R2 * sin(p * u);
+
+    target.set(x, y, z);
+}
+
+export function knotTrefoilSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = cos(u)*cos(v) + 3*cos(u)*(1.5+sin(1.5*u)/2);
+    y = sin(u)*cos(v) + 3*sin(u)*(1.5+sin(1.5*u)/2);
+    z = sin(v)+2*cos(1.5*u);
 
     target.set(x, y, z);
 }
