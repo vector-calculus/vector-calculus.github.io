@@ -15,7 +15,7 @@ const options = {
     a: 3,
     b: 7,
     uComponent: 6.2831,
-    vComponent: 6.2631,
+    vComponent: 6.2831,
     color: '#049ef4',
     colorBackground: '#000000'
 };
