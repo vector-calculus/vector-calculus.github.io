@@ -194,14 +194,14 @@ export function hyperoctahedronSurface(u, v, target, uComponent, vComponent) {
 }
 
 export function hyperparaboloidSurface(u, v, target, uComponent, vComponent) {
-    const umin = -1;
-    const vmin = -1;
+    const umin = 0;
+    const vmin = 0;
     u = umin + (uComponent - umin) * u;
     v = vmin + (vComponent - vmin) * v;
 
-    let x = u;
-    let y = v;
-    let z = u * v;
+    let x = u * cos(v);
+    let y = u * sin(v);
+    let z = u * cos(v) * u * sin(v);
 
     target.set(x, y, z);
 }
@@ -358,6 +358,23 @@ export function mobiusSurface(u, v, target, R, uComponent, vComponent) {
     let x = (R + u * cos(v / 2)) * cos(v);
     let y = (R + u * cos(v / 2)) * sin(v);
     let z = u * sin(v / 2);
+    target.set(x, y, z);
+}
+
+export function morinSurface(u, v, target, n, k, uComponent, vComponent) {
+    u = uComponent * u;
+    if( n % 2 === 0 ) {
+        v = 2 * vComponent * v;
+    } else v = vComponent * v;
+
+    let sqrt2 = pow(2, 0.5);
+    let K = cos(u) / (sqrt2 - k * sin(2 * u) * sin(n * v));
+
+    let x, y, z;
+    x = K * (2 / (n - 1) * cos(u) * cos((n - 1) * v) + sqrt2 * sin(u) * cos(v));
+    y = K * (2 / (n - 1) * cos(u) * sin((n - 1) * v) - sqrt2 * sin(u) * sin(v));
+    z = K * cos(u);
+
     target.set(x, y, z);
 }
 
@@ -549,6 +566,23 @@ export function torusantisymmetricSurface(u, v, target, a, r, R, uComponent, vCo
     target.set(x, y, z);
 }
 
+export function torusBianchiPinkallSurface(u, v, target, n, a, b, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    var gamma = a + b * Math.sin(2 * n * v);
+
+    let x, y, z, w, r;
+    x = Math.cos(u + v) * Math.cos(gamma);
+    y = Math.sin(u + v) * Math.cos(gamma);
+    z = Math.cos(u - v) * Math.sin(gamma);
+    w = Math.sin(u - v) * Math.sin(gamma);
+
+    r = Math.acos(w) / Math.PI / Math.sqrt(1 - w ** 2);
+
+    target.set(x * r, y * r, z * r);
+}
+
 export function torusbraidedSurface(u, v, target, a, n, r, R, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
@@ -616,6 +650,7 @@ export function torusumbilicSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+// Not finished
 export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, tx, ty, tz) {
     u = uComponent * u;
     v = vComponent * v;
@@ -627,3 +662,16 @@ export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, t
 
     target.set(x, y, z);
 }
+
+export function waveBallSurface(u, v, target, uComponent, vComponent, size, tx, ty, tz) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = u * cos(cos(u)) * cos(v);
+    y = u * cos(cos(u)) * sin(v);
+    z = u * sin(cos(u));
+
+    target.set(x, y, z);
+}
+

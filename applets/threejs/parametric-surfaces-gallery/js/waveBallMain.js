@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
-import { hyperparaboloidSurface as parametricSurface } from './parametricSurfaces.js';
+import { waveBallSurface as parametricSurface } from './parametricSurfaces.js';
 import { createMaterials } from './materials.js';
 import { setupScene } from './sceneSetup.js';
 import { commonUI } from './commonUI.js';
@@ -12,8 +12,8 @@ const options = {
     material: 'Matcap', // Default material
     mesh: false,
     autoRotate: true,
-    uComponent: 1,
-    vComponent: 6.2831,
+    uComponent: 14,
+    vComponent: 4.71238,
     color: '#049ef4',
     colorBackground: '#000000'
 };
@@ -26,8 +26,8 @@ const { scene, camera, renderer, controls } = setupScene(canvas);
 const materials = createMaterials(options);
 
 // Geometry
-const meshRes = { x: 64, y: 64 };
-const geoScale = { x: 0.85, y: 0.85, z: 0.85 };
+const meshRes = { x: 120, y: 120 };
+const geoScale = { x: 0.09, y: 0.09, z: 0.09 };
 let geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
 geometry.rotateX(-Math.PI / 2);
 geometry.scale(geoScale.x, geoScale.y, geoScale.z);
@@ -43,7 +43,7 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
-gui.add(options, 'uComponent', 0, 2, 0.01).name('u').onChange(() => {
+gui.add(options, 'uComponent', 0, 17.5, 0.01).name('u').onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI / 2);
