@@ -54,6 +54,21 @@ export function bernatSurface(u, v, target, s, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function bowtieSurface(u, v, target, uComponent, vComponent) {
+    const umin = -PI;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x, y, z;
+    x = sin(u) / (pow(2, 0.5) + sin(v));
+    y = sin(u) / (pow(2, 0.5) + cos(v));
+    z = cos(u) / (1 + pow(2, 0.5))
+
+    target.set(x, y, z);
+}
+
+
 export function coneSurface(u, v, target, a, b, c, uComponent, vComponent) {
     u = -1 + (uComponent - (-1)) * u;
     v = -PI + (vComponent - (-PI)) * v;
@@ -147,6 +162,17 @@ export function figure8knotSurface(u, v, target, uComponent, vComponent) {
     let x = u - pow(u, 3) + u * pow(v, 2);
     let y = v - pow(v, 3) + pow(u, 2) * v;
     let z = pow(u, 2) - pow(v, 2);
+
+    target.set(x, y, z);
+}
+
+export function gobletSurface(u, v, target, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x = cos(u) * cos(2 * v);
+    let y = sin(u) * cos(2 * v);
+    let z = -2 * sin(v) + 1;
 
     target.set(x, y, z);
 }
@@ -363,7 +389,7 @@ export function mobiusSurface(u, v, target, R, uComponent, vComponent) {
 
 export function morinSurface(u, v, target, n, k, uComponent, vComponent) {
     u = uComponent * u;
-    if( n % 2 === 0 ) {
+    if (n % 2 === 0) {
         v = 2 * vComponent * v;
     } else v = vComponent * v;
 
@@ -388,6 +414,20 @@ export function paraboloidSurface(u, v, target, a, h, uComponent, vComponent) {
     let x = a * pow(u / h, 0.5) * cos(v);
     let y = a * pow(u / h, 0.5) * sin(v);
     let z = u;
+
+    target.set(x, y, z);
+}
+
+export function pillowSurface(u, v, target, a, uComponent, vComponent) {
+    const umin = 0;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+
+    let x = cos(u);
+    let y = cos(v);
+    let z = a * sin(u) * sin(v);
 
     target.set(x, y, z);
 }
@@ -533,6 +573,18 @@ export function sphereSurface(u, v, target, r, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function spiralwavesSurface(u, v, target, a, b, c, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = v * cos(u);
+    y = a * cos(b * u + c* v);
+    z = v * sin(u);
+
+    target.set(x, y, z);
+}
+
 export function torusSurface(u, v, target, r, R, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
@@ -663,7 +715,32 @@ export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, t
     target.set(x, y, z);
 }
 
-export function waveBallSurface(u, v, target, uComponent, vComponent, size, tx, ty, tz) {
+export function trashcanSurface(u, v, target, a, b, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let x, y, z;
+    x = (b + v) * cos(u);
+    y = v * sin(u);
+    z = a * v ** 2 - 2;
+
+    target.set(x, y, z);
+}
+
+export function umbrellaSurface(u, v, target, R, n, h, uComponent, vComponent) {
+    u = uComponent * u;
+    v = vComponent * v;
+
+    let r = R / n;
+    let x, y, z;
+    x = pow(u, 1 / 3) * ((R - r) * cos(v) + r * cos((n - 1) * v));
+    y = pow(u, 1 / 3) * ((R - r) * sin(v) - r * sin((n - 1) * v));
+    z = h * (1 - u);
+
+    target.set(x, y, z);
+}
+
+export function waveBallSurface(u, v, target, uComponent, vComponent) {
     u = uComponent * u;
     v = vComponent * v;
 
@@ -674,4 +751,3 @@ export function waveBallSurface(u, v, target, uComponent, vComponent, size, tx, 
 
     target.set(x, y, z);
 }
-
