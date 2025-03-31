@@ -44,7 +44,7 @@ let wireframeMesh = new THREE.Mesh(geometry, materials.wireframeMaterial);
 // GUI controls
 commonUI(gui, options, scene, materials, mesh, wireframeMesh, controls); // Call commonUI with necessary arguments
 
-gui.add(options, 'uComponent', 0, 6.2831, 0.0001).onChange(() => {
+gui.add(options, 'uComponent', -3.1415, 3.1415, 0.0001).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI/2);
@@ -53,7 +53,7 @@ gui.add(options, 'uComponent', 0, 6.2831, 0.0001).onChange(() => {
     wireframeMesh.geometry = geometry;
 });
 
-gui.add(options, 'vComponent', 0, 6.2931, 0.0001).onChange(() => {
+gui.add(options, 'vComponent', -3.1415, 3.1415, 0.0001).onChange(() => {
     geometry.dispose();
     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.uComponent, options.vComponent), meshRes.x, meshRes.y);
     geometry.rotateX(-Math.PI/2);
