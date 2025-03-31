@@ -68,6 +68,19 @@ export function bowtieSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function catenoidSurface(u, v, target, c, uComponent, vComponent) {
+    const umin = -PI;
+    const vmin = -2;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x = c * cosh(v / c) * cos(u);
+    let y = c * cosh(v / c) * sin(u);
+    let z = v;
+
+    target.set(x, y, z);
+}
+
 
 export function coneSurface(u, v, target, a, b, c, uComponent, vComponent) {
     u = -1 + (uComponent - (-1)) * u;
@@ -200,19 +213,6 @@ export function hornSurface(u, v, target, a, b, c, uComponent, vComponent) {
     x = (a + u * cos(v)) * sin(b * PI * u);
     y = (a + u * cos(v)) * cos(b * PI * u) + c * u;
     z = u * sin(v);
-
-    target.set(x, y, z);
-}
-
-export function hypercatenoidSurface(u, v, target, c, uComponent, vComponent) {
-    const umin = -PI;
-    const vmin = -2;
-    u = umin + (uComponent - umin) * u;
-    v = vmin + (vComponent - vmin) * v;
-
-    let x = c * cosh(v / c) * cos(u);
-    let y = c * cosh(v / c) * sin(u);
-    let z = v;
 
     target.set(x, y, z);
 }
