@@ -177,6 +177,19 @@ export function gobletSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function helicoidSurface(u, v, target, c, uComponent, vComponent) {
+    const umin = -2;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x = u * cos(v);
+    let y = u * sin(v);
+    let z = c * v;
+
+    target.set(x, y, z);
+}
+
 export function hornSurface(u, v, target, a, b, c, uComponent, vComponent) {
     const umin = 0;
     const vmin = -PI;
@@ -187,6 +200,19 @@ export function hornSurface(u, v, target, a, b, c, uComponent, vComponent) {
     x = (a + u * cos(v)) * sin(b * PI * u);
     y = (a + u * cos(v)) * cos(b * PI * u) + c * u;
     z = u * sin(v);
+
+    target.set(x, y, z);
+}
+
+export function hypercatenoidSurface(u, v, target, c, uComponent, vComponent) {
+    const umin = -PI;
+    const vmin = -2;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x = c * cosh(v / c) * cos(u);
+    let y = c * cosh(v / c) * sin(u);
+    let z = v;
 
     target.set(x, y, z);
 }
@@ -336,6 +362,21 @@ export function knotTorusSurface(u, v, target, p, q, R1, R2, r, uComponent, vCom
     x = (R1 + R2 * cos(p * u) + r * cos(v)) * cos(q * u);
     y = (R1 + R2 * cos(p * u) + r * cos(v)) * sin(q * u);
     z = r * sin(v) + R2 * sin(p * u);
+
+    target.set(x, y, z);
+}
+
+export function knotTranguloidTrefoilSurface(u, v, target, uComponent, vComponent) {
+    const umin = -PI;
+    const vmin = -PI;
+    u = umin + (uComponent - umin) * u;
+    v = vmin + (vComponent - vmin) * v;
+
+    let x, y, z;
+
+    x = 2 * sin(3 * u) / (2 + cos(v));
+    y = 2 * (sin(u) + 2 * sin(2 * u)) / (2 + cos(v + 2 * PI / 3));
+    z = (cos(u) - 2 * cos(2 * u)) * (2 + cos(v)) * (2 + cos(v + 2 * PI / 3)) / 4;
 
     target.set(x, y, z);
 }
@@ -579,7 +620,7 @@ export function spiralwavesSurface(u, v, target, a, b, c, uComponent, vComponent
 
     let x, y, z;
     x = v * cos(u);
-    y = a * cos(b * u + c* v);
+    y = a * cos(b * u + c * v);
     z = v * sin(u);
 
     target.set(x, y, z);
