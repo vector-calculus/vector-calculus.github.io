@@ -16,27 +16,24 @@ https://www.geogebra.org/m/xsy4fy25
 
 <body>
 
-    
-    
-
     <script type="importmap">
-			{
-				"imports": {
-					"three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
-                    "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
-				}
-			}
-		</script>
+            {
+              "imports": {
+                "three": "../threejs-source/build/three.module.min.js",
+                "three/addons/": "../threejs-source/examples/jsm/"
+              }
+            }
+    </script>
 
     <script type="module">
 
         import * as THREE from 'three';
 
-        //import Stats from 'jsm/libs/stats.module.js';
+        //import Stats from 'three/addons/libs/stats.module.js';
 
-        import { OrbitControls } from 'jsm/controls/OrbitControls.js';
-        import { RectAreaLightHelper } from 'jsm/helpers/RectAreaLightHelper.js';
-        import { RectAreaLightUniformsLib } from 'jsm/lights/RectAreaLightUniformsLib.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
+        import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
         let renderer, scene, camera;
         //let stats;
@@ -44,8 +41,6 @@ https://www.geogebra.org/m/xsy4fy25
         let pointLight;
 
         init();
-
-
 
         function init() {
 

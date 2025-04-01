@@ -15,7 +15,7 @@
 */
 
 import * as THREE from 'three';
-import { OrbitControls } from 'jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // Constants
 const NUM_INSTANCES = 6000;

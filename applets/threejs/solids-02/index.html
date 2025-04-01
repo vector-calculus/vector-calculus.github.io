@@ -7,9 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="style.css">
 		<link rel="icon" type="image/png" href="../../images/icon/infinity32.png" sizes="32x32">
 	    <link rel="icon" type="image/png" href="../../images/icon/infinity16.png" sizes="16x16">
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-JPYTNF6MB4"></script>
-	<script src="../../mySetup/google-analytics-ga4.js"></script>
+		
 	</head>
 	<body>
 
@@ -21,10 +19,10 @@
 
 		<script type="importmap">
 			{
-				"imports": {
-					"three": "../threejs/three.module.js",
-					"three/addons/": "../threejs/jsm/"
-				}
+			  "imports": {
+				"three": "../threejs-source/build/three.module.min.js",
+				"three/addons/": "../threejs-source/examples/jsm/"
+			  }
 			}
 		</script>
 
@@ -36,7 +34,7 @@
 
       		import * as Curves from 'three/addons/curves/CurveExtras.js';
       		import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
-			import { ParametricGeometries } from 'three/addons/geometries/ParametricGeometries.js';
+			import { klein } from 'three/addons/geometries/ParametricFunctions.js';
 
 			let camera, orthoCamera, scene, renderer;
 
@@ -52,7 +50,7 @@
 				const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
 				scene.add( ambientLight );
 
-				const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
+				const pointLight = new THREE.PointLight( 0xffffff, 3.5, 0,0 );
 
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
         		camera.position.set( 500, 600, 700 );
@@ -62,9 +60,10 @@
         		orthoCamera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 1, 2 );
 				orthoCamera.position.set( 0.5, 0, 1 );
 
-				const map = new THREE.TextureLoader().load( '../threejs/textures/brick_roughness.jpg' );
+				const map = new THREE.TextureLoader().load( '../threejs-source/examples/textures/brick_roughness.jpg' );
 				map.wrapS = map.wrapT = THREE.RepeatWrapping;
 				map.anisotropy = 16;
+				map.colorSpace = THREE.SRGBColorSpace;
 
 				const material = new THREE.MeshPhongMaterial( { map: map, side: THREE.DoubleSide } );
 

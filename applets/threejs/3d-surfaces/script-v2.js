@@ -3,7 +3,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
-import { ParametricGeometries } from 'three/addons/geometries/ParametricGeometries.js';
+import { klein } from 'three/addons/geometries/ParametricFunctions.js';
 
 //import gsap from 'gsap';
 
@@ -67,7 +67,7 @@ const rotationSpeeds = []; // Array to store unique rotation speeds
 const maxObjects = 800;
 
 // Function to create Klein bottle
-const kleinGeometry = new ParametricGeometry(ParametricGeometries.klein, 40, 40);
+const kleinGeometry = new ParametricGeometry(klein, 40, 40);
 
 const torusGeometry = new THREE.TorusGeometry(10, 4, 30, 30);
 

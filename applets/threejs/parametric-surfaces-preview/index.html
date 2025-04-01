@@ -28,12 +28,14 @@ Parametrische Flächen und Körper - http://www.3d-meier.de/tut3/Seite0.html
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
 <!-- using three.js -->
+<!--
 <script async src="https://ga.jspm.io/npm:es-module-shims@1.6.3/dist/es-module-shims.js" crossorigin="anonymous"></script>
+-->
 <script type="importmap">
   {
-    "imports": {      
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    "imports": {
+      "three": "../threejs-source/build/three.module.min.js",
+      "three/addons/": "../threejs-source/examples/jsm/"
     }
   }
 </script>
