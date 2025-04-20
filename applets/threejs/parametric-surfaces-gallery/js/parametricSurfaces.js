@@ -68,6 +68,22 @@ export function bowtieSurface(u, v, target, uComponent, vComponent) {
     target.set(x, y, z);
 }
 
+export function breatherSurface(u, v, target, a, uMin, uMax, vMin, vMax) {
+
+    u = uMin + (uMax - uMin) * u;
+    v = vMin + (vMax - vMin) * v;
+
+    let r = 1 - a ** 2;
+    let w = Math.sqrt(r);
+    let d = a * (Math.pow(w * Math.cosh(a * u), 2) + Math.pow(a * Math.sin(w * v), 2));
+
+    let x = -u + (2 * r * Math.cosh(a * u) * Math.sinh(a * u) / d);
+    let y = 2 * w * Math.cosh(a * u) * (-(w * Math.cos(v) * Math.cos(w * v)) - (Math.sin(v) * Math.sin(w * v))) / d;
+    let z = 2 * w * Math.cosh(a * u) * (-(w * Math.sin(v) * Math.cos(w * v)) + (Math.cos(v) * Math.sin(w * v))) / d;
+
+    target.set(x, y, z);
+}
+
 export function catenoidSurface(u, v, target, c, uComponent, vComponent) {
     const umin = -PI;
     const vmin = -2;
