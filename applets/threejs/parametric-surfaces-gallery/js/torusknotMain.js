@@ -102,28 +102,28 @@ gui.add(options, 'size', 0.01, 2, 0.01).name('Dilate').onChange(() => {
     
 });
 
-// gui.add(options, 'translate', -3, 3, 0.01).name('Translate').onChange(() => {
-//     geometry.dispose();
-//     geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.size, options.translate), meshRes.x, meshRes.y);
-//     geometry.rotateX(Math.PI/2);
-//     geometry.scale(geoScale.x, geoScale.y, geoScale.z);
-//     mesh.geometry = geometry;
-//     wireframeMesh.geometry = geometry;
+gui.add(options, 'translate', -3, 3, 0.01).name('Translate').onChange(() => {
+    geometry.dispose();
+    geometry = new ParametricGeometry((u, v, target) => parametricSurface(u, v, target, options.size, options.translate), meshRes.x, meshRes.y);
+    geometry.rotateX(Math.PI/2);
+    geometry.scale(geoScale.x, geoScale.y, geoScale.z);
+    mesh.geometry = geometry;
+    wireframeMesh.geometry = geometry;
 
-//     // Update the trefoil knot surface
-//     geometryKnot.dispose();
-//     geometryKnot = new ParametricGeometry((u, v, target) => trefoilknotSurface(u, v, target, 4 * Math.PI, 2 * Math.PI, options.size, options.translate, 0, 0), 64, 64);
-//     geometryKnot.rotateX(Math.PI / 2);
-//     geometryKnot.scale(geoScale.x, geoScale.y, geoScale.z);
-//     meshKnot.geometry = geometryKnot;
-// });
+    // Update the trefoil knot surface
+    geometryKnot.dispose();
+    geometryKnot = new ParametricGeometry((u, v, target) => trefoilknotSurface(u, v, target, 4 * Math.PI, 2 * Math.PI, options.size, options.translate, 0, 0), 64, 64);
+    geometryKnot.rotateX(Math.PI / 2);
+    geometryKnot.scale(geoScale.x, geoScale.y, geoScale.z);
+    meshKnot.geometry = geometryKnot;
+});
 
 
-let time = 0; // Time variable for animation
+//let time = 0; // Time variable for animation
 
 function animate() {
-    time += 0.001; // Adjust speed of animation here
-    options.translate = Math.sin(time) * 3; // Example: Oscillating translation
+    //time += 0.001; // Adjust speed of animation here
+    //options.translate = Math.sin(time) * 3; // Example: Oscillating translation
 
     // Update geometry dynamically
     geometry.dispose();
@@ -141,7 +141,7 @@ function animate() {
     geometryKnot = new ParametricGeometry((u, v, target) => 
         trefoilknotSurface(u, v, target, 4 * Math.PI, 2 * Math.PI, options.size, options.translate, 0, 0), 
         64, 64
-    );
+    ); 
     geometryKnot.rotateX(Math.PI / 2);
     geometryKnot.scale(geoScale.x, geoScale.y, geoScale.z);
     meshKnot.geometry = geometryKnot;
@@ -162,6 +162,9 @@ scene.add(axesHelper);
 
 controls.autoRotate = false;
 controls.autoRotateSpeed = - 0.9;
+
+//controls.translate = false;
+//controls.translate = - 0.9;
 
 // Animation loop
 const tick = () => {
