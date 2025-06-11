@@ -770,7 +770,8 @@ export function trefoilknotSurface(u, v, target, uComponent, vComponent, size, t
     z = size * (sin(v) + 2 * cos(1.5 * u)) + tz;
 
     target.set(x, y, z);
-}
+} 
+
 
 export function trashcanSurface(u, v, target, a, b, uComponent, vComponent) {
     u = uComponent * u;
