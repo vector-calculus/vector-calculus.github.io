@@ -12,7 +12,7 @@ const options = {
     material: 'Matcap', // Default material
     mesh: false,
     size: 0.12,
-    translate: -0.71,
+    translate: 2.9,
     autoRotate: false,
     color: '#049ef4',
     colorBackground: '#000000'
