@@ -1,202 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Solids & Sheets II</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="style.css">
-		<link rel="icon" type="image/png" href="../../images/icon/infinity32.png" sizes="32x32">
-	    <link rel="icon" type="image/png" href="../../images/icon/infinity16.png" sizes="16x16">
-		
-	</head>
-	<body>
 
-		<div id="info"><a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> <a  href="https://github.com/jcponce/jcponce.github.io/blob/master/math2001/sketches/solids-02/index.html" target="_blank">💾</a> - Solids & Sheets</div>
+<head>
+	<title>Solids & Sheets II</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/png" href="../../images/icon/infinity32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../../images/icon/infinity16.png" sizes="16x16">
 
-		<!-- Import maps polyfill -->
-		<!-- Remove this when import maps will be widely supported -->
-		<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+</head>
 
-		<script type="importmap">
-			{
-			  "imports": {
-				"three": "../threejs-source/build/three.module.min.js",
-				"three/addons/": "../threejs-source/examples/jsm/"
-			  }
-			}
-		</script>
+<body>
 
-		<script type="module">
+	<div id="info"><a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> <a
+			href="https://github.com/jcponce/jcponce.github.io/blob/master/math2001/sketches/solids-02/index.html"
+			target="_blank">💾</a> - Solids & Sheets</div>
 
-			import * as THREE from 'three';
+	<!-- Import maps polyfill -->
+	<!-- Remove this when import maps will be widely supported -->
+	<script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 
-			import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+	<script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.180.0/build/three.module.min.js",
+                "three/addons/": "https://unpkg.com/three@0.180.0/examples/jsm/"
+            }
+        }
+    </script>
 
-      		import * as Curves from 'three/addons/curves/CurveExtras.js';
-      		import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
-			import { klein } from 'three/addons/geometries/ParametricFunctions.js';
+	<script type="module">
 
-			let camera, orthoCamera, scene, renderer;
+		import * as THREE from 'three';
 
-			init();
-			animate();
+		import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
-			function init() {
+		import * as Curves from 'three/addons/curves/CurveExtras.js';
+		import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
+		import { klein } from 'three/addons/geometries/ParametricFunctions.js';
 
-				scene = new THREE.Scene();
+		let camera, orthoCamera, scene, renderer;
 
-				let object;
+		init();
+		animate();
 
-				const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
-				scene.add( ambientLight );
+		function init() {
 
-				const pointLight = new THREE.PointLight( 0xffffff, 3.5, 0,0 );
+			scene = new THREE.Scene();
 
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-        		camera.position.set( 500, 600, 700 );
-				scene.add( camera );
-				camera.add( pointLight );
+			let object;
 
-        		orthoCamera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 1, 2 );
-				orthoCamera.position.set( 0.5, 0, 1 );
+			const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+			scene.add(ambientLight);
 
-				const map = new THREE.TextureLoader().load( '../threejs-source/examples/textures/brick_roughness.jpg' );
-				map.wrapS = map.wrapT = THREE.RepeatWrapping;
-				map.anisotropy = 16;
-				map.colorSpace = THREE.SRGBColorSpace;
+			const pointLight = new THREE.PointLight(0xffffff, 3.5, 0, 0);
 
-				const material = new THREE.MeshPhongMaterial( { map: map, side: THREE.DoubleSide } );
+			camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+			camera.position.set(500, 600, 700);
+			scene.add(camera);
+			camera.add(pointLight);
 
-				//
+			orthoCamera = new THREE.OrthographicCamera(- 1, 1, 1, - 1, 1, 2);
+			orthoCamera.position.set(0.5, 0, 1);
 
-				object = new THREE.Mesh( new THREE.SphereGeometry( 75, 20, 10 ), material );
-				object.position.set( - 300, 0, 200 );
-				scene.add( object );
+			const map = new THREE.TextureLoader().load('../threejs-source/examples/textures/brick_roughness.jpg');
+			map.wrapS = map.wrapT = THREE.RepeatWrapping;
+			map.anisotropy = 16;
+			map.colorSpace = THREE.SRGBColorSpace;
 
-				object = new THREE.Mesh( new THREE.DodecahedronGeometry( 75 ), material );
-				object.position.set( - 100, 0, 200 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.OctahedronGeometry( 75 ), material );
-				object.position.set( 100, 0, 200 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.TetrahedronGeometry( 75, 0 ), material );
-				object.position.set( 300, 0, 200 );
-				scene.add( object );
-
-				//
-
-				// The following lines are in case I use LatheGeometry :)
-				
-				const points = [];
-
-				for ( let i = -25; i < 25; i ++ ) {
-
-					points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * Math.sin( i * 0.1 ) * 15 + 50, ( i - 5 ) * 2.5 ) );
-
-				}
-				
-				object = new THREE.Mesh( new THREE.LatheGeometry( points, 20 ), material );
-				object.position.set( - 300, 0, 0 );
-				scene.add( object );
-
-				
-
-				object = new THREE.Mesh( new THREE.PlaneGeometry( 100, 100, 4, 4 ), material );
-				object.position.set( - 100, 0, 0 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.CircleGeometry( 50, 20, 0, Math.PI * 2 ), material );
-				object.position.set( 100, 0, 0 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.RingGeometry( 10, 50, 20, 5, 0, Math.PI * 2 ), material );
-				object.position.set( 300, 0, 0 );
-				scene.add( object );
-
-				//
-
-				object = new THREE.Mesh( new THREE.CylinderGeometry( 25, 75, 100, 40, 5 ), material );
-				object.position.set( - 300, 0, - 200 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100, 4, 4, 4 ), material );
-				object.position.set(  -100, 0, - 200 );
-				scene.add( object );
-
-        		
-
-				object = new THREE.Mesh( new THREE.TorusGeometry( 50, 20, 20, 20 ), material );
-				object.position.set( 100, 0, - 200 );
-				scene.add( object );
-
-				object = new THREE.Mesh( new THREE.TorusKnotGeometry( 50, 10, 90, 20 ), material );
-				object.position.set( 300, 0, - 200 );
-				scene.add( object );
-
-				//
-
-				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				document.body.appendChild( renderer.domElement );
-                const controls = new OrbitControls(camera, renderer.domElement);
-				controls.addEventListener( 'change', render );
-				
-				//
-
-				window.addEventListener( 'resize', onWindowResize );
-
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				
-
-			}
+			const material = new THREE.MeshPhongMaterial({ map: map, side: THREE.DoubleSide });
 
 			//
 
-			function animate() {
+			object = new THREE.Mesh(new THREE.SphereGeometry(75, 20, 10), material);
+			object.position.set(- 300, 0, 200);
+			scene.add(object);
 
-				requestAnimationFrame( animate );
+			object = new THREE.Mesh(new THREE.DodecahedronGeometry(75), material);
+			object.position.set(- 100, 0, 200);
+			scene.add(object);
 
-				render();
-				
+			object = new THREE.Mesh(new THREE.OctahedronGeometry(75), material);
+			object.position.set(100, 0, 200);
+			scene.add(object);
 
-			}
+			object = new THREE.Mesh(new THREE.TetrahedronGeometry(75, 0), material);
+			object.position.set(300, 0, 200);
+			scene.add(object);
 
-			function render() {
+			//
 
-				const timer = Date.now() * 0.00003;
+			// The following lines are in case I use LatheGeometry :)
 
-				//camera.position.x = Math.cos( timer ) * 800;
-				//camera.position.z = Math.sin( timer ) * 800;
+			const points = [];
 
-				camera.lookAt( scene.position );
+			for (let i = -25; i < 25; i++) {
 
-				scene.traverse( function ( object ) {
-
-					if ( object.isMesh === true ) {
-
-						object.rotation.x = timer * 5;
-						object.rotation.y = timer * 2.5;
-
-					}
-
-				} );
-
-				renderer.clear();
-				renderer.render( scene, camera );
+				points.push(new THREE.Vector2(Math.sin(i * 0.2) * Math.sin(i * 0.1) * 15 + 50, (i - 5) * 2.5));
 
 			}
 
-		</script>
+			object = new THREE.Mesh(new THREE.LatheGeometry(points, 20), material);
+			object.position.set(- 300, 0, 0);
+			scene.add(object);
 
-	</body>
+
+
+			object = new THREE.Mesh(new THREE.PlaneGeometry(100, 100, 4, 4), material);
+			object.position.set(- 100, 0, 0);
+			scene.add(object);
+
+			object = new THREE.Mesh(new THREE.CircleGeometry(50, 20, 0, Math.PI * 2), material);
+			object.position.set(100, 0, 0);
+			scene.add(object);
+
+			object = new THREE.Mesh(new THREE.RingGeometry(10, 50, 20, 5, 0, Math.PI * 2), material);
+			object.position.set(300, 0, 0);
+			scene.add(object);
+
+			//
+
+			object = new THREE.Mesh(new THREE.CylinderGeometry(25, 75, 100, 40, 5), material);
+			object.position.set(- 300, 0, - 200);
+			scene.add(object);
+
+			object = new THREE.Mesh(new THREE.BoxGeometry(100, 100, 100, 4, 4, 4), material);
+			object.position.set(-100, 0, - 200);
+			scene.add(object);
+
+
+
+			object = new THREE.Mesh(new THREE.TorusGeometry(50, 20, 20, 20), material);
+			object.position.set(100, 0, - 200);
+			scene.add(object);
+
+			object = new THREE.Mesh(new THREE.TorusKnotGeometry(50, 10, 90, 20), material);
+			object.position.set(300, 0, - 200);
+			scene.add(object);
+
+			//
+
+			renderer = new THREE.WebGLRenderer({ antialias: true });
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+			const controls = new OrbitControls(camera, renderer.domElement);
+			controls.addEventListener('change', render);
+
+			//
+
+			window.addEventListener('resize', onWindowResize);
+
+		}
+
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize(window.innerWidth, window.innerHeight);
+
+
+		}
+
+		//
+
+		function animate() {
+
+			requestAnimationFrame(animate);
+
+			render();
+
+
+		}
+
+		function render() {
+
+			const timer = Date.now() * 0.00003;
+
+			//camera.position.x = Math.cos( timer ) * 800;
+			//camera.position.z = Math.sin( timer ) * 800;
+
+			camera.lookAt(scene.position);
+
+			scene.traverse(function (object) {
+
+				if (object.isMesh === true) {
+
+					object.rotation.x = timer * 5;
+					object.rotation.y = timer * 2.5;
+
+				}
+
+			});
+
+			renderer.clear();
+			renderer.render(scene, camera);
+
+		}
+
+	</script>
+
+</body>
+
 </html>
