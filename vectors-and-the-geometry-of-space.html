@@ -770,7 +770,7 @@
       </p>
       <div class="eqwrapper">
         \[
-        \i = (1,0,0),\quad \j = (0,1,0),\quad\k =(0,0,0)
+        \i = (1,0,0),\quad \j = (0,1,0),\quad\k =(0,0,1)
         \]
       </div>
       <p>
@@ -1175,7 +1175,7 @@
         </p>
         <div class="eqwrapper">
           \begin{eqnarray}\label{eq-01}
-          (\mathbf b-\mathbf a)\pd (\mathbf b-\mathbf a) =\mathbf a\pd \mathbf a \pd \mathbf b\pd \mathbf b - 2
+          (\mathbf b-\mathbf a)\pd (\mathbf b-\mathbf a) =\mathbf a\pd \mathbf a  + \mathbf b\pd \mathbf b - 2
           \norm{\mathbf a}\norm{\mathbf b}\cos\theta .
           \end{eqnarray}
         </div>
@@ -1195,7 +1195,7 @@
         <p>Thus, substituting in (\ref{eq-01}), we get</p>
         <div class="eqwrapper">
           \begin{eqnarray*}
-          \mathbf a \pd \mathbf a + \mathbf b \pd \mathbf b - 2\mathbf a \pd \mathbf b &amp;=&amp; \mathbf a\pd \mathbf a \pd
+          \mathbf a \pd \mathbf a + \mathbf b \pd \mathbf b - 2\mathbf a \pd \mathbf b &amp;=&amp; \mathbf a\pd \mathbf a +
           \mathbf b\pd \mathbf b - 2 \norm{\mathbf a}\norm{\mathbf b}\cos\theta .
           \end{eqnarray*}
         </div>
@@ -1547,7 +1547,7 @@
       </p>
 
       <div class="definition">
-        If $\mathbf{a}= a_1\i+a_2\k+a_3\k$ and $\mathbf{b}= b_1\i+b_2\k+b_3\k$
+        If $\mathbf{a}= a_1\i+a_2\j+a_3\k$ and $\mathbf{b}= b_1\i+b_2\j+b_3\k$
         are vectors in $\R^3,$ the <strong>cross product</strong>
         or <strong>vector product</strong> of $\mathbf{a}$ and $\mathbf{b},$
         denoted by $\mathbf{a} \times \mathbf{b},$ is defined as the
@@ -1898,14 +1898,14 @@
       </p>
       <div class="eqwrapper">
         \[
-        (a_1^2+a_2^2+a_3^2)(a_1^2+b_2^2+b_3^2)- (a_1b_1+a_2b_2 + a_3b_3)^2.
+        (a_1^2+a_2^2+a_3^2)(b_1^2+b_2^2+b_3^2)- (a_1b_1+a_2b_2 + a_3b_3)^2.
         \]
       </div>
       <p>which is equal to</p>
       <div class="eqwrapper">
         \begin{eqnarray*}
-        \norm{\mathbf a}^2\norm{\mathbf b}^2- (\mathbf a\pd \mathbf b )&amp;=&amp; \norm{\mathbf a}^2\norm{\mathbf b}^2 -
-        \norm{\mathbf a}\norm{\mathbf b} \cos^2 \theta \\
+        \norm{\mathbf a}^2\norm{\mathbf b}^2- (\mathbf a\pd \mathbf b )^2&amp;=&amp; \norm{\mathbf a}^2\norm{\mathbf b}^2 -
+        \norm{\mathbf a}^2\norm{\mathbf b}^2 \cos^2 \theta \\
         &amp;=&amp; \norm{\mathbf a}^2\norm{\mathbf b}^2\sin^2\theta,
         \end{eqnarray*}
       </div>
@@ -1974,7 +1974,7 @@
       <p>and</p>
       <div class="eqwrapper">
         \[
-        (\i\times \i) \times \j= \mathbf 0 \times \k = \mathbf 0
+        (\i\times \i) \times \j= \mathbf 0 \times \j = \mathbf 0
         \]
       </div>
       <p>
@@ -2357,11 +2357,12 @@
       <p>
         <strong>Artificial Intelligence</strong> (AI)
         also makes extensive use
-        of vectors. In <a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">machine learning</a>, vectors 
+        of vectors. In <a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank">machine learning</a>,
+        vectors
         are used to
         represent data points and features in high-dimensional
         spaces. For example, each word in a <em>word embedding</em> (like
-        <a href="https://en.wikipedia.org/wiki/Word2vec" target="_blank">Word2Vec</a>) is 
+        <a href="https://en.wikipedia.org/wiki/Word2vec" target="_blank">Word2Vec</a>) is
         represented as a vector, enabling
         algorithms to understand relationships between
         words.
@@ -2369,7 +2370,8 @@
         <a href="https://natureofcode.com/neural-networks/" target="_blank">neural networks</a>,
         where they are used to represent <em>weights</em>, <em>biases</em>,
         and <em>activations</em>. In
-        <a href="https://natureofcode.com/neuroevolution/#reinforcement-learning" target="_blank">reinforcement learning</a>, vectors 
+        <a href="https://natureofcode.com/neuroevolution/#reinforcement-learning" target="_blank">reinforcement
+          learning</a>, vectors
         are used to
         encode states and actions, guiding the
         decision-making process of AI
@@ -2385,8 +2387,8 @@
         a character's movement is
         described
         using a velocity vector, which determines
-        both the speed and direction 
-        (for example <a href="https://wizard-game-voidereles-projects.vercel.app/" target="_blank">The Wizard Game</a>). 
+        both the speed and direction
+        (for example <a href="https://wizard-game-voidereles-projects.vercel.app/" target="_blank">The Wizard Game</a>).
       </p>
 
 
@@ -2399,7 +2401,7 @@
         In the applet below, you can see how vectors
         are used in a collision simulation,
         where the direction and magnitude of
-        velocities are calculated, before and after the collision.
+        velocities are calculated, before and after the collision,
       </p>
 
       <iframe loading="lazy" frameborder="0" height="450px" noscrolling="" src="applets/js/physics-sim" style="border: 0px solid black; overflow: hidden;" width="100%">
